@@ -4,10 +4,12 @@ Just a genereic README :))
 
 ## To do
 ### Data processing
+- [ ] Make flow diagram of the process
 - [ ] Generate dataset files
+- [ ] Dataset reader
 - [ ] Decide on data representations
 - [ ] Make rational to symbol converter
-- [X] Convert infix <=> postfix
+- [X] Convert infix <=> postfix ---> Hugo
 - [ ] Convert infix <=> prefix
 - [ ] Convert prefix <=> postfix
 - [ ] Convert from token list to string equation
