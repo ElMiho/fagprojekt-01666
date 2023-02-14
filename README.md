@@ -10,7 +10,7 @@ Just a genereic README :))
 - [ ] Decide on data representations
 - [ ] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
-- [ ] Convert infix <=> prefix
+- [ ] Convert infix <=> prefix ---> Jakob og Christian
 - [ ] Convert prefix <=> postfix
 - [ ] Convert from token list to string equation
 - [ ] Make vocabulary class
