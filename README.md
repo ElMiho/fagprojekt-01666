@@ -4,7 +4,7 @@ Just a genereic README :))
 
 ## To do
 ### Report
--[ ] Introduction ---> Jonas og ElMiho
+- [ ] Introduction ---> Jonas og ElMiho
 ### Data processing
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
