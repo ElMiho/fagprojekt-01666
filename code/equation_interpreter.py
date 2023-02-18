@@ -92,7 +92,7 @@ OPERATOR_PRECEDENCE.update({
 #########
 
 class EquationLexer:
-    def __init__(self, text):
+    def __init__(self, text:str):
         self.text = text
         self.position = -1
         self.text_length = len(text)
@@ -244,7 +244,7 @@ class Equation:
             self.notation = "postfix"
             self.tokenized_equation = output_queue
         
-        if self.notation == "postfix":
+        elif self.notation == "postfix":
             return None
 
                 
@@ -277,7 +277,7 @@ class Equation:
         
         
     @classmethod
-    def makeEquationFromString(cls, equation:str, notation="infix"):
+    def makeEquationFromString(cls, equation:str, notation:str = "infix"):
         """Makes equation instance from string
         
         Args:
