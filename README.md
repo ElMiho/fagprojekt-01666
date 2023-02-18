@@ -15,6 +15,7 @@ Just a genereic README :))
 - [ ] Convert infix <=> prefix ---> Jacob og Christian
 - [ ] Convert prefix <=> postfix
 - [ ] Convert from token list to string equation
+- [ ] Evaluate token list i.e. method in the equation class for the conversion: `List[Token]` => `float`
 - [ ] Make vocabulary class
 - [ ] Make vectorizer class
 - [ ] Make pytorch `dataset` and `dataloaders`
