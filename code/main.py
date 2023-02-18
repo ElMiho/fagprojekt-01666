@@ -1,15 +1,20 @@
+# Imports
 import linecache
 
 from argparse import Namespace
 import argparse
 
+from model.equation_interpreter import Equation
+
+
+
 args = Namespace(
     # Data information
-    inputs_file = ".././data/expressions-1000.txt",
-    targets_file = ".././data/answers-1000.txt",
+    inputs_file = "./data/expressions-1000.txt",
+    targets_file = "./data/answers-1000.txt",
     
     # Model information
-    model_save_dir = ".././model_checkpoints",
+    model_save_dir = "./model_checkpoints",
 
     # Training information
     num_epochs=1e+3,
