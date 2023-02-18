@@ -243,7 +243,10 @@ class Equation:
             
             self.notation = "postfix"
             self.tokenized_equation = output_queue
-                
+        
+        if self.notation == "postfix":
+            return None
+
                 
     def convertToPrefix(self):
         pass
@@ -288,3 +291,11 @@ class Equation:
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
 
+# equation = Equation.makeEquationFromString("Sin(n*2*EulerGamma)+a/3")
+# print(equation.tokenized_equation)
+
+# equation.convertToPostfix()
+# print("\n",equation.tokenized_equation)
+
+# equation.convertToInfix()
+# print("\n",equation.tokenized_equation)
