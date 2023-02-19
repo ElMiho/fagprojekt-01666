@@ -46,3 +46,11 @@ WolframKernel -script file.wls
 ```
 
 Generating the polynomials requires a `data` folder locally. 
+
+
+# Literature
+1. Train a BERT model from hugging faces on custom dataset: https://medium.com/@utk.is.here/encoder-decoder-models-in-huggingface-from-almost-scratch-c318cce098ae
+
+
+
+
