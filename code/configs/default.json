@@ -1,0 +1,12 @@
+{
+"inputs_file": "./data/expressions-1000.txt",
+"targets_file": "./data/answers-1000.txt",
+"model_save_dir": "./model_checkpoints",
+
+
+"num_epochs": 100,
+"use_cuda": true,
+
+
+"seed": 628
+}

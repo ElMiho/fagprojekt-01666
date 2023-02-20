@@ -1,41 +1,67 @@
 # Imports
-import linecache
+import torch
 
-from argparse import Namespace
+from torch.utils.data import Dataset, DataLoader
+
+import linecache
 import argparse
+import json
+import os
 
 from model.equation_interpreter import Equation
 
+#########
+# SETUP #
+#########
 
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("-config", type=str, help="Name of the config file to use (see the configs folder) e.g. `-config config.json`")
+parser.add_argument("--verbose", type=bool, help="Whether to print intermediate steps", default=True)
+args = parser.parse_args()
 
-args = Namespace(
-    # Data information
-    inputs_file = "./data/expressions-1000.txt",
-    targets_file = "./data/answers-1000.txt",
-    
-    # Model information
-    model_save_dir = "./model_checkpoints",
+# Custom configuration file
+if args.config and os.path.exists(f"./configs/{args.config}"):
+    config_path = f"./configs/{args.config}"
+# Default config file
+else:
+    config_path = "./configs/default.json"
 
-    # Training information
-    num_epochs=1e+3,
-    use_cuda=True,
+if args.verbose: 
+    print(f"Using configuration: {config_path}")
 
-    # Other
-    seed=628
-)
+file = open(config_path, "r")
+config = json.load(file)
+file.close()
 
 ###########
 # DATASET #
 ###########
-class SumDataset:
-    pass
+class SumDataset(Dataset):
+    def __init__(self, inputs_file:str=config["inputs_file"], targets_file:str=config["targets_file"]) -> None:
+        """Data initialization
+        
+        Args:
+            inputs_file (str): path to the file which contains the input data for our NN
+            targets_file (str): path to the file which containts the target data for our NN
+        """
+        self.inputs_file = inputs_file
+        self.targets_file = targets_file
+        self.dataset_size = sum(1 for i in open(inputs_file, 'rb'))
 
-# extracting the n'th line (is 0-indexed)
-n = 4
-input_line = linecache.getline(args.inputs_file, n)
-target_line = linecache.getline(args.targets_file, n)
-print(input_line)
-print(target_line)
+
+    def __getitem__(self, index:int) -> torch.LongTensor:
+        # Get corresponding input and target
+        input_line = linecache.getline(args.inputs_file, index)
+        target_line = linecache.getline(args.targets_file, index)
+
+        # Transform input and target
+
+        return
+    
+    def __len__(self) -> int:
+        return self.dataset_size
+
 
 
 

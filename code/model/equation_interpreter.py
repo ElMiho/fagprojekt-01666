@@ -146,12 +146,22 @@ class EquationLexer:
     
     def _makeInteger(self):
         res = ""
-        
+        res2 = ""
+
         while self.current_char and self.current_char in DIGITS:
             res += self.current_char
             self.advance()
         
-        return Token(TT_INTEGER, int(res))
+        if self.current_char == "/":
+            self.advance()
+            while self.current_char in DIGITS:
+                res2 += self.current_char
+                self.advance()
+        
+        if res2:
+            return Token(TT_RATIONAL, res + "/" + res2)
+        else:
+            return Token(TT_INTEGER, res)
     
     def _makeFunc(self):
         res = ""
@@ -185,7 +195,7 @@ class Equation:
     def __init__(self, tokenized_equation:list=None, notation:str="infix"):
         self.tokenized_equation = tokenized_equation
         self.notation = notation
-        
+
     def convertToInfix(self):
         if self.notation == "infix":
             return None
@@ -291,7 +301,7 @@ class Equation:
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
 
-# equation = Equation.makeEquationFromString("Sin(n*2*EulerGamma)+a/3")
+# equation = Equation.makeEquationFromString("Sin(2-EulerGamma)+a/3+7/3*2")
 # print(equation.tokenized_equation)
 
 # equation.convertToPostfix()
