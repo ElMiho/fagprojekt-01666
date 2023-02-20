@@ -10,7 +10,7 @@ Just a genereic README :))
 - [ ] Generate dataset files
 - [ ] Dataset reader
 - [ ] Decide on data representations
-- [ ] Make rational to symbol converter
+- [X] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
 - [ ] Convert infix <=> prefix ---> Jacob og Christian
 - [ ] Convert prefix <=> postfix
