@@ -4,7 +4,10 @@ Just a genereic README :))
 
 ## To do
 ### Report
-- [ ] Introduction ---> Jonas og ElMiho
+
+- [X] Introduction. Background ---> Jonas
+- [] Introduction. Neural Network --> Mikael 
+- [X] Introduction. Our idea ---> Jonas
 ### Data processing
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
