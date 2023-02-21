@@ -8,7 +8,8 @@ Just a genereic README :))
 ### Data processing
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
-- [ ] Dataset reader
+- [ ] Dataset reader output
+- [ ] Dataset reader input --> Jonas
 - [ ] Tokenize input data ---> Jonas
 - [ ] Decide on data representations
 - [X] Make rational to symbol converter
