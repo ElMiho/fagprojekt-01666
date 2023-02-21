@@ -9,7 +9,8 @@
 #BSUB -N 
 
 module load mathematica/12.2.0
-WolframKernel -script generate_polynomials.wls
+wolframscript -config WOLFRAMSCRIPT_KERNELPATH="/appl/mathematica/12.2.0/Executables/WolframKernel"
+wolframscript -file new_generate_polynomials.wls
 
 #BSUB -o Output_%J.out 
 #BSUB -e Output_%J.err 
