@@ -6,7 +6,7 @@ Just a genereic README :))
 ### Report
 
 - [X] Introduction. Background ---> Jonas
-- [] Introduction. Neural Network --> Mikael 
+- [ ] Introduction. Neural Network --> Mikael 
 - [X] Introduction. Our idea ---> Jonas
 ### Data processing
 - [ ] Make flow diagram of the process
