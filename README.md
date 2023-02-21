@@ -9,6 +9,7 @@ Just a genereic README :))
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
 - [ ] Dataset reader
+- [ ] Tokenize input data ---> Jonas
 - [ ] Decide on data representations
 - [X] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
