@@ -1,3 +1,8 @@
+argv = Rest @ $ScriptCommandLine;
+maxTime = ToExpression[argv[[1]]];
+numberOfSums = ToExpression[argv[[2]]]
+outputNaming = ToString[argv[[3]]];
+
 Needs["Combinatorica`"];
 all = Range[-5,5];
 
@@ -27,10 +32,9 @@ General idea:
     2. Pick another random integer (degree of numerator), k, which satisfies k <= d - 2
     3. Pick a corresponding amount of integers for each polynoimal
 *)
-numberOfSums = 10;
+
 maxDegreeDenominator = 20;
-maxTime = 7; (* seconds *)
-minutes = N[7 * 10 / 60];
+minutes = N[maxTime * numberOfSums / 60];
 hours = minutes / 60;
 Print["Total max running time (minutes): " <> ToString[minutes]]
 Print["Total max running time (hours): " <> ToString[hours]]
@@ -57,5 +61,5 @@ For[i = 1, i <= numberOfSums, i++,
 ]
 
 (* Export everything! *)
-Export[Directory[] <> "/data/expressions.txt", expressions]
-Export[Directory[] <> "/data/answers.txt", answers]
+Export[Directory[] <> "/data/expressions-" <> outputNaming <> ".txt", expressions]
+Export[Directory[] <> "/data/answers-" <> outputNaming <> ".txt", answers]
