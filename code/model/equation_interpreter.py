@@ -76,7 +76,7 @@ class EquationLexer:
         tokens = []
         
         while (self.current_char != None):
-            if self.current_char == " ":
+            if self.current_char == " " or self.current_char == "\n":
                 self.advance()
             elif self.current_char in DIGITS:
                 tokens.append(self._makeInteger())
@@ -98,7 +98,7 @@ class EquationLexer:
             elif self.current_char in ALPHABET:
                 tokens.append(self._makeFunc())
             else:
-                print(f"ERROR unrecognised token: {self.current_char}")
+                print(f"ERROR unrecognised token: {self.current_char},  position: {self.position}")
                 return []
         
         return tokens
