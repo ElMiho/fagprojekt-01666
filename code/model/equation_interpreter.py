@@ -46,6 +46,7 @@ TT_PLUS = "TT_PLUS"
 TT_MINUS = "TT_MINUS"
 TT_MULTIPLY = "TT_MULTIPLY"
 TT_DIVIDE = "TT_DIVIDE"
+TT_POW = "TT_POW"
 
 # Helper globals
 DIGITS = "0123456789"
@@ -73,18 +74,20 @@ BIN_OPERATORS = {
     "+": Token(TT_PLUS),
     "-": Token(TT_MINUS),
     "*": Token(TT_MULTIPLY),
-    "/": Token(TT_DIVIDE)
+    "/": Token(TT_DIVIDE),
+    "^": Token(TT_POW)
 }
 BIN_OPERATOR_TYPES = [value.t_type for value in BIN_OPERATORS.values()]
 
 OPERATOR_PRECEDENCE = {
-    token.t_type: 3 for token in UNI_OPERATORS.values()
+    token.t_type: 4 for token in UNI_OPERATORS.values()
 }
 OPERATOR_PRECEDENCE.update({
     TT_PLUS: 1,
     TT_MINUS: 1,
     TT_MULTIPLY: 2,
-    TT_DIVIDE: 2
+    TT_DIVIDE: 2,
+    TT_POW: 3
 })
 
 #########
@@ -118,17 +121,8 @@ class EquationLexer:
                 tokens.append(self._makeInteger())
             elif self.current_char in ALPHABET:
                 tokens.append(self._makeFunc())
-            elif self.current_char == "/":
-                tokens.append(Token(TT_DIVIDE))
-                self.advance()
-            elif self.current_char == "+":
-                tokens.append(Token(TT_PLUS))
-                self.advance()
-            elif self.current_char == "-":
-                tokens.append(Token(TT_MINUS))
-                self.advance()
-            elif self.current_char == "*":
-                tokens.append(Token(TT_MULTIPLY))
+            elif self.current_char in BIN_OPERATORS:
+                tokens.append(BIN_OPERATORS[self.current_char])
                 self.advance()
             elif self.current_char == "(" or self.current_char == "[":
                 tokens.append(Token(TT_LEFT_PARENTHESIS))
@@ -301,7 +295,7 @@ class Equation:
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
 
-# equation = Equation.makeEquationFromString("Sin(2-EulerGamma)+a/3+7/3*2")
+# equation = Equation.makeEquationFromString("Sin(2-EulerGamma)+a/3+7/3*2 + Pi^2-2")
 # print(equation.tokenized_equation)
 
 # equation.convertToPostfix()
