@@ -1,7 +1,7 @@
 import sympy as sp
 
 from typing import List
-from tokens import *
+from model.tokens import *
 
 #####################
 # TOKENIZE EQUATION #
@@ -260,11 +260,11 @@ class Equation:
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
 
-equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
-print(equation.tokenized_equation)
+# equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+# print(equation.tokenized_equation)
 
-equation.convertToPostfix()
-print("\n",equation.tokenized_equation)
+# equation.convertToPostfix()
+# print("\n",equation.tokenized_equation)
 
-equation.convertToInfix()
-print("\n",equation.tokenized_equation)
+# equation.convertToInfix()
+# print("\n",equation.tokenized_equation)

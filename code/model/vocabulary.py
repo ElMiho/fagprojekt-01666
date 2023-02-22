@@ -1,5 +1,5 @@
 from typing import List
-from tokens import Token
+from model.tokens import Token, TOKEN_TYPE_ANSWERS
 
 class Vocabulary:
     def __init__(self, token2index, index2token) -> None:
@@ -39,5 +39,8 @@ class Vocabulary:
 
         return cls(token2index, index2token)
 
+
+vocabulary_answers = Vocabulary.construct_from_list(TOKEN_TYPE_ANSWERS)
+vocabulary_expressions = None
 
 
