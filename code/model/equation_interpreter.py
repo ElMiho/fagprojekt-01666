@@ -41,6 +41,8 @@ TT_COS = "TT_COS"
 TT_TAN = "TT_TAN"
 TT_LOG = "TT_LOG"
 
+TT_U_MINUS = "TT_U_MINUS"
+
 ## Binary Operations
 TT_PLUS = "TT_PLUS"
 TT_MINUS = "TT_MINUS"
@@ -66,7 +68,9 @@ UNI_OPERATORS = {
     "Sin": Token(TT_SIN),
     "Cos": Token(TT_COS),
     "Tan": Token(TT_TAN),
-    "Log": Token(TT_LOG)
+    "Log": Token(TT_LOG),
+
+    "-": Token(TT_U_MINUS)
 }
 UNI_OPERATOR_TYPES = [value.t_type for value in UNI_OPERATORS.values()]
 
@@ -122,7 +126,11 @@ class EquationLexer:
             elif self.current_char in ALPHABET:
                 tokens.append(self._makeFunc())
             elif self.current_char in BIN_OPERATORS:
-                tokens.append(BIN_OPERATORS[self.current_char])
+                token = BIN_OPERATORS[self.current_char]
+                if self.current_char == "-" and (not tokens or (tokens and tokens[-1].t_type in [TT_LEFT_PARENTHESIS])):
+                    token = Token(TT_U_MINUS)
+                    
+                tokens.append(token)
                 self.advance()
             elif self.current_char == "(" or self.current_char == "[":
                 tokens.append(Token(TT_LEFT_PARENTHESIS))
