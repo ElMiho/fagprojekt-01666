@@ -1,54 +1,11 @@
 import sympy as sp
 
 from typing import List
+from tokens import *
 
 #####################
 # TOKENIZE EQUATION #
 #####################
-
-# Token class
-class Token:
-    def __init__(self, t_type: str, t_value:str = None):
-        self.t_type = t_type
-        self.t_value = t_value
-        
-    def __repr__(self):
-        return f"---- Type: {self.t_type} \t Value: {self.t_value} ----"
-
-# Tokens
-## Variable
-TT_VARIABLE = "TT_VARIABLE"
-
-## Specials
-TT_LEFT_PARENTHESIS = "TT_LEFT_PARENTHESIS"
-TT_RIGHT_PARENTHESIS = "TT_RIGHT_PARENTHESIS"
-
-## Special numbers
-TT_PI = "TT_PI"
-TT_E = "TT_E"
-TT_PHI = "TT_PHI"
-TT_CATALAN = "TT_CATALAN"
-TT_EULERGAMMA = "TT_EULERGAMMA" # i.e. the euler-mascheroni constant
-
-## Numbers
-TT_INTEGER = "TT_INTEGER"
-TT_RATIONAL = "TT_RATIONAL"
-
-## Unary Operations
-TT_SQRT = "TT_SQRT"
-TT_SIN = "TT_SIN"
-TT_COS = "TT_COS"
-TT_TAN = "TT_TAN"
-TT_LOG = "TT_LOG"
-
-TT_U_MINUS = "TT_U_MINUS"
-
-## Binary Operations
-TT_PLUS = "TT_PLUS"
-TT_MINUS = "TT_MINUS"
-TT_MULTIPLY = "TT_MULTIPLY"
-TT_DIVIDE = "TT_DIVIDE"
-TT_POW = "TT_POW"
 
 # Helper globals
 DIGITS = "0123456789"
@@ -129,7 +86,7 @@ class EquationLexer:
                 token = BIN_OPERATORS[self.current_char]
                 if self.current_char == "-" and (not tokens or (tokens and tokens[-1].t_type in [TT_LEFT_PARENTHESIS])):
                     token = Token(TT_U_MINUS)
-                    
+
                 tokens.append(token)
                 self.advance()
             elif self.current_char == "(" or self.current_char == "[":
@@ -303,11 +260,11 @@ class Equation:
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
 
-# equation = Equation.makeEquationFromString("Sin(2-EulerGamma)+a/3+7/3*2 + Pi^2-2")
-# print(equation.tokenized_equation)
+equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+print(equation.tokenized_equation)
 
-# equation.convertToPostfix()
-# print("\n",equation.tokenized_equation)
+equation.convertToPostfix()
+print("\n",equation.tokenized_equation)
 
-# equation.convertToInfix()
-# print("\n",equation.tokenized_equation)
+equation.convertToInfix()
+print("\n",equation.tokenized_equation)
