@@ -55,9 +55,14 @@ class SumDataset(Dataset):
         input_line = linecache.getline(args.inputs_file, index)
         target_line = linecache.getline(args.targets_file, index)
 
-        # Transform input and target
-
-        return
+        # Transform input and target from string to torch tensor
+        input_idx_tensor = torch.LongTensor(json.loads(input_line))
+        target_idx_tensor = torch.LongTensor(json.loads(target_line))
+        
+        return (
+            input_idx_tensor,
+            target_idx_tensor
+        )
     
     def __len__(self) -> int:
         return self.dataset_size
