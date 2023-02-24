@@ -14,6 +14,7 @@ Just a genereic README :))
 - [ ] Dataset reader output
 - [X] Dataset reader input --> Jonas
 - [X] Tokenize input data ---> Jonas
+- [ ] From input token to rational numbers --> Jonas
 - [X] Decide on data representations
 - [X] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
