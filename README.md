@@ -12,8 +12,8 @@ Just a genereic README :))
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
 - [ ] Dataset reader output
-- [ ] Dataset reader input --> Jonas
-- [ ] Tokenize input data ---> Jonas
+- [X] Dataset reader input --> Jonas
+- [X] Tokenize input data ---> Jonas
 - [X] Decide on data representations
 - [X] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
