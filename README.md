@@ -20,6 +20,7 @@ Just a genereic README :))
 - [X] Convert infix <=> postfix ---> Hugo
 - [ ] Convert infix <=> prefix ---> Jacob og Christian
 - [ ] Convert prefix <=> postfix
+- [ ] Infix to float value ---> Jacob
 - [ ] Convert from token list to string equation
 - [ ] Evaluate token list i.e. method in the equation class for the conversion: `List[Token]` => `float`
 - [X] Make vocabulary class - wrapper class for token2idx and idx2token mappings
