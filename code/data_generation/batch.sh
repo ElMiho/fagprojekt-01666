@@ -7,10 +7,9 @@
 #BSUB -u s214753@dtu.dk
 #BSUB -B 
 #BSUB -N 
+#BSUB -o Output_%J.out 
+#BSUB -e Output_%J.err 
 
 module load mathematica/12.2.0
 wolframscript -config WOLFRAMSCRIPT_KERNELPATH="/appl/mathematica/12.2.0/Executables/WolframKernel"
 wolframscript -file new_generate_polynomials.wls
-
-#BSUB -o Output_%J.out 
-#BSUB -e Output_%J.err 

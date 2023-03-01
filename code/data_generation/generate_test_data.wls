@@ -1,6 +1,7 @@
 argv = Rest @ $ScriptCommandLine;
 argStart = ToExpression[argv[[1]]];
 argEnd = ToExpression[argv[[2]]];
+(* LaunchKernels[4] *)
 
 Needs["Combinatorica`"];
 all = Range[-5,5];
@@ -23,6 +24,7 @@ res3 := CartesianProduct[all2, all3];
 res4 := DeleteCases[res3, list_ /; list[[2]] <= list[[1]] + 1];
 maxTime = 0.1;
 
+
 For[i = argStart, i < argEnd, i++,
 
     expressions = {};
@@ -34,8 +36,8 @@ For[i = argStart, i < argEnd, i++,
         denominator = RandomChoice[fractionListNoPositiveIntegers, current[[2]]];
 
         expr = 
-            Product[n - numerator[[k]], {k, 1, current[[1]]}] /
-            Product[n - denominator[[k]], {k, 1, current[[2]]}];
+            Product[n - numerator[[j]], {j, 1, current[[1]]}] /
+            Product[n - denominator[[j]], {j, 1, current[[2]]}];
         s = TimeConstrained[
             Sum[expr, {n, 1, Infinity}], maxTime
         ];
@@ -47,3 +49,31 @@ For[i = argStart, i < argEnd, i++,
     Export[Directory[] <> "/data/expressions-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", expressions]
     Export[Directory[] <> "/data/answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", answers]
 ]
+
+
+(*
+For[i = argStart, i < argEnd, i++,
+    expressions = {};
+    answers = {};
+
+    current = res4[[i]];
+    ParallelDo[
+        numerator = RandomChoice[fractionList, current[[1]]];
+        denominator = RandomChoice[fractionListNoPositiveIntegers, current[[2]]];
+
+        expr = 
+            Product[n - numerator[[j]], {j, 1, current[[1]]}] /
+            Product[n - denominator[[j]], {j, 1, current[[2]]}];
+        s = TimeConstrained[
+            Sum[expr, {n, 1, Infinity}], maxTime
+        ];
+        
+        AppendTo[expressions, {numerator, denominator}];
+        AppendTo[answers, s];,
+        {k, 10}
+    ]
+
+    Export[Directory[] <> "/data/27-2-2023-expressions-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", expressions]
+    Export[Directory[] <> "/data/27-2-2023-answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", answers]
+]
+*)
