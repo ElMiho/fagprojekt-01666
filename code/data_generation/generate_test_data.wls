@@ -31,7 +31,7 @@ For[i = argStart, i < argEnd, i++,
     answers = {};
 
     current = res4[[i]];
-    For[k = 1, k < 10, k++,
+    For[k = 1, k < 1000, k++,
         numerator = RandomChoice[fractionList, current[[1]]];
         denominator = RandomChoice[fractionListNoPositiveIntegers, current[[2]]];
 
@@ -50,14 +50,13 @@ For[i = argStart, i < argEnd, i++,
     Export[Directory[] <> "/data/answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", answers]
 ]
 
-
 (*
 For[i = argStart, i < argEnd, i++,
     expressions = {};
     answers = {};
 
     current = res4[[i]];
-    ParallelDo[
+    Do[
         numerator = RandomChoice[fractionList, current[[1]]];
         denominator = RandomChoice[fractionListNoPositiveIntegers, current[[2]]];
 
@@ -73,7 +72,7 @@ For[i = argStart, i < argEnd, i++,
         {k, 10}
     ]
 
-    Export[Directory[] <> "/data/27-2-2023-expressions-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", expressions]
-    Export[Directory[] <> "/data/27-2-2023-answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", answers]
-]
+    Export[Directory[] <> "/data/1-3-2023-no-parallel-expressions-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", expressions]
+    Export[Directory[] <> "/data/1-3-2023-no-parallel-answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> ".txt", answers]
+] // AbsoluteTiming
 *)
