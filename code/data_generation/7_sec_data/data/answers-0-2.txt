@@ -1,0 +1,999 @@
+(200 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(274 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/624
+PolyGamma[1, 1/3]
+(188 - 30*Pi + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] - 60*Log[4] + 60*Log[5] + 15*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 15*Sqrt[5]*Log[(5 + Sqrt[5])/8])/39
+(-12 + 2*Pi + 3*Log[16])/3
+(33 + 5*Sqrt[3]*Pi - 45*Log[3])/20
+(2*(-28 + 15*Pi + 30*Log[2]))/135
+(-5*(-36 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(142 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[16/5] - 40*Log[4] + 40*Log[5] - 10*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 10*Sqrt[5]*Log[(5 + Sqrt[5])/8])/18
+(-11 - 2*Sqrt[3]*Pi + 18*Log[3])/64
+(5*(6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/52
+(-2*(-48 + 5*Pi + Log[1024]))/35
+(Sqrt[5]*(-80*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/48
+(3 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/13
+(-5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 20*Sqrt[5]*Log[5 - Sqrt[5]] + 20*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(45 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/25
+4/15
+(-2*(-16 + 3*Pi - 2*Log[8]))/21
+(5*(42*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(112*Sqrt[5 - Sqrt[5]])
+(-326 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/576
+(-2*(-38 + 5*Pi + 10*Log[8]))/5
+(5*(20 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 12*Log[4] - Log[244140625/262144] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+3/4
+(5*(-32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+(Sqrt[5]*(-10*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/16
+(45 - 2*Sqrt[3]*Pi - 18*Log[3])/16
+(-2*(8 + 3*Pi - 6*Log[2]))/33
+(5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[4096/3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/3
+(-23 + 2*Sqrt[3]*Pi + 18*Log[3])/20
+(-2*(-4 + 5*Pi))/25
+(-7 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/5
+(-12 - Sqrt[3]*Pi - 3*Log[27/16])/5
+(-59 + 60*Log[4])/90
+(-2*(6 + Pi - 2*Log[8]))/9
+(-10 - 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi + 120*Log[4] + 20*Log[512] - 10*Log[244140625] - 30*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 - Sqrt[5]] - 30*Log[5 + Sqrt[5]] - 30*Sqrt[5]*Log[5 + Sqrt[5]])/6
+(-5 + 6*Log[4])/33
+(-66 + 10*Pi + 15*Log[16])/15
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/22
+(200 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(-5*(-22 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/204
+1/3
+(5*(-32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+-3/10
+(124 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/504
+(2*(-57 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/175
+(100 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 20*Sqrt[5]*Log[5 - Sqrt[5]] + 20*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 20*Log[5 - Sqrt[5]] + 20*Log[5 + Sqrt[5]]))/16
+(96 - 10*Pi + 5*Sqrt[2/(5 + Sqrt[5])]*Pi - 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/33
+(25 + 6*Pi + 12*Log[8])/57
+(-5*(-8 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/18
+(5*(-18*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(5*(20 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/76
+(-5 + 6*Log[4])/33
+(2*(-15 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/5
+2*Pi
+(-37 + 15*Log[16])/15
+16 - 8*Catalan + Pi^2
+5
+(3 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/13
+(46 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/17
+(-5*(-10*Sqrt[5 + Sqrt[5]] - Sqrt[2]*Pi + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(18*Sqrt[5 + Sqrt[5]])
+(5*(-8 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/22
+(-10 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(-23 - 6*Pi + 12*Log[8])/63
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/10
+(-2*Pi)/3
+(-103 - 30*Pi + 60*Log[8])/375
+(-12 - Sqrt[3]*Pi + 9*Log[3])/14
+(-5*(24*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/3
+PolyGamma[1, 1/5]
+(5*(20 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[244140625/16777216] + 2*Log[512] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/51
+77/240
+(-10 - 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi + 120*Log[4] + 20*Log[512] - 10*Log[244140625] - 30*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 - Sqrt[5]] - 30*Log[5 + Sqrt[5]] - 30*Sqrt[5]*Log[5 + Sqrt[5]])/6
+(-44 + 5*Sqrt[3]*Pi + 45*Log[3])/110
+(2*(-9 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/11
+(-174*Sqrt[5 - Sqrt[5]] + 15*Sqrt[2]*Pi + 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi + 15*Sqrt[5 - Sqrt[5]]*Log[3125/729] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(88*Sqrt[5 - Sqrt[5]])
+(-75 + 4*Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/12
+(-20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
+(-2*(2 + 3*Pi - 6*Log[8]))/3
+(-23 + 120*Log[2])/210
+(-9 + 2*Sqrt[3]*Pi)/8
+(-27 + 2*Sqrt[3]*Pi + 9*Log[9])/8
+-6 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3]
+(-2*(-6 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/19
+(-2*(-48 + 5*Pi + Log[1024]))/35
+(5*(20 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/76
+(2*(11 + 3*Pi + 6*Log[8]))/45
+(5*(2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/16
+(-5*(-2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/144
+(2*(-8 + 3*Pi + Log[64]))/15
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(13 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/46
+(18 - Sqrt[3]*Pi - 9*Log[3])/2
+(7 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/19
+(2*(15 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/5
+(5*(-8 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/156
+1
+(5*(-8 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/22
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(9 - Sqrt[3]*Pi + 9*Log[3])/14
+(-2*(-18 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/7
+(-2*Pi)/3
+(5*(-21*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(2*(4 + Pi + Log[4]))/5
+(-10 - 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi + 120*Log[4] + 20*Log[512] - 10*Log[244140625] - 30*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 - Sqrt[5]] - 30*Log[5 + Sqrt[5]] - 30*Sqrt[5]*Log[5 + Sqrt[5]])/6
+4/15
+(5*(12 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/124
+(3 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/95
+21/20
+-2/9
+(160 + 60*Pi - 15*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[68719476736/30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/114
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/16
+(-2*(-1 + Pi - 2*Log[8]))/9
+(184 - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 60*Log[2] - 15*Log[16/5] + 60*Log[5] + 15*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 15*Sqrt[5]*Log[(5 + Sqrt[5])/8])/186
+(-2*(8 + Pi - 2*Log[8]))/5
+3/5
+0
+(5*(12 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/124
+(2*(-81 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/25
+(126*Sqrt[5 - Sqrt[5]] + 15*Sqrt[2]*Pi + 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi - 90*Sqrt[5 - Sqrt[5]]*Log[3] + 3*Sqrt[5 - Sqrt[5]]*Log[298023223876953125] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(148*Sqrt[5 - Sqrt[5]])
+(Sqrt[5]*(-80*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/48
+Sqrt[3]*Pi - 12*Log[2] + 9*Log[3]
+(-2*(-4 + 5*Pi))/25
+(5*(-8 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/22
+(-16 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/11
+(-47 + 120*Log[2])/150
+(2 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/115
+(-80 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+77/240
+9/40
+(29 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/25
+-49/36 + Pi^2/6
+(160 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(2*(3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/5
+(-2*(6 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/19
+(-23 + 120*Log[2])/450
+(7 - 2*Sqrt[3]*Pi + 18*Log[3])/40
+(-10 + Sqrt[3]*Pi + 9*Log[3])/16
+(-5*(-4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/28
+-2*(-6 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(13 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/46
+(5*(-28 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[244140625/16777216] + 2*Log[512] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/111
+(137 + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/324
+(63 + 10*Sqrt[3]*Pi)/70
+(-13 - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/276
+(-5*(36 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(-5*(-2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/144
+137/300
+-2*(-6 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(320 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/276
+(-2*(-16 + 3*Pi - 2*Log[8]))/21
+(-2*(-18 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/13
+(45 - 4*Sqrt[3]*Pi)/20
+9/40
+(-3 + Sqrt[3]*Pi + 9*Log[3])/16
+(2*(1 + Log[4]))/3
+(70 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/264
+(-120 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(-5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/84
+(11 - Sqrt[3]*Pi + 9*Log[3])/20
+(96 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/37
+(170 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/84
+-6 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3]
+(-5*(-10 + 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/13
+8/15
+(7 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/19
+(5*(3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(2*Pi + 3*Log[16])/3
+(-16 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/11
+(5*(-3*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(148*Sqrt[5 - Sqrt[5]])
+(-24 + 10*Sqrt[3]*Pi - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 90*Log[3] + 3*Log[298023223876953125] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/76
+(-2*(-48 + 5*Pi + 10*Log[8]))/25
+(-100 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 20*Sqrt[5]*Log[5 - Sqrt[5]] + 20*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(46 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/17
+-2/9
+(Sqrt[5]*(-10*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/16
+(5*(16 - 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/17
+(-5*(36 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(2*(23 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/55
+(-2*(-5 + 3*Log[4]))/3
+(5*(-(Sqrt[2]*Pi) + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(2*Sqrt[5 + Sqrt[5]])
+(-23 + 2*Sqrt[3]*Pi + 18*Log[3])/20
+(-27 + 10*Sqrt[3]*Pi)/40
+(-30 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/92
+(-5*(16 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 18*Log[3] + Log[244140625/64] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/116
+(-2*(8 + Pi - Log[4]))/3
+PolyGamma[1, 4/5]
+(-27 + 2*Sqrt[3]*Pi + 9*Log[9])/8
+(92 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/85
+5/2
+(2 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/115
+(5*(2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/7
+(5*(3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(-23 + 120*Log[2])/210
+(-27 + 2*Sqrt[3]*Pi + 9*Log[9])/8
+(2 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/7
+(10 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/3
+PolyGamma[1, 5/3]
+(-12 + Sqrt[3]*Pi - 3*Log[27/16])/7
+(-9 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+3/4
+(5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/216
+(-7 + 12*Log[2])/27
+(2*(2 + Pi + Log[64]))/7
+(9 + Sqrt[3]*Pi - 9*Log[3])/4
+-3 + Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(Sqrt[5]*(10*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/56
+(-5*(6 - 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/3
+(-2*(-1 + Pi - 2*Log[8]))/9
+40/9 + Pi^2/2
+(-23 + 120*Log[2])/210
+Sqrt[3]*Pi
+(2*(-57 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/85
+(5*(20 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 12*Log[4] - Log[244140625/262144] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+(160 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(96 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/37
+(-163 + 30*Pi + 60*Log[8])/165
+-1/5*(Sqrt[3]*Pi)
+(2*(16 + 3*Pi + Log[64]))/27
+(-2*(-18 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/7
+(2*(-5 + Pi + Log[64]))/7
+(80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+(-5*(-32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125/16777216] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/114
+(2*(99 - 15*Pi + 5*Sqrt[3]*Pi + 45*Log[3] - 30*Log[8]))/175
+(220 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/384
+(-2*(-52 + 15*Pi))/15
+(-2*(-1 + Pi - 2*Log[8]))/9
+(11 + Sqrt[3]*Pi + 9*Log[3])/22
+(2*(-16 + 3*Pi - 2*Log[8]))/27
+9/40
+(-80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+(-47 + 120*Log[2])/150
+(160 + 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 30*Log[16/5] + 10*Log[244140625/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/186
+(5*(2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[4096/3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/7
+(-12 - Sqrt[3]*Pi + 9*Log[3])/14
+(220 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/384
+(-18 - Sqrt[3]*Pi + 3*Log[27/16])/5
+3/4
+(5*(-8 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/156
+1
+-8*Catalan + Pi^2
+47/180
+(-5*(-4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/18
+11/18
+(Sqrt[3]*Pi)/7
+(80 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(-2*(-92 + 15*Pi - 30*Log[2]))/165
+(2*(4 + 3*Pi))/9
+(-232 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 120*Log[2] - 30*Log[16/5] + 120*Log[5] - 30*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 30*Sqrt[5]*Log[(5 + Sqrt[5])/8])/276
+(137 + 10*Sqrt[3]*Pi + 90*Log[3])/340
+(5*(18 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/76
+(-160 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(Sqrt[5]*(40*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi - 3*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/96
+(-12 + 2*Pi + 3*Log[16])/3
+(-43 - 10*Sqrt[3]*Pi + 90*Log[3])/380
+(2*(8 + 3*Pi - 6*Log[2]))/15
+(-2*(-54 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/155
+(-20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
+(2*(11 + 3*Pi + 6*Log[8]))/45
+(25 + 4*Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/32
+(-5*(-25 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125/387420489] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(-1 + Log[16])/7
+(-2*(28 + 15*Pi - 30*Log[2]))/225
+(-2*(-64 + 15*Pi + 30*Log[2]))/225
+-5/4 + Pi^2/6
+PolyGamma[1, 4/5]
+(5*(20 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[244140625/16777216] + 2*Log[512] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/51
+(5*(-32*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + Sqrt[5 - Sqrt[5]]*Log[1073741824/244140625] - 3*Sqrt[5 - Sqrt[5]]*Log[5 - Sqrt[5]] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5 - Sqrt[5]]*Log[5 + Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(102*Sqrt[5 - Sqrt[5]])
+(2*(-57 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/175
+(-25 + 6*Sqrt[5*(5 - 2*Sqrt[5])]*Pi)/6
+(-2 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+(-23 + 120*Log[2])/450
+(-80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+(-2*(-28 + 5*Pi + Log[1024]))/15
+(-80 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(-11 + 2*Sqrt[3]*Pi + 18*Log[3])/44
+(-44 + 5*Sqrt[3]*Pi + 45*Log[3])/110
+(2*(1 + Log[4]))/3
+(-5*(-36 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(2*(-5 + Pi + Log[64]))/7
+(25 - 6*Pi + 12*Log[8])/51
+(-160 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+(-3 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/13
+(5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/216
+(170 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/84
+(11 + 12*Log[2])/21
+6 + Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+7/24
+(-7 + Sqrt[3]*Pi + 9*Log[3])/16
+3/4
+(3 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/35
+(126 + 10*Sqrt[3]*Pi + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 90*Log[3] + 3*Log[298023223876953125] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/124
+(-3 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/13
+(-5*(-32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125/16777216] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/114
+(25 - Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/2
+(5*(-36*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+(5*(-32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+(5*(12 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/124
+(2*(-28 + 15*Pi + 30*Log[2]))/135
+(-140 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/72
+(-16 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/13
+(9 + 2*Sqrt[3]*Pi)/2
+(5*(-3*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(148*Sqrt[5 - Sqrt[5]])
+(-66 + 10*Pi + 15*Log[16])/15
+(-9 - Sqrt[3]*Pi + 9*Log[3])/20
+(33 + 5*Sqrt[3]*Pi - 45*Log[3])/20
+-2*(-3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+25/48
+(-2*(-54 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/155
+(160 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/18
+(-(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi) + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(2*(1 + Log[4]))/3
+(26 + 10*Sqrt[3]*Pi + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 90*Log[3] - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 15*Sqrt[5]*Log[(5 + Sqrt[5])/8])/64
+(20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/22
+(-16 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/11
+(2*(4 + Pi + Log[4]))/5
+(160 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/18
+(-80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+(-2*(2 + 3*Pi - 6*Log[8]))/3
+(5*(-6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/12
+(-7 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/19
+5
+40/9 + Pi^2/2
+(-100 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 20*Sqrt[5]*Log[5 - Sqrt[5]] + 20*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(-2*(-8 + Pi + Log[4]))/3
+(70 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/264
+(-2*(2 + 3*Pi - 6*Log[8]))/3
+2/5
+(160 + 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 30*Log[16/5] + 10*Log[244140625/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/186
+(-2*(13 + 3*Pi - 6*Log[8]))/51
+-2*(6 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8])
+(2*(9 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/17
+(5*(-3*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(148*Sqrt[5 - Sqrt[5]])
+Pi^2/2
+(-103 - 30*Pi + 60*Log[8])/375
+(1 + 24*Log[2])/66
+5
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/10
+(5*(-(Sqrt[2]*Pi) + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(2*Sqrt[5 + Sqrt[5]])
+(5*(60*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+-4
+(-5*(8*Sqrt[5 + Sqrt[5]] - Sqrt[2]*Pi + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(18*Sqrt[5 + Sqrt[5]])
+2/5
+(10 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/3
+(2 + 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/65
+(-6 - Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/11
+(-2*(-38 + 5*Pi + 10*Log[8]))/5
+(5*(20 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/66
+(-2*(-5 + 3*Log[4]))/3
+(Sqrt[5]*(40*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/168
+(13 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/46
+(2*(-9 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/11
+(-5*(32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[1073741824/244140625] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/114
+(92 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/85
+(-5*(-45*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(92*Sqrt[5 - Sqrt[5]])
+(3 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/95
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(33 + 5*Sqrt[3]*Pi - 45*Log[3])/20
+(-9 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+(5*(60*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+2/25
+-2*(Pi - 2*Log[8])
+6 + Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(-63 + 30*Pi - 10*Sqrt[3]*Pi - 90*Log[3] + 60*Log[8])/5
+(2*(-9 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/11
+(-5*(-36 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(-1 + Log[16])/3
+(5*(4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/32
+(-2*(-3 + Pi - 2*Log[8]))/9
+(160 + 60*Pi - 15*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[68719476736/30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/114
+(6 - Sqrt[3]*Pi + 9*Log[3])/8
+-2*(1 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(-12 + Sqrt[3]*Pi + 9*Log[3])/4
+(-(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi) + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(50 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 20*Sqrt[5]*Log[5 - Sqrt[5]] - 20*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(-2*(-3 + Pi - 2*Log[8]))/9
+(-326 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/576
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(11 + Sqrt[3]*Pi + 9*Log[3])/22
+(-5*(-20*Sqrt[5 + Sqrt[5]] + 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[244140625/64] + 3*Sqrt[5 + Sqrt[5]]*Log[5 - Sqrt[5]] + 3*Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] + 3*Sqrt[5 + Sqrt[5]]*Log[5 + Sqrt[5]] - 3*Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(36*Sqrt[5 + Sqrt[5]])
+(5*(42*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(112*Sqrt[5 - Sqrt[5]])
+(-2*(-11 + 3*Pi - 6*Log[8]))/39
+9/40
+(-20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
+(-5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/204
+(5*(30 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/64
+(-20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
+(5*(24*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(92*Sqrt[5 - Sqrt[5]])
+(9 - Sqrt[3]*Pi + 9*Log[3])/14
+(5*(-21*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(160 + 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 30*Log[16/5] + 10*Log[244140625/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/186
+(-8 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[16/5] - 40*Log[4] + 40*Log[5] - 10*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 10*Sqrt[5]*Log[(5 + Sqrt[5])/8])/42
+(-23 + 120*Log[2])/450
+(-2*(13 + 3*Pi - 6*Log[8]))/51
+(70 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/264
+(-41 + 10*Sqrt[3]*Pi - 120*Log[2] + 90*Log[3])/70
+(200 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/18
+(2*(8 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/17
+4 + Pi^2/2
+(-5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+5/4
+(5*(60*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+(25 - 6*Pi + 12*Log[8])/51
+(50 + 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/62
+-1/5*(Sqrt[3]*Pi)
+(50 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+PolyGamma[1, 1/5]
+(-5*(42*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(5*(-18 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/76
+(20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/22
+(-5*(24*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(40 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/58
+-205/144 + Pi^2/6
+(-5*(-18*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+(63 + 10*Sqrt[3]*Pi)/70
+(-23 - 6*Pi + 12*Log[8])/63
+(-2*(-4 + Pi + Log[4]))/7
+(274 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/696
+(5*(-21*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(128*Sqrt[5 - Sqrt[5]])
+(2*(-9 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/17
+(-2*(-8 + 3*Pi + Log[64]))/33
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(-2*(-24 + 5*Pi))/15
+(-2*(-92 + 15*Pi - 30*Log[2]))/165
+(25 - 2*Sqrt[3]*Pi + 18*Log[3])/52
+(16 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/13
+(40 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/72
+(-2*(10 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/25
+(-1 - 10*Sqrt[3]*Pi + 90*Log[3])/140
+(-16 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/11
+4/3
+(-2*(-144 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/95
+(-5*(-15 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(-8 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[16/5] - 40*Log[4] + 40*Log[5] - 10*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 10*Sqrt[5]*Log[(5 + Sqrt[5])/8])/42
+(2*(-28 + 15*Pi + 30*Log[2]))/135
+(2*(-52 + 15*Pi + 30*Log[2]))/75
+(-380 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/336
+(-9 - Sqrt[3]*Pi + 9*Log[3])/20
+(5*(2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/16
+(Sqrt[3]*Pi + 9*Log[3])/22
+(-2*(5 + Pi - 2*Log[8]))/13
+(-9 + Sqrt[3]*Pi + 9*Log[3])/10
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/16
+(5*(8 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125/256] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/22
+(40 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/72
+(2*(4 + Pi + Log[4]))/5
+(47 + 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/125
+(-44 + 5*Sqrt[3]*Pi + 45*Log[3])/110
+(5*(6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/52
+(-23 + 2*Sqrt[3]*Pi + 18*Log[3])/20
+(-2*(28 + 15*Pi - 30*Log[2]))/225
+(-7 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/5
+(-7 + 24*Log[2])/30
+(-18 - Sqrt[3]*Pi + 9*Log[3])/8
+(-5*(-45 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/104
+(9 + 5*Sqrt[3]*Pi)/50
+5/12
+(-5*(-36 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(274 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/624
+2/5
+(-2*(-144 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/95
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(63 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/65
+(-232 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 120*Log[2] - 30*Log[16/5] + 120*Log[5] - 30*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 30*Sqrt[5]*Log[(5 + Sqrt[5])/8])/276
+(2*(-8 + 3*Pi))/3
+(28 + 5*Sqrt[2/(5 + Sqrt[5])]*Pi - 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 20*Log[2] - 5*Log[16/5] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/38
+-2*(Pi - 2*Log[8])
+(-160 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+(5*(60*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+2/9
+(-44 + 5*Sqrt[3]*Pi + 45*Log[3])/110
+(63 + 5*Sqrt[3]*Pi - 45*Log[3])/50
+(-2*(4 + Pi - Log[4]))/7
+2/25
+(-5*(-45 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/116
+(5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/66
+(47 - 30*Log[4])/15
+(63 + 5*Sqrt[3]*Pi - 45*Log[3])/50
+(5*(-32*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + Sqrt[5 - Sqrt[5]]*Log[1073741824/244140625] - 3*Sqrt[5 - Sqrt[5]]*Log[5 - Sqrt[5]] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5 - Sqrt[5]]*Log[5 + Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(102*Sqrt[5 - Sqrt[5]])
+(25 + 24*Log[2])/54
+(63 + 10*Sqrt[3]*Pi)/70
+(63 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/65
+(2*Pi + 3*Log[16])/3
+(-120 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(-3 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/13
+(2*(-9 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/11
+PolyGamma[1, 4/3]
+(5*(3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(5*(-(Sqrt[2/(5 + Sqrt[5])]*Pi) + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/12
+(2*(-5 + Log[64]))/21
+(12 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+-2/9
+5/4
+Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(1 + 24*Log[2])/42
+(11 + Sqrt[3]*Pi + 9*Log[3])/22
+(-160 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+13/36
+(47 + 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/125
+(-7 + 3*Log[16])/3
+(-5*(-30*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+(2*(3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/5
+2*(Pi - Log[4])
+(-2*(-3 + Pi - 2*Log[8]))/9
+(-16 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/13
+Sqrt[5*(5 - 2*Sqrt[5])]*Pi
+(-23 + 2*Sqrt[3]*Pi + 18*Log[3])/20
+(-2*(5 + Pi - 2*Log[8]))/13
+(2*(92 + 15*Pi + 30*Log[2]))/195
+(-2*(-38 + 5*Pi + 10*Log[8]))/5
+-2*(-3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8])
+(5*(-6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/12
+(3 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/13
+(2*(-57 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/175
+(5*(-2*Sqrt[5 + Sqrt[5]] - Sqrt[2]*Pi + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(2*Sqrt[5 + Sqrt[5]])
+(11 - 10*Sqrt[3]*Pi + 90*Log[3])/200
+(-25 + 6*Sqrt[5*(5 - 2*Sqrt[5])]*Pi)/6
+-49/36 + Pi^2/6
+(-103 - 30*Pi + 60*Log[8])/375
+(-(Sqrt[3]*Pi) + 9*Log[3])/2
+(5*(16 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[16/5] + Log[244140625/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+(3 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/35
+(-37 + 15*Log[16])/15
+(4*Pi^2)/3 - PolyGamma[1, 4/3]
+(-5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+(-2*(-8 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/13
+(-2*(16 + 3*Pi + Log[64]))/21
+(51*Sqrt[5 - Sqrt[5]] - 15*Sqrt[2]*Pi - 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi + 52*Sqrt[5 - Sqrt[5]]*Log[5/3] - 38*Sqrt[5 - Sqrt[5]]*Log[3] + 23*Sqrt[5 - Sqrt[5]]*Log[5] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(52*Sqrt[5 - Sqrt[5]])
+(5*(-14 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[16/5] + Log[244140625/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/21
+(5*(6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/52
+(-440 + 60*Pi + 15*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[68719476736/30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/66
+(-23 + 120*Log[2])/210
+(-9 + Sqrt[3]*Pi + 9*Log[3])/10
+(80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+0
+(-5*(-20 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 18*Log[3] + Log[244140625/64] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(2*(63 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/115
+(-5*(-3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+4/5
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+-2
+(142 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[16/5] - 40*Log[4] + 40*Log[5] - 10*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 10*Sqrt[5]*Log[(5 + Sqrt[5])/8])/18
+(-13 + 2*Sqrt[3]*Pi - 24*Log[2] + 18*Log[3])/2
+(-10 + Sqrt[3]*Pi + 9*Log[3])/16
+Pi^2/2
+(-20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
+(2*(54 - 15*Pi + 5*Sqrt[3]*Pi + 45*Log[3] - 30*Log[8]))/55
+(320 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/276
+(126*Sqrt[5 - Sqrt[5]] + 15*Sqrt[2]*Pi + 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi - 90*Sqrt[5 - Sqrt[5]]*Log[3] + 3*Sqrt[5 - Sqrt[5]]*Log[298023223876953125] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(148*Sqrt[5 - Sqrt[5]])
+(25 - 6*Pi + 12*Log[8])/51
+(-2*(-48 + 5*Pi + 10*Log[8]))/25
+-2*(1 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(2*(23 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/55
+(-66 + 10*Pi + 15*Log[16])/15
+(Sqrt[5]*(-80*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/48
+(-4*(-23 + 15*Log[2]))/75
+-5/4 + Pi^2/6
+4
+(-12 + Sqrt[3]*Pi + 9*Log[3])/4
+Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(25 + 4*Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/32
+(-9 + 2*Sqrt[3]*Pi)/2
+(2*(-9 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/17
+(5*(6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/52
+(2*(-8 + 3*Pi))/3
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 20*Log[5 - Sqrt[5]] + 20*Log[5 + Sqrt[5]]))/16
+(5*(16 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[16/5] + Log[244140625/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+2*(4 + Pi - Log[4])
+(-7 + 3*Log[16])/3
+(5*(-(Sqrt[2]*Pi) + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(2*Sqrt[5 + Sqrt[5]])
+Sqrt[5*(5 - 2*Sqrt[5])]*Pi
+3/4
+2/25
+-16 + 8*Catalan + Pi^2
+(-5*(-10 - 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/23
+(-2*(-8 + 3*Pi - 6*Log[2]))/9
+(50 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(Sqrt[5]*(40*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2*(5 + Sqrt[5])]*Pi + 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/168
+-1/24*(Sqrt[5]*(-40*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 20*Log[5 - Sqrt[5]] + 20*Log[5 + Sqrt[5]]))
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+-5269/3600 + Pi^2/6
+(9 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/7
+(46 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/17
+(-103 + 30*Pi + 60*Log[8])/285
+(-5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[1073741824/244140625] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/174
+(184 + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 60*Log[2] - 15*Log[16/5] + 60*Log[5] + 15*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 15*Sqrt[5]*Log[(5 + Sqrt[5])/8])/174
+(11 + 12*Log[2])/21
+(29 - 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/7
+(Sqrt[5]*(40*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi - Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/32
+(40 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/72
+6 + Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(-2*(16 + 3*Pi + Log[64]))/21
+(45 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/22
+(Sqrt[5]*(10*Sqrt[5] - Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 20*Log[5 - Sqrt[5]] - 20*Log[5 + Sqrt[5]]))/56
+(2*(92 + 15*Pi + 30*Log[2]))/195
+(29 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/25
+(7 - Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/5
+(-43 + 10*Sqrt[3]*Pi + 90*Log[3])/280
+(-2*(-52 + 15*Pi - 30*Log[2]))/105
+-4/3
+(-5*(-45 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/104
+(Sqrt[5]*(40*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi - 3*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/96
+(25 - 2*Sqrt[3]*Pi + 18*Log[3])/52
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+-2*(-6 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(-110 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/82
+(-5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+(-5*(-10 + 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/13
+(137 - 30*Pi + 60*Log[8])/315
+(-120 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(200 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(-2*(-31 + 15*Log[4]))/45
+(50 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(25 + 3*Sqrt[5*(5 - 2*Sqrt[5])]*Pi)/18
+(-2*(-8 + Pi + Log[4]))/3
+1/3
+(-44 + 5*Sqrt[3]*Pi + 45*Log[3])/110
+(2*(3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/5
+(-5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[1073741824/244140625] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/174
+137/300
+(-380 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/336
+-2*(1 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(250 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/504
+3
+(7 + 2*Sqrt[3]*Pi + 18*Log[3])/68
+(-5*(-45*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(92*Sqrt[5 - Sqrt[5]])
+(25 - Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/2
+(-5*(-36 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+2*(Pi + Log[4])
+(5*(-16 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/16
+(9 + Sqrt[3]*Pi - 9*Log[3])/4
+(2*(-8 + 3*Pi + Log[64]))/15
+(2*(-4 + 3*Pi - 6*Log[2]))/27
+(-47 + 120*Log[2])/150
+21/20
+(-37 + 15*Log[16])/15
+-2 + Log[16]
+(-5*(4 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[16/5] - Log[244140625/16777216] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/9
+(47 - 10*Sqrt[3]*Pi + 90*Log[3])/260
+(2 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/115
+(-5*(-45*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(92*Sqrt[5 - Sqrt[5]])
+(-5*(-2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/144
+(-11 - 2*Sqrt[3]*Pi + 18*Log[3])/64
+1/2
+Sqrt[5*(5 - 2*Sqrt[5])]*Pi
+(50 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(-(Sqrt[3]*Pi) + 9*Log[3])/8
+(45 - 4*Sqrt[3]*Pi)/20
+(-5*(8 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/24
+(-80 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(200 + 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/38
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/3
+-2*(-2 + Log[4])
+(-(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi) + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(13 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/46
+(-5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+(-2*(-31 + 15*Log[4]))/45
+3
+(-9 + 2*Sqrt[3]*Pi)/8
+2*(Pi + Log[4])
+(25 + 24*Log[2])/54
+(9 + Sqrt[3]*Pi + 9*Log[3])/16
+(Sqrt[5*(5 + 2*Sqrt[5])]*Pi)/3
+(2*(-15 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/5
+46/45
+(-3 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/13
+(-110 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/82
+(-2*(8 + Pi - Log[4]))/3
+(5*(-(Sqrt[2/(5 + Sqrt[5])]*Pi) + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/12
+(-128 + 30*Pi + 15*Log[16])/15
+(-5*(-18*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+(-(Sqrt[3]*Pi) + 9*Log[3])/8
+(250 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/504
+4/15
+(29 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/25
+(-9 + 2*Sqrt[3]*Pi)/8
+(-5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[1073741824/244140625] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/174
+(137 + 30*Pi + 60*Log[8])/345
+3
+(5*(2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(274 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/696
+(-174*Sqrt[5 - Sqrt[5]] + 15*Sqrt[2]*Pi + 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi + 15*Sqrt[5 - Sqrt[5]]*Log[3125/729] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(88*Sqrt[5 - Sqrt[5]])
+(-2*(-8 + Log[64]))/9
+(50 + 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/62
+(5*(6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/52
+(5*(-32*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + Sqrt[5 - Sqrt[5]]*Log[1073741824/244140625] - 3*Sqrt[5 - Sqrt[5]]*Log[5 - Sqrt[5]] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5 - Sqrt[5]]*Log[5 + Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(138*Sqrt[5 - Sqrt[5]])
+(-9 + 2*Sqrt[3]*Pi)/8
+(2*(-24 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/11
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(220 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/456
+(-5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/84
+(5*(-4 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+0
+(-2*(-4 + 5*Pi))/25
+(5*(-16 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/16
+(2*(-5 + Log[64]))/21
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(25 - 2*Sqrt[3]*Pi + 18*Log[3])/52
+(63 + 5*Sqrt[3]*Pi - 45*Log[3])/50
+(5*(2 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/136
+(5*(-18*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+(9 + Sqrt[3]*Pi + 9*Log[3])/16
+(-2*(-144 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/95
+(17 + 120*Log[2])/270
+-2*(-3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8])
+(-280 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125/16777216] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/156
+(5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/66
+(-5*(-3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(-2*(4 + Pi - Log[4]))/7
+(18 - Sqrt[3]*Pi - 9*Log[3] + 3*Log[16])/5
+-2
+(2*(92 + 15*Pi + 30*Log[2]))/195
+(5*(-17*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + Sqrt[5 - Sqrt[5]]*Log[1073741824/244140625] - 3*Sqrt[5 - Sqrt[5]]*Log[5 - Sqrt[5]] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5 - Sqrt[5]]*Log[5 + Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(198*Sqrt[5 - Sqrt[5]])
+(33 - 2*Sqrt[3]*Pi - 18*Log[3])/4
+(2*(-81 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/25
+(5*(-21*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(-27 + 10*Sqrt[3]*Pi)/40
+(-2*(-2 + Pi - 2*Log[8]))/5
+(-10 + Sqrt[3]*Pi + 9*Log[3])/16
+(-2*(-144 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/95
+(120 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/68
+(-2*(-24 + 5*Pi))/15
+(-2*(8 + Pi - Log[4]))/3
+(47 - 10*Sqrt[3]*Pi + 90*Log[3])/260
+(5*(2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/16
+(2*(-15 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/23
+4 + Pi^2/2
+-1036/225 + Pi^2/2
+(-5*(-20 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 18*Log[3] + Log[244140625/64] + 3*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Log[5 + Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(17 + 120*Log[2])/270
+(-2*(-52 + 15*Pi))/15
+21/20
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[4096/3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/3
+(-2*(-18 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/7
+4/3
+(2*(23 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/55
+(-5*(-36*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+-2
+(-2*(4 + Pi + Log[4]))/3
+-40/9 + Pi^2/2
+(9 + Sqrt[3]*Pi - 9*Log[3])/4
+(-5 + 6*Log[4])/9
+-6 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3]
+-2*(4 + Pi)
+(-2*(6 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/19
+(6 - Sqrt[3]*Pi + 9*Log[3])/8
+(2*(-15 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/23
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/10
+(-2*(16 + 3*Pi + Log[64]))/21
+(-5*(4 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[16/5] - Log[244140625/16777216] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/9
+(-23 - 6*Pi + 12*Log[8])/63
+(45 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/22
+(-160 - 20*Pi - 5*Sqrt[2*(5 + Sqrt[5])]*Pi - Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/18
+(-2 - Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/17
+(137 - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/336
+1/5
+(5*(-6 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(2*(-81 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/25
+137/300
+(-120 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(50 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 20*Sqrt[5]*Log[5 - Sqrt[5]] - 20*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(-5*(Sqrt[2]*Pi - Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125/256] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(2*Sqrt[5 + Sqrt[5]])
+(5*(-2 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125/387420489] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/4
+(-160 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(5*(-3*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(9 + 2*Sqrt[3]*Pi)/2
+(33 - 2*Sqrt[3]*Pi - 18*Log[3])/4
+(3 - 2*Pi + 4*Log[8])/13
+(-5*(36 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+-2*(1 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(274 - 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/624
+(50 - 5*Sqrt[2*(5 - Sqrt[5])]*Pi + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 20*Sqrt[5]*Log[5 - Sqrt[5]] - 20*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(5*(2 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/66
+(-5*(-25 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125/387420489] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(-2*(-6 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/19
+(-2*(-48 + 5*Pi + 10*Log[8]))/25
+(50 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi + 10*Log[4096/3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/42
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/10
+(-5*(-10*Sqrt[5 + Sqrt[5]] - Sqrt[2]*Pi + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 + Sqrt[5]])
+(-2*(-18 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/7
+(-2*(-24 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/7
+(50 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/32
+(4*Pi^2)/3 - PolyGamma[1, 5/3]
+(5*(20 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 12*Log[4] - Log[244140625/262144] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+-205/144 + Pi^2/6
+(27 - 4*Sqrt[3]*Pi)/8
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/34
+2/9
+(137 + 120*Log[2])/330
+-4 + Pi^2/2
+(5*(2 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/136
+(45 - 4*Sqrt[3]*Pi)/20
+(2 - 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/115
+(-2*(-48 + 5*Pi + 10*Log[8]))/25
+(2*(9 - 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/11
+(-2*(-6 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/19
+(-10 + Sqrt[3]*Pi + 9*Log[3])/16
+(-80 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+-2/9
+(-(Sqrt[3]*Pi) + 9*Log[3])/8
+(-16 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/13
+(-16 - Sqrt[3]*Pi - 9*Log[3] + Log[4096])/11
+-2*(-8 + Pi + Log[64])
+(-5*(-2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/3
+(9 + Sqrt[3]*Pi + 9*Log[3])/16
+(5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/216
+(2*(24 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/11
+(63 + 5*Sqrt[3]*Pi - 45*Log[3])/50
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(-13 + 2*Sqrt[3]*Pi - 24*Log[2] + 18*Log[3])/2
+(-7 + 12*Log[2])/27
+(-5*(16 + 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/13
+(96 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/37
+(33 + 5*Sqrt[3]*Pi - 45*Log[3])/20
+(40 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/48
+(9 + Sqrt[3]*Pi + 9*Log[3])/16
+(192 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[16/5] - 40*Log[4] + 40*Log[5] - 10*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 10*Sqrt[5]*Log[(5 + Sqrt[5])/8])/82
+(-12 + Sqrt[3]*Pi - 3*Log[27/16])/7
+(-5*(-3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(-2*(-3 + Pi - 2*Log[8]))/9
+(274 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 30*Log[16/5] + 120*Log[10] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/696
+(-9 + Sqrt[3]*Pi + 9*Log[3])/10
+2/3
+(-5*(-25 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125/387420489] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(220 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/456
+(2*(4 + 3*Pi))/9
+(-5*(-10*Sqrt[5 + Sqrt[5]] - Sqrt[2]*Pi + Sqrt[10]*Pi + Sqrt[5 + Sqrt[5]]*Log[3125] + Sqrt[5*(5 + Sqrt[5])]*Log[5 - Sqrt[5]] - Sqrt[5*(5 + Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 + Sqrt[5]])
+(25 + 24*Log[2])/54
+(2*(-8 + 3*Pi - 6*Log[2]))/39
+(6 + Sqrt[3]*Pi + 9*Log[3])/10
+(-9 - Sqrt[3]*Pi)/2
+(-2*(-2 + Pi - 2*Log[8]))/5
+(-2*(-48 + 5*Pi + 10*Log[8]))/25
+(5*(-4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/32
+(11 - Sqrt[3]*Pi + 9*Log[3])/20
+(-5*(-4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125/256] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/18
+(2*(8 + 3*Pi - 6*Log[2]))/15
+(2*(16 + 3*Pi + Log[64]))/27
+(63 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/65
+(37 + 15*Sqrt[2/(5 + Sqrt[5])]*Pi - 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/264
+(5*(4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi + Log[3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/32
+(5*(-4 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/6
+(5*(15*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(-2*(-18 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/13
+(-9 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+(25 + 2*Sqrt[3]*Pi + 18*Log[3])/56
+(2*(-5 + Log[64]))/21
+(-5*(-45*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(92*Sqrt[5 - Sqrt[5]])
+(2*(1 + Log[4]))/3
+(5*(16 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[16/5] + Log[244140625/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/81
+(45 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/25
+-4/3
+(-5*(-18*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(52*Sqrt[5 - Sqrt[5]])
+(5*(-3*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(8*Sqrt[5 - Sqrt[5]])
+(-43 + 10*Sqrt[3]*Pi + 90*Log[3])/280
+(5*(20 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 18*Log[3] - Log[244140625/64] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/76
+(5*(-18*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(-7 + Sqrt[3]*Pi + 9*Log[3])/16
+-2/3
+(-9 + 2*Sqrt[3]*Pi)/2
+-16 + 8*Catalan + Pi^2
+(5*(-36*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(32*Sqrt[5 - Sqrt[5]])
+-2*(-8 + Pi + Log[64])
+(25 - 6*Pi + 12*Log[8])/51
+(25 - 6*Pi + 12*Log[8])/51
+(-5*(-4 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/28
+(6 + Sqrt[3]*Pi + 9*Log[3])/10
+(Sqrt[3]*Pi)/7
+(50 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(-5*(-45 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/104
+(126*Sqrt[5 - Sqrt[5]] - 15*Sqrt[2]*Pi - 15*Sqrt[10]*Pi + 10*Sqrt[3*(5 - Sqrt[5])]*Pi + 15*Sqrt[5 - Sqrt[5]]*Log[3125/729] - 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] + 15*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]])/(112*Sqrt[5 - Sqrt[5]])
+(-(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi) + 10*Log[3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/8
+(-2*(13 + 3*Pi - 6*Log[8]))/51
+(13 - 2*Sqrt[3]*Pi + 24*Log[2] - 18*Log[3])/46
+(5*(-21*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(128*Sqrt[5 - Sqrt[5]])
+(2*(8 + 3*Pi - 6*Log[2]))/15
+(21 - 2*Sqrt[3]*Pi - 18*Log[3] + 3*Log[256])/34
+(63 + 10*Sqrt[3]*Pi)/70
+(46 - 10*Pi - 5*Sqrt[2/(5 + Sqrt[5])]*Pi + 5*Sqrt[10/(5 + Sqrt[5])]*Pi - 5*Log[16/5] - 20*Log[4] + 20*Log[5] + 5*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 5*Sqrt[5]*Log[(5 + Sqrt[5])/8])/17
+-8*Catalan + Pi^2
+(2*(-8 + 3*Pi - 6*Log[2]))/39
+3/4
+4 + Pi^2/2
+(5*(3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(28*Sqrt[5 - Sqrt[5]])
+(-2*Pi)/3
+(-2*(-4 + Pi + Log[4]))/7
+(-2*(13 + 3*Pi - 6*Log[8]))/51
+-3/10
+(200 - Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/28
+-49/36 + Pi^2/6
+77/240
+(25 + 6*Pi + 12*Log[8])/57
+(-163 + 30*Pi + 60*Log[8])/165
+(-63 + 30*Pi - 10*Sqrt[3]*Pi - 90*Log[3] + 60*Log[8])/5
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(-5*(-30 + 2*Sqrt[3]*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/44
+(-80 + Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 10*Log[3125/256] + 10*Sqrt[5]*Log[5 - Sqrt[5]] - 10*Sqrt[5]*Log[5 + Sqrt[5]])/52
+(-2*(-38 + 5*Pi + 10*Log[8]))/5
+-2*(-3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8])
+(5*(-4 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[1073741824/244140625] - 3*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Log[5 + Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+Sqrt[3]*Pi - 12*Log[2] + 9*Log[3]
+(-2*(-99 + 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/35
+(2*(-5 + Log[64]))/21
+(-2*(8 + 3*Pi - 6*Log[2]))/33
+(5*(-14 + 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[16/5] + Log[244140625/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/21
+(-7 + 12*Log[2])/27
+(45 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/25
+(-5 + 6*Log[4])/9
+2/5
+-4
+(-5*(6 + 2*Pi - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[4096/3125] + Sqrt[5]*Log[5 - Sqrt[5]] - Sqrt[5]*Log[5 + Sqrt[5]]))/33
+(2*(-15 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/5
+(-50 - 15*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 60*Sqrt[5]*Log[5 - Sqrt[5]] - 60*Sqrt[5]*Log[5 + Sqrt[5]])/24
+(-350 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/456
+(-2*(4 + Pi + Log[4]))/3
+(2*(63 - 15*Pi + 5*Sqrt[3]*Pi - 45*Log[3] + 30*Log[8]))/115
+(2 - Sqrt[3]*Pi + 9*Log[3])/14
+(-5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/204
+(-2*(5 + Pi - 2*Log[8]))/13
+-3/10
+(-13 + 2*Sqrt[3]*Pi - 24*Log[2] + 18*Log[3])/2
+(-47 + 120*Log[2])/150
+(5*(32 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + Log[30517578125/16777216] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/126
+-2*(-3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(-5*(-6 - Sqrt[2/(5 + Sqrt[5])]*Pi + Sqrt[10/(5 + Sqrt[5])]*Pi - Log[3125] - Sqrt[5]*Log[5 - Sqrt[5]] + Sqrt[5]*Log[5 + Sqrt[5]]))/48
+(63 + 5*Sqrt[3]*Pi + 60*Log[2] - 45*Log[3])/65
+(47 + 5*Sqrt[3]*Pi - 60*Log[2] + 45*Log[3])/125
+(34 - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 60*Log[2] - 15*Log[16/5] + 60*Log[5] + 15*Sqrt[5]*Log[(5 - Sqrt[5])/8] - 15*Sqrt[5]*Log[(5 + Sqrt[5])/8])/126
+-2*(-3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8])
+(9 - Sqrt[3]*Pi + 9*Log[3])/14
+(-2*(6 + Pi - 2*Log[8]))/9
+(-5*(36 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[3125/729] + 3*Sqrt[5]*Log[5 - Sqrt[5]] - 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+137/300
+(11 + 12*Log[2])/21
+(-12 - Sqrt[3]*Pi - 3*Log[27/16])/5
+(Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi + 10*Log[3125/256] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/12
+(2*(-28 + 15*Pi + 30*Log[2]))/135
+(20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/22
+(7 + 2*Sqrt[3]*Pi + 18*Log[3])/68
+(2*(-28 + 15*Pi + 30*Log[2]))/135
+-3/2
+(-2*(28 + 15*Pi - 30*Log[2]))/225
+(368 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 120*Log[2] - 30*Log[16/5] + 120*Log[5] - 30*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 30*Sqrt[5]*Log[(5 + Sqrt[5])/8])/396
+(63 + 5*Sqrt[3]*Pi - 45*Log[3])/50
+(Sqrt[3]*Pi + 9*Log[3])/4
+(-23 - 6*Pi + 12*Log[8])/63
+(11 - 10*Sqrt[3]*Pi + 90*Log[3])/200
+4/3
+(-66 + 10*Pi + 15*Log[16])/15
+-2/9
+(-6 - Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/11
+(-5*(-15 + 2*Sqrt[3]*Pi + 3*Sqrt[2/(5 + Sqrt[5])]*Pi - 3*Sqrt[10/(5 + Sqrt[5])]*Pi - 3*Log[3125/729] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/56
+(2*(-1 + 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/29
+(-2*(-16 + 3*Pi - 2*Log[8]))/21
+(160 + 60*Pi - 15*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[68719476736/30517578125] - 30*Sqrt[5]*Log[5 - Sqrt[5]] + 30*Sqrt[5]*Log[5 + Sqrt[5]])/114
+(-7 + 12*Log[2])/27
+(-2*(-4 + Pi - 2*Log[2]))/3
+(-232 + 3*Sqrt[2]*(5 + Sqrt[5])^(3/2)*Pi - 120*Log[2] - 30*Log[16/5] + 120*Log[5] - 30*Sqrt[5]*Log[(5 - Sqrt[5])/8] + 30*Sqrt[5]*Log[(5 + Sqrt[5])/8])/276
+(5*(-36*Sqrt[5 - Sqrt[5]] + 3*Sqrt[2]*Pi + 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(-1 + 12*Log[2])/27
+(11 + Sqrt[3]*Pi + 9*Log[3])/22
+(-16 + Sqrt[3]*Pi - 9*Log[3] + Log[4096])/13
+(-5*(-18*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi - 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(88*Sqrt[5 - Sqrt[5]])
+(25 + 3*Sqrt[5*(5 - 2*Sqrt[5])]*Pi)/18
+3/5
+(-41 + 10*Sqrt[3]*Pi - 120*Log[2] + 90*Log[3])/70
+-3/10
+(2*(15 - 3*Pi + Sqrt[3]*Pi + 9*Log[3] - 6*Log[8]))/23
+(-103 - 30*Pi + 60*Log[8])/375
+(9 - 4*Sqrt[3]*Pi)/32
+(-5*(-36*Sqrt[5 - Sqrt[5]] - 3*Sqrt[2]*Pi - 3*Sqrt[10]*Pi + 2*Sqrt[3*(5 - Sqrt[5])]*Pi - 3*Sqrt[5 - Sqrt[5]]*Log[3125/729] + 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 - Sqrt[5]] - 3*Sqrt[5*(5 - Sqrt[5])]*Log[5 + Sqrt[5]]))/(68*Sqrt[5 - Sqrt[5]])
+(6 + Sqrt[3]*Pi + 9*Log[3])/10
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 20*Log[5 - Sqrt[5]] + 20*Log[5 + Sqrt[5]]))/16
+(2*(54 - 15*Pi + 5*Sqrt[3]*Pi + 45*Log[3] - 30*Log[8]))/55
+(-3 + 6*Pi - 2*Sqrt[3]*Pi - 18*Log[3] + 12*Log[8])/13
+(Sqrt[5]*(-(Sqrt[2*(5 - Sqrt[5])]*Pi) + Sqrt[10*(5 - Sqrt[5])]*Pi + Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 20*Log[5 - Sqrt[5]] + 20*Log[5 + Sqrt[5]]))/16
+(-5*(4 - 6*Pi - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi + 3*Log[16/5] - Log[244140625/16777216] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/9
+(-2*(-8 + Pi + Log[4]))/3
+6 + Sqrt[3]*Pi - 9*Log[3] + Log[4096]
+(-7 + 24*Log[2])/30
+2*(Pi - Log[4])
+(Sqrt[5]*(40*Sqrt[5] - 3*Sqrt[2*(5 - Sqrt[5])]*Pi + 3*Sqrt[10*(5 - Sqrt[5])]*Pi - 3*Sqrt[2*(5 + Sqrt[5])]*Pi - 3*Sqrt[10*(5 + Sqrt[5])]*Pi - 60*Log[5 - Sqrt[5]] + 60*Log[5 + Sqrt[5]]))/96
+-1 + Pi^2/6
+(2*(-16 + 3*Pi - 2*Log[8]))/27
+(-9 + Sqrt[3]*Pi - 12*Log[2] + 9*Log[3])/7
+(-2*(-6 + 3*Pi + Sqrt[3]*Pi - 9*Log[3] + 6*Log[8]))/19
+(-5*(-5 - 3*Sqrt[2/(5 + Sqrt[5])]*Pi + 3*Sqrt[10/(5 + Sqrt[5])]*Pi - Log[30517578125] - 3*Sqrt[5]*Log[5 - Sqrt[5]] + 3*Sqrt[5]*Log[5 + Sqrt[5]]))/204
+(137 - 15*Sqrt[2/(5 + Sqrt[5])]*Pi + 15*Sqrt[10/(5 + Sqrt[5])]*Pi - 15*Log[16/5] + 60*Log[10] + 15*Sqrt[5]*Log[5 - Sqrt[5]] - 15*Sqrt[5]*Log[5 + Sqrt[5]])/336
+(-25 + 6*Sqrt[5*(5 - 2*Sqrt[5])]*Pi)/6
+(45 - 2*Sqrt[3]*Pi - 18*Log[3])/16
+(11 + 12*Log[2])/21
+(-2*Pi)/3
+(-40 - 20*Pi + 5*Sqrt[2*(5 + Sqrt[5])]*Pi + Sqrt[10*(5 + Sqrt[5])]*Pi - 10*Log[4096/3125] - 10*Sqrt[5]*Log[5 - Sqrt[5]] + 10*Sqrt[5]*Log[5 + Sqrt[5]])/2
