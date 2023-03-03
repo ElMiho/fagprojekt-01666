@@ -4,7 +4,7 @@ import time
 
 from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
-
+from model.tokenizeInput import tokenInputSpace, stringToTokenIndex
 # Paths to data files
 input_file_answers = "./data_generation/data/answers-1000.txt"
 input_file_expressions = "./data_generation/data/expressions-1000.txt"
@@ -14,7 +14,7 @@ cleaned_file_answers = "/".join(input_file_answers.split("/")[:-1]) + "/cleaned_
 cleaned_file_expressions = "/".join(input_file_expressions.split("/")[:-1]) + "/cleaned_" + input_file_expressions.split("/")[-1]
 
 # Run through every equation in the input files and delete rows with unknown tokens
-dataset_size = sum(1 for i in open(input_file_answers, 'rb'))
+dataset_size = sum(1 for _ in open(input_file_answers, 'rb'))
 
 # Open and populate cleaned files and
 f_cleaned_answers = open(cleaned_file_answers, "a+")
@@ -25,7 +25,7 @@ n_cleaned = 0
 for line_number in range(1,dataset_size+1):
     # Get corresponding equation and expression
     raw_equation = linecache.getline(input_file_answers, line_number)
-    raw_expression = linecache.getline()
+    raw_expression = linecache.getline(input_file_expressions, line_number)
 
     # Skip line if aborted error
     if raw_equation == "$Aborted\n": continue
@@ -37,7 +37,7 @@ for line_number in range(1,dataset_size+1):
     if equation.notation == "infix": continue
 
     # Vectorize corresponding answer and expression
-    vectorized_answers = vocabulary_answers.vectorize(equation)
+    vectorized_answers = vocabulary_answers.vectorize(equation.tokenized_equation)
     vectorized_expressions = vocabulary_expressions.vectorize()
 
     # Write them to cleaned data file
@@ -47,24 +47,4 @@ for line_number in range(1,dataset_size+1):
 
     if line_number % 10_000 == 0:
         print(f"[{line_number}/{dataset_size}] --- Time since start: {time.time() - start_time} --- Successes: {n_cleaned} --- Fails: {line_number - n_cleaned + 1}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
