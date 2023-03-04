@@ -2,7 +2,7 @@
 
 import numpy as np
 import sympy as sp
-import time
+
 
 
 
@@ -19,7 +19,7 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
                      
     '''
     
-    start_time = time.time()
+    
     
     # number of int's int the interval
     total_numbers = abs(maximal_value - minimal_value) + 1
@@ -49,7 +49,7 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
     # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
     A = createArrayWithOnlyUniqeValues(A)
     
-    print("--- %s seconds InputSpace ---" % (time.time() - start_time))
+    
     
     # return the uniqe array
     return A
@@ -191,7 +191,7 @@ def fileToTokenIndex(filepath: str, min_value: int, max_value: int, newFileName:
 
     with open(filepath) as f:
         
-        start_time = time.time()
+        
         while True:
             
             # Reads next line
@@ -207,10 +207,10 @@ def fileToTokenIndex(filepath: str, min_value: int, max_value: int, newFileName:
     f.close()
     toFile.close()
     
-    print("--- %s seconds fileToTokenIndex---" % (time.time() - start_time))
+    
 
 def createArrayWithOnlyUniqeValues(oldArray):
-    start_time = time.time()
+    
     A = sp.zeros(countUniqe(oldArray), 1)
     
     rowIdx = 0
@@ -219,7 +219,7 @@ def createArrayWithOnlyUniqeValues(oldArray):
             A[rowIdx] = oldArray[i]
             rowIdx += 1
     
-    print("--- %s seconds createArrayOnlyUniqeValues---" % (time.time() - start_time))
+   
     return A  
 
 def countUniqe(A):
