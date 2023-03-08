@@ -24,7 +24,7 @@ res4 := DeleteCases[res3, list_ /; list[[2]] <= list[[1]] + 1];
 maxTime = 0.1;
 
 timingRes = Timing[
-    For[i = 1, i < 5, i++,
+    For[i = argStart, i < argEnd, i++,
         expressions = {}; answers = {}; 
         SetSharedVariable[answers, expressions];
         current = res4[[i]];
