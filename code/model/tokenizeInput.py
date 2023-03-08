@@ -1,6 +1,13 @@
 import numpy as np
 import sympy as sp
 
+'''
+i bash
+git pull
+git add (filename eller *)
+git commit ""
+git push
+'''
 
 def tokenInputSpace(minimal_value: int, maximal_value: int):
     '''
