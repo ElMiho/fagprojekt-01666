@@ -1,4 +1,4 @@
-from tokenizeInput2 import tokenInputSpace
+from tokenizeInput import tokenInputSpace
 
 # Token class
 class Token:
