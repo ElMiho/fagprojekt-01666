@@ -5,7 +5,7 @@ import sympy as sp
 i bash
 git pull
 git add (filename eller *)
-git commit ""
+git -m commit ""
 git push
 '''
 
