@@ -1,7 +1,7 @@
 import sympy as sp
 
 from typing import List
-from model.tokens import *
+from tokens import *
 
 #####################
 # TOKENIZE EQUATION #
@@ -16,7 +16,9 @@ SPECIAL_NUMBERS = {
     "E": Token(TT_E),
     "Phi": Token(TT_PHI),
     "Catalan": Token(TT_CATALAN),
-    "EulerGamma": Token(TT_EULERGAMMA)
+    "EulerGamma": Token(TT_EULERGAMMA),
+    "0": Token(TT_ZERO),
+    "1": Token(TT_ONE)
 }
 SPECIAL_NUMBERS_TYPES = [value.t_type for value in SPECIAL_NUMBERS.values()]
 
@@ -26,9 +28,8 @@ UNI_OPERATORS = {
     "Cos": Token(TT_COS),
     "Tan": Token(TT_TAN),
     "Log": Token(TT_LOG),
-
-    "-": Token(TT_U_MINUS)
 }
+
 UNI_OPERATOR_TYPES = [value.t_type for value in UNI_OPERATORS.values()]
 
 BIN_OPERATORS = {
@@ -84,9 +85,9 @@ class EquationLexer:
                 tokens.append(self._makeFunc())
             elif self.current_char in BIN_OPERATORS:
                 token = BIN_OPERATORS[self.current_char]
-                if self.current_char == "-" and (not tokens or (tokens and tokens[-1].t_type in [TT_LEFT_PARENTHESIS])):
-                    token = Token(TT_U_MINUS)
-
+                if self.current_char == "-" and (not tokens or (tokens and tokens[-1].t_type in (list(BIN_OPERATORS.keys()) + [TT_LEFT_PARENTHESIS]))):
+                    # Handle unary minus by prepending a zero
+                    tokens.append(Token(TT_ZERO))
                 tokens.append(token)
                 self.advance()
             elif self.current_char == "(" or self.current_char == "[":
@@ -120,6 +121,8 @@ class EquationLexer:
         if res2:
             return Token(TT_RATIONAL, res + "/" + res2)
         else:
+            if res in SPECIAL_NUMBERS:
+                return SPECIAL_NUMBERS_TYPES[res]
             return Token(TT_INTEGER, res)
     
     def _makeFunc(self):
@@ -187,7 +190,6 @@ class Equation:
             for token in token_list:
                 # Can be uncommented for debugging purposes
                 # print("#########\n", token, operator_stack, "\n########")
-                
                 if token.t_type == TT_VARIABLE or token.t_type == TT_INTEGER or token.t_type == TT_RATIONAL or token.t_type in SPECIAL_NUMBERS_TYPES:
                     output_queue.append(token)
                 elif token.t_type in UNI_OPERATOR_TYPES or token.t_type in BIN_OPERATOR_TYPES:
@@ -236,7 +238,7 @@ class Equation:
         if not operator_1.t_type in OPERATOR_PRECEDENCE or not operator_2.t_type in OPERATOR_PRECEDENCE:
             return -1
         
-        # The logic
+        # The logicoutput_queue
         if OPERATOR_PRECEDENCE[operator_1.t_type] > OPERATOR_PRECEDENCE[operator_2.t_type]:
             return 0
         elif OPERATOR_PRECEDENCE[operator_1.t_type] == OPERATOR_PRECEDENCE[operator_2.t_type]:
@@ -259,6 +261,7 @@ class Equation:
         lexer = EquationLexer(equation)
         tokenized_equation = lexer.make_tokens()
         return cls(tokenized_equation, notation)
+
 
 # equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
 # print(equation.tokenized_equation)

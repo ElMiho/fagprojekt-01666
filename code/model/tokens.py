@@ -23,6 +23,8 @@ TT_E = "TT_E"
 TT_PHI = "TT_PHI"
 TT_CATALAN = "TT_CATALAN"
 TT_EULERGAMMA = "TT_EULERGAMMA" # i.e. the euler-mascheroni constant
+TT_ZERO = "TT_ZERO"
+TT_ONE = "TT_ONE"
 
 ## Numbers
 TT_INTEGER = "TT_INTEGER"
@@ -34,8 +36,6 @@ TT_SIN = "TT_SIN"
 TT_COS = "TT_COS"
 TT_TAN = "TT_TAN"
 TT_LOG = "TT_LOG"
-
-TT_U_MINUS = "TT_U_MINUS" # Note that in the expression -(a + b), '-' is a unary operator
 
 ## Binary Operations
 TT_PLUS = "TT_PLUS"
@@ -54,9 +54,9 @@ TOKEN_TYPE_ANSWERS = [
     ## Special numbers
     TT_PI, TT_E, TT_PHI, TT_CATALAN, TT_EULERGAMMA,
     ## Numbers
-    TT_INTEGER, TT_RATIONAL,
+    TT_INTEGER, TT_RATIONAL, TT_ZERO, TT_ONE,
     ## Unary Operations
-    TT_SQRT, TT_SIN, TT_COS, TT_TAN, TT_LOG, TT_U_MINUS,
+    TT_SQRT, TT_SIN, TT_COS, TT_TAN, TT_LOG,
     ## Binary Operations
     TT_PLUS, TT_MINUS, TT_MULTIPLY, TT_DIVIDE, TT_POW
 ]
