@@ -39,7 +39,7 @@ Just a genereic README :))
 - [ ] Make statistics of output results
 
 ### Extra
-- [ ] tilføj alle vedtægter til readme <-- Jonas
+- [ ] Write down all our laws in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
 
