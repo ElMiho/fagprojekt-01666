@@ -1,3 +1,5 @@
+from tokenizeInput2 import tokenInputSpace
+
 # Token class
 class Token:
     def __init__(self, t_type: str, t_value:str = None):
@@ -60,5 +62,9 @@ TOKEN_TYPE_ANSWERS = [
 ]
 
 # Tokens - Roots
+TOKEN_TYPE_EXPRESSIONS = [str(v) for v in tokenInputSpace(-5,5)]
 
+if __name__ == "__main__":
+    print(f"TT ANSWERS: {TOKEN_TYPE_ANSWERS}")
+    print(f"TT EXPRESSIONS: {TOKEN_TYPE_EXPRESSIONS}")
 

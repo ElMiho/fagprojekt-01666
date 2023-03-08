@@ -5,6 +5,8 @@ import time
 from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
 from model.tokenizeInput import tokenInputSpace, stringToTokenIndex
+
+
 # Paths to data files
 input_file_answers = "./data_generation/data/answers-1000.txt"
 input_file_expressions = "./data_generation/data/expressions-1000.txt"
@@ -37,7 +39,7 @@ for line_number in range(1,dataset_size+1):
     if equation.notation == "infix": continue
 
     # Vectorize corresponding answer and expression
-    vectorized_answers = vocabulary_answers.vectorize(equation.tokenized_equation)
+    vectorized_answers = vocabulary_answers.vectorize([token.t_type for token in equation.tokenized_equation])
     vectorized_expressions = vocabulary_expressions.vectorize()
 
     # Write them to cleaned data file

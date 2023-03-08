@@ -1,10 +1,13 @@
 from typing import List
-from model.tokens import Token, TOKEN_TYPE_ANSWERS
+from model.tokens import Token, TOKEN_TYPE_ANSWERS, TOKEN_TYPE_EXPRESSIONS
 
 class Vocabulary:
     def __init__(self, token2index, index2token, unk_token="<UNK>",
                  mask_token="<MASK>", begin_seq_token="<BEGIN>",
                  end_seq_token="<END>") -> None:
+        self.token2index = {}
+        self.index2token = {}
+
         # special tokens
         self.unk_token = unk_token
         self.mask_token = mask_token
@@ -17,10 +20,10 @@ class Vocabulary:
         self.end_seq_index = self.addToken(end_seq_token)
 
         # converter mappings
-        self.token2index = token2index
-        self.index2token = index2token
+        self.token2index.update(token2index)
+        self.index2token.update(index2token)
 
-    def addToken(self, token: Token) -> int:
+    def addToken(self, token: str) -> int:
         """
         Args:
             token (Token): the token to add to the vocabulary
@@ -52,10 +55,10 @@ class Vocabulary:
             return -1
         return self.index2token[index]
 
-    def getIndex(self, token: Token) -> int:
+    def getIndex(self, token: str) -> int:
         """
         Args:
-            token (Token): the token to get the index of
+            token (str): the token type to get the index of
 
         Returns:
             The corresponding index
@@ -64,10 +67,10 @@ class Vocabulary:
             return -1
         return self.token2index[token]
 
-    def vectorize(self, token_list: List[Token]) -> List[Token]:
+    def vectorize(self, token_list: List[str]) -> List[Token]:
         """
         Args:
-            token_list (List[Token]): list of the tokens to turn into indices
+            token_list (List[str]): list of the tokens to turn into indices
 
         Returns:
             The correspinding index list
@@ -94,6 +97,6 @@ class Vocabulary:
 
 
 vocabulary_answers = Vocabulary.construct_from_list(TOKEN_TYPE_ANSWERS)
-vocabulary_expressions = None
+vocabulary_expressions = Vocabulary.construct_from_list(TOKEN_TYPE_EXPRESSIONS)
 
 
