@@ -14,7 +14,7 @@ Just a genereic README :))
 - [ ] Dataset reader output
 - [X] Dataset reader input --> Jonas
 - [X] Tokenize input data ---> Jonas
-- [ ] From input token to rational numbers --> Jonas
+- [ ] From input token to rational numbers 
 - [X] Decide on data representations
 - [X] Make rational to symbol converter
 - [X] Convert infix <=> postfix ---> Hugo
@@ -39,6 +39,7 @@ Just a genereic README :))
 - [ ] Make statistics of output results
 
 ### Extra
+- [ ] tilføj alle vedtægter til readme <-- Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
 
