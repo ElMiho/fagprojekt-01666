@@ -50,3 +50,7 @@ legalPolynomialFractions := DeleteCases[
 
 maxTime = 0.1;
 
+(* Loading scaling (better name?) factors and create a map *)
+scaleFactors = Import["../data_scripts/Sample_size.mat"][1];
+mapFactors[list_] := {IntegerPart[list[[1]]], IntegerPart[list[[2]]]} -> list[[3]];
+factorsMap := Association[mapFactors /@ scaleFactors];
