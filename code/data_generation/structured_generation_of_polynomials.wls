@@ -20,3 +20,33 @@ integerToList[n_, sumDeg_, base_] := Module[
     ];
     res
 ]
+
+Needs["Combinatorica`"];
+all = Range[-5,5];
+
+generateFractions[list_] = list[[1]] / list[[2]];
+fractionTuples = CartesianProduct[all, all];
+
+(* Generation fraction list and clean up w.r.t. duplicates and division by 0 *)
+res = generateFractions /@ fractionTuples;
+res = DeleteDuplicates[res];
+res = DeleteCases[res, ComplexInfinity];
+fractionList = DeleteCases[res, Indeterminate];
+
+(* No positive integers in denominator! *)
+fractionListNoPositiveIntegers = DeleteCases[
+    fractionList, 
+    x_ /; x > 0 && MemberQ[Range[1,5], x]
+    ];
+
+(* To ensure convergence we look at P(n)/Q(n) such that deg(P) <= deg(Q(n)) - 2 *)
+numeratorDegree = Range[0, 8]; 
+denominatorDegree := Range[2, 10];
+allPossiblePolynomialFractions := CartesianProduct[numeratorDegree, denominatorDegree];
+legalPolynomialFractions := DeleteCases[
+    allPossiblePolynomialFractions, 
+    list_ /; list[[1]] >= list[[2]] - 1
+];
+
+maxTime = 0.1;
+
