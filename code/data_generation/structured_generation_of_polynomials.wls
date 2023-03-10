@@ -12,8 +12,8 @@ listToInteger[list_, base_] := Module[
 ]
 
 integerToList[n_, sumDeg_, base_] := Module[
-    {res = {}, var = 0, k = n},
-    For[i = 1, i <= sumDeg, i++,
+    {res = {}, var = 0, k = n, i = 1},
+    For[i, i <= sumDeg, i++,
         var = Mod[k, base^i];
         AppendTo[res, var/(base^(i - 1))];
         k = k - var;
@@ -52,5 +52,7 @@ maxTime = 0.1;
 
 (* Loading scaling (better name?) factors and create a map *)
 scaleFactors = Import["../data_scripts/Sample_size.mat"][1];
-mapFactors[list_] := {IntegerPart[list[[1]]], IntegerPart[list[[2]]]} -> list[[3]];
+mapFactors[list_] := {
+    IntegerPart[list[[1]]], 
+    IntegerPart[list[[2]]]} -> list[[3]];
 factorsMap := Association[mapFactors /@ scaleFactors];
