@@ -13,31 +13,26 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
     '''
     Function:
        Input : 
-           an interval of type interval
+           minimal_value - lowest value in the closed bounded interval: int
+           maximal_value - higest value in the closed bounded interval: int 
        Output: 
-           a vector of unique ralional values
-           note: index 0 is saved for "/" token used for poly / poly, value = minimal_value - 2
-           index 1 is saved for {empty} if 1 / poly, value = minimal_value - 1
-                     
+           a vector of unique ralional values, with last and second last index being "/" and "#"          
     '''
-    
-    
-    
+
     # number of int's int the interval
     total_numbers = abs(maximal_value - minimal_value) + 1
     
-    
+    # alocates memery to an list with all entrys as minimal_value
     A = [sp.Rational(minimal_value, 1) for _ in range(total_numbers*total_numbers)]
-    #A = sp.ones(, 1)*sp.Rational(minimal_value, 1)
-
     
-    
-    # begins adding new rational numbers starting from index 2
-    row_index = 2
+    # begins adding new rational numbers starting from index 0
+    row_index = 0
 
+    # loop to create all rational values
     for i in range(minimal_value, maximal_value + 1):
         for j in range(minimal_value, maximal_value + 1):
             
+            # dont want to divide with 0
             if (0 != j):
                 
                 # saves the rational number
@@ -51,21 +46,40 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
     # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
     A = createArrayWithOnlyUniqeValues(A)
     
-    
-    
+    # append the special tokens "/" for when divide of polys, "#" symbol for empty.
     A.append("/")
     A.append("#")
     
     # return the uniqe array
     return A
 
-def fileOfInputToTokenizeExpressionFile(filepath: str, newFileName: str):
+def fileOfInputToTokenizeExpressionToFile(filepath: str, newFileName: str):
+    """
+    Function:
+        Creates an file in the working dicretory, 
+        
+        NOTICE!!! if file named newFileName.txt already exist in working dicretory it will DELETE the file!!!!
+
+    Parameters
+    ----------
+    filepath : TYPE {String}
+        a file path to were the expressions.txt file is located    
+    
+    newFileName : TYPE {String}
+        a file path to the new file.
+
+    Returns
+    -------
+    None.
+
+    """
+    # opens the new file
     toFile = open(newFileName, "w")
     
-
+    # opens the reading file
     with open(filepath) as f:
         
-        
+        # while the inner loop dont break, becouse of next line dont exist
         while True:
             
             # Reads next line
@@ -76,50 +90,44 @@ def fileOfInputToTokenizeExpressionFile(filepath: str, newFileName: str):
                 break
             
             # prints the string to a new file
-            
             toFile.write(str(inputStringToTokenizeExpression(line.strip())) + "\n")
-                    
+
+    # closed both files
     f.close()
     toFile.close()
 
-def inputStringToTokenizeExpression(string: str):
-    
 
+def inputStringToTokenizeExpression(string: str):
     '''
     Function:
-        translates an input string to its tokenspace
+        takes input string created in matematica, and changes it into a list using only tokens from input space.
 
     Parameters
     ----------
     string : TYPE {string}
         a sting that need to be translated to token space
-        
-    aTokenInputSpace : TYPE {floats}
-        a array of type float, that consist of all the values corisponding to tokens
-        idx 0 of the array need to corispodn to "/" token
-        idx 1 of the array need to corispond to "{empty poly}" token
 
     Returns
     -------
-    outputString : TYPE {string}
-        a strig that has translated the input sting to token space
+    outputList : TYPE {List}
+        a list that has been translated to token space
 
-    '''
-    
-    #A = aTokenInputSpace
-    
-    # i use these to save time and to skip to next int when it sees x/y
+    '''    
+    # i use these to save time by skip to next char in the string in special casses
     skip_next = False
     skip_next2 = False
     
     # if a number is negative 
     next_number_is_negative = False
     
+    # empty list 
     outputList = []
+
+    # enumerates the string then go thogh all the chars
     for i, char in enumerate(string):
         
-        # Token is the token index for a given rational number, when its -1 it to ensure it dont print
-        TOKEN = -1
+        # Token is the token value for a given token, uses "$" to check if a new token space has been assigen
+        TOKEN = "$"
         
         # block skips next two chars in sting 
         if skip_next2:
@@ -134,14 +142,12 @@ def inputStringToTokenizeExpression(string: str):
         
         # test if it is the end of the sting, then breaks the string loop
         if char == '}' and string[i + 1] == '}':
-            #outputString += "\n"
             return outputList
         
         # gets the next two chars in the string
         else :
             next_char = string[i + 1]
             next_char2 = string[i + 2]
-        
         
         # test if we are in the beginning af the sting
         if char == '{' and next_char == '{':
@@ -154,27 +160,26 @@ def inputStringToTokenizeExpression(string: str):
                 skip_next = True
                 continue
                 
-            
         # test if the next rational number is negative
         elif char == '-':
             next_number_is_negative = True
             continue
           
-        # test if the char is a of type int and next char is "/" becouse 
+        # test if the char is a of type int and next char is "/"  
         elif char.isdigit() and next_char == "/":
             skip_next2 = True
+
+            # assigns Token the rational value depending on if its negative or not
             if next_number_is_negative:
-                #TOKEN = BinarySearch(A, 0, len(A)-1, -int(char), int(next_char2))
                 TOKEN = -sp.Rational(int(char), int(next_char2))
             else:
-                #TOKEN = BinarySearch(A, 0, len(A)-1, int(char), int(next_char2))
                 TOKEN = sp.Rational(int(char), int(next_char2))
         
         # test if char is of type int and the next char is not "/"
         elif char.isdigit() and next_char != "/":
             
+            # assigns Token the int value depending on if its negative or not
             if next_number_is_negative:
-                #TOKEN = BinarySearch(A, 0, len(A)-1, -int(char), 1)
                 TOKEN = -sp.Rational(int(char), 1)
             else:
                 TOKEN = sp.Rational(int(char), 1)
@@ -184,7 +189,7 @@ def inputStringToTokenizeExpression(string: str):
             TOKEN = "/"
        
         #print to file
-        if TOKEN != -1:
+        if TOKEN != "$":
             outputList.append(TOKEN)
             next_number_is_negative = False
             
