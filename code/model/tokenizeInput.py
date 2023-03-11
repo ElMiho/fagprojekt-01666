@@ -194,7 +194,7 @@ def inputStringToTokenizeExpression(string: str):
             next_number_is_negative = False
             
 def merge(arr, l, m, r):
-    
+
     n1 = m - l + 1
     n2 = r - m
 
@@ -251,7 +251,6 @@ def mergeSort(arr, l, r):
         
 def createArrayWithOnlyUniqeValues(oldArray):
     
-    #A = sp.zeros(countUniqe(oldArray), 1)
     A = [0 for _ in range(countUniqe(oldArray))]
     
     rowIdx = 0
