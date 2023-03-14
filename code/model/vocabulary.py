@@ -16,7 +16,7 @@ class Vocabulary:
         ## Special token indices
         self.unk_index = self.addToken(unk_token)
         self.mask_index = self.addToken(mask_token)
-        self.begin_eq_index = self.addToken(begin_seq_token)
+        self.begin_seq_index = self.addToken(begin_seq_token)
         self.end_seq_index = self.addToken(end_seq_token)
 
         # converter mappings
@@ -42,7 +42,7 @@ class Vocabulary:
         self.index2token[index] = token
         return index
 
-    def getToken(self, index: int) -> Token:
+    def getToken(self, index: int):
         """
         Args:
             index (int): the index of the token to get
@@ -67,7 +67,7 @@ class Vocabulary:
             return -1
         return self.token2index[token]
 
-    def vectorize(self, token_list: List[str]) -> List[Token]:
+    def vectorize(self, token_list: List[str]):
         """
         Args:
             token_list (List[str]): list of the tokens to turn into indices
@@ -75,9 +75,11 @@ class Vocabulary:
         Returns:
             The correspinding index list
         """
-        index_list = [
-            self.getIndex[token] for token in token_list
-        ]
+        index_list = [self.begin_seq_index]
+        index_list.extend([
+            self.getIndex(token) for token in token_list
+        ])
+        index_list.append(self.end_seq_index)
         return index_list
 
     @classmethod
@@ -94,9 +96,11 @@ class Vocabulary:
         index2token = {idx:token_type for idx,token_type in enumerate(token_types)}
 
         return cls(token2index, index2token)
-
+    
+    def __len__(self):
+        return len(self.token2index)
 
 vocabulary_answers = Vocabulary.construct_from_list(TOKEN_TYPE_ANSWERS)
 vocabulary_expressions = Vocabulary.construct_from_list(TOKEN_TYPE_EXPRESSIONS)
 
-
+vocabulary_expressions.index2token

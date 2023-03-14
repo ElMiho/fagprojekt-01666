@@ -1,7 +1,7 @@
 import sympy as sp
 
 from typing import List
-from tokens import *
+from model.tokens import *
 
 #####################
 # TOKENIZE EQUATION #
@@ -82,7 +82,9 @@ class EquationLexer:
             elif self.current_char in DIGITS:
                 tokens.append(self._makeInteger())
             elif self.current_char in ALPHABET:
-                tokens.append(self._makeFunc())
+                func = self._makeFunc()
+                if not func: return [] # in case of unrecognized function e.g. PolyGamma
+                tokens.append(func)
             elif self.current_char in BIN_OPERATORS:
                 token = BIN_OPERATORS[self.current_char]
                 if self.current_char == "-" and (not tokens or (tokens and tokens[-1].t_type in (list(BIN_OPERATORS.keys()) + [TT_LEFT_PARENTHESIS]))):
@@ -122,7 +124,7 @@ class EquationLexer:
             return Token(TT_RATIONAL, res + "/" + res2)
         else:
             if res in SPECIAL_NUMBERS:
-                return SPECIAL_NUMBERS_TYPES[res]
+                return SPECIAL_NUMBERS[res]
             return Token(TT_INTEGER, res)
     
     def _makeFunc(self):
