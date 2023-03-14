@@ -47,13 +47,13 @@ class SumDataset(Dataset):
         """
         self.inputs_file = inputs_file
         self.targets_file = targets_file
-        self.dataset_size = sum(1 for i in open(inputs_file, 'rb'))
+        self.dataset_size = sum(1 for i in open(inputs_file, 'rb')) - 1
 
 
     def __getitem__(self, index:int) -> torch.LongTensor:
         # Get corresponding input and target
-        input_line = linecache.getline(args.inputs_file, index)
-        target_line = linecache.getline(args.targets_file, index)
+        input_line = linecache.getline(args.inputs_file, index).split("\n")[0]
+        target_line = linecache.getline(args.targets_file, index).split("\n")[0]
 
         # Transform input and target from string to torch tensor
         input_idx_tensor = torch.LongTensor(json.loads(input_line))
