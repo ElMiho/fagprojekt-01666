@@ -38,9 +38,8 @@ for line_number in range(1,dataset_size+1):
     if equation.notation == "infix": continue
 
     # Vectorize corresponding answer and expression
-    # [1:-1] is to exclude begin and end tokens
-    vectorized_answers = vocabulary_answers.vectorize([token.t_type for token in equation.tokenized_equation])[1:-1]
-    vectorized_expressions = vocabulary_expressions.vectorize([str(token) for token in inputStringToTokenizeExpression(raw_expression)])[1:-1]
+    vectorized_answers = vocabulary_answers.vectorize([token.t_type for token in equation.tokenized_equation])
+    vectorized_expressions = vocabulary_expressions.vectorize([str(token) for token in inputStringToTokenizeExpression(raw_expression)])
 
     # Write them to cleaned data file
     f_cleaned_answers.write(f"{vectorized_answers}\n")

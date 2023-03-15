@@ -71,20 +71,26 @@ class SumDataset(Dataset):
         # Transform input and target from string to list
         input_idx_list = json.loads(input_line)
         target_idx_list = json.loads(target_line)
-        
-        # Pad list and append BEGIN and END tokens
+        input_length = len(input_idx_list)
+
+        # Pad lists and split target list to target_x list and target_y list
         input_idx_list.extend([0] * (self.max_seq_length_input - len(input_idx_list)))
-        input_idx_list = [self.input_vocab.begin_seq_index] + input_idx_list + [self.input_vocab.end_seq_index]
-        target_idx_list.extend([0] * (self.max_seq_length_target - len(target_idx_list)))
-        target_idx_list = [self.target_vocab.begin_seq_index] + target_idx_list + [self.target_vocab.end_seq_index]
+        
+        target_idx_list_x = target_idx_list[:-1]
+        target_idx_list_y = target_idx_list[1:]
+        target_idx_list_x.extend([0] * (self.max_seq_length_target - len(target_idx_list_x)))
+        target_idx_list_y.extend([0] * (self.max_seq_length_target - len(target_idx_list_y)))
 
         # Convert to pytorch tensor
         input_idx_tensor = torch.LongTensor(input_idx_list)
-        target_idx_tensor = torch.LongTensor(target_idx_list)
+        target_idx_tensor_x = torch.LongTensor(target_idx_list_x)
+        target_idx_tensor_y = torch.LongTensor(target_idx_list_y)
 
         return {
             "input": input_idx_tensor,
-            "target": target_idx_tensor
+            "input_lengths": input_length,
+            "target_x": target_idx_tensor_x,
+            "target_y": target_idx_tensor_y
         }
     
     def __len__(self) -> int:
