@@ -44,15 +44,16 @@ Just a genereic README :))
 - [ ] Write down all our laws in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
+- [ ] Generalize s.t. code can be used on any math problem
 
-# statutes
+
+## statutes
 - all roots are from the closed bounded interval [-5, 5]
 - we want about 40m sums that can be evaluated in mathematica 
 - "#" repersent an poly of degree 0 in token space
 - "/" represent an the devision between polynomials
- 
 
-# Generating sums locally vs. HPC
+## Generating sums locally vs. HPC
 See `batch.sh` for running the script; on HPC we use `WolframKernel` instead of `wolframscript`
 
 To run a file use
