@@ -8,6 +8,8 @@ Just a genereic README :))
 - [X] Introduction. Background ---> Jonas
 - [ ] Introduction. Neural Network --> Mikael 
 - [X] Introduction. Our idea ---> Jonas
+- [ ] Document progress of data handling --> Jacob/Christian
+
 ### Data processing
 - [ ] Make flow diagram of the process
 - [ ] Generate dataset files
@@ -42,7 +44,6 @@ Just a genereic README :))
 - [ ] Write down all our laws in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
-- [ ] Document progress of data handling --> Jacob/Christian
 
 # statutes
 - all roots are from the closed bounded interval [-5, 5]
