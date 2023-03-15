@@ -7,14 +7,15 @@ import math
 with open('SampleSize.pkl','rb') as f:
     sample_size = pickle.load(f)
 f.close()
-print(f"sample_size: {sample_size}\n")
-
+np.savetxt('SampleSize.txt', sample_size, fmt='%i,%i,%.3f', delimiter=' ')
+#%%
 #Total number of samples
 N = 40*10**6
 
 #Sample from each category
 n = N/len(sample_size)
 
+sample_out = []
 #Number of tokens in input library
 nt = 45
 #Percent of sample space in each category
