@@ -29,7 +29,7 @@ legalPolynomialFractions := DeleteCases[
     list_ /; list[[1]] >= list[[2]] - 1
 ];
 
-maxTime = 0.1;
+maxTime = 7;
 
 f[l_] := StringSplit[l, ","];
 
