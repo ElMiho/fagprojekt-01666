@@ -42,6 +42,7 @@ Just a genereic README :))
 - [ ] Write down all our laws in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
+- [ ] Document progress of data handling --> Jacob/Christian
 
 # statutes
 - all roots are from the closed bounded interval [-5, 5]
