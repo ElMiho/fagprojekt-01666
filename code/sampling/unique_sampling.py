@@ -3,6 +3,7 @@ import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
 import os
+import random
 #Functions
 def int_tuple_list(n, deg_num, deg_den, base_num, base_den):
     #Split into two unique integers using division with remainder by n and base_num**deg_num
@@ -61,7 +62,7 @@ for i in range(num_categories):
     #Take a step and draw uniformly backwards
     samples = []
     for i in range(sample_size):
-        next_int = np.random.randint(min,max,size=1)
+        next_int = [random.randint(min,max) for _ in range(1)]
         samples.append(next_int)
         min = max
         max += step_size

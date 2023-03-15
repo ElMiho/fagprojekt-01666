@@ -3,6 +3,7 @@ import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
 import os
+import random
 #Functions
 def int_tuple_list(n, deg_num, deg_den, base_num, base_den):
     #Split into two unique integers using division with remainder by n and base_num**deg_num
@@ -63,7 +64,7 @@ for i in range(num_categories):
     min = 1
     max = partioned_sample_space
     for j in range(partitions):
-        next_sample = np.random.randint(min,max,size=partioned_sample_size)
+        next_sample = [random.randint(min,max) for _ in range(partioned_sample_size)]
         samples.append(next_sample)
         min = max
         max += partioned_sample_size
