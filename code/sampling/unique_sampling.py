@@ -24,7 +24,7 @@ def integer_to_list(n, sum_deg, base):
     l = []
     for i in range(1, sum_deg+1):
         var = n % base**i
-        l.append(var // (base**(i-1)))
+        l.append(var // (base**(i-1))+1)
         n = n - var
     l = np.asarray(l)
     return l

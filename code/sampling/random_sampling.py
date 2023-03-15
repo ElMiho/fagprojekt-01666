@@ -23,7 +23,7 @@ def integer_to_list(n, sum_deg, base):
     l = []
     for i in range(1, sum_deg+1):
         var = n % base**i
-        l.append(var // (base**(i-1)))
+        l.append(var // (base**(i-1))+1)
         n = n - var
     l = np.asarray(l)
     return l
@@ -45,6 +45,7 @@ base_num = 39
 #num_categories = sample_parameters.shape[0]    commented while testing
 num_categories = 1  #For testing
 for i in range(num_categories):
+    i =20
     deg_num = int(sample_parameters[i,0])
     deg_den = int(sample_parameters[i,1])
     #sample_size = int(sample_parameters[i,2])  commented while testing
