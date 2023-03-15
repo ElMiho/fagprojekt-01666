@@ -1,5 +1,5 @@
 from typing import List
-from model.tokens import Token, TOKEN_TYPE_ANSWERS, TOKEN_TYPE_EXPRESSIONS
+from model.tokens import TOKEN_TYPE_ANSWERS, TOKEN_TYPE_EXPRESSIONS
 
 class Vocabulary:
     def __init__(self, token2index, index2token, unk_token="<UNK>",
@@ -99,8 +99,9 @@ class Vocabulary:
     
     def __len__(self):
         return len(self.token2index)
+    
+    def __repr__(self):
+        return f"<Vocabulary(size={len(self)})>"
 
 vocabulary_answers = Vocabulary.construct_from_list(TOKEN_TYPE_ANSWERS)
 vocabulary_expressions = Vocabulary.construct_from_list(TOKEN_TYPE_EXPRESSIONS)
-
-vocabulary_expressions.index2token
