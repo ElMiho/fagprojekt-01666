@@ -3,7 +3,12 @@
 "targets_file": "./data/cleaned_answers-1000.txt",
 "model_save_dir": "./model_checkpoints",
 
+"embedding_size": 64,
+"rnn_hidden_size": 64,
 
+"batch_size": 8,
+"shuffle": true,
+"drop_last": true,
 "num_epochs": 100,
 "use_cuda": true,
 

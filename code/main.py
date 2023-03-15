@@ -1,7 +1,9 @@
 # Imports
 import torch
 
+import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
+from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
 import linecache
 import argparse
@@ -111,18 +113,64 @@ dataset = SumDataset(
     inputs_file=config["inputs_file"],
     targets_file=config["targets_file"]
 )
+dataloader = DataLoader(dataset, 
+    batch_size=config["batch_size"],    # samples data into collections
+    shuffle=config["shuffle"],          # shuffles the indices
+    drop_last=config["drop_last"]       # drop the last batch if len(data) does not divide batch_size
+)
 if args.verbose:
     print(f"Dataset `{dataset}` initialized!")
 
-#
-# Structure and code is loosely modeled after the following jupyter notebook: https://github.com/delip/PyTorchNLPBook/blob/master/chapters/chapter_8/8_5_NMT/8_5_NMT_No_Sampling.ipynb
-#
+# 
+# Structure and code is loosely modeled based on the following jupyter notebook: https://github.com/delip/PyTorchNLPBook/blob/master/chapters/chapter_8/8_5_NMT/8_5_NMT_No_Sampling.ipynb
+# Article describing pytorch's built in RNN module (i.e. sizes and such): https://towardsdatascience.com/pytorch-basics-how-to-train-your-neural-net-intro-to-rnn-cb6ebc594677
+# 
 
 #########
 # MODEL #
 #########
 class Encoder:
-    pass
+    def __init__(self, num_embeddings:int, embedding_size:int, rnn_hidden_size:int, padding_idx=dataset.input_vocab.mask_index) -> None:
+        """
+        Args:
+            num_embeddings: number of embeddings is the input (expressions) vocabulary size
+            embedding_size: size of the embedding vectors
+            rnn_hidden_size: size of the RNN hidden state vectors
+        """
+        super().__init__()
+
+        # Embed the input (source) sequence
+        self.source_embedding = nn.Embedding(num_embeddings, embedding_size, padding_idx=padding_idx)
+        # Bidirectional Gated Recurrent Unit
+        self.birnn = nn.GRU(embedding_size, rnn_hidden_size, bidirectional=True, batch_first=True)
+
+    def forward(self, x_source: torch.Tensor, x_lengths: torch.Tensor):
+        """The forward pass of the model
+        
+        Args:
+            x_source: the padded input (expressions) data index tensor
+            x_lengths: explicit lengths of non-padded sequences
+        
+        Returns:
+            a tuple:  (x_unpacked, x_birnn_h)
+                x_unpacked.shape = (batch size, sequence length, 2*rnn_hidden_size)
+                x_birnn_h.shape = (batch size, sequence length, 2*rnn_hidden_size)
+        """
+        x_embedded = self.source_embedding(x_source)
+        # create PackedSequence; x_packed.data.shape=(number_items, embedding_size)
+        # PackedSequence is just a CUDA optimized representation of our embedded input
+        x_packed = pack_padded_sequence(x_embedded, x_lengths.detach().cpu().numpy(),
+                                        batch_first=True)
+        
+        # x_birnn_h.shape = (num_rnn, batch_size, feature_size)
+        x_birnn_out, x_birnn_h = self.birnn(x_packed)
+        # permute to (batch_size, num_rnn, feature_size)
+        x_birnn_h = x_birnn_h.permute(1,0,2)
+
+        # flatten features;
+        
+
+
 
 
 print(dataset[0])
