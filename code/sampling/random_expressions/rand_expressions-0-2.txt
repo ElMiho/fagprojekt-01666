@@ -1,4 +1,3 @@
-# Random sampling: Deg numerator: 0, Deg denominator: 2
 20,10
 2,12
 11,29
