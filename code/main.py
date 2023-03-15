@@ -59,10 +59,10 @@ class SumDataset(Dataset):
         input_idx_tensor = torch.LongTensor(json.loads(input_line))
         target_idx_tensor = torch.LongTensor(json.loads(target_line))
         
-        return (
-            input_idx_tensor,
-            target_idx_tensor
-        )
+        return {
+            "input": input_idx_tensor,
+            "target": target_idx_tensor
+        }
     
     def __len__(self) -> int:
         return self.dataset_size
