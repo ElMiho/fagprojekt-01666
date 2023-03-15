@@ -35,6 +35,12 @@ file = open(config_path, "r")
 config = json.load(file)
 file.close()
 
+
+# Setup
+device = "cuda" if config["use_cuda"] and torch.cuda.is_available() else "cpu"
+print(f"Using device: {device}")
+
+
 ###########
 # DATASET #
 ###########
@@ -59,7 +65,7 @@ class SumDataset(Dataset):
         self.max_seq_length_target = 0
         for index in range(1,self.dataset_size+1):
             self.max_seq_length_input = max(self.max_seq_length_input, len(json.loads(linecache.getline(self.inputs_file, index))))
-            self.max_seq_length_target = max(self.max_seq_length_target, len(json.loads(linecache.getline(self.inputs_file, index))))
+            self.max_seq_length_target = max(self.max_seq_length_target, len(json.loads(linecache.getline(self.targets_file, index))))
     
     def __getitem__(self, index:int) -> dict:
         index += 1
@@ -74,12 +80,12 @@ class SumDataset(Dataset):
         input_length = len(input_idx_list)
 
         # Pad lists and split target list to target_x list and target_y list
-        input_idx_list.extend([0] * (self.max_seq_length_input - len(input_idx_list)))
+        input_idx_list.extend([self.input_vocab.mask_index] * (self.max_seq_length_input - len(input_idx_list)))
         
         target_idx_list_x = target_idx_list[:-1]
         target_idx_list_y = target_idx_list[1:]
-        target_idx_list_x.extend([0] * (self.max_seq_length_target - len(target_idx_list_x)))
-        target_idx_list_y.extend([0] * (self.max_seq_length_target - len(target_idx_list_y)))
+        target_idx_list_x.extend([self.target_vocab.mask_index] * (self.max_seq_length_target - len(target_idx_list_x)))
+        target_idx_list_y.extend([self.target_vocab.mask_index] * (self.max_seq_length_target - len(target_idx_list_y)))
 
         # Convert to pytorch tensor
         input_idx_tensor = torch.LongTensor(input_idx_list)
@@ -99,14 +105,24 @@ class SumDataset(Dataset):
     def __repr__(self) -> str:
         return f"<SumDataset(size={len(self)})>"
 
-if config["verbose"]:
+if args.verbose:
     print(f"Initializing dataset...")
 dataset = SumDataset(
     inputs_file=config["inputs_file"],
     targets_file=config["targets_file"]
 )
-if config["verbose"]:
+if args.verbose:
     print(f"Dataset `{dataset}` initialized!")
+
+#
+# Structure and code is loosely modeled after the following jupyter notebook: https://github.com/delip/PyTorchNLPBook/blob/master/chapters/chapter_8/8_5_NMT/8_5_NMT_No_Sampling.ipynb
+#
+
+#########
+# MODEL #
+#########
+class Encoder:
+    pass
 
 
 print(dataset[0])

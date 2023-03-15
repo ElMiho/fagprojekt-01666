@@ -49,3 +49,4 @@ for line_number in range(1,dataset_size+1):
     if line_number % 10_000 == 0:
         print(f"[{line_number}/{dataset_size}] --- Time since start: {time.time() - start_time} --- Successes: {n_cleaned} --- Fails: {line_number - n_cleaned + 1}")
 
+print(vocabulary_expressions.token2index)

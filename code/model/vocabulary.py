@@ -9,15 +9,15 @@ class Vocabulary:
         self.index2token = {}
 
         # special tokens
-        self.unk_token = unk_token
         self.mask_token = mask_token
         self.begin_seq_token = begin_seq_token
         self.end_seq_token = end_seq_token
+        self.unk_token = unk_token
         ## Special token indices
-        self.unk_index = self.addToken(unk_token)
         self.mask_index = self.addToken(mask_token)
         self.begin_seq_index = self.addToken(begin_seq_token)
         self.end_seq_index = self.addToken(end_seq_token)
+        self.unk_index = self.addToken(unk_token)
 
         # converter mappings
         self.token2index.update(token2index)
