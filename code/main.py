@@ -48,7 +48,7 @@ class SumDataset(Dataset):
         self.inputs_file = inputs_file
         self.targets_file = targets_file
         self.dataset_size = sum(1 for i in open(inputs_file, 'rb')) - 1
-
+        self.max_seq_length = max([linecache.getline(args.inputs_file, index).split("\n")[0] for index in range(self.dataset_size)])
 
     def __getitem__(self, index:int) -> torch.LongTensor:
         # Get corresponding input and target
@@ -66,10 +66,18 @@ class SumDataset(Dataset):
     
     def __len__(self) -> int:
         return self.dataset_size
+    
+    def __repr__(self) -> str:
+        return f"<SumDataset(size={len(self)})>"
 
-
-
-
+if config.verbose:
+    print(f"Initializing dataset...")
+dataset = SumDataset(
+    inputs_file=config.inputs_file,
+    targets_file=config.targets_file
+)
+if config.verbose:
+    print(f"Dataset `{dataset}` initialized!")
 
 
 
