@@ -73,9 +73,9 @@ class SumDataset(Dataset):
         target_idx_list = json.loads(target_line)
         
         # Pad list and append BEGIN and END tokens
-        input_idx_list.extend([0] * (self.max_seq_length_targets - len(input_idx_list)))
+        input_idx_list.extend([0] * (self.max_seq_length_input - len(input_idx_list)))
         input_idx_list = [self.input_vocab.begin_seq_index] + input_idx_list + [self.input_vocab.end_seq_index]
-        target_idx_list.extend([0] * (self.max_seq_length_targets - len(target_idx_list)))
+        target_idx_list.extend([0] * (self.max_seq_length_target - len(target_idx_list)))
         target_idx_list = [self.target_vocab.begin_seq_index] + target_idx_list + [self.target_vocab.end_seq_index]
 
         # Convert to pytorch tensor
@@ -103,6 +103,6 @@ if config["verbose"]:
     print(f"Dataset `{dataset}` initialized!")
 
 
-
+print(dataset[0])
 
 

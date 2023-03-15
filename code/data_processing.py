@@ -33,7 +33,7 @@ for line_number in range(1,dataset_size+1):
 
     # Construct equation and convert to postfix
     equation = Equation.makeEquationFromString(raw_equation)
-    if not equation: continue
+    if not equation.tokenized_equation: continue
     equation.convertToPostfix()
     if equation.notation == "infix": continue
 
