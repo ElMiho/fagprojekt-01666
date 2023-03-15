@@ -4,6 +4,21 @@ from scipy import stats
 import matplotlib.pyplot as plt
 import os
 #Functions
+def int_tuple_list(n, deg_num, deg_den, base_num, base_den):
+    #Split into two unique integers using division with remainder by n and base_num**deg_num
+    #n_num = remainder, n_den = quotient
+    divisor = (base_num**deg_num)
+    quo, rem = divmod(n,divisor)
+    n_den = quo
+    n_num = rem
+    poly_fraction = []
+    #Generate numerator and denominator independently
+    poly_num = integer_to_list(n_num, deg_num, base_num)
+    poly_den = integer_to_list(n_den, deg_den, base_den)
+    poly_fraction.extend((poly_num,poly_den))
+    poly_fraction_out = [item for sublist in poly_fraction for item in sublist]
+    return poly_fraction_out
+
 def integer_to_list(n, sum_deg, base):
     # allocates index 0 and 1 to roots in numerator and denominator
     l = []
@@ -26,7 +41,8 @@ if not os.path.exists(final_directory):
 sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 
 ####  Initialize sampling
-modulus = 34
+base_den = 34
+base_num = 39
 #num_categories = sample_parameters.shape[0]   commented while testing
 num_categories = 1  #For testing
 for i in range(num_categories):
@@ -59,11 +75,9 @@ for i in range(num_categories):
     sum_deg = deg_num + deg_den
     for j in range(len(samples)):
         n = samples[j]
-        list = integer_to_list(n,sum_deg,modulus)
+        list = int_tuple_list(n, deg_num, deg_den, base_num, base_den)
         polynomials.append(list)
     polynomials = np.asarray(polynomials)
     #Save txt. file    
-    titles = f"Stratified sampling: Deg numerator: {deg_num}, Deg denominator: {deg_den}"
-    np.savetxt(f'{folder_name}/unique_expressions-{deg_num}-{deg_den}.txt',polynomials, fmt='%i', delimiter=',', header=titles)
-
+    np.savetxt(f'{folder_name}/unique_expressions-{deg_num}-{deg_den}.txt',polynomials, fmt='%i', delimiter=',')
 # %%

@@ -15,7 +15,7 @@ for i in range(44):
     den = sample_size[i,1]
     sample_factor = sample_size[i,2]
     number_of_samples = n*sample_factor
-    omega = number_of_tokens**(num+den)
+    omega = number_of_tokens**(num+den)     #Change according to different bases
     sample_parameters.append((num,den,number_of_samples,omega))
 sample_parameters = np.asarray(sample_parameters)
 titles = "Deg numerator, Deg denominator, Number of samples, Total sample space"
