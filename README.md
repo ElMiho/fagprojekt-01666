@@ -45,7 +45,7 @@ Just a genereic README :))
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
 - [ ] Generalize s.t. code can be used on any math problem
-
+- [ ] Guide to use code for general math problem (mostly for own use)
 
 ## statutes
 - all roots are from the closed bounded interval [-5, 5]
