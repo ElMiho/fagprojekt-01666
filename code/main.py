@@ -142,7 +142,9 @@ class Encoder:
         # Embed the input (source) sequence
         self.source_embedding = nn.Embedding(num_embeddings, embedding_size, padding_idx=padding_idx)
         # Bidirectional Gated Recurrent Unit
-        self.birnn = nn.GRU(embedding_size, rnn_hidden_size, bidirectional=True, batch_first=True)
+        self.birnn = nn.GRU(embedding_size, rnn_hidden_size, 
+                            num_layers=1,
+                            bidirectional=True, batch_first=True)
 
     def forward(self, x_source: torch.Tensor, x_lengths: torch.Tensor):
         """The forward pass of the model
@@ -162,13 +164,24 @@ class Encoder:
         x_packed = pack_padded_sequence(x_embedded, x_lengths.detach().cpu().numpy(),
                                         batch_first=True)
         
-        # x_birnn_h.shape = (num_rnn, batch_size, feature_size)
+        # Note, the factor 2 is due to us using a bidirectional RNN
+        ## x_birnn_out is the collection of outputs from all time steps in the RNN, shape = (sequence length, batch size, 2*rnn_hidden_size)
+        ## x_birnn_h is the final hidden state outputted by the RNN, shape = (2*num_rnn_layers, batch size, rnn_hidden_size)
         x_birnn_out, x_birnn_h = self.birnn(x_packed)
         # permute to (batch_size, num_rnn, feature_size)
         x_birnn_h = x_birnn_h.permute(1,0,2)
 
-        # flatten features;
-        
+        # flatten features
+        x_birnn_h = x_birnn_h.contiguous().view(x_birnn_h.size(0), -1)
+
+        # The reverse of `pack_padded_sequence`, will map to shape (batch size, seq length, feature size)
+        x_unpacked, _ = pad_packed_sequence(x_birnn_out, batch_first=True)
+
+        return x_unpacked, x_birnn_h
+
+class Decoder:
+    def __init__(self) -> None:
+        pass
 
 
 
