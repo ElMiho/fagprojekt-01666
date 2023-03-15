@@ -1,6 +1,6 @@
 {
-"inputs_file": "./data/expressions-1000.txt",
-"targets_file": "./data/answers-1000.txt",
+"inputs_file": "./data/cleaned_expressions-1000.txt",
+"targets_file": "./data/cleaned_answers-1000.txt",
 "model_save_dir": "./model_checkpoints",
 
 
