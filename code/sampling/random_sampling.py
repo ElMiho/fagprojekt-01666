@@ -43,15 +43,18 @@ sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 base_den = 34
 base_num = 39
 #num_categories = sample_parameters.shape[0]    commented while testing
-num_categories = 1  #For testing
+num_categories = 35  #For testing
 for i in range(num_categories):
-    i =20
+    print("current: " + str(i))
+    # i = 20
     deg_num = int(sample_parameters[i,0])
     deg_den = int(sample_parameters[i,1])
     #sample_size = int(sample_parameters[i,2])  commented while testing
-    sample_size = 1000                          #For testing
+    sample_size = 10**6                        #For testing
     sample_space = int(sample_parameters[i,3])
-
+    
+    print("sample_space: " + str(sample_space))
+    print("sample_size: " + str(sample_size))
     samples = np.random.randint(1,sample_space, size=sample_size)
 
     #From integer to list and saves file in random expression folder
