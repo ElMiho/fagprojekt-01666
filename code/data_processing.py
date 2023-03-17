@@ -4,7 +4,7 @@ import time
 
 from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
-from model.tokenizeInput import tokenInputSpace, inputStringToTokenizeExpression
+from model.tokenizeInput import token_input_space, input_string_to_tokenize_expression
 
 # Paths to data files
 input_file_answers = "./data/answers-1000.txt"
@@ -39,7 +39,7 @@ for line_number in range(1,dataset_size+1):
 
     # Vectorize corresponding answer and expression
     vectorized_answers = vocabulary_answers.vectorize([token.t_type for token in equation.tokenized_equation])
-    vectorized_expressions = vocabulary_expressions.vectorize([str(token) for token in inputStringToTokenizeExpression(raw_expression)])
+    vectorized_expressions = vocabulary_expressions.vectorize([str(token) for token in input_string_to_tokenize_expression(raw_expression)])
 
     # Write them to cleaned data file
     f_cleaned_answers.write(f"{vectorized_answers}\n")

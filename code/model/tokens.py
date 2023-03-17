@@ -1,4 +1,4 @@
-from model.tokenizeInput import tokenInputSpace
+from model.tokenizeInput import token_input_space
 
 # Token class
 class Token:
@@ -62,7 +62,7 @@ TOKEN_TYPE_ANSWERS = [
 ]
 
 # Tokens - Roots
-TOKEN_TYPE_EXPRESSIONS = [str(v) for v in tokenInputSpace(-5,5)]
+TOKEN_TYPE_EXPRESSIONS = [str(v) for v in token_input_space(-5,5)]
 
 if __name__ == "__main__":
     print(f"TT ANSWERS: {TOKEN_TYPE_ANSWERS}")
