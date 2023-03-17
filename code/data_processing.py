@@ -4,7 +4,7 @@ import time
 
 from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
-from model.tokenizeInput import token_input_space, input_string_to_tokenize_expression
+from model.tokenize_input import token_input_space, input_string_to_tokenize_expression
 
 # Paths to data files
 input_file_answers = "./data/answers-1000.txt"
