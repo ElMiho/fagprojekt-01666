@@ -179,6 +179,33 @@ class Encoder:
 
         return x_unpacked, x_birnn_h
 
+def verbose_attention(encoder_state_vectors, query_vector):
+    """A descriptive version of the neural attention mechanism 
+    
+    Args:
+        encoder_state_vectors (torch.Tensor): 3dim tensor from bi-GRU in encoder
+            encoder_state_vectors is x_unpacked from the encoder outputs
+        query_vector (torch.Tensor): hidden state in decoder GRU
+            query_vector is a hidden state vector from a single time step of the decoder
+    Returns:
+        context_vector, vector_probabilities, vector_scores
+    """
+    # Get size of encoder states
+    batch_size, num_vectors, vector_size = encoder_state_vectors.size()
+    # for every batch (first dimension in both encoder_state_vectors and query_vector), multiply each sequence, represented by a 
+    # (sequence length, feature length) matrix onto a row vector, query_vector, of length feature_length = vector_size, which is 
+    # equivalent to diag(query_vector)*sentence_matrix, i.e. query_vector[i] is the 'weight' of word[i] in a given sentence
+    # Get weighted sum of encoded words, vector_scores.shape = (batch_size, sequence length)
+    vector_scores = torch.sum(encoder_state_vectors * query_vector.view(batch_size, 1, vector_size), 
+                              dim=2)
+    # Convert to probabilities
+    vector_probabilities = torch.softmax(vector_scores, dim=1)
+    # 
+    weighted_vectors = encoder_state_vectors * vector_probabilities.view(batch_size, num_vectors, 1)
+    context_vectors = torch.sum(weighted_vectors, dim=1)
+
+    return context_vectors, vector_probabilities, vector_scores
+
 class Decoder:
     def __init__(self) -> None:
         pass
