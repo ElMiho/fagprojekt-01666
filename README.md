@@ -41,7 +41,7 @@ Just a genereic README :))
 - [ ] Make statistics of output results
 
 ### Extra
-- [ ] Write down all our laws in readme --> Jonas
+- [X] Write down all our statutes in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
 - [ ] Map of the facebook github
 - [ ] Generalize s.t. code can be used on any math problem
