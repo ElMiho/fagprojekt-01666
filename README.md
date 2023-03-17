@@ -40,6 +40,10 @@ Just a genereic README :))
 - [ ] Create beam search inference function
 - [ ] Make statistics of output results
 
+### Extra Model validation tests
+- [ ] different orders of the same roots in both denominator and numerator evaluates to the same sum.
+- [ ] non reduced fractions must give the same sum as the reduced fraction.
+
 ### Extra
 - [ ] Write down all our laws in readme --> Jonas
 - [ ] Generate tester scripts (using `unittest` module)
