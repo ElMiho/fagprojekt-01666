@@ -6,10 +6,12 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
+from tqdm import tqdm
+import numpy as np
 import linecache
 import argparse
 import json
-import tqdm
+import time
 import os
 
 from model.equation_interpreter import Equation
@@ -50,7 +52,7 @@ print(f"Using device: {device}")
 ###########
 class SumDataset(Dataset):
     def __init__(self, inputs_file:str=config["inputs_file"], targets_file:str=config["targets_file"],
-                 input_vocab:Vocabulary=vocabulary_answers, target_vocab:Vocabulary=vocabulary_expressions) -> None:
+                 input_vocab:Vocabulary=vocabulary_expressions, target_vocab:Vocabulary=vocabulary_answers) -> None:
         """Data initialization
         
         Args:
@@ -109,19 +111,32 @@ class SumDataset(Dataset):
     def __repr__(self) -> str:
         return f"<SumDataset(size={len(self)})>"
 
+def generate_nmt_batches(dataset):
+    """A generator function which wraps the PyTorch DataLoader. The NMT Version """
+    dataloader = DataLoader(dataset, 
+        batch_size=config["batch_size"],    # samples data into collections
+        shuffle=config["shuffle"],          # shuffles the indices
+        drop_last=config["drop_last"]       # drop the last batch if len(data) does not divide batch_size
+    )
+
+    for batch_index, data_dict in enumerate(dataloader):
+        lengths = data_dict['input_lengths'].numpy()
+        sorted_length_indices = lengths.argsort()[::-1].tolist()
+        
+        out_data_dict = {}
+        for name in data_dict:
+            out_data_dict[name] = data_dict[name][sorted_length_indices].to(device)
+        yield batch_index, out_data_dict 
+
 if args.verbose:
     print(f"Initializing dataset...")
 dataset = SumDataset(
     inputs_file=config["inputs_file"],
     targets_file=config["targets_file"]
 )
-dataloader = DataLoader(dataset, 
-    batch_size=config["batch_size"],    # samples data into collections
-    shuffle=config["shuffle"],          # shuffles the indices
-    drop_last=config["drop_last"]       # drop the last batch if len(data) does not divide batch_size
-)
 if args.verbose:
     print(f"Dataset `{dataset}` initialized!")
+
 
 # 
 # Structure and code is loosely modeled based on the following jupyter notebook: https://github.com/delip/PyTorchNLPBook/blob/master/chapters/chapter_8/8_5_NMT/8_5_NMT_No_Sampling.ipynb
@@ -163,7 +178,9 @@ class Encoder(nn.Module):
         x_embedded = self.source_embedding(x_source)
         # create PackedSequence; x_packed.data.shape=(number_items, embedding_size)
         # PackedSequence is just a CUDA optimized representation of our embedded input
-        x_packed = pack_padded_sequence(x_embedded, x_lengths.detach().cpu().numpy(),
+        print("###", x_lengths)
+        x_packed = pack_padded_sequence(x_embedded, 
+                                        x_lengths.detach().cpu().numpy(),
                                         batch_first=True)
         
         # Note, the factor 2 is due to us using a bidirectional RNN
@@ -233,8 +250,11 @@ class Decoder(nn.Module):
         self.dropout = nn.Dropout(0.3)
         # The begin of sentence index for the target sequence
         self.bos_index = bos_index
+        # See: https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277
+        ## Essentially: temperatures > 1 lowers confidence in prediction and temperatures < 1 increases confidence
+        self._sampling_temperature = 3
 
-    def forward(self, encoder_state, initial_hidden_state, target_sequence):
+    def forward(self, encoder_state, initial_hidden_state, target_sequence, sample_probability=0):
         """The forward pass of the model
         
         Args:
@@ -243,14 +263,21 @@ class Decoder(nn.Module):
             initial_hidden_state: the final hidden state of the encoder
                 i.e. the output from the last time step in each layer
             target_sequence: the target text data tensor
+                is used in training only
+            sample_probability: probability of using output from model as next input
+                as opposed to using the target sequence directly
 
         Returns:
             output_vectors: prediction vectors at each output step
         """
-        # Assumes batch first
-        ## Permutes (batch, sequence) --> (sequence, batch)
-        target_sequence = target_sequence.permute(1,0)
-        output_sequence_size = target_sequence.size(0)
+        if target_sequence is None:
+            sample_probability = 1
+        else:
+            # Assumes batch first
+            ## Permutes (batch, sequence) --> (sequence, batch)
+            target_sequence = target_sequence.permute(1,0)
+            output_sequence_size = target_sequence.size(0)
+
         batch_size = encoder_state.size(0)
 
         # use the provided encoder hidden state as the initial hidden state
@@ -273,7 +300,11 @@ class Decoder(nn.Module):
         self._cached_decoder_state = encoder_state.cpu().detach().numpy()
 
         for i in range(output_sequence_size):
-            y_t_index = target_sequence[i]
+            # Whether to use self-generated sample or use target directly
+            use_sample = np.random.random() < sample_probability
+            
+            if not use_sample:
+                y_t_index = target_sequence[i]
 
             # Step 1: Embed word and concat with previous context
             y_input_vector = self.target_embedding(y_t_index)
@@ -295,6 +326,13 @@ class Decoder(nn.Module):
             score_for_y_t_index = self.classifier(
                 self.dropout(prediction_vector)
             )
+
+            if use_sample:
+                p_y_t_index = torch.softmax(score_for_y_t_index * self._sampling_temperature, dim=1)
+                # Take the maximum likely one
+                # # _, y_t_index = torch.max(p_y_t_index, 1)
+                # Take probabilistic sample
+                y_t_index = torch.multinomial(p_y_t_index, 1).squeeze()
             
             # auxillary: collect the prediction scores
             output_vectors.append(score_for_y_t_index)
@@ -387,12 +425,6 @@ def compute_accuracy(y_pred, y_true, mask_index):
     n_valid = valid_indices.sum().item()
 
     return n_correct / n_valid * 100
-    
-# Get loss of prediction
-def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
-    y_pred, y_true = normalize_sizes(y_pred, y_true)
-    return torch.cross_entropy(y_pred, y_true, ignore_index=mask_index)
-
 
 ####################
 # INITIALIZE MODEL #
@@ -415,18 +447,89 @@ optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"])
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer,
                                            mode='min', factor=0.5,
                                            patience=1)
+
+
 mask_index = dataset.target_vocab.mask_index
+cross_entropy = nn.CrossEntropyLoss(ignore_index=mask_index)
+
+# Get loss of prediction
+def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
+    y_pred, y_true = normalize_sizes(y_pred, y_true)
+    return cross_entropy(y_pred, y_true)
 
 #################
 # TRAINING LOOP #
 #################
-for i in tqdm(range(config["num_epochs"])):
-    pass
+
+## Note: tqdm just adds a progress bar to the training loop
+
+epoch_iterator = tqdm(range(config["num_epochs"]), desc=f"Running loss: ---, Running acc: ---")
+for epoch in epoch_iterator:
+    print("EPOCH", epoch)
+    train_state["epoch_index"] = epoch
+
+    running_loss = 0
+    running_acc = 0
+    # Makes sure dropout is used
+    dataloader = generate_nmt_batches(dataset)
+    model.train()
+
+    for batch_index, batch_dict in dataloader:
+        # 1. zero the gradients
+        optimizer.zero_grad()
+
+        # 2. predict the output
+        y_pred = model(
+            batch_dict["input"],
+            batch_dict["input_lengths"],
+            batch_dict["target_x"]
+        )
+
+        # 3. compute the loss
+        loss = sequence_loss(y_pred, batch_dict["target_y"], mask_index)
+
+        # 4. use loss to calculate gradient
+        loss.backward()
+
+        # 5. optimizer
+        optimizer.step()
+        
+        # Calculate the running loss and running accuracy
+        running_loss += (loss.item() - running_loss) / (batch_index + 1)
+        acc_t = compute_accuracy(y_pred, batch_dict["target_y"], mask_index)
+        running_acc = (acc_t - running_acc) / (batch_index + 1)
+
+    train_state["train_loss"].append(running_loss)
+    train_state["train_acc"].append(running_acc)
+
+    # Display running loss + save model
+    epoch_iterator.set_description(f"Running loss: {round(running_loss, 4)}, Running acc: {round(running_acc, 4)}")
+    torch.save(model.state_dict(), train_state['model_filename'])
 
 
+#############
+# INFERENCE #
+#############
+model.eval()
 
+def sentence_from_indices(indices, vocab, strict=True):
+    out = []
+    for index in indices:
+        if index == vocab.begin_seq_index and strict:
+            continue
+        elif index == vocab.end_seq_index and strict:
+            return " ".join(out)
+        else:
+            out.append(vocab.getToken(index))
+    return " ".join(out)
 
-
+# n^2 test
+test_tensor = torch.LongTensor(vocabulary_expressions.vectorize(["#", "/", "0", "0"]))
+model(
+    test_tensor,
+    np.array([len(test_tensor)], dtype=np.int64),
+    target_sequence=None
+)
 
 
 
