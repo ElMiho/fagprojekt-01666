@@ -2,12 +2,14 @@
 import torch
 
 import torch.nn as nn
+import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
 import linecache
 import argparse
 import json
+import tqdm
 import os
 
 from model.equation_interpreter import Equation
@@ -129,7 +131,7 @@ if args.verbose:
 #########
 # MODEL #
 #########
-class Encoder:
+class Encoder(nn.Module):
     def __init__(self, num_embeddings:int, embedding_size:int, rnn_hidden_size:int, padding_idx=dataset.input_vocab.mask_index) -> None:
         """
         Args:
@@ -201,7 +203,7 @@ def verbose_attention(encoder_state_vectors, query_vector):
 
     return context_vectors, vector_probabilities, vector_scores
 
-class Decoder:
+class Decoder(nn.Module):
     def __init__(self, num_embeddings, embedding_size, rnn_hidden_size, 
                  bos_index, padding_idx=dataset.target_vocab.mask_index) -> None:
         """
@@ -390,6 +392,46 @@ def compute_accuracy(y_pred, y_true, mask_index):
 def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
     y_pred, y_true = normalize_sizes(y_pred, y_true)
     return torch.cross_entropy(y_pred, y_true, ignore_index=mask_index)
+
+
+####################
+# INITIALIZE MODEL #
+####################
+
+# The model
+model = Model(
+    source_vocab_size=len(dataset.input_vocab), source_embedding_size=config["embedding_size"],
+    target_vocab_size=len(dataset.target_vocab), target_embedding_size=config["embedding_size"],
+    encoding_size=config["rnn_hidden_size"], target_bos_index=dataset.input_vocab.begin_seq_index
+)
+model = model.to(device)
+
+if args.verbose:
+    print(f"Using model `{config['model_filename']}` with architecture:")
+    print(model)
+
+# Optimizer and training scheduler
+optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"])
+scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer,
+                                           mode='min', factor=0.5,
+                                           patience=1)
+mask_index = dataset.target_vocab.mask_index
+
+#################
+# TRAINING LOOP #
+#################
+for i in tqdm(range(config["num_epochs"])):
+    pass
+
+
+
+
+
+
+
+
+
+
 
 
 
