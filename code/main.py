@@ -178,7 +178,6 @@ class Encoder(nn.Module):
         x_embedded = self.source_embedding(x_source)
         # create PackedSequence; x_packed.data.shape=(number_items, embedding_size)
         # PackedSequence is just a CUDA optimized representation of our embedded input
-        print("###", x_lengths)
         x_packed = pack_padded_sequence(x_embedded, 
                                         x_lengths.detach().cpu().numpy(),
                                         batch_first=True)
@@ -465,7 +464,6 @@ def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
 
 epoch_iterator = tqdm(range(config["num_epochs"]), desc=f"Running loss: ---, Running acc: ---")
 for epoch in epoch_iterator:
-    print("EPOCH", epoch)
     train_state["epoch_index"] = epoch
 
     running_loss = 0
