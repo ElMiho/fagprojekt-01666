@@ -227,6 +227,8 @@ class Decoder:
         self.hidden_map = nn.Linear(rnn_hidden_size, rnn_hidden_size)
         # Linear classifier map on the context vector combined with the current hidden vector
         self.classifier = nn.Linear(2 * rnn_hidden_size, num_embeddings)
+        # Dropout layer for regulariation
+        self.dropout = nn.Dropout(0.3)
         # The begin of sentence index for the target sequence
         self.bos_index = bos_index
 
@@ -271,8 +273,123 @@ class Decoder:
         for i in range(output_sequence_size):
             y_t_index = target_sequence[i]
 
+            # Step 1: Embed word and concat with previous context
+            y_input_vector = self.target_embedding(y_t_index)
+            rnn_input = torch.cat([y_input_vector, context_vectors], dim=1)
+
+            # Step 2: Make a GRU step, getting a new hidden vector
+            h_t = self.gru_cell(rnn_input, h_t)
+            self._cached_ht.append(h_t.cpu().detach().numpy())
+            
+            # Step 3: Use the current hidden to attend to the encoder state
+            context_vectors, p_attn, _ = verbose_attention(encoder_state_vectors=encoder_state, 
+                                                           query_vector=h_t)
+            
+            # auxillary: cache the attention probabilities for visualization
+            self._cached_p_attn.append(p_attn.cpu().detach().numpy())
+            
+            # Step 4: Use the current hidden and context vectors to make a prediction to the next word
+            prediction_vector = torch.cat((context_vectors, h_t), dim=1)
+            score_for_y_t_index = self.classifier(
+                self.dropout(prediction_vector)
+            )
+            
+            # auxillary: collect the prediction scores
+            output_vectors.append(score_for_y_t_index)
+            
+        output_vectors = torch.stack(output_vectors).permute(1, 0, 2)
+        
+        return output_vectors
+    
+class Model(nn.Module):
+    def __init__(self, source_vocab_size, source_embedding_size, target_vocab_size,
+                 target_embedding_size, encoding_size, target_bos_index) -> None:
+        """
+        Args:
+            source_vocab_size: number of unique words in source language
+            source_embedding_size: size of the source embedding vectors
+            target_vocab_size: number of unique words in source language
+            target_embedding_size: size of the source embedding vectors
+            encoding_size: the size of the encoder RNN
+                i.e. rnn_hidden_size of the encoder
+        """
+        super().__init__()
+        self.encoder = Encoder(num_embeddings=source_vocab_size, embedding_size=source_embedding_size,
+                               rnn_hidden_size=encoding_size)
+        # Note the *2 is due to the encoder using a BIGRU
+        self.decoder = Decoder(num_embeddings=target_vocab_size, embedding_size=target_embedding_size,
+                               rnn_hidden_size=2*encoding_size, bos_index=target_bos_index)
+        
+    def forward(self, source, source_lengths, target_sequence):
+        """The forward pass of the model
+        
+        Args:
+            source: the source text data tensor
+                source.shape = (batch_size, max_source_length)
+            source_lengths: the length of the sequences in source
+            target_sequence: the target text data tensor
+        
+        Returns:
+            decoded_states: prediction vectors at each output step
+        """
+        encoder_state, final_hidden_states = self.encoder(source, source_lengths)
+        decoded_states = self.decoder(encoder_state=encoder_state, 
+                                      initial_hidden_state=final_hidden_states, 
+                                      target_sequence=target_sequence)
+        return decoded_states
 
 
+################
+# HELPER STUFF #
+################
+
+# For recording the training history
+train_state = {
+        "stop_early": False,
+        "early_stopping_step": 0,
+        "early_stopping_best_val": 1e+8,
+        "learning_rate": config["learning_rate"],
+        "epoch_index": 0,
+        "train_loss": [],
+        "train_acc": [],
+        "model_filename": config["model_filename"]
+    }
+
+def normalize_sizes(y_pred, y_true):
+    """Normalizes tensor sizes
+    
+    Args:
+        y_pred: the output of the model
+            If 3D tensor, reshape to 2D tensor (matrix)
+        y_true: the target predictions
+            If 2D tensor (matrix), reshape to 1D tensor (vector)
+    """
+    if len(y_pred.size()) == 3:
+        y_pred = y_pred.contiguous().view(-1, y_pred.size(2))
+    if len(y_true.size()) == 2:
+        y_true = y_true.contiguous().view(-1)
+    return y_pred, y_true
+
+def compute_accuracy(y_pred, y_true, mask_index):
+    # Make sure y_pred has 2D shape and y_true a 1D shape
+    y_pred, y_true = normalize_sizes(y_pred, y_true)
+
+    # torch.tensor.max(dim=x) returns a tensor of maximum values and their corresponding indices
+    _, y_pred_indices = y_pred.max(dim=1)
+    
+    # Find every non-mask index that was correctly predicted
+    correct_indices = torch.eq(y_pred_indices, y_true).float()
+    valid_indices = torch.ne(y_true, mask_index).float()
+    
+    n_correct = (correct_indices * valid_indices).sum().item()
+    n_valid = valid_indices.sum().item()
+
+    return n_correct / n_valid * 100
+    
+# Get loss of prediction
+def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
+    y_pred, y_true = normalize_sizes(y_pred, y_true)
+    return torch.cross_entropy(y_pred, y_true, ignore_index=mask_index)
 
 
 
