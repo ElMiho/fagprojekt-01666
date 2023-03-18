@@ -271,6 +271,7 @@ class Decoder(nn.Module):
         """
         if target_sequence is None:
             sample_probability = 1
+            output_sequence_size = dataset.max_seq_length_target
         else:
             # Assumes batch first
             ## Permutes (batch, sequence) --> (sequence, batch)
@@ -335,6 +336,10 @@ class Decoder(nn.Module):
             
             # auxillary: collect the prediction scores
             output_vectors.append(score_for_y_t_index)
+
+            # Break if inference and end predicted
+            if sample_probability == 1 and (((not list(y_t_index.shape)) and y_t_index.item() == dataset.target_vocab.end_seq_index) or (list(y_t_index.shape) and all(v == dataset.target_vocab.end_seq_index for v in y_t_index))):
+                break
             
         output_vectors = torch.stack(output_vectors).permute(1, 0, 2)
         
@@ -510,9 +515,14 @@ for epoch in epoch_iterator:
 #############
 model.eval()
 
+def to_indices(scores):
+    _, indices = torch.max(scores, dim=1)
+    return indices
+
 def sentence_from_indices(indices, vocab, strict=True):
     out = []
     for index in indices:
+        index = index.item()
         if index == vocab.begin_seq_index and strict:
             continue
         elif index == vocab.end_seq_index and strict:
@@ -522,13 +532,17 @@ def sentence_from_indices(indices, vocab, strict=True):
     return " ".join(out)
 
 # n^2 test
-test_tensor = torch.LongTensor(vocabulary_expressions.vectorize(["#", "/", "0", "0"]))
-model(
+test_tensor = torch.tensor([
+    vocabulary_expressions.vectorize(["#", "/", "0", "0"]) for _ in range(config["batch_size"])
+], dtype=torch.int32)
+test_pred = model(
     test_tensor,
-    np.array([len(test_tensor)], dtype=np.int64),
+    torch.LongTensor([len(test_tensor[0]) for _ in range(len(test_tensor))]),
     target_sequence=None
 )
 
+print("Predicted shape: ", test_pred.shape)
+print(f"Predicted: {test_pred[0]} = {sentence_from_indices(to_indices(test_pred[0]), vocabulary_answers)}")
 
 
 
