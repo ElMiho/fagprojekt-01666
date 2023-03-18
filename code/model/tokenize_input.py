@@ -1,15 +1,7 @@
 import numpy as np
 import sympy as sp
 
-'''
-i bash
-git pull
-git add (filename eller *)
-git -m commit ""
-git push
-'''
-
-def tokenInputSpace(minimal_value: int, maximal_value: int):
+def token_input_space(minimal_value: int, maximal_value: int):
     '''
     Function:
        Input : 
@@ -41,10 +33,10 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
                 row_index += 1
                 
     # sorts the array uning mergesort            
-    mergeSort(A, 0, len(A)-1)
+    merge_sort(A, 0, len(A)-1)
     
     # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
-    A = createArrayWithOnlyUniqeValues(A)
+    A = create_array_with_only_uniqe_values(A)
     
     # append the special tokens "/" for when divide of polys, "#" symbol for empty.
     A.append("/")
@@ -53,7 +45,7 @@ def tokenInputSpace(minimal_value: int, maximal_value: int):
     # return the uniqe array
     return A
 
-def fileOfInputToTokenizeExpressionToFile(filepath: str, newFileName: str):
+def file_of_input_to_tokenize_expression_to_file(filepath: str, new_file_name: str):
     """
     Function:
         Creates an file in the working dicretory, 
@@ -74,7 +66,7 @@ def fileOfInputToTokenizeExpressionToFile(filepath: str, newFileName: str):
 
     """
     # opens the new file
-    toFile = open(newFileName, "w")
+    to_file = open(new_file_name, "w")
     
     # opens the reading file
     with open(filepath) as f:
@@ -90,14 +82,14 @@ def fileOfInputToTokenizeExpressionToFile(filepath: str, newFileName: str):
                 break
             
             # prints the string to a new file
-            toFile.write(str(inputStringToTokenizeExpression(line.strip())) + "\n")
+            to_file.write(str(input_string_to_tokenize_expression(line.strip())) + "\n")
 
     # closed both files
     f.close()
-    toFile.close()
+    to_file.close()
 
 
-def inputStringToTokenizeExpression(string: str):
+def input_string_to_tokenize_expression(string: str):
     '''
     Function:
         takes input string created in matematica, and changes it into a list using only tokens from input space.
@@ -121,13 +113,13 @@ def inputStringToTokenizeExpression(string: str):
     next_number_is_negative = False
     
     # empty list 
-    outputList = []
+    output_list = []
 
     # enumerates the string then go thogh all the chars
     for i, char in enumerate(string):
         
         # Token is the token value for a given token, uses "$" to check if a new token space has been assigen
-        TOKEN = "$"
+        token = "$"
         
         # block skips next two chars in sting 
         if skip_next2:
@@ -142,7 +134,7 @@ def inputStringToTokenizeExpression(string: str):
         
         # test if it is the end of the sting, then breaks the string loop
         if char == '}' and string[i + 1] == '}':
-            return outputList
+            return output_list
         
         # gets the next two chars in the string
         else :
@@ -154,7 +146,7 @@ def inputStringToTokenizeExpression(string: str):
             
             # test if the numerator of the polys is empty then asigns token #
             if next_char2 == '}':
-                TOKEN = "#"
+                token = "#"
             
             else :
                 skip_next = True
@@ -171,26 +163,26 @@ def inputStringToTokenizeExpression(string: str):
 
             # assigns Token the rational value depending on if its negative or not
             if next_number_is_negative:
-                TOKEN = -sp.Rational(int(char), int(next_char2))
+                token = -sp.Rational(int(char), int(next_char2))
             else:
-                TOKEN = sp.Rational(int(char), int(next_char2))
+                token = sp.Rational(int(char), int(next_char2))
         
         # test if char is of type int and the next char is not "/"
         elif char.isdigit() and next_char != "/":
             
             # assigns Token the int value depending on if its negative or not
             if next_number_is_negative:
-                TOKEN = -sp.Rational(int(char), 1)
+                token = -sp.Rational(int(char), 1)
             else:
-                TOKEN = sp.Rational(int(char), 1)
+                token = sp.Rational(int(char), 1)
           
         # test if "}" is followed by "," becouse then its the divistion beteeen the two polys and it is token /
         elif char == "}" and next_char == ",":
-            TOKEN = "/"
+            token = "/"
        
         #print to file
-        if TOKEN != "$":
-            outputList.append(TOKEN)
+        if token != "$":
+            output_list.append(token)
             next_number_is_negative = False
             
 def merge(arr, l, m, r):
@@ -237,7 +229,7 @@ def merge(arr, l, m, r):
         j += 1
         k += 1
 
-def mergeSort(arr, l, r):
+def merge_sort(arr, l, r):
 	if l < r:
 
 		# Same as (l+r)//2, but avoids overflow for
@@ -245,24 +237,24 @@ def mergeSort(arr, l, r):
 		m = l+(r-l)//2
 
 		# Sort first and second halves
-		mergeSort(arr, l, m)
-		mergeSort(arr, m+1, r)
+		merge_sort(arr, l, m)
+		merge_sort(arr, m+1, r)
 		merge(arr, l, m, r)
         
-def createArrayWithOnlyUniqeValues(oldArray):
+def create_array_with_only_uniqe_values(old_array):
     
-    A = [0 for _ in range(countUniqe(oldArray))]
+    A = [0 for _ in range(count_uniqe(old_array))]
     
-    rowIdx = 0
-    for i in range(0, len(oldArray)):
-        if (oldArray[i] != oldArray[i-1]):
-            A[rowIdx] = oldArray[i]
-            rowIdx += 1
+    row_idx = 0
+    for i in range(0, len(old_array)):
+        if (old_array[i] != old_array[i-1]):
+            A[row_idx] = old_array[i]
+            row_idx += 1
     
    
     return A  
 
-def countUniqe(A):
+def count_uniqe(A):
     '''
 
     Parameters
