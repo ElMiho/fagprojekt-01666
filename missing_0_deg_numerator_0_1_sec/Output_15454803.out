@@ -1,0 +1,44 @@
+
+General::compat: Combinatorica Graph and Permutations functionality has been superseded by preloaded functionality. The package now being loaded may conflict with this. Please see the Compatibility Guide for details.
+
+Part::partd: Part specification list[[1]] is longer than depth of object.
+
+Part::partd: Part specification list[[2]] is longer than depth of object.
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+General::stop: Further output of Power::infy will be suppressed during this calculation.
+
+Infinity::indet: Indeterminate expression 0 ComplexInfinity encountered.
+
+General::compat: Combinatorica Graph and Permutations functionality has been superseded by preloaded functionality. The package now being loaded may conflict with this. Please see the Compatibility Guide for details.
+
+Part::partd: Part specification list[[1]] is longer than depth of object.
+
+Part::partd: Part specification list[[2]] is longer than depth of object.
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+General::stop: Further output of Power::infy will be suppressed during this calculation.
+
+Infinity::indet: Indeterminate expression 0 ComplexInfinity encountered.
