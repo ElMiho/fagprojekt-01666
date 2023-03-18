@@ -191,28 +191,95 @@ def verbose_attention(encoder_state_vectors, query_vector):
         context_vector, vector_probabilities, vector_scores
     """
     # Get size of encoder states
+    # Read for understanding attention: https://lilianweng.github.io/posts/2018-06-24-attention/
     batch_size, num_vectors, vector_size = encoder_state_vectors.size()
-    # for every batch (first dimension in both encoder_state_vectors and query_vector), multiply each sequence, represented by a 
-    # (sequence length, feature length) matrix onto a row vector, query_vector, of length feature_length = vector_size, which is 
-    # equivalent to diag(query_vector)*sentence_matrix, i.e. query_vector[i] is the 'weight' of word[i] in a given sentence
-    # Get weighted sum of encoded words, vector_scores.shape = (batch_size, sequence length)
     vector_scores = torch.sum(encoder_state_vectors * query_vector.view(batch_size, 1, vector_size), 
                               dim=2)
-    # Convert to probabilities
     vector_probabilities = torch.softmax(vector_scores, dim=1)
-    # 
     weighted_vectors = encoder_state_vectors * vector_probabilities.view(batch_size, num_vectors, 1)
     context_vectors = torch.sum(weighted_vectors, dim=1)
 
     return context_vectors, vector_probabilities, vector_scores
 
 class Decoder:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, num_embeddings, embedding_size, rnn_hidden_size, 
+                 bos_index, padding_idx=dataset.target_vocab.mask_index) -> None:
+        """
+        Args:
+            num_embeddings: the number of words in the target vocabulary
+            embedding_size: hyperparameter, the length of the embedding vector
+            rnn_hidden_size: size of a rnn hidden state
+            bos_index: the begin of sentence token in the target vocabulary
+        """
+        super().__init__()
+        self.rnn_hidden_size = rnn_hidden_size
+
+        # The embedding of the output space language
+        self.target_embedding = nn.Embedding(num_embeddings=num_embeddings,
+                                             embedding_dim=embedding_size,
+                                             padding_idx=padding_idx)
+        # Gated recurrent unit cell, single step/building block of a GRU-based RNN
+        ## Note: in our implementation, the input to gru_cell is a single embedded word (the 'new' word) 
+        ## concatenated with the current context vector
+        self.gru_cell = nn.GRUCell(input_size=embedding_size+rnn_hidden_size,
+                                   hidden_size=rnn_hidden_size)
+        # Linear map on the initial hidden state (from the encoder)
+        self.hidden_map = nn.Linear(rnn_hidden_size, rnn_hidden_size)
+        # Linear classifier map on the context vector combined with the current hidden vector
+        self.classifier = nn.Linear(2 * rnn_hidden_size, num_embeddings)
+        # The begin of sentence index for the target sequence
+        self.bos_index = bos_index
+
+    def forward(self, encoder_state, initial_hidden_state, target_sequence):
+        """The forward pass of the model
+        
+        Args:
+            encoder_state: the output of the encoder, 
+                i.e. the output from all time steps
+            initial_hidden_state: the final hidden state of the encoder
+                i.e. the output from the last time step in each layer
+            target_sequence: the target text data tensor
+
+        Returns:
+            output_vectors: prediction vectors at each output step
+        """
+        # Assumes batch first
+        ## Permutes (batch, sequence) --> (sequence, batch)
+        target_sequence = target_sequence.permute(1,0)
+        output_sequence_size = target_sequence.size(0)
+        batch_size = encoder_state.size(0)
+
+        # use the provided encoder hidden state as the initial hidden state
+        h_t = self.hidden_map(initial_hidden_state)
+
+        # Initialize context vectors to zero vector
+        context_vectors = torch.zeros(batch_size, self.rnn_hidden_size).to(device)
+        # Initialize first y_t word as BOS
+        y_t_index = torch.ones(batch_size, dtype=torch.int64) * self.bos_index
+
+        # Use same device as the encoder state
+        h_t = h_t.to(encoder_state.device)
+        y_t_index = y_t_index.to(encoder_state.device)
+        context_vectors = context_vectors.to(encoder_state.device)
+
+        # Keep track of decoder history
+        output_vectors = []
+        self._cached_p_attn = []
+        self._cached_ht = []
+        self._cached_decoder_state = encoder_state.cpu().detach().numpy()
+
+        for i in range(output_sequence_size):
+            y_t_index = target_sequence[i]
 
 
 
 
-print(dataset[0])
+
+
+
+
+
+
+
 
 
