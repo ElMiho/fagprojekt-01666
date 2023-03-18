@@ -45,14 +45,14 @@ sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 base_den = 34
 base_num = 39
 #num_categories = sample_parameters.shape[0]   commented while testing
-num_categories = 1  #For testing
+num_categories = 10  #For testing
 for i in range(num_categories):
     deg_num = int(sample_parameters[i,0])     
     deg_den = int(sample_parameters[i,1])      
-    #sample_size = int(sample_parameters[i,2])  
-    sample_size = 100                          #For testing
-    sample_space = 1000                        #For testing
-    #sample_space = int(sample_parameters[i,3])
+    sample_size = int(sample_parameters[i,2])  
+    # sample_size = 100                          #For testing
+    # sample_space = 1000                        #For testing
+    sample_space = int(sample_parameters[i,3])
 
     #Generate partioning of sample space
     partitions = 10

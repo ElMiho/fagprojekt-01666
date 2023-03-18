@@ -45,27 +45,27 @@ sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 base_den = 34
 base_num = 39
 #num_categories = sample_parameters.shape[0]   commented while testing
-num_categories = 1  #For testing
+num_categories = 10  #For testing
 for i in range(num_categories):
     deg_num = int(sample_parameters[i,0])     
     deg_den = int(sample_parameters[i,1])      
-    #sample_size = int(sample_parameters[i,2])  
-    sample_size = 100                          #For testing
-    sample_space = 1000                        #For testing
-    #sample_space = int(sample_parameters[i,3])
+    sample_size = int(sample_parameters[i,2])  
+    # sample_size = 100                          #For testing
+    # sample_space = 1000                        #For testing
+    sample_space = int(sample_parameters[i,3])
 
     #Generate stepsize
     step_size = sample_space // sample_size
-    min = 1
-    max = step_size
+    lower_bound = 1
+    upper_bound = max(1, step_size)
 
     #Take a step and draw uniformly backwards
     samples = []
     for i in range(sample_size):
-        next_int = [random.randint(min,max) for _ in range(1)]
+        next_int = random.randint(lower_bound, upper_bound)
         samples.append(next_int)
-        min = max
-        max += step_size
+        lower_bound = upper_bound
+        upper_bound += step_size
     samples = np.asarray(samples)
     samples = samples.flatten()
 
