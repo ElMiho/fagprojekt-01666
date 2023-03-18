@@ -58,13 +58,13 @@ For[j = 1, j <= Length[target], j++,
     ];
 
     For[k = 1, k <= Length[partitionFile], k++,
-        Print["Partition: " <> ToString[k]]
-        answers := {};
+        Print["Partition: " <> ToString[k]];
+        answers = {};
         SetSharedVariable[answers];
 
         currentPartition := partitionFile[[k]];
 
-        Do[
+        ParallelDo[
             data := currentPartition[[i]];
             numerator := Part[data, Range[1, numeratorDegree]];
             denominator := Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
