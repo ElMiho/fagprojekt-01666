@@ -532,8 +532,9 @@ def sentence_from_indices(indices, vocab, strict=True):
     return " ".join(out)
 
 # n^2 test
+test_expression = ["#", "/", "0", "0"]
 test_tensor = torch.tensor([
-    vocabulary_expressions.vectorize(["#", "/", "0", "0"]) for _ in range(config["batch_size"])
+    vocabulary_expressions.vectorize(test_expression) for _ in range(config["batch_size"])
 ], dtype=torch.int32)
 test_pred = model(
     test_tensor,
@@ -541,8 +542,9 @@ test_pred = model(
     target_sequence=None
 )
 
-print("Predicted shape: ", test_pred.shape)
-print(f"Predicted: {test_pred[0]} = {sentence_from_indices(to_indices(test_pred[0]), vocabulary_answers)}")
+print(f"Test expression: {test_expression}")
+print(f"Predicted shape: {test_pred.shape}")
+print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), vocabulary_answers)}")
 
 
 
