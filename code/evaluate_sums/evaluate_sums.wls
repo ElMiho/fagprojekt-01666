@@ -1,4 +1,4 @@
-LaunchKernels[10];
+(* LaunchKernels[10]; *)
 Needs["Combinatorica`"];
 
 (* Create list of roots *)
@@ -29,20 +29,21 @@ legalPolynomialFractions := DeleteCases[
     list_ /; list[[1]] >= list[[2]] - 1
 ];
 
-maxTime = 7;
+maxTime = 0.1;
 
 f[l_] := StringSplit[l, ","];
 
-test = {{2, 7}};
+test = {{0, 2}, {2, 7}};
 (* Random expressions *)
-For[j = 1, j < 2, j++,
-    numeratorDenominator = test[[j]];
+target = test;
+For[j = 1, j <= Length[target], j++,
+    numeratorDenominator = target[[j]];
     numeratorDegree = numeratorDenominator[[1]];
     denominatorDegree = numeratorDenominator[[2]];
 
     rawFile = StringSplit[
         Import[
-        Directory[] <> "/.././sampling/random_expressions/rand_expressions-" 
+        Directory[] <> "/random_expressions/rand_expressions-" 
             <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree]  <> ".txt"
         ],
         "\n"
@@ -50,34 +51,44 @@ For[j = 1, j < 2, j++,
     
     file := ToExpression /@ f /@ rawFile;
 
-    answers = {};
-    SetSharedVariable[answers];
+    size := 200;
+    offset := size;
+    partitionFile := Partition[
+        file, size, offset, {1, 1}, {} 
+    ];
 
-    ParallelDo[
-        data = file[[i]];
+    For[k = 1, k <= Length[partitionFile], k++,
+        Print["Partition: " <> ToString[k]]
+        answers := {};
+        SetSharedVariable[answers];
 
-        numerator = Part[data, Range[1, numeratorDegree]];
-        denominator = Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
+        currentPartition := partitionFile[[k]];
+
+        Do[
+            data := currentPartition[[i]];
+            numerator := Part[data, Range[1, numeratorDegree]];
+            denominator := Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
+            
+            numeratorRoots = Part[fractionList, numerator];
+            denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
+
+            (* Generate expression based on lists of roots *)
+            expr = Product[
+                n - numeratorRoots[[p]], 
+                {p, 1, numeratorDegree}
+            ] / Product[
+                n - denominatorRoots[[p]],
+                {p, 1, denominatorDegree}
+            ];
+            
+            (* Evaluate the sum *)
+            s = TimeConstrained[
+                Sum[expr, {n, 1, Infinity}], maxTime
+            ];
+            AppendTo[answers, s];,
+            {i, 1, Length[currentPartition]}
+        ]
         
-        numeratorRoots = Part[fractionList, numerator];
-        denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
-
-        (* Generate expression based on lists of roots *)
-        expr = Product[
-            n-numeratorRoots[[k]], 
-            {k, 1, numeratorDegree}
-        ] / Product[
-            n-denominatorRoots[[k]],
-            {k, 1, denominatorDegree}
-        ];
-        
-        (* Evaluate the sum *)
-        s = TimeConstrained[
-            Sum[expr, {n, 1, Infinity}], maxTime
-        ];
-        AppendTo[answers, s];,
-        {i, 1, Length[rawFile]}
-    ]
-
-    Export[Directory[] <> "/data/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> ".txt", answers]
+        Export[Directory[] <> "/random-answers/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
+    ]    
 ]
