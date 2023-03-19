@@ -30,10 +30,10 @@ Just a genereic README :))
 - [ ] Make pytorch `dataset` and `dataloaders`
 
 ### Model
-- [ ] Load or make model
-- [ ] Initialize loss function and optimizer
+- [X] Load or make model
+- [X] Initialize loss function and optimizer
 - [ ] Make model checkpoint saver
-- [ ] Train model
+- [X] Train model
 
 ### Inference
 - [ ] Create model inference function
