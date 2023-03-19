@@ -15,7 +15,9 @@ import time
 import os
 
 from model.equation_interpreter import Equation
-from model.vocabulary import vocabulary_answers, vocabulary_expressions, Vocabulary
+from model.vocabulary import Vocabulary
+from model.vocabulary import vocabulary_answers as target_vocabulary
+from model.vocabulary import vocabulary_expressions as source_vocabulary
 
 #########
 # SETUP #
@@ -52,7 +54,7 @@ print(f"Using device: {device}")
 ###########
 class SumDataset(Dataset):
     def __init__(self, inputs_file:str=config["inputs_file"], targets_file:str=config["targets_file"],
-                 input_vocab:Vocabulary=vocabulary_expressions, target_vocab:Vocabulary=vocabulary_answers) -> None:
+                 input_vocab:Vocabulary=source_vocabulary, target_vocab:Vocabulary=target_vocabulary) -> None:
         """Data initialization
         
         Args:
@@ -147,7 +149,7 @@ if args.verbose:
 # MODEL #
 #########
 class Encoder(nn.Module):
-    def __init__(self, num_embeddings:int, embedding_size:int, rnn_hidden_size:int, padding_idx=dataset.input_vocab.mask_index) -> None:
+    def __init__(self, num_embeddings:int, embedding_size:int, rnn_hidden_size:int, padding_idx=source_vocabulary.mask_index) -> None:
         """
         Args:
             num_embeddings: number of embeddings is the input (expressions) vocabulary size
@@ -221,7 +223,7 @@ def verbose_attention(encoder_state_vectors, query_vector):
 
 class Decoder(nn.Module):
     def __init__(self, num_embeddings, embedding_size, rnn_hidden_size, 
-                 bos_index, padding_idx=dataset.target_vocab.mask_index) -> None:
+                 bos_index, padding_idx=target_vocabulary.mask_index) -> None:
         """
         Args:
             num_embeddings: the number of words in the target vocabulary
@@ -338,7 +340,7 @@ class Decoder(nn.Module):
             output_vectors.append(score_for_y_t_index)
 
             # Break if inference and end predicted
-            if sample_probability == 1 and (((not list(y_t_index.shape)) and y_t_index.item() == dataset.target_vocab.end_seq_index) or (list(y_t_index.shape) and all(v == dataset.target_vocab.end_seq_index for v in y_t_index))):
+            if sample_probability == 1 and (((not list(y_t_index.shape)) and y_t_index.item() == target_vocabulary.end_seq_index) or (list(y_t_index.shape) and all(v == target_vocabulary.end_seq_index for v in y_t_index))):
                 break
             
         output_vectors = torch.stack(output_vectors).permute(1, 0, 2)
@@ -436,9 +438,9 @@ def compute_accuracy(y_pred, y_true, mask_index):
 
 # The model
 model = Model(
-    source_vocab_size=len(dataset.input_vocab), source_embedding_size=config["embedding_size"],
-    target_vocab_size=len(dataset.target_vocab), target_embedding_size=config["embedding_size"],
-    encoding_size=config["rnn_hidden_size"], target_bos_index=dataset.input_vocab.begin_seq_index
+    source_vocab_size=len(source_vocabulary), source_embedding_size=config["embedding_size"],
+    target_vocab_size=len(target_vocabulary), target_embedding_size=config["embedding_size"],
+    encoding_size=config["rnn_hidden_size"], target_bos_index=source_vocabulary.begin_seq_index
 )
 model = model.to(device)
 
@@ -453,11 +455,11 @@ scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer,
                                            patience=1)
 
 
-mask_index = dataset.target_vocab.mask_index
+mask_index = target_vocabulary.mask_index
 cross_entropy = nn.CrossEntropyLoss(ignore_index=mask_index)
 
 # Get loss of prediction
-def sequence_loss(y_pred, y_true, mask_index=dataset.target_vocab.mask_index):
+def sequence_loss(y_pred, y_true, mask_index=target_vocabulary.mask_index):
     y_pred, y_true = normalize_sizes(y_pred, y_true)
     return cross_entropy(y_pred, y_true)
 
@@ -534,7 +536,7 @@ def sentence_from_indices(indices, vocab, strict=True):
 # n^2 test
 test_expression = ["#", "/", "0", "0"]
 test_tensor = torch.tensor([
-    vocabulary_expressions.vectorize(test_expression) for _ in range(config["batch_size"])
+    source_vocabulary.vectorize(test_expression) for _ in range(config["batch_size"])
 ], dtype=torch.int32)
 test_pred = model(
     test_tensor,
@@ -544,7 +546,7 @@ test_pred = model(
 
 print(f"Test expression: {test_expression}")
 print(f"Predicted shape: {test_pred.shape}")
-print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), vocabulary_answers)}")
+print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)}")
 
 
 
