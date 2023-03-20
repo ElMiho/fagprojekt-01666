@@ -76,6 +76,7 @@ class SumDataset(Dataset):
             self.max_seq_length_target = max(self.max_seq_length_target, len(json.loads(linecache.getline(self.targets_file, index))))
     
     def __getitem__(self, index:int) -> dict:
+        # linecache.getline 1-indexes
         index += 1
 
         # Get corresponding input and target
@@ -455,8 +456,8 @@ scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer,
                                            patience=1)
 
 
-mask_index = target_vocabulary.mask_index
-cross_entropy = nn.CrossEntropyLoss(ignore_index=mask_index)
+# It is framed as a classification problem - predict the next word
+cross_entropy = nn.CrossEntropyLoss(ignore_index=target_vocabulary.mask_index)
 
 # Get loss of prediction
 def sequence_loss(y_pred, y_true, mask_index=target_vocabulary.mask_index):
@@ -468,15 +469,14 @@ def sequence_loss(y_pred, y_true, mask_index=target_vocabulary.mask_index):
 #################
 
 ## Note: tqdm just adds a progress bar to the training loop
-
 epoch_iterator = tqdm(range(config["num_epochs"]), desc=f"Running loss: ---, Running acc: ---")
 for epoch in epoch_iterator:
     train_state["epoch_index"] = epoch
 
     running_loss = 0
     running_acc = 0
-    # Makes sure dropout is used
     dataloader = generate_nmt_batches(dataset)
+    # Makes sure dropout is used
     model.train()
 
     for batch_index, batch_dict in dataloader:
@@ -491,7 +491,7 @@ for epoch in epoch_iterator:
         )
 
         # 3. compute the loss
-        loss = sequence_loss(y_pred, batch_dict["target_y"], mask_index)
+        loss = sequence_loss(y_pred, batch_dict["target_y"], target_vocabulary.mask_index)
 
         # 4. use loss to calculate gradient
         loss.backward()
@@ -501,7 +501,7 @@ for epoch in epoch_iterator:
         
         # Calculate the running loss and running accuracy
         running_loss += (loss.item() - running_loss) / (batch_index + 1)
-        acc_t = compute_accuracy(y_pred, batch_dict["target_y"], mask_index)
+        acc_t = compute_accuracy(y_pred, batch_dict["target_y"], target_vocabulary.mask_index)
         running_acc = (acc_t - running_acc) / (batch_index + 1)
 
     train_state["train_loss"].append(running_loss)
