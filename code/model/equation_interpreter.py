@@ -1,7 +1,8 @@
 import sympy as sp
 
 from typing import List
-from model.tokens import *
+from tokens import *
+from math import *
 
 #####################
 # TOKENIZE EQUATION #
@@ -223,6 +224,83 @@ class Equation:
                 
     def convertToPrefix(self):
         pass
+
+    def getFloatValue(self):
+        equation_copy = Equation(self.tokenized_equation, self.notation)
+        #ensure notation is postfix
+        if equation_copy.notation != "postfix":
+            equation_copy.convertToPostfix()
+        assert equation_copy.notation == "postfix"
+        
+        operand_stack = []
+        for token in equation_copy.tokenized_equation:
+            if token.t_type == token.t_type in SPECIAL_NUMBERS_TYPES:
+                token = self._assignValueToConstant(token)
+            if token.t_type == TT_INTEGER or token.t_type == TT_RATIONAL or token.t_type == TT_VARIABLE or token.t_type in SPECIAL_NUMBERS_TYPES:
+                if token.t_value == None or isinstance(token.t_value, str): #If a variable has no value assigned, float cannot be calculated
+                    return "cannot evaluate"
+                operand_stack.append(token)
+            elif token.t_type in UNI_OPERATOR_TYPES:     
+                operand = operand_stack.pop()
+                operand_stack.append(self._applyUniOperator(token, operand))
+            elif token.t_type in BIN_OPERATOR_TYPES:
+                operand_2 = operand_stack.pop()
+                operand_1 = operand_stack.pop()
+                operand_stack.append(self._applyBinOperator(token, operand_1, operand_2))
+            else:
+                print(f"Error, unknown token: [{token}] --- could not get float value")
+                return None
+        assert len(operand_stack) == 1
+        return operand_stack[0].t_value
+
+    def _assignValueToConstant(self, token):
+        if token.t_type in SPECIAL_NUMBERS_TYPES:
+            match token.t_type:
+                case "TT_PI":
+                    token.t_value = pi
+                case "TT_E":
+                    token.t_value = e
+                case "TT_ZERO":
+                    token.t_value = 0
+                case "TT_ONE":
+                    token.t_value = 1
+                case "TT_PHI":
+                    token.t_value = 1.6180339887498948482045
+                case "TT_EULERGAMMA":
+                    token.t_value = 0.577215664901532860606
+                case "TT_CATALAN":
+                    token.t_value = 0.9159655941772190150546
+                case _: #default
+                    token.t_value = None
+        return token
+
+    def _applyUniOperator(self, operator, operand):
+        output = f"{operator.t_type}({operand.t_value})"
+        return (Token(TT_RATIONAL, eval(output, {
+            'TT_SIN': sin,
+            'TT_COS': cos,
+            'TT_TAN': tan,
+            'TT_SQRT': sqrt,
+            'TT_LOG': log
+        })))
+    
+    def _applyBinOperator(self, operator, operand_1, operand_2):
+        operator_string = ""
+        match operator.t_type:
+            case "TT_PLUS":
+                operator_string = "+"
+            case "TT_MINUS":
+                operator_string = "-"
+            case "TT_MULTIPLY":
+                operator_string = "*"
+            case "TT_DIVIDE":
+                operator_string = "/"
+            case "TT_POWER":
+                operator_string = "**"
+            case _: #default
+                operator_string = ""
+        output = f"{operand_1.t_value}{operator_string}{operand_2.t_value}"
+        return Token(TT_RATIONAL, eval(output))
     
     def _operatorPrecedenceComparison(self, operator_1: Token, operator_2: Token):
         """Compares operators in input for higher precedence
@@ -265,11 +343,5 @@ class Equation:
         return cls(tokenized_equation, notation)
 
 
-# equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
-# print(equation.tokenized_equation)
+#equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
 
-# equation.convertToPostfix()
-# print("\n",equation.tokenized_equation)
-
-# equation.convertToInfix()
-# print("\n",equation.tokenized_equation)
