@@ -85,10 +85,10 @@ For[j = 1, j <= Length[target], j++,
             s = TimeConstrained[
                 Sum[expr, {n, 1, Infinity}], maxTime
             ];
-            AppendTo[answers, s];,
+            AppendTo[answers, {numeratorRoots, denominatorRoots, s}];,
             {i, 1, Length[currentPartition]}
         ]
         
-        Export[Directory[] <> "/random-answers/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
+        Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
 ]
