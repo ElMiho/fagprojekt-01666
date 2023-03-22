@@ -56,6 +56,7 @@ Just a genereic README :))
 - we want about 40m sums that can be evaluated in mathematica 
 - "#" repersent an poly of degree 0 in token space
 - "/" represent an the devision between polynomials
+- for the 1000-dataset, we have max_seq_length_target = 171
 
 ## Generating sums locally vs. HPC
 See `batch.sh` for running the script; on HPC we use `WolframKernel` instead of `wolframscript`
