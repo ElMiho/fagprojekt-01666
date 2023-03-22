@@ -312,5 +312,5 @@ def count_uniqe(A):
 
 
 if __name__ == "__main__":
-    A = token_input_space(-5,5, "fed")
+    A = token_input_space(-5,5, "dominator_only")
     print(A)
