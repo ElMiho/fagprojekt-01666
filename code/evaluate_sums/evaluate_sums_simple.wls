@@ -37,40 +37,41 @@ numeratorDenominator = target;
 numeratorDegree = numeratorDenominator[[1]];
 denominatorDegree = numeratorDenominator[[2]];
 
-Print["[*] Loading file"];
-rawFile = StringSplit[
+Print["[*] Loading files"];
+rawFileNumerator = StringSplit[
     Import[
-    Directory[] <> "/random_expressions/rand_expressions-" 
+    Directory[] <> "/random_expressions_roots/rand_roots_num_expressions-" 
         <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree]  <> ".txt"
     ],
     "\n"
 ];
 
-file := ToExpression /@ f /@ rawFile;
+rawFileDenominator = StringSplit[
+    Import[
+    Directory[] <> "/random_expressions_roots/rand_roots_den_expressions-" 
+        <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree]  <> ".txt"
+    ],
+    "\n"
+];
+
+fileNumerator := ToExpression /@ f /@ rawFileNumerator;
+fileDenominator := ToExpression /@ f /@ rawFileDenominator;
 
 Print["[*] Evaluating "]
 
 answers = {};
 k = 10;
-For[i = 1, i <= 3, i++,
+For[i = 1, i <= k, i++,
     Print[i];
-    data := file[[i]];
-    Print["wait 1"];
-    numerator := Part[data, Range[1, numeratorDegree]];
-    denominator := Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
-    Print["wait 2"];
-
-    numeratorRoots = Part[fractionList, numerator];
-    Print["wait 3"];
-    denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
-    Print["wait 4"];
+    rootsNumerator := fileNumerator[[i]];
+    rootsDenominator := fileDenominator[[i]]];
     
     (* Generate expression based on lists of roots *)
     expr = Product[
-        n - numeratorRoots[[p]], 
+        n - rootsNumerator[[p]], 
         {p, 1, numeratorDegree}
     ] / Product[
-        n - denominatorRoots[[p]],
+        n - rootsDenominator[[p]],
         {p, 1, denominatorDegree}
     ];
     Print[expr];
@@ -79,7 +80,7 @@ For[i = 1, i <= 3, i++,
     s = TimeConstrained[
         Sum[expr, {n, 1, Infinity}], maxTime
     ];
-    AppendTo[answers, {numeratorRoots, denominatorRoots, s}];
+    AppendTo[answers, {rootsNumerator, rootsDenominator, s}];
 ]
 
 Export[Directory[] <> "/random-answers-random/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> ".txt", answers];
