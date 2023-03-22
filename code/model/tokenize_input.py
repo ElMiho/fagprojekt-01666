@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sp
 
-def token_input_space(minimal_value: int, maximal_value: int, rational_values = 0):
+def token_input_space(minimal_value: int, maximal_value: int, output_type: str = "all"):
     '''
     Function:
        Input : 
@@ -9,14 +9,26 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
            maximal_value - higest value in the closed bounded interval: int 
        Output: 
            a vector of unique ralional values, with last and second last index being "/" and "#"  
-
-    Rational_values guide:
-    0 = a vector of unique ralional values, with last and second last index being "/" and "#"  
-    1 = a vector of unique int values
-    2 = a vector of unique ralional values
-    3 = a vector of unique ralional values, without posetive int numbers
     '''
+    guide = "Output options guide: \n\
+    (default) all = a vector of unique ralional values, with last and second last index being \"/\" and \"#\" \n\
+    all_int = a vector of unique int values \n\
+    numinator_only = a vector of unique ralional values\n\
+    dominator_only = of unique ralional values, without posetive int numbers\n"
 
+    
+    options = ["all", "all_int", "numinator_only", "dominator_only"]
+    
+    #eror handling        
+    try:
+        assert output_type in options
+    except AssertionError:
+        error_message = f"ERROR did not recognize output_type \"{output_type}\" \n \
+            options are {*options,}\n"
+        raise Exception(error_message + guide)
+        
+    
+    
     # number of int's int the interval
     total_numbers = abs(maximal_value - minimal_value) + 1
     
@@ -26,7 +38,7 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
     # begins adding new rational numbers starting from index 0
     row_index = 0
 
-    if rational_values != 1 :
+    if output_type != "all_int" :
         # loop to create all rational values
         for i in range(minimal_value, maximal_value + 1):
             for j in range(minimal_value, maximal_value + 1):
@@ -40,7 +52,7 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
                     row_index += 1
         
 
-    elif rational_values == 1 :
+    elif output_type == "all_int" :
         for i in range(minimal_value, maximal_value+1):
             A[row_index] = i
             row_index += 1
@@ -52,12 +64,12 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
     A = create_array_with_only_uniqe_values(A) 
                 
     
-    if rational_values == 1 or rational_values == 0:
+    if output_type == "all" or output_type == "all_int":
         # append the special tokens "/" for when divide of polys, "#" symbol for empty.
         A.append("/")
         A.append("#")
     
-    elif rational_values == 3:
+    elif output_type == 'dominator_only':
         for i in range(1, 6):
             A.remove(i)
         
@@ -300,5 +312,5 @@ def count_uniqe(A):
 
 
 if __name__ == "__main__":
-    A = token_input_space(-5,5, 1)
+    A = token_input_space(-5,5, "fed")
     print(A)
