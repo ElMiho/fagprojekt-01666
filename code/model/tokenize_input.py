@@ -38,20 +38,18 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
                     # sp.rational() reduces all the rational numbers
                     A[row_index] = sp.Rational(i, j)
                     row_index += 1
-    
-        # sorts the array uning mergesort            
-        merge_sort(A, 0, len(A)-1)
-    
-        # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
-        A = create_array_with_only_uniqe_values(A)
         
 
     elif rational_values == 1 :
         for i in range(minimal_value, maximal_value+1):
             A[row_index] = i
             row_index += 1
-        
-        
+     
+    # sorts the array uning mergesort            
+    merge_sort(A, 0, len(A)-1)
+    
+    # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
+    A = create_array_with_only_uniqe_values(A) 
                 
     
     if rational_values == 1 or rational_values == 0:
@@ -302,5 +300,5 @@ def count_uniqe(A):
 
 
 if __name__ == "__main__":
-    A = token_input_space(-5,5,False)
+    A = token_input_space(-5,5, 1)
     print(A)
