@@ -8,7 +8,13 @@ def token_input_space(minimal_value: int, maximal_value: int, rational_values = 
            minimal_value - lowest value in the closed bounded interval: int
            maximal_value - higest value in the closed bounded interval: int 
        Output: 
-           a vector of unique ralional values, with last and second last index being "/" and "#"          
+           a vector of unique ralional values, with last and second last index being "/" and "#"  
+
+    Rational_values guide:
+    0 = a vector of unique ralional values, with last and second last index being "/" and "#"  
+    1 = a vector of unique int values
+    2 = a vector of unique ralional values
+    3 = a vector of unique ralional values, without posetive int numbers
     '''
 
     # number of int's int the interval
