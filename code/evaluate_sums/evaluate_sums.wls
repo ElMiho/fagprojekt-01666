@@ -1,4 +1,4 @@
-(* LaunchKernels[10]; *)
+LaunchKernels[8];
 Needs["Combinatorica`"];
 
 (* Create list of roots *)
@@ -51,7 +51,7 @@ For[j = 1, j <= Length[target], j++,
     
     file := ToExpression /@ f /@ rawFile;
 
-    size := 200;
+    size := 500;
     offset := size;
     partitionFile := Partition[
         file, size, offset, {1, 1}, {} 
@@ -87,7 +87,7 @@ For[j = 1, j <= Length[target], j++,
             ];
             AppendTo[answers, {numeratorRoots, denominatorRoots, s}];,
             {i, 1, Length[currentPartition]}
-        ]
+        ];
         
         Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
