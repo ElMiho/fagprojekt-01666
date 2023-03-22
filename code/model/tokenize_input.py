@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sp
 
-def token_input_space(minimal_value: int, maximal_value: int):
+def token_input_space(minimal_value: int, maximal_value: int, rational_values = 0):
     '''
     Function:
        Input : 
@@ -20,27 +20,43 @@ def token_input_space(minimal_value: int, maximal_value: int):
     # begins adding new rational numbers starting from index 0
     row_index = 0
 
-    # loop to create all rational values
-    for i in range(minimal_value, maximal_value + 1):
-        for j in range(minimal_value, maximal_value + 1):
-            
-            # dont want to divide with 0
-            if (0 != j):
+    if rational_values != 1 :
+        # loop to create all rational values
+        for i in range(minimal_value, maximal_value + 1):
+            for j in range(minimal_value, maximal_value + 1):
                 
-                # saves the rational number
-                # sp.rational() reduces all the rational numbers
-                A[row_index] = sp.Rational(i, j)
-                row_index += 1
+                # dont want to divide with 0
+                if (0 != j):
+                    
+                    # saves the rational number
+                    # sp.rational() reduces all the rational numbers
+                    A[row_index] = sp.Rational(i, j)
+                    row_index += 1
+    
+        # sorts the array uning mergesort            
+        merge_sort(A, 0, len(A)-1)
+    
+        # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
+        A = create_array_with_only_uniqe_values(A)
+        
+
+    elif rational_values == 1 :
+        for i in range(minimal_value, maximal_value+1):
+            A[row_index] = i
+            row_index += 1
+        
+        
                 
-    # sorts the array uning mergesort            
-    merge_sort(A, 0, len(A)-1)
     
-    # creates a new array with only unique rational number form (minimal_val - 2) to maximal value
-    A = create_array_with_only_uniqe_values(A)
+    if rational_values == 1 or rational_values == 0:
+        # append the special tokens "/" for when divide of polys, "#" symbol for empty.
+        A.append("/")
+        A.append("#")
     
-    # append the special tokens "/" for when divide of polys, "#" symbol for empty.
-    A.append("/")
-    A.append("#")
+    elif rational_values == 3:
+        for i in range(1, 6):
+            A.remove(i)
+        
     
     # return the uniqe array
     return A
@@ -277,3 +293,8 @@ def count_uniqe(A):
         if (A[i] != A[i-1]):
             count += 1
     return count
+
+
+if __name__ == "__main__":
+    A = token_input_space(-5,5,False)
+    print(A)
