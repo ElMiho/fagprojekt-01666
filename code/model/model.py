@@ -64,6 +64,8 @@ class Encoder(nn.Module):
 def verbose_attention(encoder_state_vectors, query_vector):
     """A descriptive version of the neural attention mechanism 
     
+    Read for understanding attention: https://lilianweng.github.io/posts/2018-06-24-attention/
+
     Args:
         encoder_state_vectors (torch.Tensor): 3dim tensor from bi-GRU in encoder
             encoder_state_vectors is x_unpacked from the encoder outputs
@@ -73,7 +75,6 @@ def verbose_attention(encoder_state_vectors, query_vector):
         context_vector, vector_probabilities, vector_scores
     """
     # Get size of encoder states
-    # Read for understanding attention: https://lilianweng.github.io/posts/2018-06-24-attention/
     batch_size, num_vectors, vector_size = encoder_state_vectors.size()
     vector_scores = torch.sum(encoder_state_vectors * query_vector.view(batch_size, 1, vector_size), 
                               dim=2)
