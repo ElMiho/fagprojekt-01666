@@ -213,12 +213,8 @@ if args.verbose:
     print(f"Using model `{config['model_filename']}` with architecture:")
     print(model)
 
-# Optimizer and training scheduler
+# Optimizer
 optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"])
-scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer,
-                                           mode='min', factor=0.5,
-                                           patience=1)
-
 
 # It is framed as a classification problem - predict the next word
 cross_entropy = nn.CrossEntropyLoss(ignore_index=target_vocabulary.mask_index)
