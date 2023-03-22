@@ -141,6 +141,18 @@ dataset = SumDataset(
 )
 if args.verbose:
     print(f"Dataset `{dataset}` initialized!")
+    dataset_stats = {
+        "inputs_file": dataset.inputs_file,
+        "targets_file": dataset.targets_file,
+        "input_vocab": dataset.input_vocab,
+        "target_vocab": dataset.target_vocab,
+
+        # Get dataset stats
+        "dataset_size": len(dataset),
+        "max_seq_length_input": dataset.max_seq_length_input,
+        "max_seq_length_target": dataset.max_seq_length_target
+    }
+    print(f"Dataset stats: {dataset_stats}")
 
 
 # 
@@ -267,8 +279,9 @@ for epoch in epoch_iterator:
     train_state["train_loss"].append(running_loss)
     train_state["train_acc"].append(running_acc)
 
-    # Display running loss + save model
+    # Display running loss and accuracy
     epoch_iterator.set_description(f"Running loss: {round(running_loss, 4)}, Running acc: {round(running_acc, 4)}")
+    # Save model
     torch.save(model.state_dict(), train_state['model_filename'])
 
 

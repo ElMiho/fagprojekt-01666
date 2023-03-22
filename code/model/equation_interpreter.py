@@ -1,7 +1,7 @@
 import sympy as sp
 
 from typing import List
-from tokens import *
+from model.tokens import *
 from math import *
 
 #####################
