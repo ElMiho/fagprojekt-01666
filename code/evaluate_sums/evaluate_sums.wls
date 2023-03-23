@@ -4,7 +4,7 @@ Needs["Combinatorica`"];
 (* Create list of roots *)
 all = Range[-5,5];
 
-generateFractions[list_] = list[[1]] / list[[2]];
+generateFractions[list_] := list[[1]] / list[[2]];
 fractionTuples = CartesianProduct[all, all];
 
 (* Generation fraction list and clean up w.r.t. duplicates and division by 0 *)
@@ -22,9 +22,9 @@ fractionListNoPositiveIntegers = DeleteCases[
 (* Generate legal polynomials *)
 (* To ensure convergence we look at P(n)/Q(n) such that deg(P) <= deg(Q(n)) - 2 *)
 numeratorDegree = Range[0, 8]; 
-denominatorDegree := Range[2, 10];
-allPossiblePolynomialFractions := CartesianProduct[numeratorDegree, denominatorDegree];
-legalPolynomialFractions := DeleteCases[
+denominatorDegree = Range[2, 10];
+allPossiblePolynomialFractions = CartesianProduct[numeratorDegree, denominatorDegree];
+legalPolynomialFractions = DeleteCases[
     allPossiblePolynomialFractions, 
     list_ /; list[[1]] >= list[[2]] - 1
 ];
@@ -49,11 +49,11 @@ For[j = 1, j <= Length[target], j++,
         "\n"
     ];
     
-    file := ToExpression /@ f /@ rawFile;
+    file = ToExpression /@ f /@ rawFile;
 
-    size := 500;
-    offset := size;
-    partitionFile := Partition[
+    size = 500;
+    offset = size;
+    partitionFile = Partition[
         file, size, offset, {1, 1}, {} 
     ];
 
@@ -62,12 +62,12 @@ For[j = 1, j <= Length[target], j++,
         answers = {};
         SetSharedVariable[answers];
 
-        currentPartition := partitionFile[[k]];
+        currentPartition = partitionFile[[k]];
 
         ParallelDo[
-            data := currentPartition[[i]];
-            numerator := Part[data, Range[1, numeratorDegree]];
-            denominator := Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
+            data = currentPartition[[i]];
+            numerator = Part[data, Range[1, numeratorDegree]];
+            denominator = Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
             
             numeratorRoots = Part[fractionList, numerator];
             denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
@@ -88,6 +88,7 @@ For[j = 1, j <= Length[target], j++,
             AppendTo[answers, {numeratorRoots, denominatorRoots, s}];,
             {i, 1, Length[currentPartition]}
         ];
+        Print["Finished with " <> ToString[k]];
         
         Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    

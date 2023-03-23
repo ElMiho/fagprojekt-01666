@@ -21,14 +21,14 @@ fractionListNoPositiveIntegers = DeleteCases[
 (* Generate legal polynomials *)
 (* To ensure convergence we look at P(n)/Q(n) such that deg(P) <= deg(Q(n)) - 2 *)
 numeratorDegree = Range[0, 8]; 
-denominatorDegree := Range[2, 10];
-allPossiblePolynomialFractions := CartesianProduct[numeratorDegree, denominatorDegree];
-legalPolynomialFractions := DeleteCases[
+denominatorDegree = Range[2, 10];
+allPossiblePolynomialFractions = CartesianProduct[numeratorDegree, denominatorDegree];
+legalPolynomialFractions = DeleteCases[
     allPossiblePolynomialFractions, 
     list_ /; list[[1]] >= list[[2]] - 1
 ];
 
-maxTime := 0.1;
+maxTime = 0.1;
 
 f[l_] := StringSplit[l, ","];
 
@@ -49,13 +49,13 @@ rawFileNumerator = StringSplit[
 rawFileDenominator = StringSplit[
     Import[
     Directory[] <> "/random_expressions_roots/rand_roots_den_expressions-" 
-        <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree]  <> ".txt"
+        <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> ".txt"
     ],
     "\n"
 ];
 
-fileNumerator := ToExpression /@ f /@ rawFileNumerator;
-fileDenominator := ToExpression /@ f /@ rawFileDenominator;
+fileNumerator = ToExpression /@ f /@ rawFileNumerator;
+fileDenominator = ToExpression /@ f /@ rawFileDenominator;
 
 Print["[*] Evaluating "]
 
@@ -63,8 +63,8 @@ answers = {};
 k = 10;
 For[i = 1, i <= k, i++,
     Print[i];
-    rootsNumerator := fileNumerator[[i]];
-    rootsDenominator := fileDenominator[[i]]];
+    rootsNumerator = fileNumerator[[i]];
+    rootsDenominator = fileDenominator[[i]]];
     
     (* Generate expression based on lists of roots *)
     expr = Product[
