@@ -6,9 +6,18 @@ from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
 from model.tokenize_input import token_input_space, input_string_to_tokenize_expression
 
+import argparse
+import os
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("-input_file_answers", type=str, default="./data/answers-1000.txt")
+parser.add_argument("-input_file_expressions", type=str, default="./data/expressions-1000.txt")
+args = parser.parse_args()
+
 # Paths to data files
-input_file_answers = "./data/answers-1000.txt"
-input_file_expressions = "./data/expressions-1000.txt"
+input_file_answers = args.input_file_answers
+input_file_expressions = args.input_file_expressions
 
 # Prepend 'cleaned_' to output files
 cleaned_file_answers = "/".join(input_file_answers.split("/")[:-1]) + "/cleaned_" + input_file_answers.split("/")[-1]
