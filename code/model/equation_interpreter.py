@@ -21,6 +21,8 @@ SPECIAL_NUMBERS = {
     "0": Token(TT_ZERO),
     "1": Token(TT_ONE)
 }
+SPECIAL_NUMBERS_REV = {v.t_type: k for k, v in SPECIAL_NUMBERS.items()}
+
 SPECIAL_NUMBERS_TYPES = [value.t_type for value in SPECIAL_NUMBERS.values()]
 
 UNI_OPERATORS = {
@@ -30,6 +32,7 @@ UNI_OPERATORS = {
     "Tan": Token(TT_TAN),
     "Log": Token(TT_LOG),
 }
+UNI_OPERATORS_REV = {v.t_type: k for k, v in UNI_OPERATORS.items()}
 
 UNI_OPERATOR_TYPES = [value.t_type for value in UNI_OPERATORS.values()]
 
@@ -40,6 +43,8 @@ BIN_OPERATORS = {
     "/": Token(TT_DIVIDE),
     "^": Token(TT_POW)
 }
+BIN_OPERATORS_REV = {v.t_type: k for k, v in BIN_OPERATORS.items()}
+
 BIN_OPERATOR_TYPES = [value.t_type for value in BIN_OPERATORS.values()]
 
 OPERATOR_PRECEDENCE = {
@@ -225,6 +230,35 @@ class Equation:
     def convertToPrefix(self):
         pass
 
+    def getMathmetaicalNotation(self):
+        if self.notation == "postfix" or self.notation == "prefix":
+            self.convertToInfix()
+        assert self.notation == "infix"
+        res = ""
+        for token in self.tokenized_equation:
+            if token.t_type == TT_ZERO:
+                continue;
+            if token.t_type == TT_LEFT_PARENTHESIS:
+                res += "("
+            elif token.t_type == TT_RIGHT_PARENTHESIS:
+                res += ")"
+            elif token.t_type == TT_INTEGER or token.t_type == TT_RATIONAL or token.t_type == TT_VARIABLE:
+                if token.t_value == None:
+                    if token.t_type == TT_INTEGER:
+                        res += "Q"
+                    if token.t_type == TT_RATIONAL:
+                        res += "R"
+                    #NO IF CASE FOR TT_VARIABLE
+                if token.t_value != 0:
+                    res += str(token.t_value)
+            elif token.t_type in UNI_OPERATOR_TYPES:
+                res += UNI_OPERATORS_REV[token.t_type]
+            elif token.t_type in BIN_OPERATOR_TYPES:
+                res += BIN_OPERATORS_REV[token.t_type]
+            elif token.t_type in SPECIAL_NUMBERS_TYPES:
+                res += SPECIAL_NUMBERS_REV[token.t_type]
+        return res
+
     def getFloatValue(self):
         equation_copy = Equation(self.tokenized_equation, self.notation)
         #ensure notation is postfix
@@ -343,5 +377,6 @@ class Equation:
         return cls(tokenized_equation, notation)
 
 
-#equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+# equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+# print(equation.getMathmetaicalNotation())
 
