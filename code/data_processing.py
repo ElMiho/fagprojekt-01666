@@ -2,6 +2,7 @@
 import linecache
 import time
 
+from tqdm import tqdm
 from model.equation_interpreter import Equation
 from model.vocabulary import vocabulary_answers, vocabulary_expressions
 from model.tokenize_input import token_input_space, input_string_to_tokenize_expression
@@ -32,7 +33,7 @@ f_cleaned_expressions = open(cleaned_file_expressions, "w")
 
 start_time = time.time()
 n_cleaned = 0
-for line_number in range(1,dataset_size+1):
+for line_number in tqdm(range(1,dataset_size+1)):
     # Get corresponding equation and expression
     raw_equation = linecache.getline(input_file_answers, line_number)
     raw_expression = linecache.getline(input_file_expressions, line_number)
