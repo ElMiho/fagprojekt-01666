@@ -310,10 +310,10 @@ def sentence_from_indices(indices, vocab, strict=True):
 test_expression = ["#", "/", "0", "0"]
 test_tensor = torch.tensor([
     source_vocabulary.vectorize(test_expression) for _ in range(config["batch_size"])
-], dtype=torch.int32)
+], dtype=torch.int32).to(device)
 test_pred = model(
     test_tensor,
-    torch.LongTensor([len(test_tensor[0]) for _ in range(len(test_tensor))]),
+    torch.LongTensor([len(test_tensor[0]) for _ in range(len(test_tensor))]).to(device),
     target_sequence=None
 )
 
