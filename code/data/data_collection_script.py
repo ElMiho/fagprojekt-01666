@@ -24,12 +24,10 @@ if args.collection_dir and os.path.exists(args.collection_dir):
                 for index in range(1,dataset_size+1):
                     line = linecache.getline(file, index)
                     answer = line.split("}, ")[-1].split("}")[0] + "\n"
-                    expression = "}, ".join(line.split("}, ")[:-1]) + "}\n"
+                    expression = "}, ".join(line.split("}, ")[:-1]) + "}}\n"
                     f_outer_answers.write(answer)
                     f_outer_expressions.write(expression)
 
         # Close files
         f_outer_expressions.close()
     f_outer_answers.close()
-
-
