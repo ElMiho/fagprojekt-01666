@@ -235,11 +235,12 @@ class Equation:
             elif token.t_type == TT_INTEGER or token.t_type == TT_RATIONAL or token.t_type == TT_VARIABLE:
                 if token.t_value == None:
                     if token.t_type == TT_INTEGER:
-                        res += "Q"
+                        res += "Z"
                     if token.t_type == TT_RATIONAL:
                         res += "R"
-                    #NO IF CASE FOR TT_VARIABLE
-                if token.t_value != 0:
+                    if token.t_type == TT_VARIABLE:
+                        res += "Unknown Var" #probably should be changed
+                elif token.t_value != 0:
                     res += str(token.t_value)
             elif token.t_type in UNI_OPERATOR_TYPES:
                 res += UNI_OPERATORS_REV[token.t_type]
