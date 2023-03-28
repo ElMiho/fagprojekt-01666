@@ -1,4 +1,4 @@
-LaunchKernels[8];
+(* LaunchKernels[8]; *)
 Needs["Combinatorica`"];
 
 (* Create list of roots *)
@@ -35,38 +35,93 @@ f[l_] := StringSplit[l, ","];
 size = 500; (* how many sums in parallel at a given time *)
 
 (* Checking with existing files *)
-Print["Checking with existing files"];
+Print["[*] Checking with existing files"];
 stringToPartition[target_][x_] := StringTake[
     x, StringLength[target]+1;;StringLength[x]-4;;1
 ];
 
-(* start = {0, 1}; *)
 allFiles = FileNames["random-answers-partition/*"];
-m = 0;
-Print[Length[legalPolynomialFractions]];
-Print["starting loop"];
 (* note that this assumes there is 10^6 in each file *)
-For[i = 1; i <= Length[legalPolynomialFractions], i++,
+Print["length of legal poly frac: " <> 
+   ToString[Length[legalPolynomialFractions]]];
+Print["[*] Starting loop"];
+
+For[i = 1, i <= Length[legalPolynomialFractions], i++,
     current = legalPolynomialFractions[[i]];
-    currentString = "random-answers-partition/random-answers-" <> current[[1]] <> "-" <> current[[2]] <> "-partition-";
-    currentFiles = Select[
-        allFiles, StringContainsQ[#, currentString] &
+    currentString = 
+    "random-answers-partition/random-answers-" <> 
+    ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> 
+    "-partition-";
+    currentFiles = Select[allFiles, StringContainsQ[#, currentString] &];
+    partitionK = Max[
+        ToExpression /@ stringToPartition[currentString] /@ currentFiles
     ];
-    m = Max[
-        ToExpression /@ f[currentString] /@ currentFiles
+    start = If[partitionK < 2000, current];
+    If[partitionK < 2000, Break[]];
+];
+Print["start: " <> ToString[start]];
+Print["partitionK value: " <> ToString[partitionK]];
+Print["(so starting with " <> ToString[partitionK + 1] <> ")"];
+
+Print["[*] Evaluating remaining from existing files"];
+rawFile = StringSplit[
+    Import[
+    Directory[] <> "/random_expressions/rand_expressions-" 
+        <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]]  <> ".txt"
+    ],
+    "\n"
+];
+
+file = ToExpression /@ f /@ rawFile;
+offset = size;
+partitionFile = Partition[
+    file, size, offset, {1, 1}, {} 
+];
+
+For[k = partitionK + 1, k <= Length[partitionFile], k++,
+    Print["Partition: " <> ToString[k]];
+    answers = {};
+    SetSharedVariable[answers];
+
+    currentPartition = partitionFile[[k]];
+
+    ParallelDo[
+        data = currentPartition[[i]];
+        numerator = Part[data, Range[1, current[[1]]]];
+        denominator = Part[data, Range[1 + current[[1]], current[[1]] + current[[2]]]];
+        
+        numeratorRoots = Part[fractionList, numerator];
+        denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
+
+        (* Generate expression based on lists of roots *)
+        expr = Product[
+            n - numeratorRoots[[p]], 
+            {p, 1, current[[1]]}
+        ] / Product[
+            n - denominatorRoots[[p]],
+            {p, 1, current[[2]]}
+        ];
+        
+        (* Evaluate the sum *)
+        s = TimeConstrained[
+            Sum[expr, {n, 1, Infinity}], maxTime
+        ];
+        AppendTo[answers, {numeratorRoots, denominatorRoots, s}];,
+        {i, 1, Length[currentPartition]}
     ];
-    Print[m];
-    start = If[m < 2000, current];
-    If[m < 2000, Break[]];
-]
-Print[start];
-Print[m];
+
+    Print["Finished with " <> ToString[k]];
+        
+    Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> "-partition-" <> ToString[k] <> ".txt", answers]
+];
+
+Print["[*] Evaluate the rest"];
 
 (*
 (* Evaluate all the sums! *)
 test = {{0, 2}, {2, 7}};
 (* Random expressions *)
-target = test;
+target = legalPolynomialFractions;
 For[j = 1, j <= Length[target], j++,
     numeratorDenominator = target[[j]];
     numeratorDegree = numeratorDenominator[[1]];
@@ -122,5 +177,5 @@ For[j = 1, j <= Length[target], j++,
         
         Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
-]
+];
 *)
