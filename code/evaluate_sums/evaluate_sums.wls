@@ -32,7 +32,38 @@ legalPolynomialFractions = DeleteCases[
 maxTime = 0.1;
 
 f[l_] := StringSplit[l, ","];
+size = 500; (* how many sums in parallel at a given time *)
 
+(* Checking with existing files *)
+Print["Checking with existing files"];
+stringToPartition[target_][x_] := StringTake[
+    x, StringLength[target]+1;;StringLength[x]-4;;1
+];
+
+(* start = {0, 1}; *)
+allFiles = FileNames["random-answers-partition/*"];
+m = 0;
+Print[Length[legalPolynomialFractions]];
+Print["starting loop"];
+(* note that this assumes there is 10^6 in each file *)
+For[i = 1; i <= Length[legalPolynomialFractions], i++,
+    current = legalPolynomialFractions[[i]];
+    currentString = "random-answers-partition/random-answers-" <> current[[1]] <> "-" <> current[[2]] <> "-partition-";
+    currentFiles = Select[
+        allFiles, StringContainsQ[#, currentString] &
+    ];
+    m = Max[
+        ToExpression /@ f[currentString] /@ currentFiles
+    ];
+    Print[m];
+    start = If[m < 2000, current];
+    If[m < 2000, Break[]];
+]
+Print[start];
+Print[m];
+
+(*
+(* Evaluate all the sums! *)
 test = {{0, 2}, {2, 7}};
 (* Random expressions *)
 target = test;
@@ -51,7 +82,6 @@ For[j = 1, j <= Length[target], j++,
     
     file = ToExpression /@ f /@ rawFile;
 
-    size = 500;
     offset = size;
     partitionFile = Partition[
         file, size, offset, {1, 1}, {} 
@@ -93,3 +123,4 @@ For[j = 1, j <= Length[target], j++,
         Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
 ]
+*)
