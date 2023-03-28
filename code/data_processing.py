@@ -1,3 +1,12 @@
+'''
+data_processing:
+    Takes files txt type anwser and expression, for each line in expression
+    that can be transformed to a valid token vector gets. It transform that 
+    line in ansers and expressions and print the vector list to two seprate 
+    files in same directory with "cleaned_" preappend to anwser and expressions 
+    file names.    
+'''
+
 # Imports
 import linecache
 import time
@@ -31,9 +40,11 @@ dataset_size = sum(1 for _ in open(input_file_answers, 'rb'))
 f_cleaned_answers = open(cleaned_file_answers, "w")
 f_cleaned_expressions = open(cleaned_file_expressions, "w")
 
+
 start_time = time.time()
 n_cleaned = 0
 for line_number in tqdm(range(1,dataset_size+1)):
+    
     # Get corresponding equation and expression
     raw_equation = linecache.getline(input_file_answers, line_number)
     raw_expression = linecache.getline(input_file_expressions, line_number)

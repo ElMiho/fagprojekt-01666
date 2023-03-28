@@ -276,7 +276,7 @@ class Equation:
                 return None
         assert len(operand_stack) == 1
         return operand_stack[0].t_value
-
+    '''
     def _assignValueToConstant(self, token):
         if token.t_type in SPECIAL_NUMBERS_TYPES:
             match token.t_type:
@@ -297,7 +297,7 @@ class Equation:
                 case _: #default
                     token.t_value = None
         return token
-
+    '''
     def _applyUniOperator(self, operator, operand):
         output = f"{operator.t_type}({operand.t_value})"
         return (Token(TT_RATIONAL, eval(output, {
@@ -307,7 +307,7 @@ class Equation:
             'TT_SQRT': sqrt,
             'TT_LOG': log
         })))
-    
+    '''
     def _applyBinOperator(self, operator, operand_1, operand_2):
         operator_string = ""
         match operator.t_type:
@@ -325,7 +325,7 @@ class Equation:
                 operator_string = ""
         output = f"{operand_1.t_value}{operator_string}{operand_2.t_value}"
         return Token(TT_RATIONAL, eval(output))
-    
+    '''
     def _operatorPrecedenceComparison(self, operator_1: Token, operator_2: Token):
         """Compares operators in input for higher precedence
         
