@@ -114,24 +114,14 @@ class EquationLexer:
     
     def _makeInteger(self):
         res = ""
-        res2 = ""
 
         while self.current_char and self.current_char in DIGITS:
             res += self.current_char
             self.advance()
         
-        if self.current_char == "/":
-            self.advance()
-            while self.current_char in DIGITS:
-                res2 += self.current_char
-                self.advance()
-        
-        if res2:
-            return Token(TT_RATIONAL, res + "/" + res2)
-        else:
-            if res in SPECIAL_NUMBERS:
-                return SPECIAL_NUMBERS[res]
-            return Token(TT_INTEGER, res)
+        if res in SPECIAL_NUMBERS:
+            return SPECIAL_NUMBERS[res]
+        return Token(TT_INTEGER, res)
     
     def _makeFunc(self):
         res = ""
@@ -237,7 +227,7 @@ class Equation:
         res = ""
         for token in self.tokenized_equation:
             if token.t_type == TT_ZERO:
-                continue;
+                continue
             if token.t_type == TT_LEFT_PARENTHESIS:
                 res += "("
             elif token.t_type == TT_RIGHT_PARENTHESIS:
