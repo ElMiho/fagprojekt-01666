@@ -116,13 +116,14 @@ For[k = partitionK + 1, k <= Length[partitionFile], k++,
 ];
 
 Print["[*] Evaluate the rest"];
-
-(*
-(* Evaluate all the sums! *)
 test = {{0, 2}, {2, 7}};
 (* Random expressions *)
+startingPoint = Position[legalPolynomialFractions, start][[1]][[1]];
+Print[startingPoint];
+Print["(so starting with " <> ToString[startingPoint + 1] <> ")"];
+
 target = legalPolynomialFractions;
-For[j = 1, j <= Length[target], j++,
+For[j = startingPoint + 1, j <= Length[target], j++,
     numeratorDenominator = target[[j]];
     numeratorDegree = numeratorDenominator[[1]];
     denominatorDegree = numeratorDenominator[[2]];
@@ -178,4 +179,3 @@ For[j = 1, j <= Length[target], j++,
         Export[Directory[] <> "/random-answers-partition/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
 ];
-*)
