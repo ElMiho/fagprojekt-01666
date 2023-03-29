@@ -17,7 +17,6 @@ from model.vocabulary import vocabulary_answers, vocabulary_expressions
 from model.tokenize_input import token_input_space, input_string_to_tokenize_expression
 
 import argparse
-import os
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()

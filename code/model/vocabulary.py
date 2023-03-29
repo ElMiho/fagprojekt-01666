@@ -5,8 +5,8 @@ class Vocabulary:
     def __init__(self, token2index, index2token, unk_token="<UNK>",
                  mask_token="<MASK>", begin_seq_token="<BEGIN>",
                  end_seq_token="<END>") -> None:
-        self.token2index = {}
-        self.index2token = {}
+        self.token2index = token2index
+        self.index2token = index2token
 
         # special tokens
         self.mask_token = mask_token
@@ -18,10 +18,6 @@ class Vocabulary:
         self.begin_seq_index = self.addToken(begin_seq_token)
         self.end_seq_index = self.addToken(end_seq_token)
         self.unk_index = self.addToken(unk_token)
-
-        # converter mappings
-        self.token2index.update(token2index)
-        self.index2token.update(index2token)
 
     def addToken(self, token: str) -> int:
         """
