@@ -111,7 +111,7 @@ class Decoder(nn.Module):
         # Linear classifier map on the context vector combined with the current hidden vector
         self.classifier = nn.Linear(2 * rnn_hidden_size, num_embeddings)
         # Dropout layer for regulariation
-        self.dropout = nn.Dropout(0.3)
+        self.dropout = nn.Dropout(0.3, inplace=True)
         # Maximum target sequence length
         self.max_seq_length = max_seq_length
         # The begin of sentence index for the target sequence
