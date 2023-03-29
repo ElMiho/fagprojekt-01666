@@ -1,8 +1,13 @@
 (* LaunchKernels[8]; *)
 Needs["Combinatorica`"];
 
+argv = Rest @ $ScriptCommandLine;
+argStart = ToExpression[argv[[1]]];
+argEnd = ToExpression[argv[[2]]];
+
 expressionFolder = "random_expressions";
 outputFolder = "random-answers-partition";
+maxTime = 0.1;
 
 (* Create list of roots *)
 all = Range[-5,5];
@@ -32,7 +37,11 @@ legalPolynomialFractions = DeleteCases[
     list_ /; list[[1]] >= list[[2]] - 1
 ];
 
-maxTime = 0.1;
+Print["[*] Restricting legal poly frac using argStart and argEnd"];
+legalPolynomialFractions = Part[
+    legalPolynomialFractions, argStart;;argEnd;;1
+];
+Print[legalPolynomialFractions];
 
 f[l_] := StringSplit[l, ","];
 size = 500; (* how many sums in parallel at a given time *)
