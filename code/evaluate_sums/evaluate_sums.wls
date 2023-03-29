@@ -7,6 +7,8 @@ argEnd = ToExpression[argv[[2]]];
 
 expressionFolder = "random_expressions";
 outputFolder = "random-answers-partition";
+fileNameOutput = "random-answers-";
+fileNameExpression = "rand_expressions-";
 maxTime = 0.1;
 
 (* Create list of roots *)
@@ -60,10 +62,7 @@ Print["[*] Starting loop"];
 
 For[i = 1, i <= Length[legalPolynomialFractions], i++,
     current = legalPolynomialFractions[[i]];
-    currentString = 
-    "random-answers-partition/random-answers-" <> 
-    ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> 
-    "-partition-";
+    currentString = outputFolder <> "/" <> fileNameOutput <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> "-partition-";
     currentFiles = Select[allFiles, StringContainsQ[#, currentString] &];
     partitionK = Max[
         ToExpression /@ stringToPartition[currentString] /@ currentFiles
@@ -78,7 +77,7 @@ Print["(so starting with " <> ToString[partitionK + 1] <> ")"];
 Print["[*] Evaluating remaining from existing files"];
 rawFile = StringSplit[
     Import[
-    Directory[] <> "/" <> expressionFolder <> "/rand_expressions-" 
+    Directory[] <> "/" <> expressionFolder <> "/" <> fileNameExpression 
         <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]]  <> ".txt"
     ],
     "\n"
@@ -124,7 +123,7 @@ For[k = partitionK + 1, k <= Length[partitionFile], k++,
 
     Print["Finished with " <> ToString[k]];
         
-    Export[Directory[] <> "/" <> outputFolder <> "/random-answers-" <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> "-partition-" <> ToString[k] <> ".txt", answers]
+    Export[Directory[] <> "/" <> outputFolder <> "/" <> fileNameOutput <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]] <> "-partition-" <> ToString[k] <> ".txt", answers]
 ];
 
 Print["[*] Evaluate the rest"];
@@ -136,13 +135,14 @@ Print["(so starting with index " <> ToString[startingPoint + 1] <> " in legal po
 
 target = legalPolynomialFractions;
 For[j = startingPoint + 1, j <= Length[target], j++,
+    Print["index: " <> ToString[j]];
     numeratorDenominator = target[[j]];
     numeratorDegree = numeratorDenominator[[1]];
     denominatorDegree = numeratorDenominator[[2]];
 
     rawFile = StringSplit[
         Import[
-        Directory[] <> "/" <> expressionFolder <> "/rand_expressions-" 
+        Directory[] <> "/" <> expressionFolder <> "/" <> fileNameExpression 
             <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree]  <> ".txt"
         ],
         "\n"
@@ -188,6 +188,6 @@ For[j = startingPoint + 1, j <= Length[target], j++,
         ];
         Print["Finished with " <> ToString[k]];
         
-        Export[Directory[] <> "/" <> outputFolder <> "/random-answers-" <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
+        Export[Directory[] <> "/" <> outputFolder <> "/" <> fileNameOutput <> ToString[numeratorDegree] <> "-" <> ToString[denominatorDegree] <> "-partition-" <> ToString[k] <> ".txt", answers]
     ]    
 ];
