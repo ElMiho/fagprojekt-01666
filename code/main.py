@@ -216,7 +216,7 @@ def compute_accuracy(y_pred, y_true, mask_index):
 model = Model(
     source_vocab_size=len(source_vocabulary), source_embedding_size=config["embedding_size"],
     target_vocab_size=len(target_vocabulary), target_embedding_size=config["embedding_size"],
-    encoding_size=config["rnn_hidden_size"], target_bos_index=source_vocabulary.begin_seq_index,
+    encoding_size=config["rnn_hidden_size"], target_bos_index=target_vocabulary.begin_seq_index,
     max_seq_length=dataset.max_seq_length_target
 )
 model = model.to(device)
@@ -320,17 +320,6 @@ test_pred = model(
 print(f"Test expression: {test_expression}")
 print(f"Predicted shape: {test_pred.shape}")
 print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)}")
-
-
-
-
-
-
-
-
-
-
-
 
 
 

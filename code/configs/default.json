@@ -4,8 +4,8 @@
 "model_save_dir": "./model_checkpoints",
 "model_filename": "model.pth",
 
-"embedding_size": 256,
-"rnn_hidden_size": 256,
+"embedding_size": 64,
+"rnn_hidden_size": 128,
 
 "learning_rate": 5e-4,
 "batch_size": 8,
