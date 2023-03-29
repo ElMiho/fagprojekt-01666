@@ -120,7 +120,7 @@ test = {{0, 2}, {2, 7}};
 (* Random expressions *)
 startingPoint = Position[legalPolynomialFractions, start][[1]][[1]];
 Print[startingPoint];
-Print["(so starting with " <> ToString[startingPoint + 1] <> ")"];
+Print["(so starting with index " <> ToString[startingPoint + 1] <> "in legal poly frac)"];
 
 target = legalPolynomialFractions;
 For[j = startingPoint + 1, j <= Length[target], j++,
