@@ -42,8 +42,8 @@ Just a genereic README :))
 - [ ] Make statistics of output results
 
 ### Extra Model validation tests
-- [ ] different orders of the same roots in both denominator and numerator evaluates to the same sum.
-- [ ] non reduced fractions must give the same sum as the reduced fraction.
+- [ ] different orders of the same roots in both denominator and numerator evaluates to the same sum. -> Jonas
+- [ ] non reduced fractions must give the same sum as the reduced fraction. -> Jonas
 
 ### Extra
 - [X] Write down all our statutes in readme --> Jonas
