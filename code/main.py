@@ -212,6 +212,8 @@ def compute_accuracy(y_pred, y_true, mask_index):
 # INITIALIZE MODEL #
 ####################
 
+print(f"{target_vocabulary}\n{target_vocabulary.token2index}\n{target_vocabulary.begin_seq_index}")
+
 # The model
 model = Model(
     source_vocab_size=len(source_vocabulary), source_embedding_size=config["embedding_size"],
