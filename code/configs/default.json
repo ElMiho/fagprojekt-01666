@@ -5,7 +5,7 @@
 "model_filename": "model.pth",
 
 "embedding_size": 64,
-"rnn_hidden_size": 128,
+"rnn_hidden_size": 256,
 
 "learning_rate": 5e-4,
 "batch_size": 8,
