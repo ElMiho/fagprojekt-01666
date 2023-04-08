@@ -1,5 +1,13 @@
-import numpy as np
+
 import sympy as sp
+
+def all_poly(max_order: int):
+    l = []
+    max_order = max_order + 1
+    for i in range(max_order):
+        for j in range(i+2, max_order):
+            l = l + [[i, j]]
+    return l
 
 def token_input_space(minimal_value: int, maximal_value: int, output_type: str = "all"):
     '''
