@@ -1,3 +1,4 @@
 *.txt
 *.zip
 code/.ipynb_checkpoints/inference-checkpoint.ipynb
+code/models/*

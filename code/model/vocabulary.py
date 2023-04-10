@@ -4,7 +4,7 @@ from model.tokens import TOKEN_TYPE_ANSWERS, TOKEN_TYPE_EXPRESSIONS
 class Vocabulary:
     def __init__(self, token2index, index2token, unk_token="<UNK>",
                  mask_token="<MASK>", begin_seq_token="<BEGIN>",
-                 end_seq_token="<END>") -> None:
+                 end_seq_token="<END>", separator_token="[SEP]") -> None:
         self.token2index = token2index
         self.index2token = index2token
 
@@ -18,6 +18,7 @@ class Vocabulary:
         self.begin_seq_index = self.addToken(begin_seq_token)
         self.end_seq_index = self.addToken(end_seq_token)
         self.unk_index = self.addToken(unk_token)
+        self.separator_index = self.addToken(separator_token)
 
     def addToken(self, token: str) -> int:
         """
