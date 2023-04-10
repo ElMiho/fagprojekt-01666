@@ -13,7 +13,7 @@ def file_content(a, b):
 
 module load mathematica/12.2.0
 wolframscript -config WOLFRAMSCRIPT_KERNELPATH="/appl/mathematica/12.2.0/Executables/WolframKernel"
-wolframscript --file evaluate_sums_random.wls {a} {b}
+wolframscript --file evaluate_sums.wls {a} {b}
     """
     return content
 
