@@ -45,9 +45,9 @@ sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 base_den = 34
 base_num = 39
 #num_categories = sample_parameters.shape[0]   commented while testing
-num_categories = 10  #For testing
+num_categories = 45  #For testing
 for i in range(num_categories):
-    i = 32
+    # i = 32
     deg_num = int(sample_parameters[i,0])     
     deg_den = int(sample_parameters[i,1])      
     sample_size = int(sample_parameters[i,2])  
