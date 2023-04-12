@@ -11,10 +11,10 @@ sample_size = 10  #Sample space
 
 #Poisson-distributed length
 num_terms_pois = 1+np.random.poisson(lam=mean_terms,size=sample_size) #Add one to ensure length>0
-
 sympy_expr_pois = generate_expression(num_terms_pois,mean_complexity,mean_arg_len,sample_size)
 
 sympy_diff_expr_pois = []
+
 mathematica_expr_pois = []
 
 x = sp.symbols('x')
