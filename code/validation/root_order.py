@@ -5,9 +5,12 @@ and numerator evaluates to the same sum.
 
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
+from main import test_an_expression
+
 
 import random
 import itertools 
+import torch
 
 
 
@@ -56,10 +59,8 @@ def list_of_test_expressions_with_same_roots():
 
 
     
-    
-    
-   
-    
+A = test_an_expression(list_of_test_expressions_with_same_roots()[0])
+
 
 
 

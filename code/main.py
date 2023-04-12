@@ -324,4 +324,21 @@ print(f"Predicted shape: {test_pred.shape}")
 print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)}")
 
 
+def test_an_expression(test_expression: list):
+    
+    test_tensor = torch.tensor([
+        source_vocabulary.vectorize(test_expression) for _ in range(config["batch_size"])
+    ], dtype=torch.int32).to(device)
+    
+    test_pred = model(
+        test_tensor,
+        torch.LongTensor([len(test_tensor[0]) for _ in range(len(test_tensor))]).to(device),
+        target_sequence=None
+    )
+    
+    return sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)
+    
+
+    
+
 
