@@ -17,7 +17,7 @@
 import torch
 
 # For saving and publishing models and datasets to the huggingface hub
-from huggingface_hub import notebook_login, create_repo
+from huggingface_hub import notebook_login, create_repo, login
 
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset, DownloadConfig, IterableDataset
@@ -31,7 +31,7 @@ import json
 # In[2]:
 
 
-notebook_login()
+login()
 
 
 # In[3]:
