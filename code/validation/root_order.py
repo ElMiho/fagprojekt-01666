@@ -4,8 +4,10 @@ and numerator evaluates to the same sum.
 '''
 
 from validation.validation_medthods import random_list_of_nuerator_and_denominator
+from validation.validation_medthods import compare_a_list_of_equations_token
 
-
+#henter alt fra main som igonre print
+from main import test_an_expression
 
 import itertools 
 
@@ -30,7 +32,9 @@ def list_of_test_expressions_with_same_roots():
 
 
 
-#A = list_of_test_expressions_with_same_roots()
-A1 = random_list_of_nuerator_and_denominator(True)
-A2 = random_list_of_nuerator_and_denominator(False)
-        
+A = list_of_test_expressions_with_same_roots()
+
+
+  
+a = compare_a_list_of_equations_token(["TT_int", "TT_int","TT_notINT"])
+      

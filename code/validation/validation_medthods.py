@@ -5,12 +5,33 @@ Use this file for methods/functions that can be used in multiple validation test
 
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
-from main import test_an_expression
+
 
 import random
-import torch
 
+def get_token_expressions(test_expression: list):
+    # skal jeg lave
+    return None
 
+def max_int_expressions(number: int):
+    # skal jeg lave
+    return None
+    
+def compare_a_list_of_equations_token(equations: list):
+    n = len(equations)
+    count = 0
+    total = 0
+    
+    for i in range(n-1):
+        eq = equations[i]
+        
+        for j in range(i + 1, n):
+            total += 1
+            if eq == equations[j]:
+                count += 1
+                
+    
+    return count/total
 
 def random_list_of_nuerator_and_denominator(concatenate: bool = True):
     '''
