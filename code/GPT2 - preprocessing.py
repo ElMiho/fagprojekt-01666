@@ -22,7 +22,7 @@ from huggingface_hub import notebook_login, create_repo, login
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset, DownloadConfig, IterableDataset
 
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 import linecache
 import time
 import json
