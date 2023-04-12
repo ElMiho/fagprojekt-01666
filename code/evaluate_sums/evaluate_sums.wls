@@ -66,8 +66,23 @@ For[i = 1, i <= Length[legalPolynomialFractions], i++,
     partitionK = Max[
         ToExpression /@ stringToPartition[currentString] /@ currentFiles
     ];
-    start = If[partitionK < 2000, current];
-    If[partitionK < 2000, Break[]];
+
+    (* In case of unique sampling there is not 2000 partions (2000 * 500 = 10^6) *)
+    rawFile = StringSplit[
+        Import[
+        Directory[] <> "/" <> expressionFolder <> "/" <> fileNameExpression 
+            <> ToString[current[[1]]] <> "-" <> ToString[current[[2]]]  <> ".txt"
+        ],
+        "\n"
+    ];
+
+    file = ToExpression /@ f /@ rawFile;
+    maxNumberOfPartitions = Ceiling[
+        Length[file] / size
+    ];
+
+    start = If[partitionK < maxNumberOfPartitions, current];
+    If[partitionK < maxNumberOfPartitions, Break[]];
 ];
 Print["start: " <> ToString[start]];
 Print["partitionK value: " <> ToString[partitionK]];
