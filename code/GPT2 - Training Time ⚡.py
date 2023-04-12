@@ -55,7 +55,7 @@ repo_name = f"{model_name}_cleaned_gpt2_data"
 
 
 # notebook_login()
-# login()
+login()
 
 
 # # Setup
@@ -86,7 +86,8 @@ config = {
     "seed": 628,
     "save_checkpoint_steps": 50_000,
     "save_dir": "./models/JustSumAI",
-    "model_name": model_name
+    "model_name": model_name,
+    "num_epochs": 100
 }
 args = Namespace(**config)
 
@@ -320,28 +321,29 @@ model, optimizer, train_dataloader, eval_dataloader = accelerator.prepare(
 # Train model
 model.train()
 completed_steps = 0
-for step, batch in tqdm(enumerate(train_dataloader, start=1)):
-    loss = model(batch["data"], labels=batch["labels"]).loss
-    loss /= args.gradient_accumulation_steps
-    accelerator.backward(loss)
-    if step % args.gradient_accumulation_steps == 0:
-        
-        optimizer.step()
-        lr_scheduler.step()
-        optimizer.zero_grad()
-        completed_steps += 1
-        
-    if step % args.save_checkpoint_steps == 0:
-        eval_loss, perplexity = evaluate()
-        accelerator.wait_for_everyone()
-        if accelerator.is_main_process:
-            model.save_pretrained(f"models/{model_name}", 
-                      push_to_hub=True, 
-                      organization="Dragonoverlord3000")
-            
-        model.train()
-        if completed_steps >= args.max_train_steps:
-            break
+for epoch in tqdm(range(args.num_epochs)):
+    for step, batch in tqdm(enumerate(train_dataloader, start=1)):
+        loss = model(batch["data"], labels=batch["labels"]).loss
+        loss /= args.gradient_accumulation_steps
+        accelerator.backward(loss)
+        if step % args.gradient_accumulation_steps == 0:
+
+            optimizer.step()
+            lr_scheduler.step()
+            optimizer.zero_grad()
+            completed_steps += 1
+
+        if step % args.save_checkpoint_steps == 0:
+            eval_loss, perplexity = evaluate()
+            accelerator.wait_for_everyone()
+            if accelerator.is_main_process:
+                model.save_pretrained(f"models/{model_name}", 
+                          push_to_hub=True, 
+                          organization="Dragonoverlord3000")
+
+            model.train()
+            if completed_steps >= args.max_train_steps:
+                break
 
 
 # In[30]:
