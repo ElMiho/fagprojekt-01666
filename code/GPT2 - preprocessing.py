@@ -19,7 +19,7 @@ import torch
 # For saving and publishing models and datasets to the huggingface hub
 from huggingface_hub import notebook_login, create_repo, login
 
-from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, GPT2LMHeadModel
 from datasets import load_dataset, DownloadConfig, IterableDataset
 
 from tqdm import tqdm
@@ -203,8 +203,8 @@ config = AutoConfig.from_pretrained("gpt2-xl", vocab_size=len(vocabulary),
                                     bos_token_id=vocabulary.begin_seq_index,
                                     eos_token_id=vocabulary.end_seq_index,
                                     max_length=max_length)
-model = AutoModelForCausalLM.from_config(config)
-model
+model = GPT2LMHeadModel(config)
+print(model)
 
 
 # In[17]:

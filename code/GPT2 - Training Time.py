@@ -43,7 +43,7 @@ from model.tokens import Token
 # Create a combined vocabulary
 vocabulary = Vocabulary.construct_from_list(TOKEN_TYPE_EXPRESSIONS + TOKEN_TYPE_ANSWERS)
 vectorized_sample = vocabulary.vectorize(["#", "/", "0", "-1", "[SEP]", "TT_INTEGER"])
-vectorized_sample, [vocabulary.getToken(idx) for idx in vectorized_sample]
+print(vectorized_sample, [vocabulary.getToken(idx) for idx in vectorized_sample])
 
 # Global variables
 model_name = "JustSumAI"
@@ -55,7 +55,7 @@ repo_name = f"{model_name}_cleaned_gpt2_data"
 
 
 # notebook_login()
-login()
+# login()
 
 
 # # Setup
@@ -87,7 +87,7 @@ config = {
     "save_checkpoint_steps": 50_000,
     "save_dir": "./models/JustSumAI",
     "model_name": model_name,
-    "num_epochs": 100
+    "num_epochs": 1000
 }
 args = Namespace(**config)
 
@@ -99,14 +99,14 @@ args = Namespace(**config)
 
 
 BATCH_SIZE = args.train_batch_size
-BATCH_SIZE
+print(BATCH_SIZE)
 
 
 # In[8]:
 
 
-dataset = load_dataset(f"Dragonoverlord3000/JustSumAI_cleaned_gpt2_data", streaming=True)
-dataset
+dataset = load_dataset(f"Dragonoverlord3000/JustSumAI_cleaned_gpt2_data", streaming=True, cache_dir="/work3/s214734/.cache/")
+print(dataset)
 
 
 # In[9]:
@@ -204,7 +204,7 @@ print(test, test["data"][0], BATCH_SIZE)
 # In[16]:
 
 
-model = AutoModelForCausalLM.from_pretrained(f"Dragonoverlord3000/{model_name}")
+model = AutoModelForCausalLM.from_pretrained(f"Dragonoverlord3000/{model_name}", cache_dir="/work3/s214734/.cache/")
 print(model)
 
 
