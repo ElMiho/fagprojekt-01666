@@ -199,7 +199,7 @@ json.loads(dataset["train"][0]["text"])
 # In[16]:
 
 
-config = AutoConfig.from_pretrained("gpt2-xl", vocab_size=len(vocabulary), 
+config = AutoConfig.from_pretrained("gpt2", vocab_size=len(vocabulary), 
                                     bos_token_id=vocabulary.begin_seq_index,
                                     eos_token_id=vocabulary.end_seq_index,
                                     max_length=max_length)
