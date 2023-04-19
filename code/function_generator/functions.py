@@ -62,6 +62,20 @@ def add_parenthesis(expr):
     expr = ''.join(expr)
     return expr
 
+def makeConstantsUnique(expr):
+    # Function makes all constants in expression unique
+        # Input: 
+            # expr -> str: expression with parenthesis as string
+        # Output: 
+            # expr -> str: expression with unique constants
+    idx = expr.find('C')
+    i = 0
+    while(idx!=-1):
+        expr = expr[:idx] + f'K{i}' + expr[idx+1:]
+        idx = expr.find('C')
+        i+=1
+    return expr
+
 def add_argument(expr,mean,var_old,var_new):
     # Function adds argument to each unary function in expression
         # Input: 
