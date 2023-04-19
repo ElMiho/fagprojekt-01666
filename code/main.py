@@ -21,6 +21,8 @@ from model.vocabulary import vocabulary_expressions as source_vocabulary
 
 from model.model import Model
 
+from model.tokens import Token
+
 #########
 # SETUP #
 #########
@@ -309,7 +311,7 @@ def sentence_from_indices(indices, vocab, strict=True):
     return " ".join(out)
 
 # n^2 test
-test_expression = ["#", "/", "0", "0"]
+test_expression = ["#", "/", "1/2", "1/5"]
 test_tensor = torch.tensor([
     source_vocabulary.vectorize(test_expression) for _ in range(config["batch_size"])
 ], dtype=torch.int32).to(device)
@@ -324,7 +326,7 @@ print(f"Predicted shape: {test_pred.shape}")
 print(f"Predicted value: {sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)}")
 
 
-def test_an_expression(test_expression: list):
+def test_an_expression(test_expression: list, string_or_equation: bool = True):
     
     test_tensor = torch.tensor([
         source_vocabulary.vectorize(test_expression) for _ in range(config["batch_size"])
@@ -336,8 +338,11 @@ def test_an_expression(test_expression: list):
         target_sequence=None
     )
     
-    return sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)
+    if (string_or_equation):
+        token_output = [Token(token) for token in sentence_from_indices(to_indices(test_pred[0]), target_vocabulary).split(" ")]
+        return Equation(token_output ,"postfix")
     
+    return sentence_from_indices(to_indices(test_pred[0]), target_vocabulary)
 
     
 
