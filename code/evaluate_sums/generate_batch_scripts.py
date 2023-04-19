@@ -3,7 +3,7 @@ import os
 def file_content(a, b):
     content = f"""#!/bin/sh
 #BSUB -q hpc
-#BSUB -J random_partition
+#BSUB -J random_partition_{a}-{b}
 #BSUB -R "span[hosts=1]"
 #BSUB -R "rusage[mem=10GB]"
 #BSUB -n 8
