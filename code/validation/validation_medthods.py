@@ -5,17 +5,29 @@ Use this file for methods/functions that can be used in multiple validation test
 
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
+from model.equation_interpreter import Equation
 
+from main import test_an_expression
 
 import random
 
-def get_token_expressions(test_expression: list):
-    # skal jeg lave
-    return None
 
-def max_int_expressions(number: int):
-    # skal jeg lave
-    return None
+
+
+def get_token_expressions(test_expression: list):
+    return [test_an_expression(i) for i in test_expression]
+
+def sup_number_of_expressions(max_ex: int, test_expression: list):
+    length = len(test_expression)
+    print(length)
+    if max_ex < length:
+        t_e = []
+        steps = length // max_ex
+        for i in range(0, steps-1):
+            print(i)
+            t_e.append(test_expression[i*steps])
+        return t_e
+    return test_expression
     
 def compare_a_list_of_equations_token(equations: list):
     n = len(equations)

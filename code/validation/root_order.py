@@ -5,16 +5,20 @@ and numerator evaluates to the same sum.
 
 from validation.validation_medthods import random_list_of_nuerator_and_denominator
 from validation.validation_medthods import compare_a_list_of_equations_token
+from validation.validation_medthods import get_token_expressions
+from validation.validation_medthods import sup_number_of_expressions
 
-#henter alt fra main som igonre print
-from main import test_an_expression
+from model.equation_interpreter import Equation
 
 import itertools 
 
 
-
+#%%
 
 def list_of_test_expressions_with_same_roots():
+    # tilføj et max så man max kan få input expressions
+    
+    
     # greate all options
     num_roots, den_roots = random_list_of_nuerator_and_denominator(False)
     
@@ -31,10 +35,17 @@ def list_of_test_expressions_with_same_roots():
     return test_expressions
 
 
+x = list_of_test_expressions_with_same_roots()
 
-A = list_of_test_expressions_with_same_roots()
 
+#%%
+test_expressions = get_token_expressions(x)
 
+#%%
+print(test_expressions[0].getMathmetaicalNotation())
+
+#%%
+res = compare_a_list_of_equations_token(test_expressions)
   
-a = compare_a_list_of_equations_token(["TT_int", "TT_int","TT_notINT"])
-      
+#%%
+    
