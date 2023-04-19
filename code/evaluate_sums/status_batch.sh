@@ -7,7 +7,6 @@
 #BSUB -u s214753@dtu.dk
 #BSUB -B
 #BSUB -N
-#BSUB -n 8
 #BSUB -o Output_%J.out
 #BSUB -e Output_%J.err
 
