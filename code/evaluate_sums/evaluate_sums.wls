@@ -5,10 +5,10 @@ argv = Rest @ $ScriptCommandLine;
 argStart = ToExpression[argv[[1]]];
 argEnd = ToExpression[argv[[2]]];
 
-expressionFolder = "random_expressions";
-outputFolder = "random-answers-partition";
-fileNameOutput = "random-answers-";
-fileNameExpression = "rand_expressions-";
+expressionFolder = "unique_expressions";
+outputFolder = "unique-answers-partition";
+fileNameOutput = "unique-answers-";
+fileNameExpression = "unique_expressions-";
 maxTime = 0.1;
 
 (* Create list of roots *)

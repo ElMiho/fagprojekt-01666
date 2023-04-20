@@ -24,11 +24,11 @@ Just a genereic README :))
 - [ ] Convert prefix <=> postfix
 - [X] Infix to float value ---> Jacob
 - [X] Convert from token list to string equation
-- [ ] Evaluate token list i.e. method in the equation class for the conversion: `List[Token]` => `float`
+- [X] Evaluate token list i.e. method in the equation class for the conversion: `List[Token]` => `float`
 - [X] Make vocabulary class - wrapper class for token2idx and idx2token mappings
 - [X] Make vectorizer class - wrapper for `vectorize` function to turn equation into list of indices (is part of the vocabulary now)
 - [ ] Make pytorch `dataset` and `dataloaders`
-- [ ] Convert output to readable math ---> Jacob
+- [X] Convert output to readable math ---> Jacob
 
 ### Model
 - [X] Load or make model
