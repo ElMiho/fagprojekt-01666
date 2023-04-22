@@ -13,14 +13,9 @@ sample_size = 10  #Sample space
 num_terms_pois = 1+np.random.poisson(lam=mean_terms,size=sample_size) #Add one to ensure length>0
 sympy_expr_pois = generate_expression(num_terms_pois,mean_complexity,mean_arg_len,sample_size)
 
-sympy_diff_expr_pois = []
-
 mathematica_expr_pois = []
 
-x = sp.symbols('x')
-
 for i in range(sample_size):
-    sympy_diff_expr_pois.append(sp.diff(sympy_expr_pois[i],x))
     mathematica_expr_pois.append(mathematica_code(sympy_expr_pois[i]))
 
 ### Save data to txt.files

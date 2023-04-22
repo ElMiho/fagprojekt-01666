@@ -1,0 +1,92 @@
+[64, 40, 39, 19, 9, 67, 49, 65] ['<BEGIN>', '#', '/', '0', '-1', '[SEP]', 'TT_INTEGER', '<END>']
+8
+{'validation': <datasets.iterable_dataset.IterableDataset object at 0x7f8d30ee0a90>, 'train': <datasets.iterable_dataset.IterableDataset object at 0x7f8d30ee0c40>}
+{'data': tensor([64, 10,  5, 31, 14, 31,  6, 39,  4, 10, 35, 18,  1, 33, 11, 16, 21, 67,
+        51, 49, 51, 49, 49, 61, 59, 49, 49, 49, 61, 48, 59, 60, 49, 61, 59, 49,
+        49, 49, 61, 48, 59, 60, 49, 61, 58, 49, 48, 60, 49, 61, 58, 49, 44, 60,
+        49, 61, 58, 49, 49, 53, 60, 44, 60, 49, 61, 59, 49, 49, 49, 49, 61, 49,
+        53, 49, 61, 59, 61, 53, 60, 44, 60, 49, 61, 58, 49, 44, 60, 49, 49, 49,
+        61, 49, 53, 49, 61, 59, 53, 60, 61, 58, 49, 49, 57, 60, 49, 61, 59, 49,
+        49, 57, 60, 49, 61, 59, 49, 49, 57, 60, 49, 61, 58, 49, 49, 49, 53, 59,
+        49, 61, 57, 60, 49, 61, 58, 49, 49, 53, 60, 49, 49, 53, 59, 49, 61, 57,
+        60, 49, 61, 59, 49, 49, 49, 53, 58, 49, 61, 57, 60, 49, 61, 58, 49, 49,
+        53, 60, 49, 49, 53, 58, 49, 61, 57, 60, 49, 61, 58, 60, 59, 49, 61, 65,
+        63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63]), 'labels': tensor([  64, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100,
+        -100, -100, -100, -100, -100, -100,   51,   49,   51,   49,   49,   61,
+          59,   49,   49,   49,   61,   48,   59,   60,   49,   61,   59,   49,
+          49,   49,   61,   48,   59,   60,   49,   61,   58,   49,   48,   60,
+          49,   61,   58,   49,   44,   60,   49,   61,   58,   49,   49,   53,
+          60,   44,   60,   49,   61,   59,   49,   49,   49,   49,   61,   49,
+          53,   49,   61,   59,   61,   53,   60,   44,   60,   49,   61,   58,
+          49,   44,   60,   49,   49,   49,   61,   49,   53,   49,   61,   59,
+          53,   60,   61,   58,   49,   49,   57,   60,   49,   61,   59,   49,
+          49,   57,   60,   49,   61,   59,   49,   49,   57,   60,   49,   61,
+          58,   49,   49,   49,   53,   59,   49,   61,   57,   60,   49,   61,
+          58,   49,   49,   53,   60,   49,   49,   53,   59,   49,   61,   57,
+          60,   49,   61,   59,   49,   49,   49,   53,   58,   49,   61,   57,
+          60,   49,   61,   58,   49,   49,   53,   60,   49,   49,   53,   58,
+          49,   61,   57,   60,   49,   61,   58,   60,   59,   49,   61,   65,
+          63,   63,   63,   63,   63,   63,   63,   63,   63,   63,   63,   63,
+          63,   63])}
+['<BEGIN>', '-4/5', '-5/3', '4/3', '-1/2', '4/3', '-3/2', '/', '-2', '-4/5', '5/2', '-1/5', '-4', '5/3', '-3/4', '-1/3', '1/4', '[SEP]', 'TT_ZERO', 'TT_INTEGER', 'TT_ZERO', 'TT_INTEGER', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_DIVIDE', 'TT_EULERGAMMA', 'TT_MINUS', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_DIVIDE', 'TT_EULERGAMMA', 'TT_MINUS', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_EULERGAMMA', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_PI', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_MULTIPLY', 'TT_PI', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_DIVIDE', 'TT_INTEGER', 'TT_SQRT', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_DIVIDE', 'TT_SQRT', 'TT_MULTIPLY', 'TT_PI', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_PI', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_DIVIDE', 'TT_INTEGER', 'TT_SQRT', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_SQRT', 'TT_MULTIPLY', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_MINUS', 'TT_INTEGER', 'TT_DIVIDE', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_MINUS', 'TT_INTEGER', 'TT_DIVIDE', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_MINUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_PLUS', 'TT_INTEGER', 'TT_DIVIDE', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_INTEGER', 'TT_SQRT', 'TT_PLUS', 'TT_INTEGER', 'TT_DIVIDE', 'TT_LOG', 'TT_MULTIPLY', 'TT_INTEGER', 'TT_DIVIDE', 'TT_PLUS', 'TT_MULTIPLY', 'TT_MINUS', 'TT_INTEGER', 'TT_DIVIDE', '<END>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>', '<MASK>']
+((-(Z*(((((((((((((((-(Z/Z))-((Z*((Z/Z)-EulerGamma))/Z))+((Z*((Z/Z)-EulerGamma))/Z))+((Z*EulerGamma)/Z))+((Z*Pi)/Z))-(((Z*Sqrt(Z))*Pi)/Z))+(((Z*Sqrt((Z/((Z/Z)-(Sqrt(Z)/Z)))))*Pi)/Z))+((Z*Pi)/(Z*Sqrt(((Z/Z)-(Sqrt(Z)/Z))))))-((Z*Log(Z))/Z))-((Z*Log(Z))/Z))+((Z*Log(Z))/Z))+((Z*Log(((Z-Sqrt(Z))/Z)))/Z))-(((Z*Sqrt(Z))*Log(((Z-Sqrt(Z))/Z)))/Z))+((Z*Log(((Z+Sqrt(Z))/Z)))/Z))+(((Z*Sqrt(Z))*Log(((Z+Sqrt(Z))/Z)))/Z))))/Z)
+<torch.utils.data.dataloader.DataLoader object at 0x7f8d30f8ace0> <torch.utils.data.dataloader.DataLoader object at 0x7f8d30f8ad10>
+{'data': tensor([[64,  7, 39,  ..., 63, 63, 63],
+        [64, 30, 28,  ..., 63, 63, 63],
+        [64, 40, 39,  ..., 63, 63, 63],
+        ...,
+        [64, 40, 39,  ..., 63, 63, 63],
+        [64, 24, 12,  ..., 63, 63, 63],
+        [64, 40, 39,  ..., 63, 63, 63]]), 'labels': tensor([[  64, -100, -100,  ...,   63,   63,   63],
+        [  64, -100, -100,  ...,   63,   63,   63],
+        [  64, -100, -100,  ...,   63,   63,   63],
+        ...,
+        [  64, -100, -100,  ...,   63,   63,   63],
+        [  64, -100, -100,  ...,   63,   63,   63],
+        [  64, -100, -100,  ...,   63,   63,   63]])} tensor([64,  7, 39,  4, 25, 28,  0,  2, 20, 22, 67, 51, 49, 49, 53, 60, 49, 49,
+        53, 60, 49, 49, 53, 60, 44, 60, 58, 49, 49, 49, 49, 53, 59, 60, 53, 60,
+        44, 60, 59, 49, 49, 49, 49, 53, 59, 60, 53, 60, 44, 60, 58, 49, 49, 49,
+        49, 53, 58, 60, 53, 60, 44, 60, 59, 49, 49, 49, 49, 53, 58, 60, 53, 60,
+        44, 60, 59, 49, 49, 53, 60, 49, 57, 60, 58, 49, 49, 53, 60, 49, 57, 60,
+        59, 49, 49, 53, 60, 49, 57, 60, 58, 49, 49, 49, 53, 59, 49, 61, 57, 60,
+        58, 49, 49, 53, 60, 49, 49, 53, 59, 49, 61, 57, 60, 58, 49, 49, 49, 53,
+        58, 49, 61, 57, 60, 59, 49, 49, 53, 60, 49, 49, 53, 58, 49, 61, 57, 60,
+        58, 60, 59, 49, 61, 65, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63]) 8
+GPT2LMHeadModel(
+  (transformer): GPT2Model(
+    (wte): Embedding(68, 1600)
+    (wpe): Embedding(1024, 1600)
+    (drop): Dropout(p=0.1, inplace=False)
+    (h): ModuleList(
+      (0-47): 48 x GPT2Block(
+        (ln_1): LayerNorm((1600,), eps=1e-05, elementwise_affine=True)
+        (attn): GPT2Attention(
+          (c_attn): Conv1D()
+          (c_proj): Conv1D()
+          (attn_dropout): Dropout(p=0.1, inplace=False)
+          (resid_dropout): Dropout(p=0.1, inplace=False)
+        )
+        (ln_2): LayerNorm((1600,), eps=1e-05, elementwise_affine=True)
+        (mlp): GPT2MLP(
+          (c_fc): Conv1D()
+          (c_proj): Conv1D()
+          (act): NewGELUActivation()
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+      )
+    )
+    (ln_f): LayerNorm((1600,), eps=1e-05, elementwise_affine=True)
+  )
+  (lm_head): Linear(in_features=1600, out_features=68, bias=False)
+)
+GPT-2 Number of parameters: 1477.31M
+8 True
+Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda
+
+Eval loss: 0.5856438875198364 ---Perplexity: 1.796147108078003

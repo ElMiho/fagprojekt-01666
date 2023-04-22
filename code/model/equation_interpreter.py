@@ -279,24 +279,24 @@ class Equation:
         return operand_stack[0].t_value
     
     def _assignValueToConstant(self, token):
-        if token.t_type in SPECIAL_NUMBERS_TYPES:
-            match token.t_type:
-                case "TT_PI":
-                    token.t_value = pi
-                case "TT_E":
-                    token.t_value = e
-                case "TT_ZERO":
-                    token.t_value = 0
-                case "TT_ONE":
-                    token.t_value = 1
-                case "TT_PHI":
-                    token.t_value = 1.6180339887498948482045
-                case "TT_EULERGAMMA":
-                    token.t_value = 0.577215664901532860606
-                case "TT_CATALAN":
-                    token.t_value = 0.9159655941772190150546
-                case _: #default
-                    token.t_value = None
+        # if token.t_type in SPECIAL_NUMBERS_TYPES:
+        #     match token.t_type:
+        #         case "TT_PI":
+        #             token.t_value = pi
+        #         case "TT_E":
+        #             token.t_value = e
+        #         case "TT_ZERO":
+        #             token.t_value = 0
+        #         case "TT_ONE":
+        #             token.t_value = 1
+        #         case "TT_PHI":
+        #             token.t_value = 1.6180339887498948482045
+        #         case "TT_EULERGAMMA":
+        #             token.t_value = 0.577215664901532860606
+        #         case "TT_CATALAN":
+        #             token.t_value = 0.9159655941772190150546
+        #         case _: #default
+        #             token.t_value = None
         return token
     
     def _applyUniOperator(self, operator, operand):
@@ -311,19 +311,19 @@ class Equation:
     
     def _applyBinOperator(self, operator, operand_1, operand_2):
         operator_string = ""
-        match operator.t_type:
-            case "TT_PLUS":
-                operator_string = "+"
-            case "TT_MINUS":
-                operator_string = "-"
-            case "TT_MULTIPLY":
-                operator_string = "*"
-            case "TT_DIVIDE":
-                operator_string = "/"
-            case "TT_POWER":
-                operator_string = "**"
-            case _: #default
-                operator_string = ""
+        # match operator.t_type:
+        #     case "TT_PLUS":
+        #         operator_string = "+"
+        #     case "TT_MINUS":
+        #         operator_string = "-"
+        #     case "TT_MULTIPLY":
+        #         operator_string = "*"
+        #     case "TT_DIVIDE":
+        #         operator_string = "/"
+        #     case "TT_POWER":
+        #         operator_string = "**"
+        #     case _: #default
+        #         operator_string = ""
         output = f"{operand_1.t_value}{operator_string}{operand_2.t_value}"
         return Token(TT_RATIONAL, eval(output))
     

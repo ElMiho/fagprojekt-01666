@@ -1,5 +1,7 @@
 *.txt
 *.zip
-code/.ipynb_checkpoints/inference-checkpoint.ipynb
+code/.ipynb_checkpoints/*
+code/models--Dragonoverlord3000--JustSumAI/*
 code/models/*
 *__pycache__*
+*.pyc
