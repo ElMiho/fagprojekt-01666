@@ -1,3 +1,4 @@
+(* LaunchKernels[5] *)
 argv = Rest @ $ScriptCommandLine;
 folder = argv[[1]];
 

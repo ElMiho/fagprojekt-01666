@@ -1,4 +1,4 @@
-(* LaunchKernels[8]; *)
+LaunchKernels[8];
 Needs["Combinatorica`"];
 
 argv = Rest @ $ScriptCommandLine;
