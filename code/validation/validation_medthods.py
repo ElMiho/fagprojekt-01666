@@ -21,12 +21,10 @@ from model.equation_interpreter import Equation
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 
-
-    
+   
 
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
-
 
 
 def compare_a_list_of_equations_token(equations: list):
@@ -96,6 +94,24 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     
     return num_roots, den_roots
 
+
+
+def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
+    if len(eq_list) > 1:
+        eq_list = eq_list[0] +['/']+ eq_list[1]
+    index = eq_list.index('/')
+    all_eq = []
+    if int_roots_only:
+        random_number = token_input_space(space[0], space[1], "numinator_int_only")
+        
+    else:
+        random_number = token_input_space(space[0], space[1], "numinator_only")
+
+    for num in random_number:
+        all_eq.append(eq_list[:index] + [num] + eq_list[index:] + [num])
+    return all_eq
+
+
 def evaluate_tokenized_sum(test_expression: list):
     for t_e in test_expression:
         numerator_degree, denominator_degree, numerator_roots, denominator_roots = input_to_lists(test_expression)
@@ -104,4 +120,4 @@ def evaluate_tokenized_sum(test_expression: list):
 
 if __name__ == '__main__':
     evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5]))
-    
+  

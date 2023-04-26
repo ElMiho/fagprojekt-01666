@@ -36,10 +36,10 @@ def evaluate_sum(
 
     res = os.popen(
         f"""
-        wolframscript --file evaluate_sum_from_roots_cmd.wls "{numerator_degree} {denominator_degree} {roots_string}"
+        wolframscript --file validation/evaluate_sum_from_roots_cmd.wls "{numerator_degree} {denominator_degree} {roots_string}"
         """
     ).read()
-
+    
     return res
 
 # poor mans test cases
@@ -57,3 +57,6 @@ if __name__ == '__main__':
     print(evaluate_sum(
         numerator_degree, denominator_degree, numerator_roots, denominator_roots
     ))
+    res = evaluate_sum(
+        numerator_degree, denominator_degree, numerator_roots, denominator_roots
+    )
