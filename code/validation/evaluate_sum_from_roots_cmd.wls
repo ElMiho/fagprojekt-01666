@@ -1,34 +1,39 @@
 argv = Rest @ $ScriptCommandLine;
-numeratorDegree = ToExpression[argv[[1]]];
-denominatorDegree = ToExpression[argv[[2]]];
+string = argv[[1]];
 
-numeratorRoots = {};
-denominatorRoots = {};
+res = ToExpression[
+    StringSplit[string, " "]
+];
 
-Print["numerator: "];
+(* Print[res]; *)
+
+numeratorDegree = res[[1]];
+denominatorDegree = res[[2]];
+
+(* Print["numerator"]; *)
+numerator = {};
 For[i = 3, i < 3 + numeratorDegree, i++,
-    r = ToExpression[argv[[i]]];
-    AppendTo[numeratorRoots, r];
-]
-Print[numeratorRoots];
+    (* Print[res[[i]]]; *)
+    AppendTo[numerator, res[[i]]];
+];
 
-Print["denominator: "];
+(* Print["denominator"]; *)
+denominator = {};
 For[i = 3 + numeratorDegree, i < 3 + numeratorDegree + denominatorDegree, i++,
-    r = ToExpression[argv[[i]]];
-    AppendTo[denominatorRoots, r];
-]
-Print[denominatorRoots];
+    (* Print[res[[i]]]; *)
+    AppendTo[denominator, res[[i]]];
+];
 
 expr = Product[
-    n - numeratorRoots[[p]],
-    {p, 1, numeratorDegree}
+    n - numerator[[p]], {p, 1, numeratorDegree}
 ] / Product[
-    n - denominatorRoots[[p]],
-    {p, 1, denominatorDegree}
+    n - denominator[[p]], {p, 1, denominatorDegree}
 ];
-Print[expr];
+
+(* Print[expr]; *)
 
 s = Sum[
     expr, {n, 1, Infinity}
 ];
+
 Print[s];
