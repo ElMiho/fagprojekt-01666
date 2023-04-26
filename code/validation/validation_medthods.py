@@ -2,7 +2,8 @@
 Use this file for methods/functions that can be used in multiple validation test.
 '''
 
-
+import sys
+sys.path.append('.../code')
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
@@ -12,6 +13,9 @@ from main import test_an_expression
 import random
 
 
+def evaluate_token_input(test_expression: list):
+    for t_e in test_expression:
+        None
 
 
 def get_token_expressions(test_expression: list):
@@ -30,6 +34,7 @@ def sup_number_of_expressions(max_ex: int, test_expression: list):
     return test_expression
     
 def compare_a_list_of_equations_token(equations: list):
+    # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathmetaicalNotation()
     n = len(equations)
     count = 0
     total = 0
