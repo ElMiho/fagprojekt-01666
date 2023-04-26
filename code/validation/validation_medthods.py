@@ -13,13 +13,12 @@ from model.equation_interpreter import Equation
 
 import random
 
-LOAD_MAIN_FLAG = True
+LOAD_MAIN_FLAG = False
 
 if LOAD_MAIN_FLAG:
     from main import test_an_expression
-
-def get_token_expressions(test_expression: list):
-    return [test_an_expression(i) for i in test_expression]
+    def get_token_expressions(test_expression: list):
+        return [test_an_expression(i) for i in test_expression]
 
 
 
@@ -89,4 +88,19 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     
     return num_roots, den_roots
 
-#print(random_list_of_nuerator_and_denominator([-5,5], True, False))
+def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
+    if len(eq_list) > 1:
+        eq_list = eq_list[0] +['/']+ eq_list[1]
+    index = eq_list.index('/')
+    all_eq = []
+    if int_roots_only:
+        random_number = token_input_space(space[0], space[1], "numinator_int_only")
+        
+    else:
+        random_number = token_input_space(space[0], space[1], "numinator_only")
+
+    for num in random_number:
+        all_eq.append(eq_list[:index] + [num] + eq_list[index:] + [num])
+    return all_eq
+
+
