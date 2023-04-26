@@ -45,7 +45,7 @@ test_expressions = get_token_expressions(x)
 print(test_expressions[0].getMathmetaicalNotation())
 
 #%%
-res = compare_a_list_of_equations_token(test_expressions)
+res = compare_a_list_of_equations_token(x)
   
 #%%
     
