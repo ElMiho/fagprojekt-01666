@@ -1,18 +1,15 @@
 {
-"inputs_file": "./data/cleaned_expressions-1000.txt",
-"targets_file": "./data/cleaned_answers-1000.txt",
-"model_save_dir": "./model_checkpoints",
-"model_filename": "model.pth",
-
-"embedding_size": 64,
-"rnn_hidden_size": 256,
-
-"learning_rate": 5e-4,
-"batch_size": 8,
-"shuffle": true,
-"drop_last": true,
-"num_epochs": 1,
-"use_cuda": true,
-
-"seed": 628
+    "inputs_file": "./data/cleaned_expressions-1000.txt",
+    "targets_file": "./data/cleaned_answers-1000.txt",
+    "model_save_dir": "./model_checkpoints",
+    "model_filename": "model.pth",
+    "embedding_size": 64,
+    "rnn_hidden_size": 256,
+    "learning_rate": 5e-4,
+    "batch_size": 8,
+    "shuffle": true,
+    "drop_last": true,
+    "num_epochs": 1,
+    "use_cuda": true,
+    "seed": 628
 }
