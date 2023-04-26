@@ -2,27 +2,27 @@
 Use this file for methods/functions that can be used in multiple validation test.
 '''
 
+import random
+import sys
+
 
 #SET PATH FOR OSX USERS
-import sys
 if sys.platform == 'darwin':
     sys.path.append('../code')
-
+    
+LOAD_MAIN_FLAG = True
+if LOAD_MAIN_FLAG:
+    from main import test_an_expression
+    
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
 
-import random
+from validation.mathematica_from_python import input_to_lists
+from validation.mathematica_from_python import evaluate_sum
 
-LOAD_MAIN_FLAG = True
 
-if LOAD_MAIN_FLAG:
-    from main import test_an_expression
     
-def evaluate_token_input(test_expression: list):
-    for t_e in test_expression:
-        None
-
 
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
@@ -96,4 +96,12 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     
     return num_roots, den_roots
 
-#print(random_list_of_nuerator_and_denominator([-5,5], True, False))
+def evaluate_tokenized_sum(test_expression: list):
+    for t_e in test_expression:
+        numerator_degree, denominator_degree, numerator_roots, denominator_roots = input_to_lists(test_expression)
+        print(evaluate_sum(numerator_degree, denominator_degree, numerator_roots, denominator_roots))
+
+
+if __name__ == '__main__':
+    evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5]))
+    
