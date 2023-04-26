@@ -35,7 +35,7 @@ def compare_a_list_of_equations_token(equations: list):
     
     return count/total
 
-def random_list_of_nuerator_and_denominator(concatenate: bool = True):
+def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concatenate: bool = True, int_roots_only: bool = False):
     '''
     geneate a random sum to be evaluated
 
@@ -47,10 +47,16 @@ def random_list_of_nuerator_and_denominator(concatenate: bool = True):
         all the denominator roots in a list
 
     '''
+    if (int_roots_only):
+        roots_num_kind = "numinator_int_only"
+        roots_den_kind = "dominator_int_only"
+    else :
+        roots_num_kind = "numinator_only"
+        roots_den_kind = "dominator_only"
     
     # denominator and numerator
-    numerator_roots = token_input_space(-5, 5, "numinator_only")
-    denominator_roots = token_input_space(-5, 5, "dominator_only")
+    numerator_roots = token_input_space(spaceinterval[0], spaceinterval[1], roots_num_kind)
+    denominator_roots = token_input_space(spaceinterval[0], spaceinterval[1], roots_den_kind)
     
     # all oder over oders, a list of lists
     poly_oder_list = all_poly(10)
