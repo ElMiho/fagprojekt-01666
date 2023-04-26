@@ -25,7 +25,7 @@ def token_input_space(minimal_value: int, maximal_value: int, output_type: str =
     dominator_only = of unique ralional values, without posetive int numbers\n"
 
     
-    options = ["all", "all_int", "numinator_only", "dominator_only"]
+    options = ["all", "all_int", "numinator_only", "dominator_only","numinator_int_only","dominator_int_only"]
     
     #eror handling        
     try:
@@ -46,7 +46,7 @@ def token_input_space(minimal_value: int, maximal_value: int, output_type: str =
     # begins adding new rational numbers starting from index 0
     row_index = 0
 
-    if output_type != "all_int" :
+    if output_type != "all_int" and output_type != "numinator_int_only" and output_type != "dominator_int_only":
         # loop to create all rational values
         for i in range(minimal_value, maximal_value + 1):
             for j in range(minimal_value, maximal_value + 1):
@@ -60,7 +60,7 @@ def token_input_space(minimal_value: int, maximal_value: int, output_type: str =
                     row_index += 1
         
 
-    elif output_type == "all_int" :
+    elif output_type == "all_int" or output_type != "numinator_int_only" or output_type != "dominator_int_only":
         for i in range(minimal_value, maximal_value+1):
             A[row_index] = i
             row_index += 1
@@ -77,7 +77,7 @@ def token_input_space(minimal_value: int, maximal_value: int, output_type: str =
         A.append("/")
         A.append("#")
     
-    elif output_type == 'dominator_only':
+    elif output_type == "dominator_only" or output_type == "dominator_int_only":
         for i in range(1, 6):
             A.remove(i)
         
