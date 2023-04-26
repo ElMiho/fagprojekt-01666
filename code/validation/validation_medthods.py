@@ -2,23 +2,27 @@
 Use this file for methods/functions that can be used in multiple validation test.
 '''
 
+import sys
+#SET PATH FOR OSX USERS
+if sys.platform == 'darwin':
+    sys.path.append('../code')
 
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
 
-from main import test_an_expression
-
 import random
 
+LOAD_MAIN_FLAG = True
 
-
+if LOAD_MAIN_FLAG:
+    from main import test_an_expression
 
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
 
 
-    
+
 def compare_a_list_of_equations_token(equations: list):
     n = len(equations)
     count = 0
@@ -85,3 +89,4 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     
     return num_roots, den_roots
 
+#print(random_list_of_nuerator_and_denominator([-5,5], True, False))
