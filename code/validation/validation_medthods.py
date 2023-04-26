@@ -13,7 +13,7 @@ from model.equation_interpreter import Equation
 
 import random
 
-LOAD_MAIN_FLAG = False
+LOAD_MAIN_FLAG = True
 
 if LOAD_MAIN_FLAG:
     from main import test_an_expression
