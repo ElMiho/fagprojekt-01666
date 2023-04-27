@@ -15,11 +15,10 @@ savemat('abort_rate.mat',{'abortion_rate': abortion_rate})
 savemat('Token_Length.mat',{'Token_len': token_lengths})
 savemat('Sample_size.mat',{'sample_size': sample_size})
 
-#Save sample_size as pickle file
-with open("SampleSize.pkl", "wb") as f:
-    pickle.dump(sample_size, f)
-f.close()
-
+#Save sample parameters as txt file
+np.savetxt('SampleSize.txt', sample_size, fmt='%i,%i,%.3f', delimiter=' ')
+#%%
+"""
 #%% Plot of histograms
 #General distribution
 fig, ax = plt.subplots()
@@ -39,3 +38,4 @@ ax.set_xlabel('Length of answer')
 ax.set_ylabel('Frequency')
 plt.show()
 #%% Sample distributions
+"""

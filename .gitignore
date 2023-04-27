@@ -4,5 +4,8 @@ code/.ipynb_checkpoints/*
 code/models--Dragonoverlord3000--JustSumAI/*
 code/models/*
 *__pycache__*
-*.pyc
-*.pyc
+code/model/__pycache__
+code/data_generation/7_sec_data/.DS_Store
+code/data_generation/.DS_Store
+code/.DS_Store
+.DS_Store
