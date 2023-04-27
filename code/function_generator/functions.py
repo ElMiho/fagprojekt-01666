@@ -44,9 +44,18 @@ def add_parenthesis(expr):
     last_expr = len(expr)
     bounds.append(last_expr)
 
-    #Loops through function indicies
+    #Constant "counter"
+    j=0
+
+    #Loops through function indicies and add integers instead of "C"
     if last_expr>1:   
         for i in range(0,last_expr,2):
+
+            #Change constant to an integer
+            if(expr[i]=="C"):
+                expr[i] = f"C{j}"
+                j+=1
+
             next_left = i                             #Initialize each function with left-parenthesis
             bound = min([k for k in bounds if k > i]) #Ensures that next right parenthesis does not overlap
 

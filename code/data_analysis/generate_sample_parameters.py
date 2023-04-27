@@ -22,5 +22,3 @@ for i in range(44):
 sample_parameters = np.asarray(sample_parameters)
 titles = "Deg numerator, Deg denominator, Number of samples, Total sample space"
 np.savetxt('SampleParameters2.txt',sample_parameters, fmt='%i', delimiter=',', header=titles)
-
-# %%
