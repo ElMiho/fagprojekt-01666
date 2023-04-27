@@ -1,7 +1,7 @@
 LaunchKernels[8];
 Needs["Combinatorica`"];
 
-maxTime = 0.1;
+maxTime = 7;
 
 numeratorDegree = Range[0, 8]; 
 denominatorDegree = Range[2, 10];
@@ -30,7 +30,7 @@ For[i = 1, i <= Length[legalPolynomialFractions], i++,
     Print["current: "];
     Print[ToString[numDegree] <> "/" <> ToString[denomDegree]];
 
-    For[l = 1, l <= 10, l++,
+    For[l = 1, l <= 2, l++,
         answers = {};
         SetSharedVariable[answers];
         
@@ -51,7 +51,7 @@ For[i = 1, i <= Length[legalPolynomialFractions], i++,
                 Sum[expr, {n, 1, Infinity}], maxTime
             ];
             AppendTo[answers, s];,
-            {k, 1, 10}
+            {k, 1, 500}
         ];
 
         Export[
