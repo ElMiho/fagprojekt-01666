@@ -5,8 +5,7 @@ Use this file for methods/functions that can be used in multiple validation test
 import random
 import sys
 
-
-#SET PATH FOR OSX USERS
+# SET PATH FOR OSX USERS
 if sys.platform == 'darwin':
     sys.path.append('../code')
     
