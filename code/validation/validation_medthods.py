@@ -17,12 +17,13 @@ from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
 
-"""
+
+
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
-"""
-import validation.mathematica_from_python
+
+
    
 
 def get_token_expressions(test_expression: list):
@@ -121,9 +122,9 @@ def evaluate_tokenized_sum(test_expression: list):
     
     for expression in test_expression:
         print(expression)
-        numerator_roots, denominator_roots = validation.mathematica_from_python.input_to_lists(expression)
-        print(validation.mathematica_from_python.evaluate_sum(numerator_roots, denominator_roots))
-    validation.mathematica_from_python.close_session()    
+        numerator_roots, denominator_roots = input_to_lists(expression)
+        print(jonas_pc_er_skrald(numerator_roots, denominator_roots))
+    close_session()    
         
 
 
