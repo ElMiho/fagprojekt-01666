@@ -17,9 +17,12 @@ from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
 
+"""
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
-
+from validation.mathematica_from_python import close_session
+"""
+import validation.mathematica_from_python
    
 
 def get_token_expressions(test_expression: list):
@@ -88,7 +91,7 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     if concatenate:
         num_roots.append("/")
         
-        return num_roots + den_roots
+        return [num_roots + den_roots]
     
     
     return num_roots, den_roots
@@ -113,12 +116,18 @@ def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
         all_eq.append(eq_list[:index] + [num] + eq_list[index:] + [num])
     return all_eq
 
+
 def evaluate_tokenized_sum(test_expression: list):
-    for t_e in test_expression:
-        numerator_degree, denominator_degree, numerator_roots, denominator_roots = input_to_lists(test_expression)
-        print(evaluate_sum(numerator_degree, denominator_degree, numerator_roots, denominator_roots))
+    
+    for expression in test_expression:
+        print(expression)
+        numerator_roots, denominator_roots = validation.mathematica_from_python.input_to_lists(expression)
+        print(validation.mathematica_from_python.evaluate_sum(numerator_roots, denominator_roots))
+    validation.mathematica_from_python.close_session()    
+        
 
 
 if __name__ == '__main__':
-    evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5]))
+    evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
+    
   

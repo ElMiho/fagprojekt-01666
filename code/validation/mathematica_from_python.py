@@ -4,6 +4,7 @@ from wolframclient.language import wl, wlexpr
 session = WolframLanguageSession()
 
 def input_to_lists(list_of_input_tokens):
+    
     idx = list_of_input_tokens.index('/')
     numerator = list_of_input_tokens[0:idx]
     denominator = list_of_input_tokens[idx+1:]
