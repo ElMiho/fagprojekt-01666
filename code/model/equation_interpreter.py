@@ -220,6 +220,13 @@ class Equation:
     def convertToPrefix(self):
         pass
 
+    def countVariables(self):
+        count = 0
+        for token in self.tokenized_equation:
+            if token.t_type == TT_INTEGER:
+                count += 1
+        return count
+
     def getMathmetaicalNotation(self):
         if self.notation == "postfix" or self.notation == "prefix":
             self.convertToInfix()
