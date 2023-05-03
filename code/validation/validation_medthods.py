@@ -96,6 +96,9 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
 
 
 def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
+    '''Extends a sum in both denominator and numinator with a random number
+    (The sum remains the same).
+    '''
     if len(eq_list) > 1:
         eq_list = eq_list[0] +['/']+ eq_list[1]
     index = eq_list.index('/')
@@ -109,7 +112,6 @@ def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
     for num in random_number:
         all_eq.append(eq_list[:index] + [num] + eq_list[index:] + [num])
     return all_eq
-
 
 def evaluate_tokenized_sum(test_expression: list):
     for t_e in test_expression:
