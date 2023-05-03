@@ -216,7 +216,7 @@ class Equation:
         elif self.notation == "postfix":
             return None
 
-                
+
     def convertToPrefix(self):
         pass
 
@@ -227,7 +227,7 @@ class Equation:
                 count += 1
         return count
 
-    def getMathmetaicalNotation(self):
+    def getMathemetaicalNotation(self):
         if self.notation == "postfix" or self.notation == "prefix":
             self.convertToInfix()
         assert self.notation == "infix"
@@ -376,5 +376,5 @@ class Equation:
 
 
 # equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
-# print(equation.getMathmetaicalNotation())
+# print(equation.getMathemetaicalNotation())
 

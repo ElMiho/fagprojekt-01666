@@ -177,7 +177,7 @@ eq = Equation([Token(t) for t in l[l.index("[SEP]")+1:] if t not in ["<MASK>", "
 # In[13]:
 
 
-print(eq.getMathmetaicalNotation())
+print(eq.getMathemetaicalNotation())
 
 
 # In[14]:
