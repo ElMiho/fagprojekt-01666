@@ -27,7 +27,7 @@ def get_token_expressions(test_expression: list):
 
 
 def compare_a_list_of_equations_token(equations: list):
-    # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathmetaicalNotation()
+    # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathemetaicalNotation()
     n = len(equations)
     count = 0
     total = 0
