@@ -34,7 +34,7 @@ def sup_number_of_expressions(max_ex: int, test_expression: list):
     return test_expression
     
 def compare_a_list_of_equations_token(equations: list):
-    # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathmetaicalNotation()
+    # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathemetaicalNotation()
     n = len(equations)
     count = 0
     total = 0

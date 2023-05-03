@@ -42,7 +42,7 @@ x = list_of_test_expressions_with_same_roots(True)
 test_expressions = get_token_expressions(x)
 
 #%%
-print(test_expressions[0].getMathmetaicalNotation())
+print(test_expressions[0].getMathemetaicalNotation())
 
 #%%
 res = compare_a_list_of_equations_token(x)
