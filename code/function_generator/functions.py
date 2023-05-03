@@ -5,21 +5,14 @@ def init_expression(num_terms,var):
     # Function chooses a number of of basis functions and operators between them
         # Input: 
             # num_terms -> int: Number of terms in expression
-            # var -> string: Assigned variable for unary functions in library
+            # var -> string: Assigned variable for binary functions in library
         # Output: 
             # expr -> np.array: Generated expression, even indicies are from funtion library, odd indicies from operator library  
     
-    # Libraries
-    operators_lib = np.asarray(["*", "/", "+", "-", "**"])
-    functions_lib = np.asarray([
-        "x","C",f"log({var})",
-        f"sin({var})",f"cos({var})",
-        f"exp({var})",f"sqrt({var})",
-        "x**c",f"tan({var})",
-        f"acos({var})", f"asin({var})", f"atan({var})",
-        f"cosh({var})", f"sinh({var})", f"tanh({var})", 
-        f"acosh({var})", f"asinh({var})", f"atanh({var})"
-    ])
+    # Libraries 
+    operators_lib = np.asarray(["*", "/", "+", "-"]) #Note that ** is removed for simplicity
+    functions_lib = np.asarray(["x","C",f"log({var})",f"sin({var})",f"cos({var})",f"exp({var})",
+                                "x**c",f"tan({var})",f"acos({var})",f"asin({var})"]) #Note that f"sqrt({var})" is removed for simplicity
 
     #Initialize
     num_operators = num_terms-1
@@ -52,8 +45,12 @@ def add_parenthesis(expr):
         for i in range(0,last_expr,2):
 
             #Change constant to an integer
-            if(expr[i]=="C"):
-                expr[i] = f"C{j}"
+            if(expr[i].find("C")!=-1):
+                expr[i] = expr[i].replace("C",f"C{j}")
+                j+=1
+
+            if(expr[i].find("**c")!=-1):
+                expr[i] = expr[i].replace("**c",f"**c{j}")
                 j+=1
 
             next_left = i                             #Initialize each function with left-parenthesis
@@ -71,29 +68,15 @@ def add_parenthesis(expr):
     expr = ''.join(expr)
     return expr
 
-def makeConstantsUnique(expr):
-    # Function makes all constants in expression unique
-        # Input: 
-            # expr -> str: expression with parenthesis as string
-        # Output: 
-            # expr -> str: expression with unique constants
-    idx = expr.find('C')
-    i = 0
-    while(idx!=-1):
-        expr = expr[:idx] + f'K{i}' + expr[idx+1:]
-        idx = expr.find('C')
-        i+=1
-    return expr
-
 def add_argument(expr,mean,var_old,var_new):
-    # Function adds argument to each unary function in expression
+    # Function adds argument to each binary function in expression
         # Input: 
             # expr -> str: expression with parenthesis as string
             # mean -> int: mean value for poisson distributed length in argument
-            # var_old -> str: current variable in unary function 
-            # var_new -> str: variable for the new arguments in unary functions
+            # var_old -> str: current variable in binary function 
+            # var_new -> str: variable for the new arguments in binary functions
         # Output: 
-            # expr -> str: expression with new arguments in unary variables
+            # expr -> str: expression with new arguments in binary variables
     idx = expr.find(var_old)    #Returns -1 if not found
     while(idx!=-1):
         arg_len = 1+int(np.random.poisson(lam=mean,size=1))
@@ -105,13 +88,13 @@ def add_argument(expr,mean,var_old,var_new):
     return expr
 
 def add_composite(expr,mean_complexity,mean_arg_len):
-    # Function adds composite arguments to each unary functions
+    # Function adds composite arguments to each binary functions
         # Input: 
             # expr -> str: expression with parenthesis
             # mean_complexity -> int: mean for poisson distributed level of how many composite arguments is added
             # mean_arg_len -> int: mean for poisson distributed length of each composite argument
         # Output:
-            # expr -> str: expression with added composite functions to each unary function
+            # expr -> str: expression with added composite functions to each binary function
     complexity = int(np.random.poisson(lam=mean_complexity,size=1))
     i = 0
     while(i<complexity):    #Recall that each function is initialized with a0 as variable
