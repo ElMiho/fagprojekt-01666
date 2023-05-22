@@ -39,11 +39,11 @@ if not os.path.exists(final_directory):
 
 #### Import sampling parameters
 #44x4 np-array [Deg numerator, Deg denominator, Number of samples, Total sample space]
-sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
+sample_parameters = np.loadtxt('SampleSizeInteger.txt', delimiter=',')
 
 ####  Initialize sampling
-base_den = 34
-base_num = 39
+base_num = 21
+base_den = 11
 #num_categories = sample_parameters.shape[0]   commented while testing
 num_categories = 44  #For testing
 for i in range(num_categories):

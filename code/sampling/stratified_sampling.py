@@ -42,8 +42,8 @@ if not os.path.exists(final_directory):
 sample_parameters = np.loadtxt('SampleParameters.txt', delimiter=',')
 
 ####  Initialize sampling
-base_den = 34
-base_num = 39
+base_num = 21
+base_den = 11
 #num_categories = sample_parameters.shape[0]   commented while testing
 num_categories = 10  #For testing
 for i in range(num_categories):
