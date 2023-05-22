@@ -11,6 +11,8 @@ fileNameOutput = "unique-answers-";
 fileNameExpression = "unique_expressions-";
 maxTime = 0.1;
 
+(* This code was for rational roots *)
+(* 
 (* Create list of roots *)
 all = Range[-5,5];
 
@@ -21,11 +23,15 @@ fractionTuples = CartesianProduct[all, all];
 res = generateFractions /@ fractionTuples;
 res = DeleteDuplicates[res];
 res = DeleteCases[res, ComplexInfinity];
-fractionList = DeleteCases[res, Indeterminate];
+rootList = DeleteCases[res, Indeterminate];
+*) 
+
+(* Now we use only int roots from -10 to 10 *)
+rootList = Range[-10, 10];
 
 (* No positive integers in denominator! *)
-fractionListNoPositiveIntegers = DeleteCases[
-    fractionList, 
+rootListNoPositiveIntegers = DeleteCases[
+    rootList, 
     x_ /; x > 0 && MemberQ[Range[1,5], x]
     ];
 
@@ -116,8 +122,8 @@ If[partitionK != -Infinity,
             numerator = Part[data, Range[1, current[[1]]]];
             denominator = Part[data, Range[1 + current[[1]], current[[1]] + current[[2]]]];
             
-            numeratorRoots = Part[fractionList, numerator];
-            denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
+            numeratorRoots = Part[rootList, numerator];
+            denominatorRoots = Part[rootListNoPositiveIntegers, denominator];
 
             (* Generate expression based on lists of roots *)
             expr = Product[
@@ -184,8 +190,8 @@ For[j = correctStartingPoint, j <= Length[target], j++,
             numerator = Part[data, Range[1, numeratorDegree]];
             denominator = Part[data, Range[1 + numeratorDegree, numeratorDegree + denominatorDegree]];
             
-            numeratorRoots = Part[fractionList, numerator];
-            denominatorRoots = Part[fractionListNoPositiveIntegers, denominator];
+            numeratorRoots = Part[rootList, numerator];
+            denominatorRoots = Part[rootListNoPositiveIntegers, denominator];
 
             (* Generate expression based on lists of roots *)
             expr = Product[
