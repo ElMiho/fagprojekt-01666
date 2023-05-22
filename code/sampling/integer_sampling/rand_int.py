@@ -84,7 +84,7 @@ for i in range(num_categories):
     deg_num = int(sample_parameters[i,0])
     deg_den = int(sample_parameters[i,1])
     #sample_size = int(sample_parameters[i,2])  commented while testing
-    sample_size = 10                     
+    sample_size = 10**6                     
     sample_space = int(sample_parameters[i,3])
     
     print("sample_space: " + str(sample_space))
