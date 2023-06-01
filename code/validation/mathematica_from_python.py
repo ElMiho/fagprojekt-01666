@@ -18,21 +18,9 @@ def input_to_lists(list_of_input_tokens):
 
     return numerator_roots, denominator_roots
 
-session.evaluate('''
-    evaluateSum[list1_, list2_] := ToString[
-        Sum[
-            Product[
-                n - list1[[p]], {p, 1, Length[list1]}
-            ] / Product[
-                n - list2[[p]], {p, 1, Length[list2]}
-            ], {n, 1, Infinity}
-        ], InputForm
-    ]
-''')
-                 
-evaluate_sum = session.function(wlexpr('evaluateSum'))
 
-def jonas_pc_er_skrald(numerator_roots, denominator_roots):
+
+def evaluate_sum(numerator_roots, denominator_roots):
     session.evaluate('''
         evaluateSum[list1_, list2_] := ToString[
             Sum[
@@ -68,5 +56,5 @@ if __name__ == '__main__':
     print(evaluate_sum(
         numerator_roots, denominator_roots
     ))
-    print(jonas_pc_er_skrald(numerator_roots, denominator_roots))
+   
     close_session()

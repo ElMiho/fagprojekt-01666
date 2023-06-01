@@ -123,7 +123,7 @@ def evaluate_tokenized_sum(test_expression: list):
     for expression in test_expression:
         print(expression)
         numerator_roots, denominator_roots = input_to_lists(expression)
-        print(jonas_pc_er_skrald(numerator_roots, denominator_roots))
+        print(evaluate_sum(numerator_roots, denominator_roots))
     close_session()    
         
 
