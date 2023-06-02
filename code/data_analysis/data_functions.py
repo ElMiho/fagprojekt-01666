@@ -12,7 +12,9 @@ def save_data(file_names):
     token_lengths = []
     abortion_rate = []
     sample_size = []
+    sum_degree = []
 
+    # Reads a file of answers and returns abortion rate and length of each expression
     for a,b in file_names:
         input_file =  f"../data_generation/7_sec_data/data/answers-{a}-{b}.txt"
         number_of_lines = sum(1 for i in open(input_file, 'rb'))
@@ -35,6 +37,7 @@ def save_data(file_names):
         token_lengths.append(line_length)
         abortion_rate.append((a,b,1-(num_non_zeros/number_of_lines)))
         sample_size.append((a,b,1/(num_non_zeros/number_of_lines)))
+        sum_degree.append(a+b)
 
     token_lengths = np.asarray(token_lengths)
     abortion_rate = np.asarray(abortion_rate)
