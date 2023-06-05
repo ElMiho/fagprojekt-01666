@@ -1,0 +1,59 @@
+Loaded module: mathematica/12.2.0
+Configured:WOLFRAMSCRIPT_KERNELPATH=/appl/mathematica/12.2.0/Executables/WolframKernel
+Loading from Wolfram Research server ...
+
+General::compat: Combinatorica Graph and Permutations functionality has been superseded by preloaded functionality. The package now being loaded may conflict with this. Please see the Compatibility Guide for details.
+[*] Restricting legal poly frac using argStart and argEnd
+{{0, 2}, {0, 3}, {0, 4}, {0, 5}, {0, 6}, {0, 7}, {0, 8}, {0, 9}, {0, 10}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}, {1, 8}, {1, 9}, {1, 10}, {2, 4}, {2, 5}, {2, 6}, {2, 7}, {2, 8}, {2, 9}, {2, 10}, {3, 5}, {3, 6}, {3, 7}, {3, 8}, {3, 9}, {3, 10}, {4, 6}, {4, 7}, {4, 8}, {4, 9}, {4, 10}, {5, 7}, {5, 8}, {5, 9}, {5, 10}, {6, 8}, {6, 9}, {6, 10}, {7, 9}, {7, 10}}
+[*] Checking with existing files
+length of legal poly frac: 44
+[*] Starting loop
+start: {0, 2}
+partitionK value: -Infinity
+(so starting with -Infinity)
+[*] Evaluate the rest
+1
+(so starting with index 1 in legal poly frac)
+index: 1
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 2
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 3
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 4
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 5
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 6
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 7
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 8
+Partition: 1
+Finished with 1
+Partition: 2
+Finished with 2
+index: 9
+Partition: 1
+User defined signal 2
