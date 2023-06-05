@@ -61,6 +61,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     """
    
     ## denne her der tager lang tid
+    print("combining the num and den")
     combine = itertools.product(all_num_combinations, all_den_combinations)      
     all_combinations = [list(p) for p in combine]    
         
