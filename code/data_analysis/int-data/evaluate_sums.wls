@@ -1,22 +1,16 @@
 LaunchKernels[8];
 Needs["Combinatorica`"];
 
-maxTimeList = {0.01, 0.1, 1, 3, 4, 5, 6, 7, 10, 16};
-
 argv = Rest @ $ScriptCommandLine;
 argStart = ToExpression[argv[[1]]];
 argEnd = ToExpression[argv[[2]]];
-(* as an index *)
-maxTime = maxTimeList[[
-    ToExpression[argv[[3]]]
-]];
 
 expressionFolder = "expressions";
-outputFolder = "answers-" <> ToString[maxTime];
+outputFolder = "answers";
 fileNameOutput = "answers-";
 fileNameExpression = "rand_int_expressions-";
 (* 0.01, 0.1, 1, 3, 4, 5, 6, 7, 10, 16 *)
-(* maxTime = 7; *)
+maxTime = 12;
 
 (* This code was for rational roots *)
 (* 
@@ -210,9 +204,9 @@ For[j = correctStartingPoint, j <= Length[target], j++,
             ];
             
             (* Evaluate the sum *)
-            s = TimeConstrained[
+            s = AbsoluteTiming[TimeConstrained[
                 Sum[expr, {n, 1, Infinity}], maxTime
-            ];
+            ]];
             AppendTo[answers, {numeratorRoots, denominatorRoots, s}];,
             {i, 1, Length[currentPartition]}
         ];
