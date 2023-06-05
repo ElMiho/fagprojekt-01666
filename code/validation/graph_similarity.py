@@ -9,39 +9,39 @@ if sys.platform == 'darwin':
 # two graphs
 ## pi^Z / Z
 G1 = nx.Graph()
-G1.add_node(1, symbol = "/")
-G1.add_node(2, symbol = "Z")
-G1.add_node(3, symbol = "^")
-G1.add_node(4, symbol = "pi")
-G1.add_node(5, symbol = "Z")
+G1.add_node(0, symbol = "/(0)")
+G1.add_node(1, symbol = "Z(1)")
+G1.add_node(2, symbol = "^(2)")
+G1.add_node(3, symbol = "pi(3)")
+G1.add_node(4, symbol = "Z(4)")
 
-G1.add_edge(1, 2)
-G1.add_edge(1, 3)
-G1.add_edge(3, 4)
-G1.add_edge(3, 5)
+G1.add_edge(0, 1)
+G1.add_edge(0, 2)
+G1.add_edge(2, 3)
+G1.add_edge(2, 4)
 
 ## pi^Z / Z + log(Z)
 G2 = nx.Graph()
-G2.add_node(1, symbol = "+(1)")
-G2.add_node(2, symbol = "log(2)")
-G2.add_node(3, symbol = "Z(3)")
+G2.add_node(0, symbol = "+(1)")
+G2.add_node(1, symbol = "log(2)")
+G2.add_node(2, symbol = "Z(3)")
 
-G2.add_node(4, symbol = "/(4)")
-G2.add_node(5, symbol = "^(5)")
-G2.add_node(6, symbol = "pi(6)")
-G2.add_node(7, symbol = "Z(7)")
-G2.add_node(8, symbol = "Z")
+G2.add_node(3, symbol = "/(4)")
+G2.add_node(4, symbol = "^(5)")
+G2.add_node(5, symbol = "pi(6)")
+G2.add_node(6, symbol = "Z(7)")
+G2.add_node(7, symbol = "Z")
+
+G2.add_edge(0, 1)
+G2.add_edge(0, 3)
 
 G2.add_edge(1, 2)
-G2.add_edge(1, 4)
 
-G2.add_edge(2, 3)
+G2.add_edge(3, 4)
+G2.add_edge(3, 7)
 
 G2.add_edge(4, 5)
-G2.add_edge(4, 8)
-
-G2.add_edge(5, 6)
-G2.add_edge(5, 7)
+G2.add_edge(4, 6)
 
 # Doesn't plot but rather saves the necessary commands
 def plot_graph(G):
