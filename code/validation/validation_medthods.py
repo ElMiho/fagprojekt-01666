@@ -23,8 +23,11 @@ from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
 
+#from data_analysis.int_data.generate_plot import parse_line
 
-   
+
+def test_one_expression(test_expression, as_string: bool = True):
+    return test_an_expression(test_expression, not as_string)
 
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
@@ -125,10 +128,25 @@ def evaluate_tokenized_sum(test_expression: list):
         numerator_roots, denominator_roots = input_to_lists(expression)
         print(evaluate_sum(numerator_roots, denominator_roots))
     close_session()    
-        
+
+'''        
+def find_10_simpelest_evaluations():
+    #færdig gør denne kode til at finde de simpelste svar (oversæt dem til tokens og tæl ikke int tokens og ral tokens)
+    with open("data_analysis/int-data/megafile.txt", "r") as file:
+        lines = file.readlines()
+    
+    for line in lines:
+        time, answer, sum_degree = parse_line(line)
+'''
+
 
 
 if __name__ == '__main__':
-    evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
+    #evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
+    sums = random_list_of_nuerator_and_denominator([-5,5],int_roots_only=True)
+    sums2 = ["#", "/", "1/2", "1/5"]
+    sums = random_list_of_nuerator_and_denominator([-5,5],int_roots_only=False)
+    x = test_one_expression(sums2, False)
+    #[print(i) for i in x]
     
   

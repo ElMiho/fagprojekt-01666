@@ -6,6 +6,7 @@ and numerator evaluates to the same sum.
 from validation.validation_medthods import random_list_of_nuerator_and_denominator
 from validation.validation_medthods import compare_a_list_of_equations_token
 from validation.validation_medthods import get_token_expressions
+from validation.validation_medthods import test_one_expression
 #from validation.validation_medthods import sup_number_of_expressions
 
 from model.equation_interpreter import Equation
@@ -77,6 +78,7 @@ x = list_of_test_expressions_with_same_roots(True, max_num = 10, max_den = 20)
 
 #%%
 test_expressions = get_token_expressions(x)
+
 
 #%%
 print(test_expressions[0].getMathemetaicalNotation())
