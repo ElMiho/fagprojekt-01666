@@ -3,7 +3,9 @@ import sys
 import matplotlib.pyplot as plt
 
 # algorithm already implemented in zss
-from zss import simple_distance, Node
+# from zss import zss_comapre.simple_distance, zss_simple_tree.Node, distance
+import zhang_shasha.zss.compare as zss_compare
+import zhang_shasha.zss.simple_tree as zss_simple_tree
 
 # SET PATH FOR OSX USERS
 if sys.platform == 'darwin':
@@ -53,73 +55,81 @@ def plot_graph(G):
     labels = nx.get_node_attributes(G, 'symbol')
     nx.draw(G, labels=labels)
 
-def weisfeiler_leman_1D():
-    pass
-
-def wiener_index(G: nx.Graph):
-    """
-    Input: A graph G
-    Output: Computes the Wiener index
-    """
-    nodes = G1.nodes
-    number_of_shortest_paths = 0
-    sum = 0
-    for v_i in nodes:
-        for v_j in nodes:
-            d = nx.dijkstra_path_length(G, v_i, v_j)
-            if d > 0: number_of_shortest_paths += 1
-            sum += d
-
-    return sum/number_of_shortest_paths
-
-# old
-def graph_edit_distance(G1: nx.Graph, G2: nx.Graph):
-    """
-    Inputs: Two graphs G1 and G2
-    Outputs: The steps to go from G1 to G2
-
-    Comments and notation:
-    (u -> v): u in G1.nodes replaces v in G2.nodes
-    (u -> eps): deletion of u on G1.nodes
-    (eps -> v): insertion of v in G2.nodes
-
-    all of these are modelled as tuples e.g. (u, v)
-    """
-    # INIT
-    V1 = G1.nodes
-    V2 = G2.nodes
-    open = set()
-    for w in range(len(V2)):
-        open.add((0, w))
-    open.add((1, "eps"))
-
-    print(f"open: {open}")
-
 ## using zss
 A = (
-    Node("/")
-    .addkid(Node("Z"))
-    .addkid(Node("^")
-        .addkid(Node("pi"))
-        .addkid(Node("Z"))
+    zss_simple_tree.Node("/")
+    .addkid(zss_simple_tree.Node("Z"))
+    .addkid(zss_simple_tree.Node("^")
+        .addkid(zss_simple_tree.Node("pi"))
+        .addkid(zss_simple_tree.Node("Z"))
     )
 )
+
+B = (
+    zss_simple_tree.Node("+")
+    .addkid(A)
+    .addkid(zss_simple_tree.Node("log").addkid(zss_simple_tree.Node("Z")))
+)
+
+C = (
+    zss_simple_tree.Node("+")
+    .addkid(
+        zss_simple_tree.Node("log").addkid(zss_simple_tree.Node("Z"))
+    )
+    .addkid(
+        A
+    )
+)
+     
     
-def insert(G: nx.Graph):
+def insert(G: nx.Graph, node1, node2):
     pass
 
+def delete(G: nx.Graph, node):
+    pass
+
+def replace(G: nx.Graph, node1, node2):
+    pass
+
+def swap(G: nx.Graph, node1, node2):
+    pass
+
+
 if __name__ == '__main__':
-    print(f"Wiener index of G1: {wiener_index(G1)}")
-    print(f"Wiener index of G2: {wiener_index(G2)}")
+    # print("A vs A")
+    # print(zss_compare.simple_distance(A, A))
+    # print("A vs B")
+    # print(zss_compare.simple_distance(A, B, return_operations=True))
+    # print("A vs C")
+    # print(zss_compare.simple_distance(A, C, return_operations=True))
+    # print("B vs C")
+    # print(zss_compare.simple_distance(B, C, return_operations=True))
+    
+    # insert_cost = lambda node: 1
+    # remove_cost = lambda node: 1
+    # update_cost = lambda a, b: 1
+   
+    # print(zss_compare.distance(B, C, zss_simple_tree.Node.get_children, insert_cost, remove_cost, update_cost,return_operations=True))
 
-    graph_edit_distance(G1, G2)
+    # plt.figure(1)
+    # plot_graph(G1)
 
-    print(simple_distance(A, A))
+    # plt.figure(2)
+    # plot_graph(G2)
 
-    plt.figure(1)
-    plot_graph(G1)
+    # plt.show()
 
-    plt.figure(2)
-    plot_graph(G2)
+    print("Comparing X and Y")
+    X = (
+        zss_simple_tree.Node("/")
+        .addkid(zss_simple_tree.Node("a"))
+        .addkid(zss_simple_tree.Node("b"))
+    )
 
-    plt.show()
+
+    Y = (
+        zss_simple_tree.Node("/")
+        .addkid(zss_simple_tree.Node("b"))
+        .addkid(zss_simple_tree.Node("a"))
+    )
+    print(zss_compare.simple_distance(X, Y, return_operations=True))
