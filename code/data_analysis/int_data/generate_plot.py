@@ -19,7 +19,7 @@ def find_succes_sum_degree(times_idxes, sum_degrees, matrix, time, sum_degree):
             return
 
 # Read the file
-with open("megafile.txt", "r") as file:
+with open("data_analysis/int-data/megafile.txt", "r") as file:
     lines = file.readlines()
 
 times = [0.01, 0.1, 1, 3, 4, 5, 6, 7, 10, 12]
@@ -139,5 +139,17 @@ for sd in enumerate(sum_degrees):
 plt.xlabel("Time [s]")
 plt.ylabel("Abortion rate")
     
+plt.legend()
+plt.show()
+
+
+plt.figure(3)
+number_of_succes = [1-(i / 4400) for i in number_of_succes]
+plt.grid(zorder=1)
+plt.scatter(times, number_of_succes, zorder=3)
+plt.plot(times, number_of_succes, label = "The combined sum degrees", color = "C1",zorder=2)
+plt.title("Abortion rate pr. time interval")
+plt.xlabel("Time [s]")
+plt.ylabel("Abortion rate")
 plt.legend()
 plt.show()
