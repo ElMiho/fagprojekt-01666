@@ -1,5 +1,6 @@
 import sys
 from zss import simple_distance, Node
+from sympy.utilities.iterables import variations
 
 binary_operators = [
     "TT_PLUS",
@@ -38,9 +39,12 @@ A = (
     )
 )
 
-equation = equation_interpreter.Equation.makeEquationFromString("4+Pi")
+equation = equation_interpreter.Equation.makeEquationFromString("3*4/2+1")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
+equation1 = equation_interpreter.Equation.makeEquationFromString("4*3/2+1)")
+equation1.convertToPostfix()
+tokens1 = equation.tokenized_equation
 
 def generate_expressions(tokens): #Tokens should be listed in postfix!
     #This does absolutely not work
@@ -73,50 +77,52 @@ def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
     return stack.pop()
 
 g = generate_graph_from_postfix(tokens)
+g1 = generate_graph_from_postfix(tokens1)
 
-combinations = []
-
-
-# Recursive function to generate all combinations
-def generate_combinations(node):
-    # Base case: if node is a leaf, return a list containing only the node
-    if node.children == []:
-        return [node]
-
+def generate_combinations(graph):
+    
     combinations = []
+    combinations.append(graph.copy())
 
-    # Check if the current node is an operator that needs flipping
-    if node.label in plus_mulitply:
-        # Generate combinations by flipping the children
-        left_combinations = generate_combinations(node.children[0])
-        right_combinations = generate_combinations(node.children[1])
+    
 
-        # Generate combinations with all possible permutations
-        for left_node in left_combinations:
-            for right_node in right_combinations:
-                flipped_node = Node(node.label)
-                flipped_node.addkid(right_node)
-                flipped_node.addkid(left_node)
-                combinations.append(Node(node.label, [left_node, flipped_node]))
-                combinations.append(Node(node.label, [flipped_node, right_node]))
-    else:
-        # Generate combinations for the non-operator node
-        left_combinations = generate_combinations(node.children[0])
-        right_combinations = generate_combinations(node.children[1])
+    def recursive_node_search(node):
+        if node.children == []:
+            return
+        else:
+            for child in node.children:
+                if child.label in plus_mulitply:
+                    child0 = child.children[0]
+                    child1 = child.children[1]
+                    child.children[0] = child1
+                    child.children[1] = child0
+                    combinations.append(graph.copy())
+                    
+                recursive_node_search(child)
+    recursive_node_search(graph)
 
-        # Generate combinations by combining the left and right sub-combinations
-        for left_node in left_combinations:
-            for right_node in right_combinations:
-                new_node = Node(node.label)
-                new_node.addkid(left_node)
-                new_node.addkid(right_node)
-                combinations.append(new_node)
+    #IF ROOT IS MULT/ADD, FLIP CHILDREN
+    if graph.label in plus_mulitply:
+        child0 = graph.children[0]
+        child1 = graph.children[1]
+        graph.children[0] = child1
+        graph.children[1] = child0
+        combinations.append(graph.copy())
+        recursive_node_search(graph)
 
     return combinations
 
-combs = generate_combinations(g)
+
+def getDistance(graph1, graph2):
+    combs = generate_combinations(graph1.copy())
+    smallest_distance = sys.maxsize
+    for c in combs:
+        distance = simple_distance(c, graph2)
+        if distance < smallest_distance:
+            smallest_distance = distance
+    return smallest_distance
 
 
-for c in combs:
-    print('new comb')
-    print(c.children[1])
+
+
+print(getDistance(g, g1))
