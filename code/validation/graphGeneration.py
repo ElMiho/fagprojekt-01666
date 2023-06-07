@@ -38,23 +38,24 @@ A = (
     )
 )
 
-equation = equation_interpreter.Equation.makeEquationFromString("3 * 4 + 2")
+equation = equation_interpreter.Equation.makeEquationFromString("4+Pi")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
 
 def generate_expressions(tokens): #Tokens should be listed in postfix!
     #This does absolutely not work
     stack = [[]]
+        
+
     for token in tokens:
         if token.t_type not in binary_operators:
-            for sck in stack:
-                sck.append(token)
+            for s in stack:
+                s.append(token)
         else:
-          stack.append(stack[-1].copy())
-          for sck in stack:
-              op2 = sck.pop()
-              op1 = sck.pop()
-              sck.append([op1,token,op2])
+            for idx, s in enumerate(stack):
+                op1 = stack[idx].pop()
+                op2 = stack[idx].pop()
+
     return stack
 
 
@@ -69,12 +70,53 @@ def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
             operand2 = stack.pop()
             operand1 = stack.pop()
             stack.append(Node(token.t_type, [operand1, operand2]))
-    
     return stack.pop()
 
-#g = generate_graph_from_postfix(tokens)
-result = generate_expressions(tokens)
-for r in result:
-    print("RESULT:")
-    for t in r:
-        print(t.t_type, t.t_value)
+g = generate_graph_from_postfix(tokens)
+
+combinations = []
+
+
+# Recursive function to generate all combinations
+def generate_combinations(node):
+    # Base case: if node is a leaf, return a list containing only the node
+    if node.children == []:
+        return [node]
+
+    combinations = []
+
+    # Check if the current node is an operator that needs flipping
+    if node.label in plus_mulitply:
+        # Generate combinations by flipping the children
+        left_combinations = generate_combinations(node.children[0])
+        right_combinations = generate_combinations(node.children[1])
+
+        # Generate combinations with all possible permutations
+        for left_node in left_combinations:
+            for right_node in right_combinations:
+                flipped_node = Node(node.label)
+                flipped_node.addkid(right_node)
+                flipped_node.addkid(left_node)
+                combinations.append(Node(node.label, [left_node, flipped_node]))
+                combinations.append(Node(node.label, [flipped_node, right_node]))
+    else:
+        # Generate combinations for the non-operator node
+        left_combinations = generate_combinations(node.children[0])
+        right_combinations = generate_combinations(node.children[1])
+
+        # Generate combinations by combining the left and right sub-combinations
+        for left_node in left_combinations:
+            for right_node in right_combinations:
+                new_node = Node(node.label)
+                new_node.addkid(left_node)
+                new_node.addkid(right_node)
+                combinations.append(new_node)
+
+    return combinations
+
+combs = generate_combinations(g)
+
+
+for c in combs:
+    print('new comb')
+    print(c.children[1])
