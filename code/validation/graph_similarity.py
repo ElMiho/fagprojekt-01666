@@ -2,6 +2,11 @@ import networkx as nx
 import sys
 import matplotlib.pyplot as plt
 
+# algorithm already implemented in zss
+# from zss import zss_comapre.simple_distance, zss_simple_tree.Node, distance
+import validation.zhang_shasha.zss.compare as zss_compare
+import validation.zhang_shasha.zss.simple_tree as zss_simple_tree
+
 # SET PATH FOR OSX USERS
 if sys.platform == 'darwin':
     sys.path.append('../code')
@@ -9,39 +14,40 @@ if sys.platform == 'darwin':
 # two graphs
 ## pi^Z / Z
 G1 = nx.Graph()
-G1.add_node(1, symbol = "/")
-G1.add_node(2, symbol = "Z")
-G1.add_node(3, symbol = "^")
-G1.add_node(4, symbol = "pi")
-G1.add_node(5, symbol = "Z")
+G1.add_node(0, symbol = "/(0)")
+G1.add_node(1, symbol = "Z(1)")
+G1.add_node(2, symbol = "^(2)")
+G1.add_node(3, symbol = "pi(3)")
+G1.add_node(4, symbol = "Z(4)")
 
-G1.add_edge(1, 2)
-G1.add_edge(1, 3)
-G1.add_edge(3, 4)
-G1.add_edge(3, 5)
+G1.add_edge(0, 1)
+G1.add_edge(0, 2)
+G1.add_edge(2, 3)
+G1.add_edge(2, 4)
+
 
 ## pi^Z / Z + log(Z)
 G2 = nx.Graph()
-G2.add_node(1, symbol = "+(1)")
-G2.add_node(2, symbol = "log(2)")
-G2.add_node(3, symbol = "Z(3)")
+G2.add_node(0, symbol = "+(1)")
+G2.add_node(1, symbol = "log(2)")
+G2.add_node(2, symbol = "Z(3)")
 
-G2.add_node(4, symbol = "/(4)")
-G2.add_node(5, symbol = "^(5)")
-G2.add_node(6, symbol = "pi(6)")
-G2.add_node(7, symbol = "Z(7)")
-G2.add_node(8, symbol = "Z")
+G2.add_node(3, symbol = "/(4)")
+G2.add_node(4, symbol = "^(5)")
+G2.add_node(5, symbol = "pi(6)")
+G2.add_node(6, symbol = "Z(7)")
+G2.add_node(7, symbol = "Z")
+
+G2.add_edge(0, 1)
+G2.add_edge(0, 3)
 
 G2.add_edge(1, 2)
-G2.add_edge(1, 4)
 
-G2.add_edge(2, 3)
+G2.add_edge(3, 4)
+G2.add_edge(3, 7)
 
 G2.add_edge(4, 5)
-G2.add_edge(4, 8)
-
-G2.add_edge(5, 6)
-G2.add_edge(5, 7)
+G2.add_edge(4, 6)
 
 # Doesn't plot but rather saves the necessary commands
 def plot_graph(G):
@@ -49,30 +55,81 @@ def plot_graph(G):
     labels = nx.get_node_attributes(G, 'symbol')
     nx.draw(G, labels=labels)
 
-def weisfeiler_leman_1D():
+## using zss
+A = (
+    zss_simple_tree.Node("/")
+    .addkid(zss_simple_tree.Node("Z"))
+    .addkid(zss_simple_tree.Node("^")
+        .addkid(zss_simple_tree.Node("pi"))
+        .addkid(zss_simple_tree.Node("Z"))
+    )
+)
+
+B = (
+    zss_simple_tree.Node("+")
+    .addkid(A)
+    .addkid(zss_simple_tree.Node("log").addkid(zss_simple_tree.Node("Z")))
+)
+
+C = (
+    zss_simple_tree.Node("+")
+    .addkid(
+        zss_simple_tree.Node("log").addkid(zss_simple_tree.Node("Z"))
+    )
+    .addkid(
+        A
+    )
+)
+     
+    
+def insert(G: nx.Graph, node1, node2):
     pass
 
-def wiener_index(G: nx.Graph):
-    nodes = G1.nodes
-    number_of_shortest_paths = 0
-    sum = 0
-    for v_i in nodes:
-        for v_j in nodes:
-            d = nx.dijkstra_path_length(G, v_i, v_j)
-            if d > 0: number_of_shortest_paths += 1
-            sum += d
+def delete(G: nx.Graph, node):
+    pass
 
-    return sum/number_of_shortest_paths
+def replace(G: nx.Graph, node1, node2):
+    pass
+
+def swap(G: nx.Graph, node1, node2):
+    pass
 
 
 if __name__ == '__main__':
-    print(f"Wiener index of G1: {wiener_index(G1)}")
-    print(f"Wiener index of G2: {wiener_index(G2)}")
+    # print("A vs A")
+    # print(zss_compare.simple_distance(A, A))
+    # print("A vs B")
+    # print(zss_compare.simple_distance(A, B, return_operations=True))
+    # print("A vs C")
+    # print(zss_compare.simple_distance(A, C, return_operations=True))
+    # print("B vs C")
+    # print(zss_compare.simple_distance(B, C, return_operations=True))
+    
+    # insert_cost = lambda node: 1
+    # remove_cost = lambda node: 1
+    # update_cost = lambda a, b: 1
+   
+    # print(zss_compare.distance(B, C, zss_simple_tree.Node.get_children, insert_cost, remove_cost, update_cost,return_operations=True))
 
-    plt.figure(1)
-    plot_graph(G1)
+    # plt.figure(1)
+    # plot_graph(G1)
 
-    plt.figure(2)
-    plot_graph(G2)
+    # plt.figure(2)
+    # plot_graph(G2)
 
-    plt.show()
+    # plt.show()
+
+    print("Comparing X and Y")
+    X = (
+        zss_simple_tree.Node("/")
+        .addkid(zss_simple_tree.Node("a"))
+        .addkid(zss_simple_tree.Node("b"))
+    )
+
+
+    Y = (
+        zss_simple_tree.Node("/")
+        .addkid(zss_simple_tree.Node("b"))
+        .addkid(zss_simple_tree.Node("a"))
+    )
+    print(zss_compare.simple_distance(X, Y, return_operations=True))
