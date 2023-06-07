@@ -156,3 +156,60 @@ plt.xlabel("Time [s]")
 plt.ylabel("Abortion rate")
 plt.legend()
 plt.show()
+
+
+############
+#RATIONELLE PLOT
+with open("data_analysis/new_rational_data/megafile2_txt", "r") as file:
+    lines_ras = file.readlines()
+    
+
+number_of_succes_ras = [0,0,0,0,0,0,0,0,0,0]
+number_of_succes_matrix_ras = np.zeros((len(sum_degrees),len(times)))
+
+
+
+for line in lines_ras:    
+    time_ras, answer_ras, sum_degree_ras = parse_line(line)
+    
+    # increment every time indes that has succes
+    find_succes(times, number_of_succes_ras, time_ras)
+    find_succes_sum_degree(times, sum_degrees, number_of_succes_matrix_ras, time_ras, sum_degree_ras)
+    time_array.append(time_ras)
+
+# divide by number of observations.
+for idx, number in enumerate(total_each_pat):
+    number_of_succes_matrix_ras[idx, :] = 1-number_of_succes_matrix_ras[idx, :] / number   
+
+
+plt.figure(4)
+number_of_succes_ras = [1-(i / 4400) for i in number_of_succes_ras]
+plt.grid(zorder=1)
+plt.scatter(times, number_of_succes_ras, zorder=3)
+plt.plot(times, number_of_succes_ras, label = "The combined sum degrees", color = "C1",zorder=2)
+plt.title("Rational Numbers \n Abortion rate pr. time interval")
+plt.xlabel("Time [s]")
+plt.ylabel("Abortion rate")
+plt.legend()
+plt.show()
+
+
+
+
+
+
+# Flatten the matrix values for the z coordinates
+Z = number_of_succes_matrix_ras.flatten()
+
+# Create a figure and a 3D axis
+fig = plt.figure(1)
+ax = fig.add_subplot(111, projection='3d')
+
+# Plot the 3D surface
+ax.plot_surface(X, Y, number_of_succes_matrix_ras, cmap='viridis')
+
+# Set labels and title
+ax.set_xlabel('Time [s]')
+ax.set_ylabel('Sum degree')
+ax.set_zlabel('Abortion rate')
+ax.set_title('Rational Numbers \n Abortion rate pr. time interval')
