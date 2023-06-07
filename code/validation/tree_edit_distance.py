@@ -1,5 +1,6 @@
 import numpy as np
 import networkx as nx
+# from networkx.drawing.nx_agraph import graphviz_layout
 import sys
 import matplotlib.pyplot as plt
 import collections
@@ -7,6 +8,7 @@ import collections
 # Doesn't plot but rather saves the necessary commands
 def plot_graph(G):
     pos = nx.spring_layout(G)
+    # pos = graphviz_layout(G, prog='dot')
     labels = nx.get_node_attributes(G, 'symbol')
     nx.draw(G, labels=labels)
 
@@ -65,11 +67,6 @@ class Tree:
                 current = has_children_been_visited(current)
 
         return idx_list
-
-    def get_root(self):
-        ordering = self.get_ordering()
-        pos = ordering.index(max(ordering))
-        return self.nodes[pos]
 
     def insert(self, parent_node: Node, new_node: Node):
         # Update children and parent
@@ -135,20 +132,42 @@ class Tree:
         return self.subforest(self.l(i), i)
     
     def LR_keyroots(self):
-        pass
+        keyroots = []
+        
+        ordering = self.get_ordering()
+        keyroots.append(max(ordering))
+
+        for k in range(1, len(self.nodes) + 1):
+            k_node = self.nodes[
+                ordering.index(k)
+            ]
+            if k_node != self.root:
+                parent_k_node = k_node.parent_node
+                parent_k = ordering[
+                    self.nodes.index(parent_k_node)
+                ]
+
+                if self.l(k) != self.l(parent_k):
+                    keyroots.append(k)
+
+        return keyroots
 
     def to_nx_di_graph(self) -> nx.DiGraph:
         q = collections.deque()
         G = nx.DiGraph()
+
+        ordering = self.get_ordering()
+        for idx, node in enumerate(self.nodes):
+            node.id = ordering[idx]
         
-        root = self.get_root()
-        G.add_node(root.id, symbol=root.value)
+        root = self.root
+        G.add_node(root.id, symbol=f"{root.value}({root.id})")
         for child in root.children:
             q.append(child)
 
         while q:
             current = q.pop()
-            G.add_node(current.id, symbol=current.value)
+            G.add_node(current.id, symbol=f"{current.value}({current.id})")
             G.add_edge(current.parent_node.id, current.id)
             for child in current.children:
                 q.append(child)
@@ -188,12 +207,12 @@ def forestdist(T1: Tree, T2: Tree):
 # poor mans test cases and playing around
 if __name__ == '__main__':
     # expression: cos(c - d) + b
-    n1 = Node(value="+", id=1)
-    n2 = Node(value="cos", id=2)
-    n3 = Node(value="-", id=3)
-    n4 = Node(value="c", id=4)
-    n5 = Node(value="d", id=5)
-    n6 = Node(value="b", id=6)
+    n1 = Node(value="+")
+    n2 = Node(value="cos")
+    n3 = Node(value="-")
+    n4 = Node(value="c")
+    n5 = Node(value="d")
+    n6 = Node(value="b")
 
     n1.children = [n2, n6]
     n2.parent_node = n1
@@ -207,6 +226,9 @@ if __name__ == '__main__':
     n5.parent_node = n3
 
     T = Tree([n1, n2, n3, n4, n5, n6], root = n1)
+
+    # G = T.to_nx_di_graph()
+    # plot_graph(G)
 
     # print("test ordering")
     # print(T.get_ordering())
@@ -235,6 +257,29 @@ if __name__ == '__main__':
     #     pos = T.nodes.index(n)
     #     print(ordering[pos], n.value)
 
-    G = T.to_nx_di_graph()
-    plot_graph(G)
+    # Fig 4 node example
+    f = Node(value="f")
+    d = Node(value="d")
+    e = Node(value="e")
+    a = Node(value="a")
+    c = Node(value="c")
+    b = Node(value="b")
+
+    f.children = [d, e]
+    d.parent_node = f
+    e.parent_node = f
+
+    d.children = [a, c]
+    a.parent_node = d
+    c.parent_node = d
+
+    c.children = [b]
+    b.parent_node = c
+
+    T1 = Tree([a, b, c, d, e, f], root = f)
+
+    print(T1.LR_keyroots())
+
+    J = T1.to_nx_di_graph()
+    plot_graph(J)
     plt.show()
