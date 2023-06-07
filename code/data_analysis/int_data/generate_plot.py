@@ -64,9 +64,12 @@ def parse_line(line):
         
         elif x[1] == '{':
             count = count + 1
+         
+        if count == 3 and x[1] == ",":
+            eq_start = x[0]+1
             
         if x[1] == '}' and line[(x[0]+1)]=='}':
-            answer = line[(index_of_time+11):(x[0])]
+            answer = line[(eq_start):(x[0])]
             break
 
     return time, answer, sum_degree
