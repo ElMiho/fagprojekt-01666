@@ -226,7 +226,17 @@ class Equation:
             if token.t_type == TT_INTEGER:
                 count += 1
         return count
-
+    
+    def listOfTokens(self):
+        if self.notation == "postfix" or self.notation == "prefix":
+            self.convertToInfix()
+        assert self.notation == "infix"
+        token_list = []
+        for token in self.tokenized_equation:
+            token_list.append(token)
+        return token_list
+    
+    
     def getMathemetaicalNotation(self):
         if self.notation == "postfix" or self.notation == "prefix":
             self.convertToInfix()

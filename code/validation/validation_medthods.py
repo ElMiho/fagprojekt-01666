@@ -16,12 +16,14 @@ if LOAD_MAIN_FLAG:
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
-
+#from model.equation_interpreter import 
 
 
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
+
+
 
 #from data_analysis.int_data.generate_plot import parse_line
 
@@ -147,6 +149,14 @@ if __name__ == '__main__':
     sums2 = ["#", "/", "1/2", "1/5"]
     sums = random_list_of_nuerator_and_denominator([-5,5],int_roots_only=False)
     x = test_one_expression(sums2, False)
+    y = test_one_expression(sums2, True)
     #[print(i) for i in x]
+    tt_list = x.listOfTokens()
+    [print(i) for i in tt_list]
+    
+    equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+    
+    tt_list2 = equation.listOfTokens()
+    tt_ = equation.tokenized_equation
     
   
