@@ -39,12 +39,7 @@ A = (
     )
 )
 
-equation = equation_interpreter.Equation.makeEquationFromString("3*4/2+1")
-equation.convertToPostfix()
-tokens = equation.tokenized_equation
-equation1 = equation_interpreter.Equation.makeEquationFromString("4*3/2+1)")
-equation1.convertToPostfix()
-tokens1 = equation.tokenized_equation
+
 
 def generate_expressions(tokens): #Tokens should be listed in postfix!
     #This does absolutely not work
@@ -76,15 +71,11 @@ def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
             stack.append(Node(token.t_type, [operand1, operand2]))
     return stack.pop()
 
-g = generate_graph_from_postfix(tokens)
-g1 = generate_graph_from_postfix(tokens1)
 
 def generate_combinations(graph):
     
     combinations = []
     combinations.append(graph.copy())
-
-    
 
     def recursive_node_search(node):
         if node.children == []:
@@ -115,14 +106,23 @@ def generate_combinations(graph):
 
 def getDistance(graph1, graph2):
     combs = generate_combinations(graph1.copy())
-    smallest_distance = sys.maxsize
+    smallest_distance = 100
     for c in combs:
         distance = simple_distance(c, graph2)
         if distance < smallest_distance:
             smallest_distance = distance
     return smallest_distance
 
+#Test cases
+equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+equation.convertToPostfix()
+tokens = equation.tokenized_equation
+equation1 = equation_interpreter.Equation.makeEquationFromString("Pi/(2+3)+4")
+equation1.convertToPostfix()
+tokens1 = equation1.tokenized_equation
+g = generate_graph_from_postfix(tokens)
+g1 = generate_graph_from_postfix(tokens1)
 
+dist = getDistance(g, g1)
+print(dist)
 
-
-print(getDistance(g, g1))
