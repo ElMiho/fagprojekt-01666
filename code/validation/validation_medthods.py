@@ -9,7 +9,7 @@ import sys
 if sys.platform == 'darwin':
     sys.path.append('../code')
     
-LOAD_MAIN_FLAG = True
+LOAD_MAIN_FLAG = False
 if LOAD_MAIN_FLAG:
     from main import test_an_expression
     
@@ -17,6 +17,7 @@ from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
 from model.equation_interpreter import Equation
 #from model.equation_interpreter import 
+from model.tokens import TOKEN_TYPE_ANSWERS
 
 
 from validation.mathematica_from_python import input_to_lists
@@ -166,20 +167,27 @@ def find_10_simpelest_evaluations():
     for line in lines:
         time, answer, sum_degree = parse_line(line)
         x = 0
-        for token in Equation.makeEquationFromString(answer).tokenized_equation:
-            if token.t_type not in tokens_numbers:
-                x += 1
+        line_is_illigal = False
         
-        min_val, min_idx = min_and_idx(non_int_tokens)
-        max_val, max_idx = max_and_idx(non_int_tokens)
-        
-        if min_val == -1:
-            f10se[min_idx] = answer
-            non_int_tokens[min_idx] = x
+        equation = Equation.makeEquationFromString(answer).tokenized_equation
+        if equation == []:
+            continue
             
-        elif x < max_val:
-            f10se[max_idx] = answer
-            non_int_tokens[max_idx] = answer
+        else:
+            for token in equation:
+                if token.t_type not in tokens_numbers:
+                    x += 1
+                
+            min_val, min_idx = min_and_idx(non_int_tokens)
+            max_val, max_idx = max_and_idx(non_int_tokens)
+            print(x)
+            if min_val == -1:
+                f10se[min_idx] = answer
+                non_int_tokens[min_idx] = x
+                
+            elif x < max_val:
+                f10se[max_idx] = answer
+                non_int_tokens[max_idx] = x
            
         
     return f10se, non_int_tokens
