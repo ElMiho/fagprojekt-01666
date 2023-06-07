@@ -11,6 +11,22 @@ import zhang_shasha.zss.simple_tree as zss_simple_tree
 if sys.platform == 'darwin':
     sys.path.append('../code')
 
+binary_operators = [
+    "TT_PLUS",
+    "TT_MINUS",
+    "TT_MULTIPLY",
+    "TT_DIVIDE", 
+    "TT_POW"
+]
+
+basis_functions = [
+    "TT_SQRT",
+    "TT_SIN",
+    "TT_COS",
+    "TT_TAN", 
+    "TT_LOG"
+]
+
 # two graphs
 ## pi^Z / Z
 G1 = nx.Graph()
@@ -80,7 +96,19 @@ C = (
         A
     )
 )
-     
+
+def createGraph(tokens): #Assume tokens are listed in postfix
+    tokens = tokens[:-1] # reverse
+    graph = zss_simple_tree.Node(tokens[0].pop().t_type)
+    def addToGraph(tokens):
+        if (len(tokens) == 0):
+            return graph
+        if tokens[0].t_type in binary_operators:
+            
+            
+    
+    addToGraph(tokens)
+    pass
     
 def insert(G: nx.Graph, node1, node2):
     pass
@@ -125,7 +153,6 @@ if __name__ == '__main__':
         .addkid(zss_simple_tree.Node("a"))
         .addkid(zss_simple_tree.Node("b"))
     )
-
 
     Y = (
         zss_simple_tree.Node("/")
