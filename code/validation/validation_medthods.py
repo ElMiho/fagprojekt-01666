@@ -25,7 +25,7 @@ from validation.mathematica_from_python import close_session
 
 
 
-#from data_analysis.int_data.generate_plot import parse_line
+from data_analysis.int_data.generate_plot import parse_line
 
 
 def test_one_expression(test_expression, as_string: bool = True):
@@ -131,19 +131,68 @@ def evaluate_tokenized_sum(test_expression: list):
         print(evaluate_sum(numerator_roots, denominator_roots))
     close_session()    
 
-'''        
+     
 def find_10_simpelest_evaluations():
+    #Vil også gerne have polynomiet
+    def max_and_idx(aList):
+        maxs = aList[0]
+        idx = 0
+        for i in enumerate(aList):
+            if maxs < i[1]:
+                maxs = i[1]
+                idx = i[0]
+        return i[1], i[0]
+    
+    def min_and_idx(aList):
+        mins = aList[0]
+        idx = 0
+        for i in enumerate(aList):
+            if mins > i[1]:
+                mins = i[1]
+                idx = i[0]
+        return mins, idx
+    
+    
     #færdig gør denne kode til at finde de simpelste svar (oversæt dem til tokens og tæl ikke int tokens og ral tokens)
-    with open("data_analysis/int-data/megafile.txt", "r") as file:
+    with open("data_analysis/int_data/megafile.txt", "r") as file:
         lines = file.readlines()
+    
+    
+    f10se = [" " for _ in range(10)]
+    non_int_tokens = [-1 for _ in range(10)]
+    
+    tokens_numbers = ["TT_INTEGER", "TT_RATIONAL", "TT_ZERO", "TT_ONE"]
     
     for line in lines:
         time, answer, sum_degree = parse_line(line)
-'''
+        x = 0
+        for token in Equation.makeEquationFromString(answer).tokenized_equation:
+            if token.t_type not in tokens_numbers:
+                x += 1
+        
+        min_val, min_idx = min_and_idx(non_int_tokens)
+        max_val, max_idx = max_and_idx(non_int_tokens)
+        
+        if min_val == -1:
+            f10se[min_idx] = answer
+            non_int_tokens[min_idx] = x
+            
+        elif x < max_val:
+            f10se[max_idx] = answer
+            non_int_tokens[max_idx] = answer
+           
+        
+    return f10se, non_int_tokens
+    
 
 
 
 if __name__ == '__main__':
+    
+    f10se, non_int_tokens = find_10_simpelest_evaluations()
+    
+    
+    '''
     #evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
     sums = random_list_of_nuerator_and_denominator([-5,5],int_roots_only=True)
     sums2 = ["#", "/", "1/2", "1/5"]
@@ -158,5 +207,6 @@ if __name__ == '__main__':
     
     tt_list2 = equation.listOfTokens()
     tt_ = equation.tokenized_equation
+    '''
     
   
