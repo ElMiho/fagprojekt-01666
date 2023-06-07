@@ -24,14 +24,10 @@ class Node:
         else:
             self.children.append(new_node)
 
-
 class Tree:
     def __init__(self, nodes = [], root = None):
         self.nodes = nodes
         self.root = root
-        
-    def get_root(self):
-        return self.nodes[-1]
     
     def get_ordering(self):  
         idx_list = [0] * len(self.nodes)
@@ -69,6 +65,11 @@ class Tree:
                 current = has_children_been_visited(current)
 
         return idx_list
+
+    def get_root(self):
+        ordering = self.get_ordering()
+        pos = ordering.index(max(ordering))
+        return self.nodes[pos]
 
     def insert(self, parent_node: Node, new_node: Node):
         # Update children and parent
@@ -117,7 +118,7 @@ class Tree:
         """
         corresponding to T[i...j]
         """
-        if i > j: return None # Find out if this results in problems!
+        if i > j: return [] # Find out if this results in problems!
         
         ordering = self.get_ordering()
         list_of_indexes = []
@@ -136,15 +137,15 @@ class Tree:
     def LR_keyroots(self):
         pass
 
-    def to_nx_graph(self) -> nx.Graph:
+    def to_nx_di_graph(self) -> nx.DiGraph:
         q = collections.deque()
-        G = nx.Graph()
+        G = nx.DiGraph()
         
         root = self.get_root()
         G.add_node(root.id, symbol=root.value)
         for child in root.children:
             q.append(child)
-        
+
         while q:
             current = q.pop()
             G.add_node(current.id, symbol=current.value)
@@ -154,20 +155,45 @@ class Tree:
 
         return G
     
-def treedist(G: nx.Graph, i, j):
-    pass
+def treedist(T1: Tree, T2: Tree, i: int, j: int, treedist_matrix: np.matrix):
+    """
+    i in T1 and j in T2
+    """
+    for i_1_node in T1.anc(i):
+        "some check"
+    for j_1_node in T2.anc(j):
+        "some check"
 
-def forestdist():
-    pass
+    for i_1_node in T1.anc(i):
+        "some check"
+        for j_1_node in T2.anc(j):
+            ordering_T1 = T1.get_ordering()
+            ordering_T2 = T2.get_ordering()
 
-# poor mans test cases
+            pos_i_1 = T1.nodes.index(i_1_node)
+            i_1 = ordering_T1[pos_i_1]
+
+            pos_j_1 = T2.nodes.index(j_1_node)
+            j_1 = ordering_T2[pos_j_1]
+
+            if T1.l(i_1) == T1.l(i) and T2.l(j_1) == T2.l(j):
+                "lots of calculations"
+            else:
+                "lots of calculations"
+
+def forestdist(T1: Tree, T2: Tree):
+    if T1.nodes == [] and T2.nodes == []:
+        return 0
+
+# poor mans test cases and playing around
 if __name__ == '__main__':
-    n1 = Node(value="+")
-    n2 = Node(value="cos")
-    n3 = Node(value="+")
-    n4 = Node(value="c")
-    n5 = Node(value ="d")
-    n6 = Node(value="b")
+    # expression: cos(c - d) + b
+    n1 = Node(value="+", id=1)
+    n2 = Node(value="cos", id=2)
+    n3 = Node(value="-", id=3)
+    n4 = Node(value="c", id=4)
+    n5 = Node(value="d", id=5)
+    n6 = Node(value="b", id=6)
 
     n1.children = [n2, n6]
     n2.parent_node = n1
@@ -182,38 +208,33 @@ if __name__ == '__main__':
 
     T = Tree([n1, n2, n3, n4, n5, n6], root = n1)
 
-    # print(T.nodes)
+    # print("test ordering")
+    # print(T.get_ordering())
 
-    # print(n2 in T.nodes)
-    # print(T.nodes.index(n3))
+    # print("test l(5)")
+    # print(
+    #     T.l(5).value
+    # )
 
-    print("test ordering")
-    print(T.get_ordering())
+    # print("test depth")
+    # print(
+    #     [(3, T.depth(3)), (4, T.depth(4)), 
+    #     (5, T.depth(5)), (1, T.depth(1))]
+    # )
 
-    print("test l(5)")
-    print(
-        T.l(5).value
-    )
+    # print("test anc")
+    # ordering = T.get_ordering()
+    # anc = T.anc(1)
+    # for n in anc:
+    #     pos = T.nodes.index(n)
+    #     print(ordering[pos], n.value)
 
-    print("test depth")
-    print(
-        [(3, T.depth(3)), (4, T.depth(4)), 
-        (5, T.depth(5)), (1, T.depth(1))]
-    )
+    # print("test subforest")
+    # res = T.subforest(3, 5)
+    # for n in res:
+    #     pos = T.nodes.index(n)
+    #     print(ordering[pos], n.value)
 
-    print("test anc")
-    ordering = T.get_ordering()
-    anc = T.anc(1)
-    for n in anc:
-        pos = T.nodes.index(n)
-        print(ordering[pos], n.value)
-
-    print("test subforest")
-    res = T.subforest(3, 5)
-    for n in res:
-        pos = T.nodes.index(n)
-        print(ordering[pos], n.value)
-
-    # G = T.to_nx_graph()
-    # plot_graph(G)
-    # plt.show()
+    G = T.to_nx_di_graph()
+    plot_graph(G)
+    plt.show()
