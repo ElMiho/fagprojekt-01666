@@ -33,35 +33,6 @@ if sys.platform == 'darwin':
 
 from model import equation_interpreter
 
-A = (
-    Node("TT_DIVIDE")
-    .addkid(Node("TT_INTEGER"))
-    .addkid(Node("TT_POW")
-        .addkid(Node("TT_PI"))
-        .addkid(Node("TT_INTEGER"))
-    )
-)
-
-equation = equation_interpreter.Equation.makeEquationFromString("4+Pi")
-equation.convertToPostfix()
-tokens = equation.tokenized_equation
-
-def generate_expressions(tokens): #Tokens should be listed in postfix!
-    #This does absolutely not work
-    stack = [[]]
-        
-
-    for token in tokens:
-        if token.t_type not in binary_operators:
-            for s in stack:
-                s.append(token)
-        else:
-            for idx, s in enumerate(stack):
-                op1 = stack[idx].pop()
-                op2 = stack[idx].pop()
-
-    return stack
-
 
 def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
     stack = []
@@ -75,56 +46,6 @@ def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
             operand1 = stack.pop()
             stack.append(Node(token.t_type, [operand1, operand2]))
     return stack.pop()
-
-g = generate_graph_from_postfix(tokens)
-
-combinations = []
-
-
-# Recursive function to generate all combinations
-def generate_combinations(node):
-    # Base case: if node is a leaf, return a list containing only the node
-    if node.children == []:
-        return [node]
-
-    combinations = []
-
-    # Check if the current node is an operator that needs flipping
-    if node.label in plus_mulitply:
-        # Generate combinations by flipping the children
-        left_combinations = generate_combinations(node.children[0])
-        right_combinations = generate_combinations(node.children[1])
-
-        # Generate combinations with all possible permutations
-        for left_node in left_combinations:
-            for right_node in right_combinations:
-                flipped_node = Node(node.label)
-                flipped_node.addkid(right_node)
-                flipped_node.addkid(left_node)
-                combinations.append(Node(node.label, [left_node, flipped_node]))
-                combinations.append(Node(node.label, [flipped_node, right_node]))
-    else:
-        # Generate combinations for the non-operator node
-        left_combinations = generate_combinations(node.children[0])
-        right_combinations = generate_combinations(node.children[1])
-
-        # Generate combinations by combining the left and right sub-combinations
-        for left_node in left_combinations:
-            for right_node in right_combinations:
-                new_node = Node(node.label)
-                new_node.addkid(left_node)
-                new_node.addkid(right_node)
-                combinations.append(new_node)
-
-    return combinations
-
-combs = generate_combinations(g)
-
-
-for c in combs:
-    print('new comb')
-    print(c.children[1])
-
 
 
 def generate_graph_from_postfix2(tokens): #Tokens should be listed in postfix!
@@ -149,4 +70,54 @@ def generate_graph_from_postfix2(tokens): #Tokens should be listed in postfix!
                     
     return stacks
 
-g2 = generate_graph_from_postfix2(tokens)
+def generate_combinations(graph):
+
+    combinations = []
+    combinations.append(graph.copy())
+
+    def recursive_node_search(node):
+        if node.children == []:
+            return
+        else:
+            for child in node.children:
+                if child.label in plus_mulitply:
+                    child0 = child.children[0]
+                    child1 = child.children[1]
+                    child.children[0] = child1
+                    child.children[1] = child0
+                    combinations.append(graph.copy())
+
+                recursive_node_search(child)
+    recursive_node_search(graph)
+
+    #IF ROOT IS MULT/ADD, FLIP CHILDREN
+    if graph.label in plus_mulitply:
+        child0 = graph.children[0]
+        child1 = graph.children[1]
+        graph.children[0] = child1
+        graph.children[1] = child0
+        combinations.append(graph.copy())
+        recursive_node_search(graph)
+    return combinations
+
+def getDistance(graph1, graph2):
+    combs = generate_combinations(graph1.copy())
+    smallest_distance = sys.maxsize
+    for c in combs:
+        distance = simple_distance(c, graph2)
+        if distance < smallest_distance:
+            smallest_distance = distance
+    return smallest_distance
+
+#Test cases
+equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+equation.convertToPostfix()
+tokens = equation.tokenized_equation
+equation1 = equation_interpreter.Equation.makeEquationFromString("Pi/(2+3)+4")
+equation1.convertToPostfix()
+tokens1 = equation1.tokenized_equation
+g = generate_graph_from_postfix(tokens)
+g1 = generate_graph_from_postfix(tokens1)
+
+dist = getDistance(g, g1)
+print(dist)
