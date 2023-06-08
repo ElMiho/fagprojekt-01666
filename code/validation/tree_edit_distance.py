@@ -124,15 +124,15 @@ class Tree:
         ordering = self.ordering
         subordering = []
         # list_of_indexes = []
-        node_list = []
+        sub_node_list = []
         for idx, value in enumerate(ordering):
             if value >= i and value <= j:
                 # list_of_indexes.append(idx)
                 node = self.nodes[idx]
-                node_list.append(node)
+                sub_node_list.append(node)
                 subordering.append(ordering[idx])
 
-        subtree = Tree(nodes=node_list, ordering=subordering)
+        subtree = Tree(nodes=sub_node_list, ordering=subordering)
 
         return subtree
 
@@ -170,17 +170,16 @@ class Tree:
         for idx, node in enumerate(self.nodes):
             node.id = ordering[idx]
         
-        root = self.root
-        G.add_node(root.id, symbol=f"{root.value}({root.id})")
-        for child in root.children:
-            q.append(child)
+        for node in self.nodes:
+            G.add_node(node.id, symbol=f"{node.value}({node.id})")
 
-        while q:
-            current = q.pop()
-            G.add_node(current.id, symbol=f"{current.value}({current.id})")
-            G.add_edge(current.parent_node.id, current.id)
-            for child in current.children:
-                q.append(child)
+        for node in self.nodes:
+            for child in node.children:
+                if child in self.nodes:
+                    G.add_edge(node.id, child.id)
+
+            if node.parent_node in self.nodes:
+                G.add_edge(node.parent_node.id, node.id)
 
         return G
     
@@ -200,8 +199,8 @@ def tree_edit_distance(T1: Tree, T2: Tree):
 
         forestdist[0, 0] = 0
         
-        ordering_T1 = T1.get_ordering()
-        ordering_T2 = T2.get_ordering()
+        ordering_T1 = T1.ordering
+        ordering_T2 = T2.ordering
         
         l_i_node = T1.l(i)
         l1 = ordering_T1[T1.nodes.index(l_i_node)]
@@ -304,6 +303,12 @@ if __name__ == '__main__':
         print(n.value)
     print(sub.ordering)
 
+    plt.figure(1)
     J = T1.to_nx_di_graph()
     plot_graph(J)
+
+    plt.figure(2)
+    U = sub.to_nx_di_graph()
+    plot_graph(U)
+    
     plt.show()
