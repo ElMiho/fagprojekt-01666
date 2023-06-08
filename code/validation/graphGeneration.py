@@ -1,7 +1,7 @@
 import sys
-from zss import simple_distance, Node
-#from validation.zhang_shasha.zss.compare import simple_distance
-#from validation.zhang_shasha.zss.simple_tree import Node
+#from zss import simple_distance, Node
+from validation.zhang_shasha.zss.compare import simple_distance
+from validation.zhang_shasha.zss.simple_tree import Node
 
 
 
@@ -113,8 +113,25 @@ def getDistance(graph1, graph2):
             smallest_distance = distance
     return smallest_distance
 
+def getDistance2(tokens, graph2):
+    combs = generate_graph_from_postfix2(tokens)
+    smallest_distance = sys.maxsize
+    for c in combs:
+        distance = simple_distance(c, graph2)
+        if distance < smallest_distance:
+            smallest_distance = distance
+    return smallest_distance
+
+def printKids(graph, level = 1):
+    if graph.children == []:
+        return
+    else:
+        for child in graph.children:
+            print(child.label, level)
+            printKids(child, level=level+1)
+
 #Test cases
-'''
+
 equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
@@ -126,7 +143,7 @@ g1 = generate_graph_from_postfix(tokens1)
 
 dist = getDistance(g, g1)
 print(dist)
-'''
+
 
 equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
 equation.convertToPostfix()
@@ -137,14 +154,7 @@ equation1.convertToPostfix()
 tokens1 = equation1.tokenized_equation
 g1 = generate_graph_from_postfix(tokens1)
 
-def getDistance2(tokens, graph2):
-    combs = generate_graph_from_postfix2(tokens)
-    smallest_distance = sys.maxsize
-    for c in combs:
-        distance = simple_distance(c, graph2)
-        if distance < smallest_distance:
-            smallest_distance = distance
-    return smallest_distance
 
 dist = getDistance2(tokens, g1)
 print(dist)
+
