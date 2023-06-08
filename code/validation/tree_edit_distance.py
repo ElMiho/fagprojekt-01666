@@ -27,9 +27,13 @@ class Node:
             self.children.append(new_node)
 
 class Tree:
-    def __init__(self, nodes = [], root = None):
+    def __init__(self, nodes = [], root = None, ordering = []):
         self.nodes = nodes
         self.root = root
+        if ordering == []:
+            self.ordering = self.get_ordering()
+        else:
+            self.ordering = ordering
     
     def get_ordering(self):  
         idx_list = [0] * len(self.nodes)
@@ -76,7 +80,7 @@ class Tree:
         self.nodes.append(new_node)
 
     def l(self, i):
-        ordering = self.get_ordering()
+        ordering = self.ordering
         pos = ordering.index(i)
         current = self.nodes[pos]
         while current.children != []:
@@ -85,7 +89,7 @@ class Tree:
         return current
     
     def depth(self, i):
-        ordering = self.get_ordering()
+        ordering = self.ordering
         pos = ordering.index(i)
         current = self.nodes[pos]
         counter = 0
@@ -97,7 +101,7 @@ class Tree:
     
     def anc(self, i):
         anc_list = []
-        ordering = self.get_ordering()
+        ordering = self.ordering
         pos = ordering.index(i)
         
         current = self.nodes[pos]
@@ -115,15 +119,22 @@ class Tree:
         """
         corresponding to T[i...j]
         """
-        if i > j: return [] # Find out if this results in problems!
-        
-        ordering = self.get_ordering()
-        list_of_indexes = []
+        if i > j: return Tree() # Find out if this results in problems!
+
+        ordering = self.ordering
+        subordering = []
+        # list_of_indexes = []
+        node_list = []
         for idx, value in enumerate(ordering):
             if value >= i and value <= j:
-                list_of_indexes.append(idx)
+                # list_of_indexes.append(idx)
+                node = self.nodes[idx]
+                node_list.append(node)
+                subordering.append(ordering[idx])
 
-        return [self.nodes[i] for i in list_of_indexes]
+        subtree = Tree(nodes=node_list, ordering=subordering)
+
+        return subtree
 
     def forest(self, i):
         return self.subforest(1, i)
@@ -134,7 +145,7 @@ class Tree:
     def LR_keyroots(self):
         keyroots = []
         
-        ordering = self.get_ordering()
+        ordering = self.ordering
         keyroots.append(max(ordering))
 
         for k in range(1, len(self.nodes)): # excluding the last element since this is the root
@@ -155,7 +166,7 @@ class Tree:
         q = collections.deque()
         G = nx.DiGraph()
 
-        ordering = self.get_ordering()
+        ordering = self.ordering
         for idx, node in enumerate(self.nodes):
             node.id = ordering[idx]
         
@@ -174,30 +185,34 @@ class Tree:
         return G
     
 def tree_edit_distance(T1: Tree, T2: Tree):
+    cost = 1
     LR_T1 = T1.LR_keyroots()
     LR_T2 = T2.LR_keyroots()
-    forestdist = np.matrix((
-        len(T1.nodes), len(T2.nodes)
-    ))
 
-    forestdist[0, 0] = 0
+    def forestdist_f(T1: Tree, T2: Tree):
+        if T2.nodes == []:
+            return cost + forestdist_f(T1)
 
     def treedist(T1: Tree, T2: Tree, i, j):
-        ordering = T1.get_ordering()
-        l_i_node = T1.l(i)
-        pos = T1.nodes.index(l_i_node)
-        l_i = ordering[pos]
+        forestdist = np.matrix((
+            len(T1.nodes), len(T2.nodes)
+        ))
 
-        for i_1 in T1.anc(l_i):
-            if i_1 == i:
-                break
-            else:
-                # forestdist[]
-                pass
+        forestdist[0, 0] = 0
+        
+        ordering_T1 = T1.get_ordering()
+        ordering_T2 = T2.get_ordering()
+        
+        l_i_node = T1.l(i)
+        l1 = ordering_T1[T1.nodes.index(l_i_node)]
+
+        for i_1 in range(l1, i):
+            pass
+
 
     for i in LR_T1:
         for j in LR_T2:
-            treedist(i, j)
+            treedist(T1, T2, i, j)
 
 
 
@@ -273,12 +288,21 @@ if __name__ == '__main__':
     c.children = [b]
     b.parent_node = c
 
-    T1 = Tree([a, b, c, d, e, f], root = f)
+    T1 = Tree([b, a, c, d, e, f], root = f)
 
     print(T1.LR_keyroots())
 
     for node in T1.anc(4):
         print(node.value)
+
+    print(T1.ordering)
+
+    print("subtree stuff 1..3")
+    sub = T1.subforest(1, 3)
+    # print(sub.nodes)
+    for n in sub.nodes:
+        print(n.value)
+    print(sub.ordering)
 
     J = T1.to_nx_di_graph()
     plot_graph(J)
