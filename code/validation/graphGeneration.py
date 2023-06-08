@@ -1,7 +1,7 @@
 import sys
-#from zss import simple_distance, Node
-from validation.zhang_shasha.zss.compare import simple_distance
-from validation.zhang_shasha.zss.simple_tree import Node
+from zss import simple_distance, Node
+#from validation.zhang_shasha.zss.compare import simple_distance
+#from validation.zhang_shasha.zss.simple_tree import Node
 
 
 
@@ -136,12 +136,16 @@ def generate_graph_from_postfix2(tokens): #Tokens should be listed in postfix!
             for stack in stacks:
                 stack.append(Node(token.t_type))
         else:
-            for stack in enumerate(stacks):
-                operand2 = stack[0].pop()
-                operand1 = stack[0].pop()
-                stack[0].append(Node(token.t_type, [operand1, operand2]))
+            for i in range(0, len(stacks)):
+                stack = stacks[i]
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                stack_copy = stack
+                stack.append(Node(token.t_type, [operand1, operand2]))
+                stacks[i] = stack
                 if token.t_type in plus_mulitply:
-                    stacks.append(stack[0].append(Node(token.t_type, [operand2, operand1])))
+                    stack_copy.append(Node(token.t_type, [operand2, operand1]))
+                    stacks.append(stack_copy)
                     
     return stacks
 
