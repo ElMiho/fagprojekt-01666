@@ -109,6 +109,14 @@ def getDistance(graph1, graph2):
             smallest_distance = distance
     return smallest_distance
 
+def printKids(graph, level = 1):
+    if graph.children == []:
+        return
+    else:
+        for child in graph.children:
+            print(child.label, level)
+            printKids(child, level=level+1)
+
 #Test cases
 equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
 equation.convertToPostfix()
