@@ -137,20 +137,19 @@ class Tree:
         ordering = self.get_ordering()
         keyroots.append(max(ordering))
 
-        for k in range(1, len(self.nodes) + 1):
+        for k in range(1, len(self.nodes)): # excluding the last element since this is the root
             k_node = self.nodes[
                 ordering.index(k)
             ]
-            if k_node != self.root:
-                parent_k_node = k_node.parent_node
-                parent_k = ordering[
-                    self.nodes.index(parent_k_node)
-                ]
+            parent_k_node = k_node.parent_node
+            parent_k = ordering[
+                self.nodes.index(parent_k_node)
+            ]
 
-                if self.l(k) != self.l(parent_k):
-                    keyroots.append(k)
+            if self.l(k) != self.l(parent_k):
+                keyroots.append(k)
 
-        return keyroots
+        return sorted(keyroots)
 
     def to_nx_di_graph(self) -> nx.DiGraph:
         q = collections.deque()
@@ -174,35 +173,33 @@ class Tree:
 
         return G
     
-def treedist(T1: Tree, T2: Tree, i: int, j: int, treedist_matrix: np.matrix):
-    """
-    i in T1 and j in T2
-    """
-    for i_1_node in T1.anc(i):
-        "some check"
-    for j_1_node in T2.anc(j):
-        "some check"
+def tree_edit_distance(T1: Tree, T2: Tree):
+    LR_T1 = T1.LR_keyroots()
+    LR_T2 = T2.LR_keyroots()
+    forestdist = np.matrix((
+        len(T1.nodes), len(T2.nodes)
+    ))
 
-    for i_1_node in T1.anc(i):
-        "some check"
-        for j_1_node in T2.anc(j):
-            ordering_T1 = T1.get_ordering()
-            ordering_T2 = T2.get_ordering()
+    forestdist[0, 0] = 0
 
-            pos_i_1 = T1.nodes.index(i_1_node)
-            i_1 = ordering_T1[pos_i_1]
+    def treedist(T1: Tree, T2: Tree, i, j):
+        ordering = T1.get_ordering()
+        l_i_node = T1.l(i)
+        pos = T1.nodes.index(l_i_node)
+        l_i = ordering[pos]
 
-            pos_j_1 = T2.nodes.index(j_1_node)
-            j_1 = ordering_T2[pos_j_1]
-
-            if T1.l(i_1) == T1.l(i) and T2.l(j_1) == T2.l(j):
-                "lots of calculations"
+        for i_1 in T1.anc(l_i):
+            if i_1 == i:
+                break
             else:
-                "lots of calculations"
+                # forestdist[]
+                pass
 
-def forestdist(T1: Tree, T2: Tree):
-    if T1.nodes == [] and T2.nodes == []:
-        return 0
+    for i in LR_T1:
+        for j in LR_T2:
+            treedist(i, j)
+
+
 
 # poor mans test cases and playing around
 if __name__ == '__main__':
@@ -279,6 +276,9 @@ if __name__ == '__main__':
     T1 = Tree([a, b, c, d, e, f], root = f)
 
     print(T1.LR_keyroots())
+
+    for node in T1.anc(4):
+        print(node.value)
 
     J = T1.to_nx_di_graph()
     plot_graph(J)
