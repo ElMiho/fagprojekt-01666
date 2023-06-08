@@ -1,5 +1,9 @@
 import sys
-from zss import simple_distance, Node
+#from zss import simple_distance, Node
+from validation.zhang_shasha.zss.compare import simple_distance
+from validation.zhang_shasha.zss.simple_tree import Node
+
+
 
 binary_operators = [
     "TT_PLUS",
@@ -120,3 +124,25 @@ combs = generate_combinations(g)
 for c in combs:
     print('new comb')
     print(c.children[1])
+
+
+
+def generate_graph_from_postfix2(tokens): #Tokens should be listed in postfix!
+    # DRAFT 
+    stacks = [[]]
+    
+    for token in tokens:
+        if token.t_type not in binary_operators:
+            for stack in stacks:
+                stack.append(Node(token.t_type))
+        else:
+            for stack in enumerate(stacks):
+                operand2 = stack[0].pop()
+                operand1 = stack[0].pop()
+                stack[0].append(Node(token.t_type, [operand1, operand2]))
+                if token.t_type in plus_mulitply:
+                    stacks.append(stack[0].append(Node(token.t_type, [operand2, operand1])))
+                    
+    return stacks
+
+g2 = generate_graph_from_postfix2(tokens)
