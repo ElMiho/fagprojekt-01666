@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import make_interp_spline
+from model.tokenize_input import input_string_to_tokenize_expression
 
 def find_succes(times_idxes, arr, time):
     for times in enumerate(times_idxes):
@@ -71,145 +72,153 @@ def parse_line(line):
         if x[1] == '}' and line[(x[0]+1)]=='}':
             answer = line[(eq_start):(x[0])]
             break
-
-    return time, answer, sum_degree
-
-for line in lines:    
-    time, answer, sum_degree = parse_line(line)
     
-    # increment every time indes that has succes
-    find_succes(times, number_of_succes, time)
-    find_succes_sum_degree(times, sum_degrees, number_of_succes_matrix, time, sum_degree)
-    time_array.append(time)
+    roots = line[0:index_den_end+1]
+    roots += "}"
+    return time, answer, sum_degree, input_string_to_tokenize_expression(roots)
 
-    if answer == "$Aborted":
-        val = 1
-    else:
-        val = 0
+
+if __name__ == '__main__':
+    for line in lines:    
+        time, answer, sum_degree, roots = parse_line(line)
         
-    
-percentages = 1-np.asarray(number_of_succes)/4400
+        # increment every time indes that has succes
+        find_succes(times, number_of_succes, time)
+        find_succes_sum_degree(times, sum_degrees, number_of_succes_matrix, time, sum_degree)
+        time_array.append(time)
 
-# plt.scatter(times,percentages)
-# plt.grid(True)
-# plt.xlabel("Time (s)")
-# plt.ylabel("abortion rate (%)")
-# plt.savefig("megaplot.png")
+        if answer == "$Aborted":
+            val = 1
+        else:
+            val = 0
+            
+        
+    percentages = 1-np.asarray(number_of_succes)/4400
 
-print("total")
-print(number_of_succes_matrix)
+    # plt.scatter(times,percentages)
+    # plt.grid(True)
+    # plt.xlabel("Time (s)")
+    # plt.ylabel("abortion rate (%)")
+    # plt.savefig("megaplot.png")
 
-tCat = number_of_succes_matrix.shape[1]
-dCat = number_of_succes_matrix[0]
+    print("total")
+    print(number_of_succes_matrix)
 
-total_each_pat
+    tCat = number_of_succes_matrix.shape[1]
+    dCat = number_of_succes_matrix[0]
 
-# divide by number of observations.
-for idx, number in enumerate(total_each_pat):
-    number_of_succes_matrix[idx, :] = 1-number_of_succes_matrix[idx, :] / number
-# x = np.arange(0, number_of_succes_matrix.shape[1], 1)
-# y = np.arange(0, number_of_succes_matrix.shape[0], 1)
+    total_each_pat
 
-print("percentage")
-print(number_of_succes_matrix.round(2))
+    # divide by number of observations.
+    for idx, number in enumerate(total_each_pat):
+        number_of_succes_matrix[idx, :] = 1-number_of_succes_matrix[idx, :] / number
+    # x = np.arange(0, number_of_succes_matrix.shape[1], 1)
+    # y = np.arange(0, number_of_succes_matrix.shape[0], 1)
 
-x = times
-y = sum_degrees
+    print("percentage")
+    print(number_of_succes_matrix.round(2))
 
-X, Y = np.meshgrid(x, y)
+    x = times
+    y = sum_degrees
 
-# Flatten the matrix values for the z coordinates
-Z = number_of_succes_matrix.flatten()
+    X, Y = np.meshgrid(x, y)
 
-# Create a figure and a 3D axis
-fig = plt.figure(1)
-ax = fig.add_subplot(111, projection='3d')
+    # Flatten the matrix values for the z coordinates
+    Z = number_of_succes_matrix.flatten()
 
-# Plot the 3D surface
-ax.plot_surface(X, Y, number_of_succes_matrix, cmap='viridis')
+    # Create a figure and a 3D axis
+    fig = plt.figure(1)
+    ax = fig.add_subplot(111, projection='3d')
 
-# Set labels and title
-ax.set_xlabel('Time [s]')
-ax.set_ylabel('Sum degree')
-ax.set_zlabel('Abortion rate')
-# ax.set_title('3D Matrix Plot')
+    # Plot the 3D surface
+    ax.plot_surface(X, Y, number_of_succes_matrix, cmap='viridis')
 
-plt.figure(2)
-for sd in enumerate(sum_degrees):
-    row = number_of_succes_matrix[sd[0],:]
-    plt.plot(times, row, label = f"Sumdegree {sd[1]}")
+    # Set labels and title
+    ax.set_xlabel('Time [s]')
+    ax.set_ylabel('Sum degree')
+    ax.set_zlabel('Abortion rate')
+    # ax.set_title('3D Matrix Plot')
 
-plt.xlabel("Time [s]")
-plt.ylabel("Abortion rate")
-    
-plt.legend()
-plt.show()
+    plt.figure(2)
+    for sd in enumerate(sum_degrees):
+        row = number_of_succes_matrix[sd[0],:]
+        plt.plot(times, row, label = f"Sumdegree {sd[1]}")
 
-
-plt.figure(3)
-number_of_succes = [1-(i / 4400) for i in number_of_succes]
-plt.grid(zorder=1)
-plt.scatter(times, number_of_succes, zorder=3)
-plt.plot(times, number_of_succes, label = "The combined sum degrees", color = "C1",zorder=2)
-plt.title("Abortion rate pr. time interval")
-plt.xlabel("Time [s]")
-plt.ylabel("Abortion rate")
-plt.legend()
-plt.show()
+    plt.xlabel("Time [s]")
+    plt.ylabel("Abortion rate")
+        
+    plt.legend()
+    plt.show()
 
 
-############
-#RATIONELLE PLOT
-with open("data_analysis/new_rational_data/megafile2_txt", "r") as file:
-    lines_ras = file.readlines()
-    
-
-number_of_succes_ras = [0,0,0,0,0,0,0,0,0,0]
-number_of_succes_matrix_ras = np.zeros((len(sum_degrees),len(times)))
-
-
-
-for line in lines_ras:    
-    time_ras, answer_ras, sum_degree_ras = parse_line(line)
-    
-    # increment every time indes that has succes
-    find_succes(times, number_of_succes_ras, time_ras)
-    find_succes_sum_degree(times, sum_degrees, number_of_succes_matrix_ras, time_ras, sum_degree_ras)
-    time_array.append(time_ras)
-
-# divide by number of observations.
-for idx, number in enumerate(total_each_pat):
-    number_of_succes_matrix_ras[idx, :] = 1-number_of_succes_matrix_ras[idx, :] / number   
+    plt.figure(3)
+    number_of_succes = [1-(i / 4400) for i in number_of_succes]
+    plt.grid(zorder=1)
+    plt.scatter(times, number_of_succes, zorder=3)
+    plt.plot(times, number_of_succes, label = "The combined sum degrees", color = "C1",zorder=2)
+    plt.title("Abortion rate pr. time interval")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Abortion rate")
+    plt.legend()
+    plt.show()
 
 
-plt.figure(4)
-number_of_succes_ras = [1-(i / 4400) for i in number_of_succes_ras]
-plt.grid(zorder=1)
-plt.scatter(times, number_of_succes_ras, zorder=3)
-plt.plot(times, number_of_succes_ras, label = "The combined sum degrees", color = "C1",zorder=2)
-plt.title("Rational Numbers \n Abortion rate pr. time interval")
-plt.xlabel("Time [s]")
-plt.ylabel("Abortion rate")
-plt.legend()
-plt.show()
+    ############
+    #RATIONELLE PLOT
+    with open("data_analysis/new_rational_data/megafile2_txt", "r") as file:
+        lines_ras = file.readlines()
+        
+
+    number_of_succes_ras = [0,0,0,0,0,0,0,0,0,0]
+    number_of_succes_matrix_ras = np.zeros((len(sum_degrees),len(times)))
 
 
 
+    for line in lines_ras:    
+        time_ras, answer_ras, sum_degree_ras, roots = parse_line(line)
+        
+        # increment every time indes that has succes
+        find_succes(times, number_of_succes_ras, time_ras)
+        find_succes_sum_degree(times, sum_degrees, number_of_succes_matrix_ras, time_ras, sum_degree_ras)
+        time_array.append(time_ras)
+
+    # divide by number of observations.
+    for idx, number in enumerate(total_each_pat):
+        number_of_succes_matrix_ras[idx, :] = 1-number_of_succes_matrix_ras[idx, :] / number   
+
+
+    plt.figure(4)
+    number_of_succes_ras = [1-(i / 4400) for i in number_of_succes_ras]
+    plt.grid(zorder=1)
+    plt.scatter(times, number_of_succes_ras, zorder=3)
+    plt.plot(times, number_of_succes_ras, label = "The combined sum degrees", color = "C1",zorder=2)
+    plt.title("Rational Numbers \n Abortion rate pr. time interval")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Abortion rate")
+    plt.legend()
+    plt.show()
 
 
 
-# Flatten the matrix values for the z coordinates
-Z = number_of_succes_matrix_ras.flatten()
 
-# Create a figure and a 3D axis
-fig = plt.figure(1)
-ax = fig.add_subplot(111, projection='3d')
 
-# Plot the 3D surface
-ax.plot_surface(X, Y, number_of_succes_matrix_ras, cmap='viridis')
 
-# Set labels and title
-ax.set_xlabel('Time [s]')
-ax.set_ylabel('Sum degree')
-ax.set_zlabel('Abortion rate')
-ax.set_title('Rational Numbers \n Abortion rate pr. time interval')
+    # Flatten the matrix values for the z coordinates
+    Z = number_of_succes_matrix_ras.flatten()
+
+    # Create a figure and a 3D axis
+    fig = plt.figure(1)
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Plot the 3D surface
+    ax.plot_surface(X, Y, number_of_succes_matrix_ras, cmap='viridis')
+
+    # Set labels and title
+    ax.set_xlabel('Time [s]')
+    ax.set_ylabel('Sum degree')
+    ax.set_zlabel('Abortion rate')
+    ax.set_title('Rational Numbers \n Abortion rate pr. time interval')
+
+
+
+    time_ras, answer_ras, sum_degree_ras, roots = parse_line(lines_ras[0])
