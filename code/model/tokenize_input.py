@@ -225,6 +225,8 @@ def input_string_to_tokenize_expression(string: str):
             output_list.append(token)
             next_number_is_negative = False
             
+    return output_list
+            
 def merge(arr, l, m, r):
 
     n1 = m - l + 1

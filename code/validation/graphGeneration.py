@@ -1,7 +1,7 @@
 import sys
-#from zss import simple_distance, Node
-from validation.zhang_shasha.zss.compare import simple_distance
-from validation.zhang_shasha.zss.simple_tree import Node
+from zss import simple_distance, Node
+#from validation.zhang_shasha.zss.compare import simple_distance
+#from validation.zhang_shasha.zss.simple_tree import Node
 
 
 
@@ -131,7 +131,7 @@ def printKids(graph, level = 1):
             printKids(child, level=level+1)
 
 #Test cases
-
+'''
 equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
@@ -143,13 +143,13 @@ g1 = generate_graph_from_postfix(tokens1)
 
 dist = getDistance(g, g1)
 print(dist)
+'''
 
-
-equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+equation = equation_interpreter.Equation.makeEquationFromString("4+2+3/(3+Pi)")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
 gs = generate_graph_from_postfix2(tokens)
-equation1 = equation_interpreter.Equation.makeEquationFromString("Pi/(2+3)+4")
+equation1 = equation_interpreter.Equation.makeEquationFromString("Pi/(Pi+3)+4")
 equation1.convertToPostfix()
 tokens1 = equation1.tokenized_equation
 g1 = generate_graph_from_postfix(tokens1)
@@ -158,3 +158,6 @@ g1 = generate_graph_from_postfix(tokens1)
 dist = getDistance2(tokens, g1)
 print(dist)
 
+for g in gs:
+    print("NEW G")
+    printKids(g)

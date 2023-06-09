@@ -133,7 +133,7 @@ def evaluate_tokenized_sum(test_expression: list):
     close_session()    
 
      
-def find_10_simpelest_evaluations():
+def find_10_simpelest_evaluations(filepath: str):
     #Vil også gerne have polynomiet
     def max_and_idx(aList):
         maxs = aList[0]
@@ -142,7 +142,7 @@ def find_10_simpelest_evaluations():
             if maxs < i[1]:
                 maxs = i[1]
                 idx = i[0]
-        return i[1], i[0]
+        return maxs, idx
     
     def min_and_idx(aList):
         mins = aList[0]
@@ -155,20 +155,20 @@ def find_10_simpelest_evaluations():
     
     
     #færdig gør denne kode til at finde de simpelste svar (oversæt dem til tokens og tæl ikke int tokens og ral tokens)
-    with open("data_analysis/int_data/megafile.txt", "r") as file:
+    with open(filepath, "r") as file:
         lines = file.readlines()
     
     
     f10se = [" " for _ in range(10)]
     non_int_tokens = [-1 for _ in range(10)]
+    roots_list = [[] for _ in range(10)]
     
+    #Man får meget simple (for simple) udtryk så man kan evt tilføje flere tokens til denne og få nogle lidt mere kompliceret
     tokens_numbers = ["TT_INTEGER", "TT_RATIONAL", "TT_ZERO", "TT_ONE"]
     
     for line in lines:
-        time, answer, sum_degree = parse_line(line)
+        time, answer, sum_degree, roots = parse_line(line)
         x = 0
-        line_is_illigal = False
-        
         equation = Equation.makeEquationFromString(answer).tokenized_equation
         if equation == []:
             continue
@@ -180,24 +180,27 @@ def find_10_simpelest_evaluations():
                 
             min_val, min_idx = min_and_idx(non_int_tokens)
             max_val, max_idx = max_and_idx(non_int_tokens)
-            print(x)
             if min_val == -1:
                 f10se[min_idx] = answer
                 non_int_tokens[min_idx] = x
+                roots_list[min_idx] = [roots]
                 
             elif x < max_val:
                 f10se[max_idx] = answer
                 non_int_tokens[max_idx] = x
+                roots_list[max_idx] = [roots]
            
         
-    return f10se, non_int_tokens
+    return f10se, non_int_tokens, roots
     
 
 
 
 if __name__ == '__main__':
     
-    f10se, non_int_tokens = find_10_simpelest_evaluations()
+    megafile1 = "data_analysis/int_data/megafile.txt"
+    megafile2 = "data_analysis/new_rational_data/megafile2_txt"
+    f10se, non_int_tokens, roots = find_10_simpelest_evaluations(megafile2)
     
     
     '''
