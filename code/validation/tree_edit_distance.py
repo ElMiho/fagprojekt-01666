@@ -35,7 +35,10 @@ class Tree:
         else:
             self.ordering = ordering
     
-    def get_ordering(self):  
+    def get_ordering(self):
+        if self.nodes == []:
+            return []
+        
         idx_list = [0] * len(self.nodes)
         idx = 1
 
@@ -79,6 +82,7 @@ class Tree:
         # ... and add to the tree
         self.nodes.append(new_node)
 
+    # l returns the leftmost decendant of i
     def l(self, i):
         ordering = self.ordering
         pos = ordering.index(i)
@@ -89,8 +93,7 @@ class Tree:
         return current
     
     def depth(self, i):
-        ordering = self.ordering
-        pos = ordering.index(i)
+        pos = self.ordering.index(i)
         current = self.nodes[pos]
         counter = 0
         while current.parent_node != None:
@@ -99,16 +102,16 @@ class Tree:
 
         return counter
     
+    # anc returns all nodes that are on the parent path to the root node from
+    # the i'th node
     def anc(self, i):
-        anc_list = []
-        ordering = self.ordering
-        pos = ordering.index(i)
+        pos = self.ordering.index(i)
         
         current = self.nodes[pos]
         depth = self.depth(i)
         
-        anc_list.append(current)
-        for i in range(0, depth + 1):
+        anc_list = [current]
+        for i in range(depth + 1):
             current = current.parent_node
             if current != None:
                 anc_list.append(current)
@@ -121,16 +124,15 @@ class Tree:
         """
         if i > j: return Tree() # Find out if this results in problems!
 
-        ordering = self.ordering
         subordering = []
         # list_of_indexes = []
         sub_node_list = []
-        for idx, value in enumerate(ordering):
+        for idx, value in enumerate(self.ordering):
             if value >= i and value <= j:
                 # list_of_indexes.append(idx)
                 node = self.nodes[idx]
                 sub_node_list.append(node)
-                subordering.append(ordering[idx])
+                subordering.append(self.ordering[idx])
 
         subtree = Tree(nodes=sub_node_list, ordering=subordering)
 
@@ -188,31 +190,73 @@ def tree_edit_distance(T1: Tree, T2: Tree):
     LR_T1 = T1.LR_keyroots()
     LR_T2 = T2.LR_keyroots()
 
-    def forestdist_f(T1: Tree, T2: Tree):
+    permanent_forestdist = np.matrix((
+        len(T1.nodes), len(T2.nodes)
+    ))
+
+    permanent_forestdist[0, 0] = 0
+
+    def forestdist(T1: Tree, i_1: int, i_2: int, T2: Tree, j_1: int, j_2: int):
+        if T1.nodes == [] and T2.nodes == []:
+            return 0
         if T2.nodes == []:
-            return cost + forestdist_f(T1)
+            new_T1_subforest = T1.subforest(i_1, i_2 - 1)
+            return forestdist(new_T1_subforest, i_1, i_2 - 1, T2, j_1, j_2) + cost
+        if T1.nodes == []:
+            new_T2_subforest = T2.subforest(j_1, j_2 - 1)
+            return forestdist(T1, i_1, i_2, new_T2_subforest, j_1, j_2 - 1) + cost
+        
+        T1_possibility = T1.subforest(i_1, i_2 - 1)
+        T2_possibility = T2.subforest(j_1, j_2 - 1)
+
+        options = [
+            forestdist(T1_possibility, i_1, i_2 - 1, T2, j_1, j_2) + cost, 
+            forestdist(T1, i_1, i_2, T2_possibility, j_1, j_2 - 1) + cost, 
+            forestdist(T1_possibility, i_1, i_2 - 1, T2_possibility, j_1, j_2 - 1) + cost
+        ]
+
+        return min(options)
 
     def treedist(T1: Tree, T2: Tree, i, j):
-        forestdist = np.matrix((
-            len(T1.nodes), len(T2.nodes)
-        ))
-
-        forestdist[0, 0] = 0
-        
         ordering_T1 = T1.ordering
         ordering_T2 = T2.ordering
         
         l_i_node = T1.l(i)
-        l1 = ordering_T1[T1.nodes.index(l_i_node)]
+        l_i = ordering_T1[T1.nodes.index(l_i_node)]
+        for i_1 in range(l_i, i + 1):
+            forestdist(T1.subforest(l_i, i_1), l_i, i_1, Tree(), 0, 0)
 
-        for i_1 in range(l1, i):
-            pass
+        l_j_node = T2.l(j)
+        l_j = ordering_T2[T2.nodes.index(l_j_node)]
+        for j_1 in range(l_j, j + 1):
+            forestdist(Tree(), 0, 0, T2.subforest(l_j, j_1), l_j, j_1)
 
 
     for i in LR_T1:
         for j in LR_T2:
             treedist(T1, T2, i, j)
 
+# def forestdist(T1: Tree, i_1: int, i_2: int, T2: Tree, j_1: int, j_2: int):
+#     cost = 1
+#     if T1.nodes == [] and T2.nodes == []:
+#         return 0
+#     if T2.nodes == []:
+#         new_T1_subforest = T1.subforest(i_1, i_2 - 1)
+#         return forestdist(new_T1_subforest, i_1, i_2 - 1, T2, j_1, j_2) + cost
+#     if T1.nodes == []:
+#         new_T2_subforest = T2.subforest(j_1, j_2 - 1)
+#         return forestdist(T1, i_1, i_2, new_T2_subforest, j_1, j_2 - 1) + cost
+    
+#     T1_possibility = T1.subforest(i_1, i_2 - 1)
+#     T2_possibility = T2.subforest(j_1, j_2 - 1)
+
+#     options = [
+#         forestdist(T1_possibility, i_1, i_2 - 1, T2, j_1, j_2) + cost, 
+#         forestdist(T1, i_1, i_2, T2_possibility, j_1, j_2 - 1) + cost, 
+#         forestdist(T1_possibility, i_1, i_2 - 1, T2_possibility, j_1, j_2 - 1) + cost
+#     ]
+
+#     return min(options)
 
 
 # poor mans test cases and playing around
@@ -303,6 +347,8 @@ if __name__ == '__main__':
         print(n.value)
     print(sub.ordering)
 
+    sub2 = sub.subforest(1, 2)
+
     plt.figure(1)
     J = T1.to_nx_di_graph()
     plot_graph(J)
@@ -310,5 +356,9 @@ if __name__ == '__main__':
     plt.figure(2)
     U = sub.to_nx_di_graph()
     plot_graph(U)
+
+    plt.figure(3)
+    L = sub2.to_nx_di_graph()
+    plot_graph(L)
     
     plt.show()
