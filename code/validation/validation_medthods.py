@@ -1,7 +1,7 @@
 '''
 Use this file for methods/functions that can be used in multiple validation test.
 '''
-
+import torch
 import random
 import sys
 
@@ -23,11 +23,16 @@ from model.tokens import TOKEN_TYPE_ANSWERS
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
+from model.tokens import Token
 
-
+from model.vocabulary import vocabulary_answers as target_vocabulary
+from model.vocabulary import vocabulary_expressions as source_vocabulary
 
 from data_analysis.int_data.generate_plot import parse_line
 
+def infix_equation_to_posfix():
+    #skriv kode
+    return None
 
 def test_one_expression(test_expression, as_string: bool = True):
     return test_an_expression(test_expression, not as_string)
@@ -193,15 +198,29 @@ def find_10_simpelest_evaluations(filepath: str):
         
     return f10se, non_int_tokens, roots
     
+def to_indices(scores):
+    indices = torch.max(scores, dim=1)
+    return indices
 
+def sentence_from_indices(indices, vocab, strict=True):
+    out = []
+    for index in indices:
+        index = index.item()
+        if index == vocab.begin_seq_index and strict:
+            continue
+        elif index == vocab.end_seq_index and strict:
+            return " ".join(out)
+        else:
+            out.append(vocab.getToken(index))
+    return " ".join(out)
 
 
 if __name__ == '__main__':
-    
+    '''
     megafile1 = "data_analysis/int_data/megafile.txt"
     megafile2 = "data_analysis/new_rational_data/megafile2_txt"
     f10se, non_int_tokens, roots = find_10_simpelest_evaluations(megafile2)
-    
+    '''
     
     '''
     #evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
@@ -220,4 +239,19 @@ if __name__ == '__main__':
     tt_ = equation.tokenized_equation
     '''
     
-  
+    #Til rapport ilustration
+    equation = Equation.makeEquationFromString("1/9*(4-3*Pi^2+Log(256))")
+    equation.convertToPostfix()
+    tokens = equation.tokenized_equation
+    
+    #output 
+    math = [token.t_type for token in tokens]
+    tokens = " ".join(math)
+    token_output = [Token(token) for token in math]
+    equation_no_values = Equation(token_output ,"postfix")
+    print(equation_no_values.getMathemetaicalNotation())
+    token_idxes = [target_vocabulary.getIndex(token.t_type) for token in token_output]
+    
+    #input
+    tt_input = ["#","/","-1","1/2","1/2"]
+    token_idxes2 = [source_vocabulary.getIndex(token.t_type) for token in tt_input]
