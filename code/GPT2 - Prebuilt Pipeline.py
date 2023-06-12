@@ -160,6 +160,10 @@ class SumDataset(IterableDataset):
 constant_length_dataset = SumDataset(tokenizer)
 dataloader = DataLoader(constant_length_dataset, batch_size=args.train_batch_size)
 
+config = AutoConfig.from_pretrained("gpt2", vocab_size=len(tokenizer))
+model = AutoModelForCausalLM.from_config(config)
+print(f"GPT-2 Number of parameters: {model.num_parameters()/1_000_000:.2f}M")
+
 model = AutoModelForCausalLM.from_pretrained(f"Dragonoverlord3000/{model_ckpt}")
 print(model)
 
