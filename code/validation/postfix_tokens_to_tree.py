@@ -1,3 +1,10 @@
+import sys
+
+# SET PATH FOR OSX USERS
+if sys.platform == 'darwin':
+    sys.path.append('../code')
+
+
 from model import equation_interpreter
 from validation.tree_edit_distance import Node, Tree, tree_edit_distance, plot_graph
 import matplotlib.pyplot as plt
@@ -72,7 +79,13 @@ if __name__ == "__main__":
     treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
     print(treedist[-1,-1])
     
+    plt.figure(1)
     T1_nx = T1.to_nx_di_graph()
     plot_graph(T1_nx)
+
+    plt.figure(2)
+    T2_nx = T2.to_nx_di_graph()
+    plot_graph(T2_nx)
+    
     plt.show()
     
