@@ -32,6 +32,20 @@ class Tree:
     def __init__(self, nodes = [], root = None, ordering = []):
         self.nodes = nodes
         self.root = root
+        
+        # lexicographic ordering of nodes
+        def is_node_commutative(node):
+            return node.value in ["+", "*"]
+
+        for node in self.nodes:
+            if is_node_commutative(node):
+                [child_1, child_2] = node.children
+                if child_1.value < child_2.value:
+                    node.children = [child_1, child_2]
+                else:
+                    node.children = [child_2, child_1]
+
+        # ... and left-to-right postorder numbering
         if ordering == []:
             self.ordering = self.get_ordering()
         else:
@@ -291,7 +305,7 @@ def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
 
     return nodes
 
-def construct_path(path_matrix: np.matrix) -> list[tuple]:
+def construct_path(path_matrix: np.matrix, i0 = 0, j0 = 0) -> list[tuple]:
     """
     works by constructing the path backwards
     """
@@ -300,7 +314,7 @@ def construct_path(path_matrix: np.matrix) -> list[tuple]:
     path.append((m-1, n-1))
 
     def next_element(path_matrix: np.matrix, i: int, j: int) -> None:
-        if i == 0 and j == 0:
+        if i == i0 and j == j0:
             return None
         else:
             options = [
@@ -372,66 +386,70 @@ if __name__ == '__main__':
     #     pos = T.nodes.index(n)
     #     print(ordering[pos], n.value)
 
-    # Fig 4 node example
-    f = Node(value="f")
-    d = Node(value="d")
-    e = Node(value="e")
-    a = Node(value="a")
-    c = Node(value="c")
-    b = Node(value="b")
+    # # Fig 4 node example
+    # f = Node(value="f")
+    # d = Node(value="d")
+    # e = Node(value="e")
+    # a = Node(value="a")
+    # c = Node(value="c")
+    # b = Node(value="b")
 
-    f.children = [d, e]
-    d.parent_node = f
-    e.parent_node = f
+    # f.children = [d, e]
+    # d.parent_node = f
+    # e.parent_node = f
 
-    d.children = [a, c]
-    a.parent_node = d
-    c.parent_node = d
+    # d.children = [a, c]
+    # a.parent_node = d
+    # c.parent_node = d
 
-    c.children = [b]
-    b.parent_node = c
+    # c.children = [b]
+    # b.parent_node = c
 
-    T1 = Tree([e, d, f, a, b, c], root = f)
-    # T1_sub = T1.subforest(1, 4)
-    # T1_sub_2 = T1.subforest(2, 3)
+    # T1 = Tree([e, d, f, a, b, c], root = f)
+    # # T1_sub = T1.subforest(1, 4)
+    # # T1_sub_2 = T1.subforest(2, 3)
 
-    plt.figure("T1")
-    T1_nx = T1.to_nx_di_graph()
-    plot_graph(T1_nx)
+    # plt.figure("T1")
+    # T1_nx = T1.to_nx_di_graph()
+    # plot_graph(T1_nx)
 
-    f2 = Node(value="f")
-    d2 = Node(value="d")
-    e2 = Node(value="e")
-    a2 = Node(value="a")
-    c2 = Node(value="c")
-    b2 = Node(value="b")
+    # f2 = Node(value="f")
+    # d2 = Node(value="d")
+    # e2 = Node(value="e")
+    # a2 = Node(value="a")
+    # c2 = Node(value="c")
+    # b2 = Node(value="b")
     
-    f2.children = [c2, e2]
-    c2.parent_node = f2
-    e2.parent_node = f2
+    # f2.children = [c2, e2]
+    # c2.parent_node = f2
+    # e2.parent_node = f2
 
-    c2.children = [d2]
-    d2.parent_node = c2
+    # c2.children = [d2]
+    # d2.parent_node = c2
 
-    d2.children = [a2, b2]
-    a2.parent_node = d2
-    b2.parent_node = d2
+    # d2.children = [a2, b2]
+    # a2.parent_node = d2
+    # b2.parent_node = d2
     
-    T2 = Tree([f2, d2, e2, a2, c2, b2], root=f2)
-    treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
-    print(f"treedist:\n{treedist}")
-    print(f"(raw) operations:\n{operations}")
+    # T2 = Tree([f2, d2, e2, a2, c2, b2], root=f2)
+    # treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
+    # print(f"treedist:\n{treedist}")
+    # path_treedist = construct_path(treedist, i0=1, j0=1)
+    # print(f"path_treedist:\n{path_treedist}")
 
-    m, n = len(T1.nodes), len(T2.nodes)
-    print(f"forestdist for {m, n} (for path)")
-    print(forestdist_dict[(m, n)])
+    # print("\n")
 
-    path = construct_path(forestdist_dict[(m, n)])
-    print(f"path:\n{path}")
-    
-    plt.figure("T2")
-    T2_nx = T2.to_nx_di_graph()
-    plot_graph(T2_nx)
+    # m, n = len(T1.nodes), len(T2.nodes)
+    # print(f"forestdist for {m, n} (for path)")
+    # print(forestdist_dict[(m, n)])
+
+    # path_forestdist = construct_path(forestdist_dict[(m, n)], i0=0, j0=0)
+    # print(f"path_forestdist:\n{path_forestdist}")
+
+    # # plotting
+    # plt.figure("T2")
+    # T2_nx = T2.to_nx_di_graph()
+    # plot_graph(T2_nx)
 
     # T1_sub = T1.tree(3)
     # plt.figure("T1.tree(3)")
@@ -448,5 +466,44 @@ if __name__ == '__main__':
 
     # nodes = tree_node_diff(T1, T1_sub)
     # [print(n.value) for n in nodes]
+
+    # mathematical testing of a + b = b + a
+    ## T1
+    ### nodes
+    n1_1 = Node(value="+")
+    n1_2 = Node(value="a")
+    n1_3 = Node(value="b")
+    ### and their relations
+    n1_1.children = [n1_2, n1_3]
+    n1_2.parent_node = n1_1
+    n1_3.parent_node = n1_1
+
+    T1 = Tree([n1_1, n1_2, n1_3], root = n1_1)
+
+    ## T2
+    ###
+    n2_1 = Node(value="+")
+    n2_2 = Node(value="a")
+    n2_3 = Node(value="b")
+    ### and their relations
+    n2_1.children = [n2_3, n2_2]
+    n2_2.parent_node = n2_1
+    n2_3.parent_node = n2_1
+
+    T2 = Tree([n2_1, n2_2, n2_3], root = n2_1)
+
+    # comparing
+    treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
+    print(f"difference: {treedist[-1, -1]}")
+    print(f"treedist: \n{treedist}")
+
+    # plotting
+    T1_nx = T1.to_nx_di_graph()
+    T2_nx = T2.to_nx_di_graph()
+
+    plt.figure("T1")
+    plot_graph(T1_nx)
+    plt.figure("T2")
+    plot_graph(T2_nx)
 
     plt.show()
