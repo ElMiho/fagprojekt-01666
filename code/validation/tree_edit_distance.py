@@ -277,7 +277,6 @@ def tree_edit_distance(T1: Tree, T2: Tree):
 
     for i in LR_T1:
         for j in LR_T2:
-            print(f"(i, j) = {i, j}")
             compute_treedist(i, j)
 
     return treedist, operations, forestdist_dict
@@ -290,6 +289,33 @@ def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
             nodes.append(n)
 
     return nodes
+
+def construct_path(path_matrix: np.matrix) -> list[tuple]:
+    """
+    works by constructing the path backwards
+    and returns reversed(path)
+    """
+    m, n = path_matrix.shape
+    path = []
+    path.append((m-1, n-1))
+
+    def next_element(path_matrix: np.matrix, i: int, j: int) -> list[int]:
+        if i == 0 and j == 0:
+            return None
+        else:
+            options = [
+                ((i, j - 1), path_matrix[i, j - 1]), 
+                ((i - 1, j - 1), path_matrix[i - 1, j - 1]),
+                ((i - 1, j), path_matrix[i - 1, j])
+            ]
+            # pick by the smallest value in the matrix
+            next_position = min(options, key = lambda t: t[1])
+            path.append(next_position[0])
+            next_element(path_matrix, next_position[0][0], next_position[0][1])
+    
+    next_element(path_matrix, m-1, n-1)
+    path.reverse()
+    return path
 
 # poor mans test cases and playing around
 if __name__ == '__main__':
@@ -397,6 +423,9 @@ if __name__ == '__main__':
     m, n = len(T1.nodes), len(T2.nodes)
     print(f"forestdist for {m, n} (for path)")
     print(forestdist_dict[(m, n)])
+
+    path = construct_path(forestdist_dict[(m, n)])
+    print(f"path:\n{path}")
     
     plt.figure("T2")
     T2_nx = T2.to_nx_di_graph()
