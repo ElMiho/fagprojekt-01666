@@ -19,7 +19,7 @@ from model.equation_interpreter import Equation
 #from model.equation_interpreter import 
 from model.tokens import TOKEN_TYPE_ANSWERS
 
-
+from model import equation_interpreter
 from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
@@ -29,6 +29,8 @@ from model.vocabulary import vocabulary_answers as target_vocabulary
 from model.vocabulary import vocabulary_expressions as source_vocabulary
 
 from data_analysis.int_data.generate_plot import parse_line
+from validation.postfix_tokens_to_tree import generate_nodes_from_postfix
+from validation.tree_edit_distance import Node, Tree, tree_edit_distance, plot_graph
 
 def infix_equation_to_posfix():
     #skriv kode
@@ -40,7 +42,30 @@ def test_one_expression(test_expression, as_string: bool = True):
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
 
-
+def TED_of_list_postfix_eq_as_tokens(equations: list):
+    n = len(equations)
+    ted = 0
+    total = 0
+    trees = token_list_to_trees(equations)
+    for i in range(n-1):
+        Ti = trees[i]
+        for j in range(i + 1, n):
+            total += 1
+            treedist, operations, forestdist_dict = tree_edit_distance(Ti, trees[j])
+            ted += treedist[-1,-1]
+            
+    return ted/total
+            
+            
+def token_list_to_trees(tokens: list):
+    trees = []
+    for eq in tokens:
+        nodes = generate_nodes_from_postfix(eq)
+        T = Tree(nodes = nodes, root = nodes[0])
+        trees.append(T)
+    return trees
+    
+    
 def compare_a_list_of_equations_token(equations: list):
     # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathemetaicalNotation()
     n = len(equations)
@@ -257,3 +282,18 @@ if __name__ == '__main__':
     tt_input = ["#","/","-1","1/2","1/2"]
     token_idxes2 = [source_vocabulary.getIndex(token) for token in tt_input]
     '''
+    
+    list_of_token_lists = []
+    equation = equation_interpreter.Equation.makeEquationFromString("10+Pi/(3+2)")
+    equation.convertToPostfix()
+    tokens = equation.tokenized_equation
+    list_of_token_lists.append(tokens)
+    equation = equation_interpreter.Equation.makeEquationFromString("Pi/(3+2)")
+    equation.convertToPostfix()
+    tokens = equation.tokenized_equation
+    list_of_token_lists.append(tokens)
+    equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+    equation.convertToPostfix()
+    tokens = equation.tokenized_equation
+    list_of_token_lists.append(tokens)
+    print(TED_of_list_postfix_eq_as_tokens(list_of_token_lists))
