@@ -214,7 +214,6 @@ def cost_function(n1: Node, n2: Node) -> int:
         return 1
     
 def tree_edit_distance(T1: Tree, T2: Tree):
-    operations = []
     LR_T1 = T1.LR_keyroots()
     LR_T2 = T2.LR_keyroots()
 
@@ -223,6 +222,10 @@ def tree_edit_distance(T1: Tree, T2: Tree):
 
     treedist = -1*np.ones((T1_size + 1, T2_size + 1))
 
+    # save the forestdist for each (i, j)
+    forestdist_dict = dict()
+    # saved as (i, j, choose operation)
+    operations = []
     def compute_treedist(i, j):
         forestdist = -1*np.ones((i + 1, j + 1))
         l_i_node = T1.l(i)
@@ -258,7 +261,7 @@ def tree_edit_distance(T1: Tree, T2: Tree):
                     treedist[i_1, j_1] = forestdist[i_1, j_1]
                     
                     # save operation
-                    operations.append(choosen_one[0])
+                    operations.append((i, j, choosen_one[0]))
                 else:
                     option_1 = (1, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY))
                     option_2 = (2, forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)))
@@ -268,13 +271,16 @@ def tree_edit_distance(T1: Tree, T2: Tree):
                     forestdist[i_1, j_1] = choosen_one[1]
 
                     # save operation
-                    operations.append(choosen_one[0])
+                    operations.append((i, j, choosen_one[0]))
+
+        forestdist_dict[(i, j)] = forestdist
 
     for i in LR_T1:
         for j in LR_T2:
+            print(f"(i, j) = {i, j}")
             compute_treedist(i, j)
 
-    return treedist, operations
+    return treedist, operations, forestdist_dict
 
 
 def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
@@ -384,9 +390,13 @@ if __name__ == '__main__':
     b2.parent_node = d2
     
     T2 = Tree([f2, d2, e2, a2, c2, b2], root=f2)
-    treedist, operations = tree_edit_distance(T1, T2)
+    treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
     print(f"treedist:\n{treedist}")
-    print(f"operations:\n{operations}")
+    print(f"(raw) operations:\n{operations}")
+
+    m, n = len(T1.nodes), len(T2.nodes)
+    print(f"forestdist for {m, n} (for path)")
+    print(forestdist_dict[(m, n)])
     
     plt.figure("T2")
     T2_nx = T2.to_nx_di_graph()
