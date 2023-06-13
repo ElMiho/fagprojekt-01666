@@ -4,6 +4,8 @@ import networkx as nx
 import sys
 import matplotlib.pyplot as plt
 import collections
+import pydot
+
 
 # Doesn't plot but rather saves the necessary commands
 def plot_graph(G):
