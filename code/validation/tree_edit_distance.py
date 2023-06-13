@@ -214,17 +214,14 @@ def cost_function(n1: Node, n2: Node) -> int:
         return 1
     
 def tree_edit_distance(T1: Tree, T2: Tree):
+    operations = []
     LR_T1 = T1.LR_keyroots()
     LR_T2 = T2.LR_keyroots()
-    # print("KEYROOTS")
-    # print(LR_T1)
-    # print(LR_T2)
 
     T1_size = len(T1.nodes)
     T2_size = len(T2.nodes)
 
     treedist = -1*np.ones((T1_size + 1, T2_size + 1))
-    # print(f"original treddist:\n{treedist}")
 
     def compute_treedist(i, j):
         forestdist = -1*np.ones((i + 1, j + 1))
@@ -232,9 +229,6 @@ def tree_edit_distance(T1: Tree, T2: Tree):
         l_i = T1.node_to_i(l_i_node)
         l_j_node = T2.l(j)
         l_j = T2.node_to_i(l_j_node)
-
-        # print(i, j)
-        # print(l_i, l_j)
 
         forestdist[0, 0] = 0
 
@@ -245,54 +239,42 @@ def tree_edit_distance(T1: Tree, T2: Tree):
                 return 0
 
         EMPTY = Node()
-        # print(f"l_i: {l_i}")
         for i_1 in range(l_i, i + 1):
-            # print(f"i_1: {i_1}")
-            # print(f"fd index: {fd_index(l_i, i_1 - 1)}")
             forestdist[i_1, 0] = forestdist[fd_index(l_i, i_1 - 1), 0] + cost_function(T1.node(i_1), EMPTY)
         for j_1 in range(l_j, j + 1):
             forestdist[0, j_1] = forestdist[0, fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.node(j_1))
-
-        # print(f"forestdist after init:\n{forestdist}")
 
         for i_1 in range(l_i, i + 1):
             for j_1 in range(l_j, j + 1):
                 if T1.l(i_1) == T1.l(i) and T2.l(j_1) == T2.l(j):
                     
-                    # pos1 = forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY)
-                    # pos2 = forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1))
-                    # pos3 = forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1 - 1)] + cost_function(T1.i_to_node(i_1), T2.i_to_node(j_1))
+                    option_1 = (1, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY))
+                    option_2 = (2, forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)))
+                    option_3 = (3, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1 - 1)] + cost_function(T1.i_to_node(i_1), T2.i_to_node(j_1)))
 
+                    choosen_one = min([option_1, option_2, option_3], key = lambda t: t[1])
 
-                    # print(f"{i_1, j_1} posibilities: {pos1, pos2, pos3}")
-                    # print(T1.i_to_node(i_1).value, T2.i_to_node(j_1).value)
-                    # print(cost_function(T1.i_to_node(i_1), T2.i_to_node(j_1)))
-
-                    forestdist[i_1, j_1] = min(
-                        forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY),
-                        forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)),
-                        forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1 - 1)] + cost_function(T1.i_to_node(i_1), T2.i_to_node(j_1))
-                    )
-                    # print(f"IF: i_1, j_1, fd[i_1, j_1]:\n{i_1, j_1, forestdist[i_1, j_1]}")
+                    forestdist[i_1, j_1] = choosen_one[1]
                     treedist[i_1, j_1] = forestdist[i_1, j_1]
-                    # print(f"td[i_1, j_1] {i_1, j_1}:\n{treedist[i_1, j_1]}")
-                    # print(f"treedist:\n{treedist}")
-                    # print("\n\n")
+                    
+                    # save operation
+                    operations.append(choosen_one[0])
                 else:
-                    forestdist[i_1, j_1] = min(
-                        forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY),
-                        forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)),
-                        forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1 - 1)] + treedist[i_1, j_1]
-                    )
-                    # print(f"ELSE: i_1, j_1, fd[i_1, j_1]:\n{i_1, j_1, forestdist[i_1, j_1]}")
+                    option_1 = (1, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY))
+                    option_2 = (2, forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)))
+                    option_3 = (3, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1 - 1)] + treedist[i_1, j_1])
 
-        # print(f"forestdist {i, j}:\n {forestdist}")
+                    choosen_one = min([option_1, option_2, option_3], key = lambda t: t[1])
+                    forestdist[i_1, j_1] = choosen_one[1]
+
+                    # save operation
+                    operations.append(choosen_one[0])
 
     for i in LR_T1:
         for j in LR_T2:
             compute_treedist(i, j)
 
-    return treedist
+    return treedist, operations
 
 
 def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
@@ -402,8 +384,9 @@ if __name__ == '__main__':
     b2.parent_node = d2
     
     T2 = Tree([f2, d2, e2, a2, c2, b2], root=f2)
-    treedist = tree_edit_distance(T1, T2)
+    treedist, operations = tree_edit_distance(T1, T2)
     print(f"treedist:\n{treedist}")
+    print(f"operations:\n{operations}")
     
     plt.figure("T2")
     T2_nx = T2.to_nx_di_graph()
