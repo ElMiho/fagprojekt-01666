@@ -10,7 +10,7 @@ def plot_graph(G):
     pos = nx.spring_layout(G)
     # pos = graphviz_layout(G, prog='dot')
     labels = nx.get_node_attributes(G, 'symbol')
-    nx.draw(G, labels=labels)
+    nx.draw_networkx(G, labels=labels)
 
 class Node:
     def __init__(self, id = None, parent_node = None, value = None, children = []):
