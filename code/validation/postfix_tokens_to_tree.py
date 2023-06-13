@@ -1,4 +1,7 @@
 import sys
+import pydot
+import networkx as nx
+from networkx.drawing.nx_pydot import graphviz_layout
 
 # SET PATH FOR OSX USERS
 if sys.platform == 'darwin':
@@ -14,6 +17,13 @@ binary_operators = [
     "TT_MULTIPLY",
     "TT_DIVIDE", 
     "TT_POW"
+]
+basis_functions = [
+    "TT_SQRT",
+    "TT_SIN",
+    "TT_COS",
+    "TT_TAN", 
+    "TT_LOG"
 ]
 
 #def __init__(self, id = None, parent_node = None, value = None, children = []):
@@ -34,11 +44,7 @@ def generate_nodes_from_postfix(tokens): #Tokens should be listed in postfix!
         
     stack = []
     for token in tokens:
-        if token.t_type not in binary_operators:
-            #new node
-            node = Node(value = token.t_type)
-            stack.append(node)
-        else:
+        if token.t_type in binary_operators:
             #new node
             node = Node(value = token.t_type)
             
@@ -55,6 +61,25 @@ def generate_nodes_from_postfix(tokens): #Tokens should be listed in postfix!
             
             #push to stack
             stack.append(node)
+            
+            
+        elif token.t_type in basis_functions:
+            #new node
+            node = Node(value = token.t_type)
+            
+            #the child
+            solo_child = stack.pop()
+            
+            solo_child.parent_node = node
+            node.children = [solo_child]
+            
+            stack.append(node)
+            
+        else:
+            #new node
+            node = Node(value = token.t_type)
+            stack.append(node)
+            
     return nodes_as_a_list(stack)
 
 
@@ -63,14 +88,14 @@ def generate_nodes_from_postfix(tokens): #Tokens should be listed in postfix!
 
 if __name__ == "__main__":
     # TREE 1
-    equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+    equation = equation_interpreter.Equation.makeEquationFromString("Sin(Log(Pi))+Log(Pi)")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
     nodes = generate_nodes_from_postfix(tokens)
     T1 = Tree(nodes = nodes, root = nodes[0])
     
     # TREE 2
-    equation2 = equation_interpreter.Equation.makeEquationFromString("Pi/(3+2)+4")
+    equation2 = equation_interpreter.Equation.makeEquationFromString("Sin(Log(Pi))+Log(5)")
     equation2.convertToPostfix()
     tokens2 = equation2.tokenized_equation
     nodes2 = generate_nodes_from_postfix(tokens2)
@@ -89,3 +114,9 @@ if __name__ == "__main__":
     
     plt.show()
     
+    '''
+    T1 = nx.bfs_tree(T1, 4)
+    labels = nx.get_node_attributes(T1, 'symbol')
+    nx.draw_networkx(T1, labels=labels)
+    plt.show()
+    '''
