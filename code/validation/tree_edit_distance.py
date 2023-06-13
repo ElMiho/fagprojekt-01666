@@ -281,7 +281,6 @@ def tree_edit_distance(T1: Tree, T2: Tree):
 
     return treedist, operations, forestdist_dict
 
-
 def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
     nodes = []
     for n in T_original.nodes:
@@ -293,13 +292,12 @@ def tree_node_diff(T_original: Tree, T_new: Tree) -> list[Node]:
 def construct_path(path_matrix: np.matrix) -> list[tuple]:
     """
     works by constructing the path backwards
-    and returns reversed(path)
     """
     m, n = path_matrix.shape
     path = []
     path.append((m-1, n-1))
 
-    def next_element(path_matrix: np.matrix, i: int, j: int) -> list[int]:
+    def next_element(path_matrix: np.matrix, i: int, j: int) -> None:
         if i == 0 and j == 0:
             return None
         else:
@@ -310,12 +308,14 @@ def construct_path(path_matrix: np.matrix) -> list[tuple]:
             ]
             # pick by the smallest value in the matrix
             next_position = min(options, key = lambda t: t[1])
-            path.append(next_position[0])
+            path.insert(0, next_position[0])
             next_element(path_matrix, next_position[0][0], next_position[0][1])
     
     next_element(path_matrix, m-1, n-1)
-    path.reverse()
     return path
+
+def path_to_operations(path_matrix: np.matrix, path: list[int]):
+    pass
 
 # poor mans test cases and playing around
 if __name__ == '__main__':
