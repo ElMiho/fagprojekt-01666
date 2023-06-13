@@ -216,11 +216,11 @@ def sentence_from_indices(indices, vocab, strict=True):
 
 
 if __name__ == '__main__':
-    '''
+    
     megafile1 = "data_analysis/int_data/megafile.txt"
     megafile2 = "data_analysis/new_rational_data/megafile2_txt"
-    f10se, non_int_tokens, roots = find_10_simpelest_evaluations(megafile2)
-    '''
+    f10se, int_tokens, roots_int = find_10_simpelest_evaluations(megafile1)
+    f10seM2, non_int_tokens, roots = find_10_simpelest_evaluations(megafile2)
     
     '''
     #evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
@@ -239,8 +239,9 @@ if __name__ == '__main__':
     tt_ = equation.tokenized_equation
     '''
     
+    '''
     #Til rapport ilustration
-    equation = Equation.makeEquationFromString("1/9*(4-3*Pi^2+Log(256))")
+    equation = Equation.makeEquationFromString("1/9*(-4+3*Pi^2-4*Log(4))")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
     
@@ -254,4 +255,5 @@ if __name__ == '__main__':
     
     #input
     tt_input = ["#","/","-1","1/2","1/2"]
-    token_idxes2 = [source_vocabulary.getIndex(token.t_type) for token in tt_input]
+    token_idxes2 = [source_vocabulary.getIndex(token) for token in tt_input]
+    '''
