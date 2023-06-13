@@ -40,7 +40,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
         x = x[0:(len(x)-1):step_lenght_num]
     
     if max_den < math.factorial(den_roots_len) and step_lenght_den != 0:
-        y = y[0:(len(x)-1):step_lenght_den]
+        y = y[0:(len(y)-1):step_lenght_den]
 
     
     """
@@ -65,14 +65,18 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     combine = itertools.product(all_num_combinations, all_den_combinations)      
     all_combinations = [list(p) for p in combine]    
         
-    all_combinations[0][0].append("/")
+    #all_combinations[0][0].append("/")
+    #all_combinations[0][0].append("/")
     
-    test_expressions = [list(itertools.chain(*p)) for p in all_combinations]
     
-    return test_expressions
+    all_combinations = [p[0]+['/']+p[1] for p in all_combinations]
+    
+    #test_expressions = [list(itertools.chain(*p)) for p in all_combinations]
+    
+    return all_combinations
 
 
-x = list_of_test_expressions_with_same_roots(True, max_num = 10, max_den = 20)
+x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
 
 
 #%%
