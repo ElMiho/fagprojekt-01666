@@ -179,23 +179,6 @@ def get_grouped_params(model, no_decay=["bias", "LayerNorm.weight"]):
         return [{"params": params_with_wd, "weight_decay": args.weight_decay},
                {"params": params_without_wd, "weight_decay": 0.0}]
     
-def evaluate():
-    model.eval()
-    losses = []
-    for step,batch in enumerate(dataloader):
-        with torch.no_grad():
-            outputs = model(batch["data"], labels=batch["labels"])
-        loss = outputs.loss.repeat(args.valid_batch_size)
-        losses.append(accelerator.gather(loss))
-        if args.max_eval_steps > 0 and step >= args.max_eval_steps: break
-    loss = torch.mean(torch.cat(losses))
-    # Lower perplexity implies better performance
-    try:
-        perplexity = torch.exp(loss)
-    except OverflowError:
-        perplexity = torch.tensor(float("inf"))
-    return loss.item(), perplexity.item()
-    
 # Accelerator
 accelerator = Accelerator()
 samples_per_step = accelerator.state.num_processes * args.train_batch_size
@@ -237,7 +220,6 @@ for epoch in tqdm(range(args.num_epochs)):
             completed_steps += 1
 
         if step % args.save_checkpoint_steps == 0:
-            eval_loss, perplexity = evaluate()
             accelerator.wait_for_everyone()
             if accelerator.is_main_process:
                 model.save_pretrained(f"models/{model_ckpt}", 
