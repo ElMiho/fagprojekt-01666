@@ -69,5 +69,7 @@ if __name__ == "__main__":
     nodes2 = generate_nodes_from_postfix(tokens2)
     T2 = Tree(nodes = nodes2, root = nodes2[0])
     
+    treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
+    print(treedist[-1,-1])
     
     
