@@ -17,12 +17,14 @@ import itertools
 
 #%%
 
-def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, spaceinterval: list = [-5,5], max_num: int = None, max_den: int = None):
+def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, spaceinterval: list = [-5,5], max_num: int = None, max_den: int = None, random_order: list = []):
     # tilføj et max så man max kan få input expressions
     
-    
-    # greate all options
-    num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only)
+    if (len(random_order) == 0):
+        # greate all options
+        num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only)
+    else:
+        num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only, random_order)
     
     print(f"The random poly is:\n {num_roots} / {den_roots}")
     
@@ -76,6 +78,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     
     return all_combinations
 
+#%%
 
 x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
 
@@ -91,4 +94,7 @@ print(test_expressions[0].getMathemetaicalNotation())
 res = compare_a_list_of_equations_token(x)
   
 #%%
-    
+
+for num_d in range(0,8):
+    for den_d in range(0, 10)
+        x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5, random_order = [0, 2])

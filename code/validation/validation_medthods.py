@@ -14,6 +14,7 @@ if LOAD_MAIN_FLAG:
     from main import test_an_expression
  
 
+
 from GPT2_Inference_simple import neural_network
     
 from model.tokenize_input import token_input_space
@@ -27,6 +28,7 @@ from validation.mathematica_from_python import input_to_lists
 from validation.mathematica_from_python import evaluate_sum
 from validation.mathematica_from_python import close_session
 from model.tokens import Token
+from validation.TED import graph_from_postfix, TreeEditDistance
 
 from model.vocabulary import vocabulary_answers as target_vocabulary
 from model.vocabulary import vocabulary_expressions as source_vocabulary
@@ -55,6 +57,26 @@ def TED_of_list_postfix_eq_as_tokens(equations: list):
     n = len(equations)
     ted = 0
     total = 0
+    trees = token_list_to_trees(equations) 
+    for i in range(n-1):
+        Ti = trees[i]
+        for j in range(i + 1, n):
+            total += 1
+            dist = TreeEditDistance().calculate(trees[j], Ti)
+            ted += dist[0]    
+    return ted/total
+
+def token_list_to_trees(tokens: list):
+    trees = []
+    for eq in tokens:
+        _, T = graph_from_postfix(eq)
+        trees.append(T)
+    return trees
+
+def TED_of_list_postfix_eq_as_tokens_old(equations: list):
+    n = len(equations)
+    ted = 0
+    total = 0
     trees = token_list_to_trees(equations)
     for i in range(n-1):
         Ti = trees[i]
@@ -66,7 +88,7 @@ def TED_of_list_postfix_eq_as_tokens(equations: list):
     return ted/total
             
             
-def token_list_to_trees(tokens: list):
+def token_list_to_trees_old(tokens: list):
     trees = []
     for eq in tokens:
         nodes = generate_nodes_from_postfix(eq)
@@ -92,7 +114,7 @@ def compare_a_list_of_equations_token(equations: list):
     
     return count/total
 
-def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concatenate: bool = True, int_roots_only: bool = False):
+def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concatenate: bool = True, int_roots_only: bool = False, random_order: list = []):
     '''
     geneate a random sum to be evaluated
 
@@ -115,12 +137,14 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     numerator_roots = token_input_space(spaceinterval[0], spaceinterval[1], roots_num_kind)
     denominator_roots = token_input_space(spaceinterval[0], spaceinterval[1], roots_den_kind)
     
+    if (len(random_order) == 0):
     # all oder over oders, a list of lists
-    poly_oder_list = all_poly(10)
-    
-    
-    # gets a poly oder from the list
-    num, den = poly_oder_list[random.randint(0, len(poly_oder_list)-1)]
+        poly_oder_list = all_poly(10)
+        # gets a poly oder from the list
+        num, den = poly_oder_list[random.randint(0, len(poly_oder_list)-1)]
+    else:
+       num = random_order[0]    
+       den = random_order[1]
     
     num_roots = []
     den_roots = []
@@ -292,22 +316,25 @@ if __name__ == '__main__':
     token_idxes2 = [source_vocabulary.getIndex(token) for token in tt_input]
     '''
     
-    '''
+    
     list_of_token_lists = []
     equation = equation_interpreter.Equation.makeEquationFromString("(Log(7)-Pi)*2")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
-    print(tokens)
-    [print(target_vocabulary.getIndex(token.t_type)) for token in tokens]
+    #print(tokens)
+    #[print(target_vocabulary.getIndex(token.t_type)) for token in tokens]
     list_of_token_lists.append(tokens)
-    equation = equation_interpreter.Equation.makeEquationFromString("Pi/(3+2)")
+    
+    equation = equation_interpreter.Equation.makeEquationFromString("2*(Log(7)-Pi)")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
     list_of_token_lists.append(tokens)
-    equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
+    
+    equation = equation_interpreter.Equation.makeEquationFromString("(Log(7)+Pi)*2")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
     list_of_token_lists.append(tokens)
     print(TED_of_list_postfix_eq_as_tokens(list_of_token_lists))
-    '''
-    output = neural_network_validation(["#","/","0","0","0"])
+    
+    
+    #output = neural_network_validation(["#","/","0","0","0"])

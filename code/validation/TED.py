@@ -9,6 +9,28 @@ import copy
 
 from model.tokens import *
 
+unary_operators = [
+    "TT_SQRT",
+    "TT_SIN",
+    "TT_COS",
+    "TT_TAN", 
+    "TT_LOG"
+]
+
+binary_operators = [
+    "TT_PLUS",
+    "TT_MINUS",
+    "TT_MULTIPLY",
+    "TT_DIVIDE", 
+    "TT_POW"
+]
+
+commutative_operators = [
+    "TT_PLUS",
+    "TT_MULTIPLY"
+]
+
+
 # Tree Node Class
 class Node:
     def __init__(self, val:str, left=None, right=None, parent=None):
