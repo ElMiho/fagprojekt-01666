@@ -48,7 +48,7 @@ def neural_network(input_tokens: list):
     out = model.generate(test_example_ids, 
                      eos_token_id=vocabulary.end_seq_index, 
                      pad_token_id=vocabulary.mask_index)
-    return [vocabulary.getToken(o.item()) for o in out[0]]
+    return [Token(vocabulary.getToken(o.item())) for o in out[0]]
 
 if __name__ == "__main__":
     output = neural_network(["#","/","0","0","0"])

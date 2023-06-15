@@ -64,6 +64,8 @@ def TED_of_list_postfix_eq_as_tokens(equations: list):
             total += 1
             dist = TreeEditDistance().calculate(trees[j], Ti)
             ted += dist[0]    
+    if total == 0:
+        return 0
     return ted/total
 
 def token_list_to_trees(tokens: list):
@@ -84,7 +86,9 @@ def TED_of_list_postfix_eq_as_tokens_old(equations: list):
             total += 1
             treedist, operations, forestdist_dict = tree_edit_distance(Ti, trees[j])
             ted += treedist[-1,-1]
-            
+    
+    if total == 0:
+        return 0
     return ted/total
             
             
