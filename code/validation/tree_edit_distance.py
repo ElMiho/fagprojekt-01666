@@ -1,10 +1,11 @@
 import numpy as np
 import networkx as nx
-# from networkx.drawing.nx_agraph import graphviz_layout
+from networkx.drawing.nx_agraph import graphviz_layout
 import sys
 import matplotlib.pyplot as plt
 import collections
 import pydot
+# from networkx.drawing.nx_pydot import graphviz_layout
 
 
 # Doesn't plot but rather saves the necessary commands
@@ -37,13 +38,13 @@ class Tree:
         def is_node_commutative(node):
             return node.value in ["+", "*"]
 
-        for node in self.nodes:
-            if is_node_commutative(node):
-                [child_1, child_2] = node.children
-                if child_1.value < child_2.value:
-                    node.children = [child_1, child_2]
-                else:
-                    node.children = [child_2, child_1]
+        # for node in self.nodes:
+        #     if is_node_commutative(node):
+        #         [child_1, child_2] = node.children
+        #         if child_1.value < child_2.value:
+        #             node.children = [child_1, child_2]
+        #         else:
+        #             node.children = [child_2, child_1]
 
         # ... and left-to-right postorder numbering
         if ordering == []:
@@ -233,17 +234,23 @@ def tree_edit_distance(T1: Tree, T2: Tree):
     LR_T1 = T1.LR_keyroots()
     LR_T2 = T2.LR_keyroots()
 
+    print(f"T1 keyroots: {LR_T1}")
+    print(f"T2 keyroots: {LR_T2}")
+
     T1_size = len(T1.nodes)
     T2_size = len(T2.nodes)
 
-    treedist = -1*np.ones((T1_size + 1, T2_size + 1))
+    treedist = np.empty((T1_size + 1, T2_size + 1))
+    treedist[:] = np.nan
 
     # save the forestdist for each (i, j)
     forestdist_dict = dict()
     # saved as (i, j, choose operation)
     operations = []
     def compute_treedist(i, j):
-        forestdist = -1*np.ones((i + 1, j + 1))
+        forestdist = np.empty((i + 1, j + 1))
+        forestdist[:] = np.nan
+        
         l_i_node = T1.l(i)
         l_i = T1.node_to_i(l_i_node)
         l_j_node = T2.l(j)
@@ -263,6 +270,9 @@ def tree_edit_distance(T1: Tree, T2: Tree):
         for j_1 in range(l_j, j + 1):
             forestdist[0, j_1] = forestdist[0, fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.node(j_1))
 
+        print(i, j)
+        print(forestdist, "\n")
+
         for i_1 in range(l_i, i + 1):
             for j_1 in range(l_j, j + 1):
                 if T1.l(i_1) == T1.l(i) and T2.l(j_1) == T2.l(j):
@@ -278,6 +288,10 @@ def tree_edit_distance(T1: Tree, T2: Tree):
                     
                     # save operation
                     operations.append((i, j, choosen_one[0]))
+
+                    print("TRUE ", i_1, j_1, option_1, option_2, option_3)
+                    print(i, j)
+                    print(forestdist,"\n")
                 else:
                     option_1 = (1, forestdist[fd_index(l_i, i_1 - 1), fd_index(l_j, j_1)] + cost_function(T1.i_to_node(i_1), EMPTY))
                     option_2 = (2, forestdist[fd_index(l_i, i_1), fd_index(l_j, j_1 - 1)] + cost_function(EMPTY, T2.i_to_node(j_1)))
@@ -288,12 +302,17 @@ def tree_edit_distance(T1: Tree, T2: Tree):
 
                     # save operation
                     operations.append((i, j, choosen_one[0]))
+                    print(i_1, j_1, treedist[i_1, j_1])
+                    print("FALSE", i_1, j_1, option_1, option_2, option_3)
+                    print(i, j)
+                    print(forestdist,"\n")
 
         forestdist_dict[(i, j)] = forestdist
 
     for i in LR_T1:
         for j in LR_T2:
             compute_treedist(i, j)
+            print(f"keyroots {i, j} \n {treedist}\n")
 
     return treedist, operations, forestdist_dict
 
@@ -468,42 +487,181 @@ if __name__ == '__main__':
     # [print(n.value) for n in nodes]
 
     # mathematical testing of a + b = b + a
+    # ## T1
+    # ### nodes
+    # n1_1 = Node(value="+")
+    # n1_2 = Node(value="a")
+    # n1_3 = Node(value="b")
+    # ### and their relations
+    # n1_1.children = [n1_2, n1_3]
+    # n1_2.parent_node = n1_1
+    # n1_3.parent_node = n1_1
+
+    # T1 = Tree([n1_1, n1_2, n1_3], root = n1_1)
+
+    # ## T2
+    # ###
+    # n2_1 = Node(value="+")
+    # n2_2 = Node(value="a")
+    # n2_3 = Node(value="b")
+    # ### and their relations
+    # n2_1.children = [n2_3, n2_2]
+    # n2_2.parent_node = n2_1
+    # n2_3.parent_node = n2_1
+
+    # T2 = Tree([n2_1, n2_2, n2_3], root = n2_1)
+
+    # # comparing
+    # treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
+    # print(f"difference: {treedist[-1, -1]}")
+    # print(f"treedist: \n{treedist}")
+
+    # # plotting
+    # T1_nx = T1.to_nx_di_graph()
+    # T2_nx = T2.to_nx_di_graph()
+
+    # plt.figure("T1")
+    # plot_graph(T1_nx)
+    # plt.figure("T2")
+    # plot_graph(T2_nx)
+
+    # for report comparing 
+    # cos(a/b) + c and
+    # c * cos(a)
     ## T1
-    ### nodes
+    # n1_1 = Node(value="+")
+    # n1_2 = Node(value="cos")
+    # n1_3 = Node(value="c")
+    # n1_4 = Node(value="/")
+    # n1_5 = Node(value="a")
+    # n1_6 = Node(value="b")
+    
+    # n1_1.children = [n1_2, n1_3]
+    # n1_2.parent_node = n1_1
+    # n1_3.parent_node = n1_1
+    
+    # n1_2.children = [n1_4]
+    # n1_4.parent_node = n1_2
+
+    # n1_4.children = [n1_5, n1_6]
+    # n1_5.parent_node = n1_4
+    # n1_6.parent_node = n1_4
+
+    # T1 = Tree([n1_1, n1_2, n1_3, n1_4, n1_5, n1_6], root = n1_1)
+
+    # ## T2
+    # n2_1 = Node(value="*")
+    # n2_2 = Node(value="cos")
+    # n2_3 = Node(value="c")
+    # n2_4 = Node(value="a")
+
+    # n2_1.children = [n2_2, n2_3]
+    # n2_2.parent_node = n2_1
+    # n2_3.parent_node = n2_1
+
+    # n2_2.children = [n2_4]
+    # n2_4.parent_node = n2_2
+
+    # T2 = Tree([n2_1, n2_2, n2_3, n2_4], root = n2_1)
+
+    # ## tree edit distance
+    # m, n = len(T1.nodes), len(T2.nodes)
+    # treedist, operations, forestdist_dict1 = tree_edit_distance(T1, T2)
+    # print(f"treedist:\n{treedist}")
+    # for i, j in forestdist_dict1.keys():
+    #     print(f"forestdist {i, j}")
+    #     print(forestdist_dict1[i, j])
+
+    ## plots
+    # plt.figure("T1")
+    # T1_nx = T1.to_nx_di_graph()
+    # plot_graph(T1_nx)
+    
+    # plt.figure("T2")
+    # T2_nx = T2.to_nx_di_graph()
+    # plot_graph(T2_nx)
+
+    ## manual flipping
+    print("\n\nmanual flipping")
+    ## T1
     n1_1 = Node(value="+")
-    n1_2 = Node(value="a")
-    n1_3 = Node(value="b")
-    ### and their relations
-    n1_1.children = [n1_2, n1_3]
+    n1_2 = Node(value="cos")
+    n1_3 = Node(value="c")
+    n1_4 = Node(value="/")
+    n1_5 = Node(value="a")
+    n1_6 = Node(value="b")
+    
+    n1_1.children = [n1_3, n1_2]
     n1_2.parent_node = n1_1
     n1_3.parent_node = n1_1
+    
+    n1_2.children = [n1_4]
+    n1_4.parent_node = n1_2
 
-    T1 = Tree([n1_1, n1_2, n1_3], root = n1_1)
+    n1_4.children = [n1_5, n1_6]
+    n1_5.parent_node = n1_4
+    n1_6.parent_node = n1_4
+
+    T1 = Tree([n1_1, n1_2, n1_3, n1_4, n1_5, n1_6], root = n1_1)
 
     ## T2
-    ###
-    n2_1 = Node(value="+")
-    n2_2 = Node(value="a")
-    n2_3 = Node(value="b")
-    ### and their relations
+    n2_1 = Node(value="*")
+    n2_2 = Node(value="cos")
+    n2_3 = Node(value="c")
+    n2_4 = Node(value="a")
+
     n2_1.children = [n2_3, n2_2]
     n2_2.parent_node = n2_1
     n2_3.parent_node = n2_1
 
-    T2 = Tree([n2_1, n2_2, n2_3], root = n2_1)
+    n2_2.children = [n2_4]
+    n2_4.parent_node = n2_2
 
-    # comparing
-    treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
-    print(f"difference: {treedist[-1, -1]}")
-    print(f"treedist: \n{treedist}")
+    T2 = Tree([n2_1, n2_2, n2_3, n2_4], root = n2_1)
 
-    # plotting
-    T1_nx = T1.to_nx_di_graph()
-    T2_nx = T2.to_nx_di_graph()
+    ## tree edit distance
+    m, n = len(T1.nodes), len(T2.nodes)
+    treedist, operations, forestdist_dict2 = tree_edit_distance(T1, T2)
+    print(f"treedist:\n{treedist}")
+    for i, j in forestdist_dict2.keys():
+        print(f"forestdist {i, j}")
+        print(forestdist_dict2[i, j])
 
-    plt.figure("T1")
-    plot_graph(T1_nx)
-    plt.figure("T2")
-    plot_graph(T2_nx)
+    # print("\n\n")
+    # print("1. ")
+    # print(forestdist_dict1[6, 4])
+    # print("\n2. ")
+    # print(forestdist_dict2[6, 4])
+
+
+    # n1_2 = Node(value="cos")
+    # n1_4 = Node(value="/")
+    # n1_5 = Node(value="a")
+    # n1_6 = Node(value="b")
+
+    # n1_2.children = [n1_4]
+    # n1_4.parent_node = n1_2
+
+    # n1_4.children = [n1_5, n1_6]
+    # n1_5.parent_node = n1_4
+    # n1_6.parent_node = n1_4
+
+    # T1 = Tree([n1_2, n1_4, n1_5, n1_6], root = n1_2)
+
+    # n2_1 = Node(value="cos")
+    # n2_2 = Node(value="a")
+
+    # n2_1.children = [n2_2]
+    # n2_2.parent_node = n2_1
+    
+    # T2 = Tree([n2_1, n2_2], root = n2_1)
+
+    # m, n = len(T1.nodes), len(T2.nodes)
+    # treedist, operations, forestdist_dict = tree_edit_distance(T1, T2)
+    # print("\n")
+    # print(f"treedist:\n{treedist}")
+    # for i, j in forestdist_dict.keys():
+    #     print(f"forestdist {i, j}")
+    #     print(forestdist_dict[i, j])
 
     plt.show()
