@@ -37,6 +37,14 @@ from data_analysis.int_data.generate_plot import parse_line
 from validation.postfix_tokens_to_tree import generate_nodes_from_postfix
 from validation.tree_edit_distance import Node, Tree, tree_edit_distance, plot_graph
 
+import sys
+sys.path.append('.../code')
+from model.tokenize_input import token_input_space
+from model.tokenize_input import all_poly
+from model.equation_interpreter import Equation
+
+
+from main import test_an_expression
 
 def neural_network_validation(roots: list):
     output = neural_network(roots)
@@ -49,6 +57,7 @@ def infix_equation_to_posfix():
 def test_one_expression(test_expression, as_string: bool = True):
     #OLD MODEL
     return test_an_expression(test_expression, not as_string)
+
 
 def get_token_expressions(test_expression: list):
     return [test_an_expression(i) for i in test_expression]
@@ -100,6 +109,28 @@ def token_list_to_trees_old(tokens: list):
         trees.append(T)
     return trees
     
+
+
+def evaluate_token_input(test_expression: list):
+    for t_e in test_expression:
+        None
+
+
+def get_token_expressions(test_expression: list):
+    return [test_an_expression(i) for i in test_expression]
+
+def sup_number_of_expressions(max_ex: int, test_expression: list):
+    length = len(test_expression)
+    print(length)
+    if max_ex < length:
+        t_e = []
+        steps = length // max_ex
+        for i in range(0, steps-1):
+            print(i)
+            t_e.append(test_expression[i*steps])
+        return t_e
+    return test_expression
+
     
 def compare_a_list_of_equations_token(equations: list):
     # Vil hvike hvis man sammenligerne token række følgen men skal opdateres når vi kan sammenligne 2 quations med .getMathemetaicalNotation()
@@ -117,6 +148,7 @@ def compare_a_list_of_equations_token(equations: list):
                 
     
     return count/total
+
 
 def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concatenate: bool = True, int_roots_only: bool = False, random_order: list = []):
     '''

@@ -396,8 +396,14 @@ class Equation:
         return cls(tokenized_equation, notation)
 
 
+
 #equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
 #print(equation.is_valid())
 # print(equation.getMathemetaicalNotation())
 #equation = Equation([Token("TT_INTEGER"),Token("TT_INTEGER"),Token("TT_INTEGER"),Token("TT_LOG"),Token("TT_MULTIPLY"),Token("TT_MINUS"),Token("TT_MULTIPLY"),Token("TT_MINUS")],"postfix")
 #print(equation.is_valid())
+
+# equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+# print(equation.getMathemetaicalNotation())
+
+

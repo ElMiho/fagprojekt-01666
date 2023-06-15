@@ -8,15 +8,22 @@ from validation.validation_medthods import compare_a_list_of_equations_token
 from validation.validation_medthods import get_token_expressions
 from validation.validation_medthods import test_one_expression
 #from validation.validation_medthods import sup_number_of_expressions
+<<<<<<< HEAD
 from validation.validation_medthods import neural_network_validation, TED_of_list_postfix_eq_as_tokens
 from model.equation_interpreter import Equation
 
+=======
+
+from model.equation_interpreter import Equation
+
+>>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc
 import math
 import itertools 
 
 
 #%%
 
+<<<<<<< HEAD
 def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, spaceinterval: list = [-5,5], max_num: int = None, max_den: int = None, random_order: list = []):
     # tilføj et max så man max kan få input expressions
     
@@ -25,6 +32,14 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
         num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only)
     else:
         num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only, random_order)
+=======
+def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, spaceinterval: list = [-5,5], max_num: int = None, max_den: int = None):
+    # tilføj et max så man max kan få input expressions
+    
+    
+    # greate all options
+    num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only)
+>>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc
     
     print(f"The random poly is:\n {num_roots} / {den_roots}")
     
@@ -77,6 +92,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     #test_expressions = [list(itertools.chain(*p)) for p in all_combinations]
     
     return all_combinations
+<<<<<<< HEAD
 #%%
 #x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
 
@@ -117,3 +133,22 @@ for num_d in range(0,8): #0,8
                 avage_TED_pr_sum_d[num_d+den_d-2][2] += 1
             
             
+=======
+
+
+x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
+
+
+#%%
+test_expressions = get_token_expressions(x)
+
+
+#%%
+print(test_expressions[0].getMathemetaicalNotation())
+
+#%%
+res = compare_a_list_of_equations_token(x)
+  
+#%%
+    
+>>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc

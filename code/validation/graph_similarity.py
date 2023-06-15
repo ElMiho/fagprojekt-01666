@@ -4,8 +4,13 @@ import matplotlib.pyplot as plt
 
 # algorithm already implemented in zss
 # from zss import zss_comapre.simple_distance, zss_simple_tree.Node, distance
+<<<<<<< HEAD
 import validation.zhang_shasha.zss.compare as zss_compare
 import validation.zhang_shasha.zss.simple_tree as zss_simple_tree
+=======
+import zhang_shasha.zss.compare as zss_compare
+import zhang_shasha.zss.simple_tree as zss_simple_tree
+>>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc
 
 # SET PATH FOR OSX USERS
 if sys.platform == 'darwin':
