@@ -310,4 +310,4 @@ if __name__ == '__main__':
     list_of_token_lists.append(tokens)
     print(TED_of_list_postfix_eq_as_tokens(list_of_token_lists))
     '''
-    o = neural_network_validation(["#","/","0","0","0"])
+    output = neural_network_validation(["#","/","0","0","0"])
