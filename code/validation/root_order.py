@@ -92,8 +92,8 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
 avage_TED_pr_sum_d = [[i,0,0,0,0] for i in range(2,18)]
 
 
-for num_d in range(0,8): #0,8
-    for den_d in range(2, 10): #0,10
+for num_d in range(0,3): #0,8
+    for den_d in range(2, 5): #0,10
         for _ in range(0,10): #HUSK AT SÆT OP
             roots_list = list_of_test_expressions_with_same_roots(False, max_num = 5, max_den = 5, random_order = [num_d, den_d])
             nn_out = [neural_network_validation(roots) for roots in roots_list]
@@ -108,8 +108,9 @@ for num_d in range(0,8): #0,8
                     nn_out_valid.append(nn_out[i])
             avage_TED_pr_sum_d[num_d+den_d-2][3] += len(nn_out)-len(nn_out_valid)
             avage_TED_pr_sum_d[num_d+den_d-2][3] += len(nn_out)
-            if  len(nn_out_valid) != 0:
-                print("found one!!! f{len(nn_out_valid)}")
+            
+            if  len(nn_out_valid) != 0 and len(nn_out_valid) != 1: #gider ikke have den med hvis det er kun er en
+                print(f"found multiple!!! {len(nn_out_valid)}")
                 ted = TED_of_list_postfix_eq_as_tokens(nn_out_valid)
                 avage_TED_pr_sum_d[num_d+den_d-2][1] += ted
                 if avage_TED_pr_sum_d[num_d+den_d-2][2] != 0:
