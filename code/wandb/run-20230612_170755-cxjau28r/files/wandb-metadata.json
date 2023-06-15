@@ -1,0 +1,41 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.10.7",
+    "heartbeatAt": "2023-06-12T15:07:56.769459",
+    "startedAt": "2023-06-12T15:07:55.824884",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "fagprojekt-01666/code/GPT2 - Prebuilt Pipeline.ipynb",
+    "root": "C:/Users/Hugo/Documents/DTU/01666/fagprojekt-01666",
+    "git": {
+        "remote": "https://github.com/ElMiho/fagprojekt-01666",
+        "commit": "47cb7087ee735e258edef7d86c01171a1c4a4355"
+    },
+    "email": "hugomn2002@gmail.com",
+    "host": "DESKTOP-KVD7E62",
+    "username": "Hugo",
+    "executable": "C:\\Users\\Hugo\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2803.0,
+        "min": 0.0,
+        "max": 2803.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2803.0,
+            "min": 0.0,
+            "max": 2803.0
+        }
+    ],
+    "disk": {
+        "total": 475.15095138549805,
+        "used": 280.17273712158203
+    },
+    "memory": {
+        "total": 15.705188751220703
+    }
+}
