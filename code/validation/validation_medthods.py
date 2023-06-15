@@ -12,6 +12,9 @@ if sys.platform == 'darwin':
 LOAD_MAIN_FLAG = False
 if LOAD_MAIN_FLAG:
     from main import test_an_expression
+ 
+
+from GPT2_Inference_simple import neural_network
     
 from model.tokenize_input import token_input_space
 from model.tokenize_input import all_poly
@@ -32,11 +35,17 @@ from data_analysis.int_data.generate_plot import parse_line
 from validation.postfix_tokens_to_tree import generate_nodes_from_postfix
 from validation.tree_edit_distance import Node, Tree, tree_edit_distance, plot_graph
 
+
+def neural_network_validation(roots: list):
+    output = neural_network(roots)
+    return output[len(roots)+2:len(output)-1]
+
 def infix_equation_to_posfix():
     #skriv kode
     return None
 
 def test_one_expression(test_expression, as_string: bool = True):
+    #OLD MODEL
     return test_an_expression(test_expression, not as_string)
 
 def get_token_expressions(test_expression: list):
@@ -241,12 +250,12 @@ def sentence_from_indices(indices, vocab, strict=True):
 
 
 if __name__ == '__main__':
-    
+    '''
     megafile1 = "data_analysis/int_data/megafile.txt"
     megafile2 = "data_analysis/new_rational_data/megafile2_txt"
     f10se, int_tokens, roots_int = find_10_simpelest_evaluations(megafile1)
     f10seM2, non_int_tokens, roots = find_10_simpelest_evaluations(megafile2)
-    
+    '''
     '''
     #evaluate_tokenized_sum(random_list_of_nuerator_and_denominator([-5,5], int_roots_only = True))
     sums = random_list_of_nuerator_and_denominator([-5,5],int_roots_only=True)
@@ -283,10 +292,13 @@ if __name__ == '__main__':
     token_idxes2 = [source_vocabulary.getIndex(token) for token in tt_input]
     '''
     
+    '''
     list_of_token_lists = []
-    equation = equation_interpreter.Equation.makeEquationFromString("10+Pi/(3+2)")
+    equation = equation_interpreter.Equation.makeEquationFromString("(Log(7)-Pi)*2")
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
+    print(tokens)
+    [print(target_vocabulary.getIndex(token.t_type)) for token in tokens]
     list_of_token_lists.append(tokens)
     equation = equation_interpreter.Equation.makeEquationFromString("Pi/(3+2)")
     equation.convertToPostfix()
@@ -297,3 +309,5 @@ if __name__ == '__main__':
     tokens = equation.tokenized_equation
     list_of_token_lists.append(tokens)
     print(TED_of_list_postfix_eq_as_tokens(list_of_token_lists))
+    '''
+    o = neural_network_validation(["#","/","0","0","0"])
