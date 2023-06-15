@@ -88,23 +88,14 @@ def generate_nodes_from_postfix(tokens): #Tokens should be listed in postfix!
 
 if __name__ == "__main__":
     # TREE 1
-<<<<<<< HEAD
     equation = equation_interpreter.Equation.makeEquationFromString("(5 - 5*Pi)/5")
-=======
-    equation = equation_interpreter.Equation.makeEquationFromString("Sin(Log(Pi))+Log(Pi)")
->>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc
     equation.convertToPostfix()
     tokens = equation.tokenized_equation
     nodes = generate_nodes_from_postfix(tokens)
     T1 = Tree(nodes = nodes, root = nodes[0])
     
-<<<<<<< HEAD
     # TREE 2p
     equation2 = equation_interpreter.Equation.makeEquationFromString("(5 - Pi)*5 - Log(5)")
-=======
-    # TREE 2
-    equation2 = equation_interpreter.Equation.makeEquationFromString("Sin(Log(Pi))+Log(5)")
->>>>>>> 14a9f20fa3375541d800bf108f7cc72193f370dc
     equation2.convertToPostfix()
     tokens2 = equation2.tokenized_equation
     nodes2 = generate_nodes_from_postfix(tokens2)
