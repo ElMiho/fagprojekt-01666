@@ -33,8 +33,8 @@ loops = 0
 succes_math = 0
 #%%
 current_time = datetime.now().time()
-time_str = current_time.strftime("%H:%M:%S")
-filename = f"validation/save_data/saved_variables_{time_str}.pkl"
+time_str = current_time.strftime("%H_%M")
+filename = f"/validation/save_data/saved_variables_{time_str}.pkl"
 
 #%%
 
@@ -43,7 +43,7 @@ for line in lines:
     if loops % 50 == 0:
         print(f"{loops} completed -- status : {succes_math}")
         saved_variables = {'found_distance': found_distance, 'total_counter': total_counter, 'non_valid_counter': non_valid_counter, 'degree_vector': degree_vector}
-        with open(filename, 'wb') as f:
+        with open(filename, 'wb+') as f:
             pickle.dump(saved_variables, f)
             
             
@@ -102,6 +102,18 @@ import numpy as np
 
 # HER skal vi bare vælge hvilken del af dataen vi ønsker at plotte!!! Anbefaler måsle at lave flere
 data = found_distance[0:10]
+
+#%%
+
+with open(f"validation/save_data/saved_variables_{time_str}.pkl", 'rb') as f:
+    loaded_variables = pickle.load(f)
+
+# Access the loaded variables
+found_distance = loaded_variables['found_distance']
+total_counter = loaded_variables['total_counter']
+non_valid_counter = loaded_variables['non_valid_counter']
+degree_vector = loaded_variables['degree_vector']
+
 
 #%%
 # Create scatter plot with circular markers and no color
