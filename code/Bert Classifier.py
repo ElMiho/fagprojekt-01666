@@ -82,47 +82,7 @@ sum2tokens('{{}, {-2, -2, -10, -8, -9, -8, -10, -5, -6, -4}}\n')
 
 
 # In[23]:
-
-
-new_df = pd.DataFrame(columns=["sum", "label"])
-for pointer in range(10):
-    for token in token2int:
-        if token in df.iloc[pointer]["answers"]:
-            new_df.loc[len(new_df)] = [" ".join(sum2tokens(df.iloc[pointer]["sums"])), token2int[token]]
-            
-print(new_df.head())
-
-
-# # Tokenize time
-
-# In[24]:
-
-
-dataset = Dataset.from_pandas(new_df)
-print(dataset)
-
-
-# In[25]:
-
-
-tokenizer = AutoTokenizer.from_pretrained(model_ckpt)
-def tokenize(batch):
-    return tokenizer(batch["sum"], padding=True, truncation=True)
-
-
-# In[26]:
-
-
-dataset_encoded = dataset.map(tokenize, batched=True)
-print(dataset_encoded)
-
-
-# In[ ]:
-
-
-dataset_encoded.set_format("torch", columns=["input_ids", "attention_mask", "label"])
-print(dataset_encoded)
-
+encoded_dataset = load_dataset("Dragonoverlord3000/sum_classifier_dataset", streaming=True)
 
 # # Model
 
@@ -178,7 +138,7 @@ trainer = Trainer(model=model, args=training_args,
 # In[ ]:
 
 
-# trainer.push_to_hub(commit_message="Training Complete")
+trainer.push_to_hub(commit_message="Training Complete")
 
 
 # In[ ]:
