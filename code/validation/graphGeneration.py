@@ -1,7 +1,7 @@
 import sys
-#from zss import simple_distance, Node
-from validation.zhang_shasha.zss.compare import simple_distance
-from validation.zhang_shasha.zss.simple_tree import Node
+from zss import simple_distance, Node
+#from validation.zhang_shasha.zss.compare import simple_distance
+#from validation.zhang_shasha.zss.simple_tree import Node
 
 
 
@@ -49,22 +49,30 @@ def generate_graph_from_postfix(tokens): #Tokens should be listed in postfix!
 
 
 def generate_graph_from_postfix2(tokens): #Tokens should be listed in postfix!
-    # DRAFT 
     stacks = [[]]
-    
     for token in tokens:
         if token.t_type not in binary_operators:
             for stack in stacks:
                 stack.append(Node(token.t_type))
         else:
-            for stack in enumerate(stacks):
-                operand2 = stack[0].pop()
-                operand1 = stack[0].pop()
-                stack[0].append(Node(token.t_type, [operand1, operand2]))
+            for i in range(0, len(stacks)):
+                stack = stacks[i]
+                operand2 = stack.pop()
+                operand1 = stack.pop()
+                stack_copy = stack.copy()
+                stack.append(Node(token.t_type, [operand1, operand2]))
+                stacks[i] = stack
                 if token.t_type in plus_mulitply:
-                    stacks.append(stack[0].append(Node(token.t_type, [operand2, operand1])))
-                    
-    return stacks
+                    stack_copy.append(Node(token.t_type, [operand2, operand1]))
+                    stacks.append(stack_copy)
+    
+    graphs = []
+    for g in stacks:
+        graphs.append(g.pop())
+    
+    return graphs
+
+
 
 def generate_combinations(graph):
 
@@ -105,6 +113,15 @@ def getDistance(graph1, graph2):
             smallest_distance = distance
     return smallest_distance
 
+def getDistance2(tokens, graph2):
+    combs = generate_graph_from_postfix2(tokens)
+    smallest_distance = sys.maxsize
+    for c in combs:
+        distance = simple_distance(c, graph2)
+        if distance < smallest_distance:
+            smallest_distance = distance
+    return smallest_distance
+
 def printKids(graph, level = 1):
     if graph.children == []:
         return
@@ -114,6 +131,7 @@ def printKids(graph, level = 1):
             printKids(child, level=level+1)
 
 #Test cases
+'''
 equation = equation_interpreter.Equation.makeEquationFromString("4+Pi/(3+2)")
 equation.convertToPostfix()
 tokens = equation.tokenized_equation
@@ -125,3 +143,21 @@ g1 = generate_graph_from_postfix(tokens1)
 
 dist = getDistance(g, g1)
 print(dist)
+'''
+
+equation = equation_interpreter.Equation.makeEquationFromString("4+2+3/(3+Pi)")
+equation.convertToPostfix()
+tokens = equation.tokenized_equation
+gs = generate_graph_from_postfix2(tokens)
+equation1 = equation_interpreter.Equation.makeEquationFromString("Pi/(Pi+3)+4")
+equation1.convertToPostfix()
+tokens1 = equation1.tokenized_equation
+g1 = generate_graph_from_postfix(tokens1)
+
+
+dist = getDistance2(tokens, g1)
+print(dist)
+
+for g in gs:
+    print("NEW G")
+    printKids(g)

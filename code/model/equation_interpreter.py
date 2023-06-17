@@ -155,7 +155,18 @@ class Equation:
     def __init__(self, tokenized_equation:list=None, notation:str="infix"):
         self.tokenized_equation = tokenized_equation
         self.notation = notation
-
+    
+    def is_valid(self):
+        new_eq = Equation(self.tokenized_equation, self.notation)
+        compare = Equation.makeEquationFromString(new_eq.getMathemetaicalNotation())
+    
+        if self.notation == "postfix":
+            compare.convertToPostfix()
+        if len(compare.tokenized_equation) == len(self.tokenized_equation):
+            return True
+        else:
+            return False
+        
     def convertToInfix(self):
         if self.notation == "infix":
             return None
@@ -385,6 +396,8 @@ class Equation:
         return cls(tokenized_equation, notation)
 
 
-# equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+#equation = Equation.makeEquationFromString("-Sin(2-EulerGamma)+a/3+(-7/3*2 + Pi^2)-2")
+#print(equation.is_valid())
 # print(equation.getMathemetaicalNotation())
-
+#equation = Equation([Token("TT_INTEGER"),Token("TT_INTEGER"),Token("TT_INTEGER"),Token("TT_LOG"),Token("TT_MULTIPLY"),Token("TT_MINUS"),Token("TT_MULTIPLY"),Token("TT_MINUS")],"postfix")
+#print(equation.is_valid())

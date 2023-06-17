@@ -7,3 +7,4 @@ code/models/*
 code/models/*
 code/Dragonoverlord3000/*
 code/wandb/*
+*.pyc
