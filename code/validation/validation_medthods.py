@@ -276,8 +276,32 @@ def sentence_from_indices(indices, vocab, strict=True):
             out.append(vocab.getToken(index))
     return " ".join(out)
 
+def input_roots_num_den(roots):
+    idx = roots.index("/")
+    if roots[0] == "#":
+        return idx-1, len(roots)-idx-1
+    return idx, len(roots)-idx-1
 
+def roots_to_strings(roots):
+    return [str(root) for root in roots] 
+
+def valid_equation(tokens):
+    try:
+        return Equation(tokens, "postfix").is_valid()
+    except Exception:
+        return
+    
+def posible_degrees(den_max):
+    deg = []
+    for i in range(0, den_max-1):
+        for j in range(i+2, den_max+1):
+            deg.append([i,j])
+    return deg
+        
 if __name__ == '__main__':
+    
+   
+    
     '''
     megafile1 = "data_analysis/int_data/megafile.txt"
     megafile2 = "data_analysis/new_rational_data/megafile2_txt"

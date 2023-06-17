@@ -94,7 +94,7 @@ avage_TED_pr_sum_d = [[i,0,0,0,0] for i in range(2,18)]
 
 for num_d in range(0,3): #0,8
     for den_d in range(2, 5): #0,10
-        for _ in range(0,10): #HUSK AT SÆT OP
+        for _ in range(0,1): #HUSK AT SÆT OP
             roots_list = list_of_test_expressions_with_same_roots(False, max_num = 5, max_den = 5, random_order = [num_d, den_d])
             nn_out = [neural_network_validation(roots) for roots in roots_list]
             nn_out_valid = []

@@ -18,7 +18,7 @@ from model.vocabulary import Vocabulary
 from model.tokens import Token
 
 from datasets import disable_caching
-#disable_caching()
+disable_caching()
 
 
 # Create a combined vocabulary
