@@ -225,9 +225,17 @@ model = Model(
 )
 model = model.to(device)
 
+def count_parameters(model):
+    total_params = sum(p.numel() for p in model.parameters())
+    total_trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    
+    print(f'Total parameters: {total_params}')
+    print(f'Trainable parameters: {total_trainable_params}')
+
 if args.verbose:
     print(f"Using model `{config['model_filename']}` with architecture:")
-    print(model)
+    print("###", model)
+    count_parameters(model)
 
 # Optimizer
 optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"])
