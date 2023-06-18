@@ -23,7 +23,7 @@ found_distance = [[] for _ in degree_vector]
 
 
 #To validate please add a string to the txt file it need to have same structure as megafile
-testfile = "data_analysis/new_rational_data/megafile2_txt"
+testfile = "validation/vali_files/answers-0-2-partition-1"
 
 #open the test file
 with open(testfile, "r") as file:
@@ -34,7 +34,7 @@ succes_math = 0
 #%%
 current_time = datetime.now().time()
 time_str = current_time.strftime("%H_%M")
-filename = f"/validation/save_data/saved_variables_{time_str}.pkl"
+filename = f"/validation/save_data/saved_variables_0_2.pkl"
 
 #%%
 
@@ -45,7 +45,7 @@ for line in lines:
         saved_variables = {'found_distance': found_distance, 'total_counter': total_counter, 'non_valid_counter': non_valid_counter, 'degree_vector': degree_vector}
         with open(filename, 'wb+') as f:
             pickle.dump(saved_variables, f)
-            
+
             
     #reads the content from the line
     _, answer, _, roots = parse_line(line)

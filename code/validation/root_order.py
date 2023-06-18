@@ -78,7 +78,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     
     return all_combinations
 #%%
-#x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
+x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
 
 
 
