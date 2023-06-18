@@ -24,9 +24,9 @@ from model.equation_interpreter import Equation
 from model.tokens import TOKEN_TYPE_ANSWERS
 
 from model import equation_interpreter
-from validation.mathematica_from_python import input_to_lists
-from validation.mathematica_from_python import evaluate_sum
-from validation.mathematica_from_python import close_session
+#from validation.mathematica_from_python import input_to_lists
+#from validation.mathematica_from_python import evaluate_sum
+#from validation.mathematica_from_python import close_session
 from model.tokens import Token
 from validation.TED import graph_from_postfix, TreeEditDistance
 

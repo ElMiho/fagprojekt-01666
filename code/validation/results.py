@@ -106,7 +106,9 @@ data = found_distance[0:10]
 #%%
 import pickle
 
+
 with open(f"validation/save_data/saved_variables_20_18.pkl", 'rb') as f:
+
     loaded_variables = pickle.load(f)
 
 # Access the loaded variables
