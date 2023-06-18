@@ -10,7 +10,7 @@ outputFolder = "answers";
 fileNameOutput = "answers-";
 fileNameExpression = "rand_int_expressions-";
 (* 0.01, 0.1, 1, 3, 4, 5, 6, 7, 10, 16 *)
-maxTime = 12;
+maxTime = 7;
 
 (* Create list of roots *)
 all = Range[-5,5];
