@@ -39,7 +39,7 @@ input_ids, input_ids.size()
 
 vocabulary.end_seq_index
 
-model = GPT2LMHeadModel.from_pretrained(f"Dragonoverlord3000/{model_name}", force_download=True, revision="6512ca7619eafd2da815379268c73c4382b8d3a1")
+model = GPT2LMHeadModel.from_pretrained(f"Dragonoverlord3000/{model_name}", force_download=True, revision="6b6cb05633f8c1e6047e1a2605d9910c73dfe2f5")
 
 
 

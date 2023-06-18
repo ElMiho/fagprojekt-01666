@@ -12,7 +12,7 @@ from data_analysis.int_data.generate_plot import parse_line
 
 from validation.TED import graph_from_postfix, TreeEditDistance
 
-import pickel
+import pickle
 from datetime import datetime
 
 #datastore
@@ -104,7 +104,7 @@ import numpy as np
 data = found_distance[0:10]
 
 #%%
-
+import pickle
 with open(f"validation/save_data/saved_variables_{time_str}.pkl", 'rb') as f:
     loaded_variables = pickle.load(f)
 
