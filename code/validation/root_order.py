@@ -26,7 +26,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     else:
         num_roots, den_roots = random_list_of_nuerator_and_denominator(spaceinterval, False, int_roots_only, random_order)
     
-    print(f"The random poly is:\n {num_roots} / {den_roots}")
+    #print(f"The random poly is:\n {num_roots} / {den_roots}")
     
     num_roots_len = len(num_roots)
     den_roots_len = len(den_roots)
@@ -52,9 +52,9 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     """
     
     # gets all posible combinations of denominator and numerator
-    print("calcutating all num combinations..")
+    #print("calcutating all num combinations..")
     all_num_combinations = [list(p) for p in x]
-    print("calcutating all den combinations..")
+    #print("calcutating all den combinations..")
     all_den_combinations = [list(p) for p in y]
     
     """
@@ -64,7 +64,7 @@ def list_of_test_expressions_with_same_roots(int_roots_only: bool = False, space
     """
    
     ## denne her der tager lang tid
-    print("combining the num and den")
+    #print("combining the num and den")
     combine = itertools.product(all_num_combinations, all_den_combinations)      
     all_combinations = [list(p) for p in combine]    
         
@@ -89,13 +89,73 @@ x = list_of_test_expressions_with_same_roots(True, max_num = 5, max_den = 5)
 # devision factor
 # nuber of fails
 # total outputs
-avage_TED_pr_sum_d = [[i,0,0,0,0] for i in range(2,18)]
+from validation.validation_medthods import posible_degrees
+import pickle
 
+
+
+  
+filename = f"validation/save_data/root_0_3.pkl"
+degree_vector = posible_degrees(10)
+total_counter = [0 for _ in degree_vector]
+found_distance = [[] for _ in degree_vector]
+#%%
+
+        
+num_d = 0
+den_d = 3
+
+loops = 1
+for _ in range(0,100): #HUSK AT SÆT OP
+    vector_idx = degree_vector.index([num_d, den_d])
+    if loops % 5 == 0:
+        print(f"{loops} completed -- status : {len(found_distance[vector_idx])}")
+        saved_variables = {'found_distance': found_distance}
+        with open(filename, 'wb+') as f:
+            pickle.dump(saved_variables, f)
+            
+    roots_list = list_of_test_expressions_with_same_roots(False, max_num = 5, max_den = 5, random_order = [num_d, den_d])
+    nn_out = [neural_network_validation(roots) for roots in roots_list]
+    nn_out_valid = []
+    for i in range(0, len(nn_out)):
+        try:
+            boole = Equation(nn_out[i], "postfix").is_valid()
+        except Exception:
+            boole = False
+        
+        if boole:
+            nn_out_valid.append(nn_out[i])
+    
+                
+    if  len(nn_out_valid) != 0 and len(nn_out_valid) != 1: #gider ikke have den med hvis det er kun er en
+        #print(f"found multiple!!! {len(nn_out_valid)}")
+        ted = TED_of_list_postfix_eq_as_tokens(nn_out_valid)
+        
+        
+        found_distance[vector_idx].append(ted)
+        
+    loops += 1
+print("done")
+#%%
+
+with open(f"validation/save_data/root_0_2.pkl", 'rb') as f:
+
+    loaded_variables = pickle.load(f)
+    
+#%%
 
 for num_d in range(0,3): #0,8
     q = 6-num_d
     for den_d in range(num_d+2, q): #0,10
-        for _ in range(0,1): #HUSK AT SÆT OP
+        loops = 0
+        for _ in range(0,100): #HUSK AT SÆT OP
+            vector_idx = degree_vector.index([num_d, den_d])
+            if loops % 5 == 0:
+                print(f"{loops} completed -- status : {len(found_distance[vector_idx])}")
+                saved_variables = {'found_distance': found_distance}
+                with open(filename, 'wb+') as f:
+                    pickle.dump(saved_variables, f)
+                    
             roots_list = list_of_test_expressions_with_same_roots(False, max_num = 5, max_den = 5, random_order = [num_d, den_d])
             nn_out = [neural_network_validation(roots) for roots in roots_list]
             nn_out_valid = []
@@ -107,15 +167,11 @@ for num_d in range(0,3): #0,8
                 
                 if boole:
                     nn_out_valid.append(nn_out[i])
-            avage_TED_pr_sum_d[num_d+den_d-2][3] += len(nn_out)-len(nn_out_valid)
-            avage_TED_pr_sum_d[num_d+den_d-2][3] += len(nn_out)
             
+                        
             if  len(nn_out_valid) != 0 and len(nn_out_valid) != 1: #gider ikke have den med hvis det er kun er en
                 print(f"found multiple!!! {len(nn_out_valid)}")
                 ted = TED_of_list_postfix_eq_as_tokens(nn_out_valid)
-                avage_TED_pr_sum_d[num_d+den_d-2][1] += ted
-                if avage_TED_pr_sum_d[num_d+den_d-2][2] != 0:
-                    avage_TED_pr_sum_d[num_d+den_d-2][1] /= 2
-                avage_TED_pr_sum_d[num_d+den_d-2][2] += 1
-            
-            
+                
+                
+                found_distance[vector_idx].append(ted)
