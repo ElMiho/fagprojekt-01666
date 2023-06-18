@@ -15,6 +15,7 @@ from validation.TED import graph_from_postfix, TreeEditDistance
 import pickle
 from datetime import datetime
 
+#%%
 #datastore
 degree_vector = posible_degrees(10)
 non_valid_counter = [0 for _ in degree_vector]
@@ -23,21 +24,23 @@ found_distance = [[] for _ in degree_vector]
 
 
 #To validate please add a string to the txt file it need to have same structure as megafile
-testfile = "data_analysis/new_rational_data/megafile2_txt"
+testfile = "validation/vali_files/answers-1-4-partition-1"
 
 #open the test file
 with open(testfile, "r") as file:
     lines = file.readlines()
     
-loops = 0
-succes_math = 0
+
 #%%
 current_time = datetime.now().time()
 time_str = current_time.strftime("%H_%M")
-filename = f"validation/save_data/saved_variables_{time_str}.pkl"
+
+filename = f"validation/save_data/saved_variables_1_4.pkl"
+
 
 #%%
-
+loops = 0
+succes_math = 0
 for line in lines:
     loops += 1
     if loops % 50 == 0:
@@ -45,7 +48,7 @@ for line in lines:
         saved_variables = {'found_distance': found_distance, 'total_counter': total_counter, 'non_valid_counter': non_valid_counter, 'degree_vector': degree_vector}
         with open(filename, 'wb+') as f:
             pickle.dump(saved_variables, f)
-            
+
             
     #reads the content from the line
     _, answer, _, roots = parse_line(line)
