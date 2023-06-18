@@ -95,15 +95,19 @@ import pickle
 
 
   
+
 filename = f"validation/save_data/root_0_6.pkl"
+
 degree_vector = posible_degrees(10)
 total_counter = [0 for _ in degree_vector]
 found_distance = [[] for _ in degree_vector]
 #%%
 
         
+
 num_d = 0
 den_d = 6
+
 
 loops = 1
 for _ in range(0,100): #HUSK AT SÆT OP
