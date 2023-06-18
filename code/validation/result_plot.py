@@ -71,9 +71,9 @@ with open(f"validation/save_data/saved_variables_2_4.pkl", 'rb') as f:
     loaded_variables8 = pickle.load(f)
 # Access the loaded variables
 found_distance8 = loaded_variables8['found_distance']
-total_counter8 = loaded_variables8['total_counter']
-non_valid_counter8 = loaded_variables8['non_valid_counter']
-degree_vector8 = loaded_variables8['degree_vector']
+#total_counter8 = loaded_variables8['total_counter']
+#non_valid_counter8 = loaded_variables8['non_valid_counter']
+#degree_vector8 = loaded_variables8['degree_vector']
 
 #%%
 zi = zip(found_distance1, found_distance2, found_distance3, found_distance4, found_distance5, found_distance6, found_distance7, found_distance8)
