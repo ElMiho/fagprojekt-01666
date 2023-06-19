@@ -1,4 +1,4 @@
-from validation.validation_medthods import extend_sum
+from validation.validation_medthods import extend_sum, extend_sum2
 from validation.validation_medthods import posible_degrees
 from validation.validation_medthods import random_list_of_nuerator_and_denominator
 from validation.validation_medthods import neural_network_validation
@@ -23,7 +23,7 @@ found_distance = [[] for _ in degree_vector]
 
 
 loops = 1
-for _ in range(0,20): #HUSK AT SÆT OP
+for _ in range(0,10): #HUSK AT SÆT OP
     vector_idx = degree_vector.index([num_d, den_d])
     if loops % 5 == 0:
         print(f"{loops} completed -- status : {len(found_distance[vector_idx])}")
@@ -42,9 +42,10 @@ for _ in range(0,20): #HUSK AT SÆT OP
             continue
         _, correct_tree = graph_from_postfix(nn_out)
     except Exception:
+        print("false")
         continue
         
-    extend_sum = extend_sum(roots_list)
+    extend_sum = extend_sum2(roots_list)
     
     nn_out_es = [neural_network_validation(roots) for roots in extend_sum] 
     nn_out_valid = []
@@ -54,7 +55,6 @@ for _ in range(0,20): #HUSK AT SÆT OP
             boole = Equation(nn_out_es[i], "postfix").is_valid()
         except Exception:
             boole = False
-            continue
         
         if boole:
             nn_out_valid.append(nn_out_es[i])
@@ -68,9 +68,11 @@ for _ in range(0,20): #HUSK AT SÆT OP
         for tokens in nn_out_valid:
             try:
                 _, predicted_tree = graph_from_postfix(tokens)
-                dist += TreeEditDistance().calculate(predicted_tree, correct_tree)
+                ted = TreeEditDistance().calculate(predicted_tree, correct_tree)
+                dist += ted[0]
                 count += 1
             except Exception:
+                print("no tree")
                 None
         
         if count > 1:

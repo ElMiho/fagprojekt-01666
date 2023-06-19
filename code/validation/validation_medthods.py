@@ -173,6 +173,18 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     return num_roots, den_roots
 
 
+def extend_sum2(eq_list, space = [-5,5], int_roots_only = False):
+    '''Extends a sum in both denominator and numinator with a random number
+    (The sum remains the same).
+    '''
+    
+    index = eq_list.index('/')
+    all_eq = []
+    random_number = token_input_space(space[0], space[1], "numinator_only")
+
+    for num in random_number:
+        all_eq.append(eq_list[:index] + [str(num)] + eq_list[index:] + [str(num)])
+    return all_eq
 
 def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
     '''Extends a sum in both denominator and numinator with a random number
