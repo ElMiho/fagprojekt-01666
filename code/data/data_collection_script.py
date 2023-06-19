@@ -3,10 +3,11 @@ import linecache
 import argparse
 import os
 
+sti = "./random-answers-8-4-2023-zip"
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("--collection_dir", type=str, help="Whether to print intermediate steps, default ./random-answers-partition-7", default="./random-answers-partition-7")
+parser.add_argument("--collection_dir", type=str, help=f"Whether to print intermediate steps, default {sti}", default=f"{sti}")
 args = parser.parse_args()
 
 # If args.collection_dir is a real folder

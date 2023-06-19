@@ -1,3 +1,7 @@
+import sys
+if False: #sys.platform == 'darwin':
+    sys.path.append('../code')
+
 
 from validation.validation_medthods import *
 from validation.validation_medthods import input_roots_num_den
@@ -6,8 +10,8 @@ from validation.validation_medthods import roots_to_strings
 from validation.validation_medthods import valid_equation
 from validation.validation_medthods import posible_degrees
 
-from rnn import RNN
 from model.equation_interpreter import Equation
+from model.tokenize_input import input_string_to_tokenize_expression
 
 from data_analysis.int_data.generate_plot import parse_line
 
@@ -16,7 +20,24 @@ from validation.TED import graph_from_postfix, TreeEditDistance
 import pickle
 from datetime import datetime
 
+from tqdm import tqdm
+import linecache
+import argparse
+from tqdm import tqdm
+import os
 
+#%%
+# Parse command line arguments
+hm = set()
+
+# Write txt files with same name as folder - the monolith file
+for datapoint in tqdm(open("data/random-answers-8-4-2023-zip/random-answers-partition-8-4-2023")):
+    hm.add(tuple(input_string_to_tokenize_expression(datapoint[:-1])))
+
+hashmap = f"validation/vali_files/hashmap"
+saved_variables = {'hashmap': hm}
+with open(hashmap, 'wb+') as fi:
+    pickle.dump(saved_variables, fi)
 #%%
 #datastore
 degree_vector = posible_degrees(10)
@@ -26,9 +47,9 @@ found_distance = [[] for _ in degree_vector]
 
 
 #To validate please add a string to the txt file it need to have same structure as megafile
-deg = 0
-deg2 = 3
-testfile = f"validation/vali_files/answers-{deg}-{deg2}-partition-1"
+deg1, deg2 = 0,2
+
+testfile = f"validation/vali_files/answers-{deg1}-{deg2}-partition-1"
 
 
 #open the test file
@@ -36,11 +57,12 @@ with open(testfile, "r") as file:
     lines = file.readlines()
     
 
+#%%
 current_time = datetime.now().time()
 time_str = current_time.strftime("%H_%M")
 
 
-filename = f"validation/save_data/rnn_{deg}-{deg2}.pkl"
+filename = f"validation/save_data/saved_variables_hugotime_{deg1}_{deg2}.pkl"
 
 
 
@@ -49,7 +71,7 @@ loops = 0
 succes_math = 0
 for line in lines:
     loops += 1
-    if loops % 10 == 0:
+    if loops % 50 == 0:
         print(f"{loops} completed -- status : {succes_math}")
         saved_variables = {'found_distance': found_distance, 'total_counter': total_counter, 'non_valid_counter': non_valid_counter, 'degree_vector': degree_vector}
         with open(filename, 'wb+') as f:
@@ -58,7 +80,10 @@ for line in lines:
             
     #reads the content from the line
     _, answer, _, roots = parse_line(line)
-    
+    if tuple(roots) in hm: 
+        print(f"Skipped roots: {roots}")
+        continue
+
     if answer == "$Aborted":
         continue
     
@@ -71,8 +96,7 @@ for line in lines:
     total_counter[vector_idx] += 1 
     
     # calls the neural network
-    #output_from_neural_network = neural_network_validation(roots)
-    output_from_neural_network = RNN(roots)
+    output_from_neural_network = neural_network_validation(roots)
         
     #test if the output is valid
     if not valid_equation(output_from_neural_network):

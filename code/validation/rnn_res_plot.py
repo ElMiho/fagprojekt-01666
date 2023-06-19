@@ -9,7 +9,7 @@ from validation.validation_medthods import posible_degrees
 folder_path = "validation/save_data"  # Replace with the actual folder path containing the .pkl files
 
 # Get a list of all .pkl files in the folder
-file_list = [file for file in os.listdir(folder_path) if file.startswith("root") and file.endswith(".pkl")]
+file_list = [file for file in os.listdir(folder_path) if file.startswith("rnn") and file.endswith(".pkl")]
 
 # Initialize a list to store the dictionaries
 dis = []
@@ -55,7 +55,7 @@ for d in data:
 plt.boxplot(data_sort, positions=p, labels=labels)
 plt.ylabel('Distance')
 plt.xlabel('Degree of P(n) / Degree of Q(n)')
-plt.title('Average Distance when permuting random expressions')
+plt.title('Distance between correct and predicted evaluations - RNN')
 plt.xticks(rotation=-45)
 plt.show()
 
@@ -63,7 +63,7 @@ def addlabels(x,y,data):
     for i in range(len(x)):
         plt.text(i,y[i],data[i])
 
-zero_counts = [row.count(0.0) for row in data if len(row) != 0]
+counts = [sum(1 for value in row if value <= 5) for row in data_sort]
         
 
 # Width of each bar
@@ -79,17 +79,19 @@ fig, ax = plt.subplots()
 ax.bar(bar_positions, hist_data, width=bar_width, label='Valid postfix notation')
 
 # Plot the second bar plot next to the first one
-ax.bar(bar_positions + bar_width, zero_counts, width=bar_width, label='Average distance less than 6')
+ax.bar(bar_positions + bar_width, counts, width=bar_width, label='Average distance equal to 0')
 
 addlabels(labels, hist_data,hist_data)
-addlabels(labels, zero_counts,zero_counts)
+addlabels(labels, counts,counts)
 
 # Customize the plot
 ax.set_xticks(bar_positions + bar_width / 2)
 ax.set_xticklabels(labels)
 ax.legend()
-plt.title('Percentage of valid notation  - GPT2 \n when permuting random expressions')
+plt.title('Percentage of valid notation - RNN')
 plt.ylabel('Percentage valid Postfix Notation')
 plt.xlabel('Degree of P(n) / Degree of Q(n)')
 # Display the plot
 plt.show()
+# -*- coding: utf-8 -*-
+

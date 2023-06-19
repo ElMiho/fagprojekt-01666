@@ -38,6 +38,8 @@ from validation.postfix_tokens_to_tree import generate_nodes_from_postfix
 from validation.tree_edit_distance import Node, Tree, tree_edit_distance, plot_graph
 
 
+
+
 def neural_network_validation(roots: list):
     output = neural_network(roots)
     return output[len(roots)+2:len(output)-1]
@@ -165,7 +167,7 @@ def random_list_of_nuerator_and_denominator(spaceinterval: list = [-5,5] ,concat
     if concatenate:
         num_roots.append("/")
         
-        return [num_roots + den_roots]
+        return num_roots + den_roots
     
     
     return num_roots, den_roots
@@ -176,8 +178,8 @@ def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
     '''Extends a sum in both denominator and numinator with a random number
     (The sum remains the same).
     '''
-    if len(eq_list) > 1:
-        eq_list = eq_list[0] +['/']+ eq_list[1]
+    #if len(eq_list) > 1:
+        #eq_list = eq_list[0] +['/']+ eq_list[1]
     index = eq_list.index('/')
     all_eq = []
     if int_roots_only:
@@ -187,7 +189,8 @@ def extend_sum(eq_list, space = [-5,5], int_roots_only = False):
         random_number = token_input_space(space[0], space[1], "numinator_only")
 
     for num in random_number:
-        all_eq.append(eq_list[:index] + [num] + eq_list[index:] + [num])
+        
+        all_eq.append(eq_list[:index] + [str(num)] + eq_list[index:] + [str(num)])
     return all_eq
 
 

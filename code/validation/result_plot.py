@@ -87,7 +87,7 @@ data = [row1 + row2 + row3 + row4+ row5+ row6+ row7 + row8 + row9 for row1, row2
 
 #%%
 # Create scatter plot with circular markers and no color
-
+import random
 idx = 0
 labels = []
 p = [0, 1, 2,3,4,5,6,7,8]
@@ -104,7 +104,9 @@ for d in data:
     data_sort.append(d)
     label = f"{degree_vector1[idx][0]}/{degree_vector1[idx][1]}"
     labels.append(label)
-    plt.scatter([non_empt]*len(data[idx]), data[idx], marker='o', label=label)
+    [non_empt]*len(data[idx])
+    X = [non_empt + (random.randint(0, 2)-1)/10 for _ in data[idx]]
+    plt.scatter(X, data[idx], marker='o', label=label)
     idx += 1
     non_empt +=1
     hist_data.append(len(d))
@@ -115,7 +117,7 @@ for d in data:
 plt.boxplot(data_sort, positions=p, labels=labels)
 plt.ylabel('Distance')
 plt.xlabel('Degree of P(n) / Degree of Q(n)')
-plt.title('Distance between correct and predicted evaluations')
+plt.title('Distance between correct and predicted evaluations - GPT2')
 plt.xticks(rotation=-45)
 plt.show()
 
@@ -127,7 +129,7 @@ def addlabels(x,y):
         
 plt.bar(labels, hist_data, color ='blue',width = 0.4)
 addlabels(labels, hist_data)
-plt.title('Percentage of valid notation \n in each category')
+plt.title('Percentage of valid notation - GPT2')
 plt.ylabel('Percentage valid Postfix Notation')
 plt.xlabel('Degree of P(n) / Degree of Q(n)')
 plt.show()
@@ -161,7 +163,7 @@ addlabels(labels, counts,counts)
 ax.set_xticks(bar_positions + bar_width / 2)
 ax.set_xticklabels(labels)
 ax.legend()
-plt.title('Distance')
+plt.title('Percentage of valid notation - GPT2')
 plt.ylabel('Percentage valid Postfix Notation')
 plt.xlabel('Degree of P(n) / Degree of Q(n)')
 # Display the plot
