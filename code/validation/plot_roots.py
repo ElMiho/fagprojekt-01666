@@ -79,7 +79,7 @@ fig, ax = plt.subplots()
 ax.bar(bar_positions, hist_data, width=bar_width, label='Valid postfix notation')
 
 # Plot the second bar plot next to the first one
-ax.bar(bar_positions + bar_width, zero_counts, width=bar_width, label='Average distance less than 6')
+ax.bar(bar_positions + bar_width, zero_counts, width=bar_width, label='Average distance equal to 0')
 
 addlabels(labels, hist_data,hist_data)
 addlabels(labels, zero_counts,zero_counts)
