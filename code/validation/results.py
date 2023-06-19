@@ -71,8 +71,8 @@ for line in lines:
     total_counter[vector_idx] += 1 
     
     # calls the neural network
-    #output_from_neural_network = neural_network_validation(roots)
-    output_from_neural_network = RNN(roots)
+    output_from_neural_network = neural_network_validation(roots)
+    output_from_neural_network_RNN = RNN(roots)
         
     #test if the output is valid
     if not valid_equation(output_from_neural_network):
