@@ -25,7 +25,7 @@ found_distance = [[] for _ in degree_vector]
 
 #To validate please add a string to the txt file it need to have same structure as megafile
 
-testfile = "validation/vali_files/answers-1-4-partition-1"
+testfile = "validation/vali_files/answers-2-4-partition-1"
 
 
 #open the test file
@@ -38,7 +38,7 @@ current_time = datetime.now().time()
 time_str = current_time.strftime("%H_%M")
 
 
-filename = f"validation/save_data/saved_variables_1_4.pkl"
+filename = f"validation/save_data/saved_variables_2_4.pkl"
 
 
 
